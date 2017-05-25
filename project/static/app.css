@@ -1,3 +1,16 @@
-html, body {
-  font-size: larger;
+@font-face {
+  font-family: AUdimat-Regular;
+  src: url("font/AUdimat-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: AUdimat-Bold;
+    font-weight: bold;
+    src: url("font/AUdimat-Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: AUdimat-Italic;
+    font-weight: italic;
+    src: url("font/AUdimat-Italic.otf") format("opentype");
 }
