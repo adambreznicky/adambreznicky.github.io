@@ -1,0 +1,455 @@
+extends template
+
+block title
+  title GroundworkCSS &hearts; Helpers
+  style(type="text/css").
+    .hidden,
+    .desktop-only,
+    .hide-on-desktop,
+    .ipad-only,
+    .hide-on-ipad,
+    .small-tablet-only,
+    .hide-on-small-tablet,
+    .mobile-only,
+    .hide-on-mobile {
+      padding: 0.25em;
+      color: #fff;
+    }
+    .demo .row {
+      background: #f6f6f6 url('../images/diag6-black.png') center repeat;
+    }
+    .demo.spacers .row {
+      display: table;
+    }
+    .demo .row div {
+      background: #eee;
+      border: 1px dashed #ddd;
+    }
+
+block content
+  .container
+    .padded
+      .row
+        .three.fifths.bounceInRight.animated
+          h1.zero.museo-slab Helpers
+          p.quicksand
+            a(href='breakpoints.html') Breakpoint-targeted
+            |  layout, typographic, and conditional helpers for responsive & adaptive layouts
+        .two.fifths.align-right-ipad.align-right-desktop.flipInX.animated
+          p.quicksand Component Usage Example 2 of 14
+          p
+            a.blue.button(href='grid.html', rel='prev')
+              | Back
+            | 
+            a.green.button(href='typography.html', rel='next')
+              | Next: Typography
+    hr
+    .row
+      .one.whole.padded.bounceInLeft.animated
+        h4.zero Conditional Display Helpers
+        p.small
+          | Conditionally show and hide elements at 
+          a(href='breakpoints.html') targeted breakpoints
+        .row
+          .one.half.small-tablet.padded
+            h4 Demonstration
+            ol.list.large
+              li.red.hidden hidden
+              li.green.desktop-only desktop-only
+              li.blue.hide-on-desktop hide-on-desktop
+              li.green.ipad-only ipad-only
+              li.blue.hide-on-ipad hide-on-ipad
+              li.green.small-tablet-only small-tablet-only
+              li.blue.hide-on-small-tablet hide-on-small-tablet
+              li.green.mobile-only mobile-only
+              li.blue.hide-on-mobile hide-on-mobile
+          .one.half.small-tablet.padded
+            h4.double-gap-top-mobile Conditional Display Classes
+            ol.list
+              li
+                code.inline .hidden
+                |  (all breakpoints)
+              li
+                code.inline .desktop-only
+              li
+                code.inline .hide-on-desktop
+              li
+                code.inline .ipad-only
+              li
+                code.inline .hide-on-ipad
+              li
+                code.inline .small-tablet-only
+              li
+                code.inline .hide-on-small-tablet
+              li
+                code.inline .mobile-only
+              li
+                code.inline .hide-on-mobile
+    br
+    hr
+    br
+    .row
+      .one.whole.padded.bounceInRight.animated
+        h4.zero Spacing Helpers
+        p.small 
+          | With breakpoint-targeted conditional classes and overrides. (i.e. - 
+          code.inline .no-pad-mobile
+          | ,  
+          code.inline .no-gap-desktop
+          | ,  
+          code.inline .double-gap-top-mobile
+          | ,  
+          code.inline .padded-small-tablet
+          | ,  
+          code.inline .padded-mobile
+          | , etc.)
+        .row
+          .one.fourth.padded
+            h4 Padded
+            .demo
+              .row
+                div.padded .padded
+                div.pad-top .pad-top
+                div.pad-right .pad-right
+                div.pad-bottom .pad-bottom
+                div.pad-left .pad-left
+          .one.fourth.padded
+            h4 Half
+            .demo
+              .row
+                div.half-padded .half-padded
+                div.half-pad-top .half-pad-top
+                div.half-pad-right .half-pad-right
+                div.half-pad-bottom .half-pad-bottom
+                div.half-pad-left .half-pad-left
+          .one.fourth.padded
+            h4 Double
+            .demo
+              .row
+                div.double-padded .double-padded
+                div.double-pad-top .double-pad-top
+                div.double-pad-right .double-pad-right
+                div.double-pad-bottom .double-pad-bottom
+                div.double-pad-left .double-pad-left
+          .one.fourth.padded
+            h4 Triple
+            .demo
+              .row
+                div.triple-padded .triple-padded
+                div.triple-pad-top .triple-pad-top
+                div.triple-pad-right .triple-pad-right
+                div.triple-pad-bottom .triple-pad-bottom
+                div.triple-pad-left .triple-pad-left
+        .row
+          .one.fourth.padded
+            h4 Gapped
+            .demo.spacers
+              .row
+                div.gapped .gapped
+                div.gap-top .gap-top
+                div.gap-right .gap-right
+                div.gap-bottom .gap-bottom
+                div.gap-left .gap-left
+          .one.fourth.padded
+            h4 Half
+            .demo.spacers
+              .row
+                div.half-gapped .half-gapped
+                div.half-gap-top .half-gap-top
+                div.half-gap-right .half-gap-right
+                div.half-gap-bottom .half-gap-bottom
+                div.half-gap-left .half-gap-left
+          .one.fourth.padded
+            h4 Double
+            .demo.spacers
+              .row
+                div.double-gapped .double-gapped
+                div.double-gap-top .double-gap-top
+                div.double-gap-right .double-gap-right
+                div.double-gap-bottom .double-gap-bottom
+                div.double-gap-left .double-gap-left
+          .one.fourth.padded
+            h4 Triple
+            .demo.spacers
+              .row
+                div.triple-gapped .triple-gapped
+                div.triple-gap-top .triple-gap-top
+                div.triple-gap-right .triple-gap-right
+                div.triple-gap-bottom .triple-gap-bottom
+                div.triple-gap-left .triple-gap-left
+    br
+    hr
+    br
+    .row
+      .one.whole.padded.bounceInLeft.animated
+        h4.zero Layout
+        p.small 
+          | With breakpoint-targeted conditional classes and overrides. (i.e. - 
+          code.inline .block-desktop
+          | , 
+          code.inline .no-border-small-tablet
+          | , 
+          code.inline .pull-right-small-tablet
+          | , 
+          code.inline .center-ipad
+        .row
+          .one.third.small-tablet.padded
+            h4 Display
+            .demo
+              .row
+                div.inline .inline
+                div.inline-block .inline-block
+                div.block .block
+                div.hidden .hidden
+            br
+            h4 Border Radius
+            .demo
+              .row
+                div
+                  button.square .square
+                div
+                  button.round .round
+          .one.third.small-tablet.padded
+            h4 Floating
+            .demo
+              .row
+                div.pull-none .pull-none
+                div.pull-right .pull-right
+                div.pull-left .pull-left
+            br
+            h4 Centering
+            .demo
+              .row
+                div
+                  button.center .center
+          .one.third.small-tablet.padded
+            h4 Borders
+            .demo
+              div.bordered .bordered
+              br
+              div.border-top .border-top
+              br
+              div.border-right .border-right
+              br
+              div.border-bottom .border-bottom
+              br
+              div.border-left .border-left
+    br
+    hr
+    br
+    .row
+      .one.whole.padded.bounceInRight.animated
+        h4.zero Positioning
+        .padded
+          .demo
+            .relative
+              .row.align-center(style='height: 10em;')
+                .absolute(title='.absolute') X
+                .absolute.top.left(title='.absolute.top.left') X
+                .absolute.bottom.left(title='.absolute.bottom.left') X
+                .absolute.top.right(title='.absolute.top.right') X
+                .absolute.bottom.right(title='.absolute.bottom.right') X
+                .absolute.middle.left(title='.absolute.middle.left', style='margin-top: -0.65em;') X
+                .absolute.middle.center(title='.absolute.middle.center', style='margin-top: -0.65em;') X
+                .absolute.middle.right(title='.absolute.middle.right', style='margin-top: -0.65em;') X
+                .absolute.top.center(title='.absolute.top.center') X
+                .absolute.bottom.center(title='.absolute.bottom.center') X
+        .row
+          .one.third.small-tablet.padded
+            h4 Static
+            code
+              ul.unstyled
+                li
+                  | .static
+          .one.third.small-tablet.padded
+            h4 Absolute
+            code
+              ul.unstyled
+                li
+                  | .absolute
+                li
+                  | .absolute.top
+                li
+                  | .absolute.top.left
+                li
+                  | .absolute.top.center
+                li
+                  | .absolute.top.right
+                li
+                  | .absolute.middle
+                li
+                  | .absolute.middle.left
+                li
+                  | .absolute.middle.center
+                li
+                  | .absolute.middle.right
+                li
+                  | .absolute.bottom
+                li
+                  | .absolute.bottom.left
+                li
+                  | .absolute.bottom.center
+                li
+                  | .absolute.bottom.right
+                li
+                  | .absolute.center
+          .one.third.small-tablet.padded
+            h4 Fixed
+            code
+              ul.unstyled
+                li
+                  | .fixed
+                li
+                  | .fixed.top
+                li
+                  | .fixed.top.left
+                li
+                  | .fixed.top.center
+                li
+                  | .fixed.top.right
+                li
+                  | .fixed.middle
+                li
+                  | .fixed.middle.left
+                li
+                  | .fixed.middle.center
+                li
+                  | .fixed.middle.right
+                li
+                  | .fixed.bottom
+                li
+                  | .fixed.bottom.left
+                li
+                  | .fixed.bottom.center
+                li
+                  | .fixed.bottom.right
+                li
+                  | .fixed.center
+    br
+    hr
+    br
+    .row
+      .one.whole.padded.bounceInLeft.animated
+        h4 Typographic
+        .row
+          .one.third.small-tablet.padded
+            h4 Font Sizing
+            p.zero .small
+            .demo
+              .row
+                div.small
+                  | The quick brown fox jumped over the lazy dog. Oh, how that fox jumped, quick and brown, while the dog never reacted because he was so very lazy.
+            br
+            p.zero .medium
+            .demo
+              .row
+                div.medium
+                  | The quick brown fox jumped over the lazy dog. Oh, how that fox jumped, quick and brown, while the dog never reacted because he was so very lazy.
+            br
+            p.zero .large
+            .demo
+              .row
+                div.large
+                  | The quick brown fox jumped over the lazy dog. Oh, how that fox jumped, quick and brown, while the dog never reacted because he was so very lazy.
+          .one.third.small-tablet.padded
+            h4 Text Alignment
+            p.zero .align-left
+            .demo
+              .row
+                div.align-left
+                  | The quick brown fox jumped over the lazy dog. Oh, how that fox jumped, quick and brown, while the dog never reacted because he was so very lazy.
+            br
+            p.zero .align-center
+            .demo
+              .row
+                div.align-center
+                  | The quick brown fox jumped over the lazy dog. Oh, how that fox jumped, quick and brown, while the dog never reacted because he was so very lazy.
+            br
+            p.zero .align-right
+            .demo
+              .row
+                div.align-right
+                  | The quick brown fox jumped over the lazy dog. Oh, how that fox jumped, quick and brown, while the dog never reacted because he was so very lazy.
+            br
+            p.zero .justify
+            .demo
+              .row
+                div.justify
+                  | The quick brown fox jumped over the lazy dog. Oh, how that fox jumped, quick and brown, while the dog never reacted because he was so very lazy.
+          .one.third.small-tablet.padded
+            h4 Text Helpers
+            p.zero .truncate 
+            p.zero.small (single-line, pure CSS)
+            .demo
+              .row
+                div.truncate
+                  | The quick brown fox jumped over the lazy dog. Oh, how that fox jumped, quick and brown, while the dog never reacted because he was so very lazy.
+            br
+            p.zero data-truncate='2' 
+            p.zero.small (multi-line, powered by truncateLines plugin)
+            .demo
+              .row
+                div(data-truncate='2')
+                  | The quick brown fox jumped over the lazy dog. Oh, how that fox jumped, quick and brown, while the dog never reacted because he was so very lazy.
+            br
+            p.zero .responsive 
+            p.zero.small (single-line, powered by responsiveText plugin)
+            .demo
+              .row
+                div.responsive(data-compression='20.65')
+                  | The quick brown fox jumped over the lazy dog.
+            p.gap-top.small
+              | Note: 
+              code.inline data-compression='20.65'
+              |  applied to increase compression
+            br
+            p.zero .responsive 
+            p.zero.small (scrollable single-line, powered by responsiveText plugin)
+            .demo
+              .row
+                div.responsive(data-scrollable='true')
+                  | The quick brown fox jumped over the lazy dog.
+            p.gap-top.small
+              | Note: 
+              code.inline data-scrollable='true'
+              |  applied to enable scrolling on hover
+    br
+    hr
+    br
+    .row
+      .one.whole.padded.bounceInUp.animated
+        h4 Rotation
+        .row
+          .one.fourth.small-tablet.two-up-mobile.double-padded.align-center
+            .rotate-90
+              i.icon-4x.icon-power-off
+            p .rotate-90 
+          .one.fourth.small-tablet.two-up-mobile.double-padded.align-center
+            .rotate-180
+              i.icon-4x.icon-power-off
+            p .rotate-180 
+          .one.fourth.small-tablet.two-up-mobile.double-padded.align-center
+            .rotate-270
+              i.icon-4x.icon-power-off
+            p .rotate-270 
+          .one.fourth.small-tablet.two-up-mobile.double-padded.align-center
+            .rotate-360
+              i.icon-4x.icon-power-off
+            p .rotate-360
+        .row
+          .one.fourth.small-tablet.two-up-mobile.double-padded.align-center
+            .rotate-90-ctr
+              i.icon-4x.icon-power-off
+            p .rotate-90-ctr  
+          .one.fourth.small-tablet.two-up-mobile.double-padded.align-center
+            .rotate-180-ctr
+              i.icon-4x.icon-power-off
+            p .rotate-180-ctr 
+          .one.fourth.small-tablet.two-up-mobile.double-padded.align-center
+            .rotate-270-ctr
+              i.icon-4x.icon-power-off
+            p .rotate-270-ctr 
+          .one.fourth.small-tablet.two-up-mobile.double-padded.align-center
+            .rotate-360-ctr
+              i.icon-4x.icon-power-off
+            p .rotate-360-ctr 

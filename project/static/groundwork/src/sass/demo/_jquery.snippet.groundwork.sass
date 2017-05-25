@@ -1,0 +1,114 @@
+@import ../core/palette
+@import ../settings
+
+.sh_groundwork
+  &.snippet-wrap
+    .snippet-num
+      margin: 1em 0.5em
+      li
+        padding-left: 0.5em
+    pre.sh_sourceCode
+      padding: 0
+      max-height: 16.75em
+      &.snippet-textonly
+        padding: 12px 15px
+    .snippet-menu, .snippet-hide
+      top: 5px
+      right: 5px
+      pre
+        background-color: rgba($black, 0.75)
+        padding: 5px 5px 0
+        border-radius: 4px
+  background: none
+  padding: 0
+  margin: 0
+  border: 0 none
+  .sh_sourceCode
+    background-color: $asphalt
+    color: #f6f6f6
+    font-weight: normal
+    font-style: normal
+    .sh_keyword
+      color: $pink
+      font-weight: normal
+      font-style: normal
+    .sh_type
+      color: $green
+      font-weight: normal
+      font-style: normal
+    .sh_string, .sh_regexp
+      color: $blue
+      font-weight: normal
+      font-style: normal
+    .sh_specialchar
+      color: #ffa500
+      font-weight: normal
+      font-style: normal
+    .sh_comment
+      color: #80a0ff
+      font-weight: normal
+      font-style: normal
+    .sh_number
+      color: #42cad9
+      font-weight: normal
+      font-style: normal
+    .sh_preproc
+      color: #ff80ff
+      font-weight: normal
+      font-style: normal
+    .sh_symbol
+      color: $yellow
+      font-weight: bold
+      font-style: normal
+    .sh_function
+      color: #fff
+      font-weight: bold
+      font-style: normal
+    .sh_cbracket
+      color: $yellow
+      font-weight: bold
+      font-style: normal
+    .sh_url
+      color: $white
+      font-weight: normal
+      font-style: normal
+      position: relative
+      top: -0.35em
+      &:after, &:before
+        content: ""
+    .sh_date, .sh_time, .sh_file
+      color: $pink
+      font-weight: normal
+      font-style: normal
+    .sh_ip, .sh_name
+      color: $blue
+      font-weight: normal
+      font-style: normal
+    .sh_variable
+      color: #26e0e7
+      font-weight: normal
+      font-style: normal
+    .sh_oldfile
+      color: #ffa500
+      font-weight: normal
+      font-style: normal
+    .sh_newfile
+      color: $blue
+      font-weight: normal
+      font-style: normal
+    .sh_difflines
+      color: $pink
+      font-weight: normal
+      font-style: normal
+    .sh_selector
+      color: #26e0e7
+      font-weight: normal
+      font-style: normal
+    .sh_property
+      color: $pink
+      font-weight: normal
+      font-style: normal
+    .sh_value
+      color: $blue
+      font-weight: normal
+      font-style: normal

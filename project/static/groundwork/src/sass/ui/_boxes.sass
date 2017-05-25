@@ -1,0 +1,90 @@
+// =============================================
+//               Content Boxes
+//          Last Updated:2013-8-24
+// =============================================
+
+$ui-classes: true !default
+$ui-states: "info" "alert" "warning" "error" "success" "question" !default
+$ui-icons: "\f05a" "\f06a" "\f071" "\f057" "\f058" "\f059" !default
+$radius-helpers: "square" "round" !default
+$size-helpers: "small" "medium" "large" !default
+$default-radius: 4px !default
+
+%box
+  @extend %relative, %padded
+  background: $button-color
+  color: $button-text
+  border: 1px solid $border-color
+  +rounded($default-radius)
+  %links
+    color: inherit
+
+%box-small
+  +_small
+
+%box-medium
+  +_medium
+
+%box-large
+  +_large
+
+%box-square
+  +_square
+
+%box-round
+  +_round
+
+%box-info
+  background-color: $info-background
+  color: $info-color
+  border-color: $info-border
+
+%box-question
+  background-color: $question-background
+  color: $question-color
+  border-color: $question-border
+
+%box-alert
+  background-color: $alert-background
+  color: $alert-color
+  border-color: $alert-border
+
+%box-warning
+  background: $warning-background
+  color: $warning-color
+  border-color: $warning-border
+
+%box-error
+  background: $error-background
+  color: $error-color
+  border-color: $error-border
+
+%box-success
+  background: $success-background
+  color: $success-color
+  border-color: $success-border
+
+@for $i from 1 through length($modifier-name)
+  %box-#{nth($modifier-name, $i)}
+    border-color: nth($modifier-code, $i)
+    background-color: lighten(nth($modifier-code, $i), 10%)
+    color: nth($modifier-text, $i)
+
+=box-modifiers
+  @for $i from 1 through length($ui-states)
+    &.#{nth($ui-states, $i)}
+      @extend %box-#{nth($ui-states, $i)}
+  @for $i from 1 through length($radius-helpers)
+    &.#{nth($radius-helpers, $i)}
+      @extend %box-#{nth($radius-helpers, $i)}
+  @for $i from 1 through length($size-helpers)
+    &.#{nth($size-helpers, $i)}
+      @extend %box-#{nth($size-helpers, $i)}
+  @for $i from 1 through length($modifier-name)
+    &.#{nth($modifier-name, $i)}
+      @extend %box-#{nth($modifier-name, $i)}
+
+@if $ui-classes
+  .box
+    @extend %box
+    +box-modifiers

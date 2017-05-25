@@ -1,0 +1,261 @@
+// =============================================
+//              Global Mixins
+//          Last Updated:2013-8-16
+// =============================================
+
+$font-family: Helvetica, Arial, Geneva, sans-serif !default
+$oldIE: false !default
+
+///////////////////////
+//    helper reset   //
+///////////////////////
+
+=helper_reset($properties: padding margin, $spacers: padded pad-top pad-right pad-bottom pad-left gapped gap-top gap-right gap-bottom gap-left)
+  @for $i from 1 through length($spacers)
+    &.#{nth($spacers, $i)}, &.half-#{nth($spacers, $i)}, &.double-#{nth($spacers, $i)}, &.triple-#{nth($spacers, $i)}
+      @for $i from 1 through length($properties)
+        #{nth($properties, $i)}: 0 !important
+
+///////////////////////
+//     functions     //
+///////////////////////
+
+// strip unit of measurement from a value
+@function numericvalue($val)
+  $unit: unit($val)
+  $number: $val / ($val * 0 + 1)
+  @return $number
+
+///////////////////////
+//     utilities     //
+///////////////////////
+
+// inline image with fallback support for IE 7-
+=data-image($file)
+  background-image: url(#{$root_path}#{$images_path}#{$file})
+  // fallback
+  background-image: inline-image($file)
+  // data URI
+  *background-image: url(#{$root_path}#{$images_path}#{$file})
+  // IE7- hack
+
+// Return the modulo of two numbers
+@function mod($dividend, $divisor)
+  @return $dividend - floor($dividend / $divisor) * $divisor
+
+// Return the corrected angle or position for a css gradient
+@function angle($deg)
+  @if type-of($deg) == "number"
+    @return mod(abs($deg - 450), 360deg)
+  @else
+    $position: to + " "
+    @each $pos in $deg
+      $position: $position + opposite-position($pos) + " "
+    @return $position
+
+=gradient($startColor: $white, $endColor: $gray-2, $direction: "top")
+  $direction: unquote($direction)
+  $old: top
+  $correct: to bottom
+  @if index($direction, unquote("to")) == 1
+    $correct: $direction
+    @if length($direction) == 2
+      $old: opposite-position(nth($direction, 2))
+    @else if length($direction) == 3
+      $old: opposite-position(join(nth($direction, 2), nth($direction, 3)))
+  @else
+    $old: $direction
+    $correct: angle($old)
+    // handle both angles and old literals
+    // I'm not sure for the angle part though
+    // as it assumes that the mixin user is 
+    // doing it wrong...
+  // works with compass 0.13.alpha.4
+  // @include background-image(linear-gradient($correct, $startColor, $endColor));
+  // works with compass 0.12
+  +background-image(linear-gradient($old, $startColor, $endColor))
+  background-image: linear-gradient($correct, $startColor, $endColor)
+  // override with correct css3 syntax
+  @if $oldIE
+    -pie-background: linear-gradient($correct, $startColor, $endColor)
+    // IE 6-7  -- Thank Jason for these polyfills for legacy IE browsers: http://css3pie.com/
+    *behavior: url($PIE_path)
+    // IE 6-7  -- Thank Jason for these polyfills for legacy IE browsers: http://css3pie.com/
+
+// filter drop shadow
+=filter-shadow($color: rgba(0, 0, 0, 0.2), $blur: 0, $x: 0, $y: 0)
+  filter: drop-shadow($x $y $blur $color)
+  @media #{$retina}
+    transform: translateZ(0)
+
+// inner box shadow
+=inner-shadow($color, $blur: 0, $x: 0, $y: 0)
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=#{$blur}, Direction=135, Color='#{ie-hex-str($color)}')"
+  // IE8
+  filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=#{$blur}, Direction=135, Color='#{ie-hex-str($color)}')"
+  // IE7-
+  box-shadow: inset $x $y $blur $color
+
+// text/UI Element states
+=state($state: "disabled", $mode: normal, $color: default)
+  @if $color == "default"
+    @if $state == "disabled"
+      $color: $disabled-color
+    @else if $state == "info"
+      $color: $info-color
+    @else if $state == "success"
+      $color: $success-color
+    @else if $state == "warning"
+      $color: $warning-color
+    @else if $state == "error"
+      $color: $error-color
+    @else if $state == "question"
+      $color: $question-color
+  color: lighten($color, 25%)
+  @if $mode != "textOnly"
+    background: lighten($color, 15%)
+    border-color: lighten($color, 10%)
+  @if $state == "disabled"
+    cursor: not-allowed
+    text-decoration: none
+    outline: none
+
+///////////////////////
+//     Typography    //
+///////////////////////
+
+// multi-columns
+=_multi-column($count: 2)
+  column-count: $count
+
+///////////////////////
+//     Navigation    //
+///////////////////////
+
+// responsive navigation
+=hamburger-mode($filters: "")
+  .nav:not(.nocollapse)#{$filters}
+    &:before
+      float: left
+      display: inline-block
+      content: attr(title)
+      padding: 0.25em 0.5em
+      font-weight: bold
+    button.hamburger
+      display: inline-block
+      &:before
+        +icon-FontAwesome
+        content: $icon-list
+      &[aria-expanded="true"]
+        &:before
+          content: $icon-collapse-top
+    > ul
+      display: none
+      > li
+        > a, > button
+          border-top-width: $border-thickness
+    > ul[aria-expanded="true"]
+      display: block
+    li
+      float: none
+      display: block
+      ul
+        position: static
+      li
+        a, button
+          text-indent: $gutter
+        li
+          a, button
+            text-indent: $gutter * 2
+      &[role="menu"]
+        ul
+          border: 0
+          > li
+            &:first-child
+              > a, > button
+                border-top-width: $border-thickness
+        > a, > button
+          &:after
+            float: none
+            content: $icon-caret-down
+        &[aria-pressed="true"]
+          > a, > button
+            &:after
+              content: $icon-caret-up
+    a, button:not(.hamburger)
+      display: block
+      width: 100%
+      text-align: left
+    @for $i from 1 through length($modifier-name)
+      &.#{nth($modifier-name, $i)}
+        li ul a, li[role="menu"] ul a, a,
+        li ul button, li[role="menu"] ul button, button
+          +rounded(0)
+
+///////////////////////
+//    CSS3 helpers   //
+///////////////////////
+
+// rounded corners
+=rounded($radius: $default-radius)
+  @if $radius == "0" or $radius == "0px" or $radius == "none"
+    // no output if $default-radius is set to a zero value
+  @else
+    +border-radius($radius)
+    @if $oldIE
+      *behavior: url($PIE_path)
+      // IE 6-7  -- Thank Jason for these polyfills for legacy IE browsers: http://css3pie.com/
+
+///////////////////////
+//       fonts       //
+///////////////////////
+
+// font stacks
+=font-stack($primaryFont: "", $secondaryFont: "", $fallbackFonts: $font-family)
+  // might add inline-font-files() at some point
+  @if $secondaryFont != ""
+    font-family: #{$primaryFont}, #{$secondaryFont}, #{$fallbackFonts}
+  @else
+    @if $primaryFont != ""
+      font-family: #{$primaryFont}, #{$fallbackFonts}
+    @else
+      font-family: #{$fallbackFonts}
+
+///////////////////////
+//    Font Awesome   //
+///////////////////////
+
+=icon($icon)
+  +icon-FontAwesome
+  content: $icon
+
+=icon-FontAwesome
+  font-family: FontAwesome
+  font-weight: normal
+  font-style: normal
+  text-decoration: inherit
+  -webkit-font-smoothing: antialiased
+  *margin-right: .3em
+  // fixes ie7 issues
+
+=icon-stack($width: 2em, $height: 2em, $top-font-size: 1em, $base-font-size: 2em)
+  .icon-stack
+    position: relative
+    display: inline-block
+    width: $width
+    height: $height
+    line-height: $width
+    vertical-align: -35%
+    [class^="icon-"],
+    [class*=" icon-"]
+      display: block
+      text-align: center
+      position: absolute
+      width: 100%
+      height: 100%
+      font-size: $top-font-size
+      line-height: inherit
+      *line-height: $height
+    .icon-stack-base
+      font-size: $base-font-size
+      *line-height: #{$height / $base-font-size}em

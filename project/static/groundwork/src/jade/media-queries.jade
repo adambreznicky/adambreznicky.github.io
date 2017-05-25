@@ -1,0 +1,95 @@
+extends template
+
+block title
+  title GroundworkCSS &hearts; Media Queries
+
+block content
+  - var $smallmobile = "(max-width: 319px)"
+  - var $iphone = "(min-device-width: 320px) and (max-device-width: 480px)"
+  - var $iphone5 = "(min-device-width: 320px) and (max-device-width: 568px)"
+  - var $mobile = "(max-width: 480px)"
+  - var $notmobile = "(min-width: 481px)"
+  - var $smalltablet = "(max-width: 767px)"
+  - var $tablet = "(min-width: 768px)"
+  - var $ipad = "(min-width: 768px) and (max-width:1024px)"
+  - var $retinaipad = "(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2)"
+  - var $notdesktop = "(max-width: 1024px)"
+  - var $desktop = "(min-width: 1025px)"
+  - var $retina = "(-webkit-min-device-pixel-ratio: 2)"
+  .container
+    .padded
+      .row
+        .three.fifths.bounceInRight.animated
+          h1.zero.museo-slab Media Queries
+          p.quicksand
+            | Restrict CSS rules to targeted browser conditions, such as viewport widths & pixel densities
+        .two.fifths.align-right-ipad.align-right-desktop.flipInX.animated
+          p.quicksand Documentation: Media Queries
+          p
+            a.green.button(href='breakpoints.html', rel='next')
+              | Also See: Targeted Breakpoints 
+    hr
+    .row
+      .one.whole.padded
+        .bounceInLeft.animated
+          h4 Example Media Queries
+          .row
+            .one.half.padded
+              p Mobile
+              pre(data-lang='css')
+                | @media #{$mobile} {
+                |   // CSS that only applies to viewports 
+                |   // less than or equal to 480 pixles goes here
+                | }
+            .one.half.padded
+              p Not Mobile
+              pre(data-lang='css')
+                | @media #{$notmobile} {
+                |   // CSS that only applies to viewports 
+                |   // greater than 480 pixles goes here
+                | }
+          br
+          .row
+            .one.half.padded
+              p Small Tablet
+              pre(data-lang='css')
+                | @media #{$smalltablet} {
+                |   // CSS that only applies to viewports 
+                |   // less than 768 pixles goes here
+                | }
+            .one.half.padded
+              p iPad
+              pre(data-lang='css')
+                | @media #{$ipad} {
+                |   // CSS that only applies to viewports 
+                |   // of similar size to the ipad goes here
+                | }
+          br
+          .row
+            .one.half.padded
+              p Desktop
+              pre(data-lang='css')
+                | @media #{$desktop} {
+                |   // CSS that only applies to viewports 
+                |   // greater than 1024 pixles goes here
+                | }
+            .one.half.padded
+              p iPad Retina
+              pre(data-lang='css')
+                | @media #{$retinaipad} {
+                |   // CSS that only applies to viewports 
+                |   // of similar size to the ipad and 
+                |   // with double pixel density goes here
+                | }
+          br
+          hr
+          br
+        .bounceInUp.animated
+          h4 Targeted Breakpoints
+          p
+            | Groundwork utilizes Sass variables to introduce 
+            a(href='breakpoints.html') logical media queries
+            |  which can help keep code organized, meaningful, and easier to read. The Sass variable names make targeting common devices and viewport size ranges a more intuitive and more natural step in the optimization process.
+          p
+            a.green.button(href='breakpoints.html', rel='next')
+              | Read More

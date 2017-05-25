@@ -1,0 +1,28 @@
+{
+  "name": "GroundworkCSS",
+  "description": "GroundworkCSS is a fully responsive HTML5, CSS and Javascript toolkit created by @ghepting",
+  "tags": [
+    "groundworkcss",
+    "groundwork",
+    "groundwork 2",
+    "responsive",
+    "adaptive",
+    "front-end",
+    "framework",
+    "toolkit",
+    "grid",
+    "fluid",
+    "fractional",
+    "css",
+    "javascript",
+    "jquery",
+    "sass",
+    "scss",
+    "compass",
+    "autoprefixer",
+    "cssmin",
+    "coffee",
+    "coffeescript",
+    "uglify"
+  ]
+}

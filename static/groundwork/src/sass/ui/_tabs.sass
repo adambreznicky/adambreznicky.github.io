@@ -1,0 +1,141 @@
+// =============================================
+//                   Tabs
+//          Last Updated:2013-8-26
+// =============================================
+
+$tab-classes: true !default
+$tab-states: "active" !default
+$aria-selectors: true !default
+$tab-color: lighten(gray, 32.5%) !default
+$tab-text: darken(gray, 15%) !default
+$tab-border-color: lighten(gray, 22.5%) !default
+$tab-active: lighten(gray, 27.5%) !default
+$tab-active-text: darken(gray, 12%) !default
+$tabpanel-background: white !default
+$tabpanel-text: #2b2b2d !default
+
+// shared defaults
+$border-thickness: 1px !default
+$border-style: solid !default
+$border-color: #dddddd !default
+$default-radius: 4px !default
+
+%tablist
+  @extend %unstyled
+
+%tab
+  @extend %inline-block
+  margin-bottom: -1px
+  padding: 0.25em 1em
+  background: $tab-color
+  border: $border-thickness $border-style $tab-border-color
+  color: $tab-text
+  +font-stack
+  font-weight: bold
+  text-decoration: none
+  cursor: pointer
+  line-height: 1.5
+  width: auto
+  height: auto
+  text-align: center
+  +rounded($default-radius $default-radius 0 0)
+  &:hover, &:focus
+    @extend %tab-hover
+    +transition(background-color 0.25s ease-out)
+
+%tab-hover
+  background: $tab-active
+  text-decoration: none
+  color: $tab-active-text
+
+%tab-active
+  background: $tabpanel-background
+  text-decoration: none
+  color: $tabpanel-text
+  border-bottom-color: $tabpanel-background
+  +transition(none)
+
+%tabpanel
+  @extend %padded, %clear
+  display: none
+  background: $tabpanel-background
+  border: $border-thickness $border-style $tab-border-color
+  color: $tabpanel-text
+  +rounded(0 $default-radius $default-radius $default-radius)
+  &.active, &.on
+    display: block
+
+@for $i from 1 through length($modifier-name)
+  %tab-#{nth($modifier-name, $i)}
+    background-color: #{nth($modifier-code, $i)}
+    color: #{nth($modifier-text, $i)}
+    border-color: darken(nth($modifier-code, $i), 5%)
+    &.active, &[aria-selected="true"], &[aria-pressed="true"], &:hover, &:focus
+      background: darken(nth($modifier-code, $i), 5%)
+      border-color: darken(nth($modifier-code, $i), 10%)
+    &.disabled, &[disabled="disabled"]
+      +state(disabled, normal, desaturate(nth($modifier-code, $i), 20%))
+
+@if $tab-classes
+  .no-js
+    .tabs
+      > div
+        display: block
+  .tabs
+    &:not(.accordion)
+      @extend %relative
+      &.vertical
+        > ul
+          @extend %absolute, %absolute-top, %absolute-left, %absolute-bottom
+          overflow: auto
+    > ul
+      @extend %tablist
+      li
+        @extend %tab
+        @for $i from 1 through length($modifier-name)
+          &.#{nth($modifier-name, $i)}
+            @extend %tab-#{nth($modifier-name, $i)}
+        @for $i from 1 through length($tab-states)
+          &.#{nth($tab-states, $i)}
+            @extend %tab-#{nth($tab-states, $i)}
+    > div
+      @extend %tabpanel
+    &.vertical
+      +rounded($default-radius)
+      > ul
+        background: $tab-border-color
+        +rounded($default-radius 0 0 $default-radius)
+        li
+          @extend %block
+          border-right: 0
+          &:not(:first-child)
+            +rounded(0)
+          &:first-child
+            +rounded($default-radius 0 0 0)
+      > div
+        clear: none
+        +rounded($default-radius)
+    &.accordion
+      > ul
+        li
+          @extend %block
+          +rounded(0)
+          &:first-child
+            +rounded($default-radius $default-radius 0 0)
+          &:last-of-type
+            +rounded(0 0 $default-radius $default-radius)
+          &.active
+            @extend %tab-hover
+            border-bottom: $border-thickness $border-style $tab-border-color
+        > div
+          +rounded(0)
+          &:last-child
+            +rounded(0 0 $default-radius $default-radius)
+
+@if $aria-selectors
+  [role~="tablist"]
+    @extend %tablist
+  [role~="tab"]
+    @extend %tab
+  [role~="tabpanel"]
+    @extend %tabpanel

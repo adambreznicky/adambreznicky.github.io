@@ -1,0 +1,78 @@
+// =============================================
+//            GroundworkCSS Reset
+//          Last Updated:2013-6-25
+// =============================================
+
+$reset: true !default
+
+$reset-elements: "html" "body" "div" "span" "header" "footer" "aside" "nav" "menu" "main" "section" "article" "details" "h1" "h2" "h3" "h4" "h5" "h6" "p" "ol" "ul" "li" "dl" "dt" "dd" "em" "small" "big" "strong" "b" "u" "i" "sub" "sup" "del" "strike" "q" "blockquote" "cite" "time" "address" "code" "pre" "a" "img" "center" "hr" "form" "fieldset" "legend" "label" "input" "textarea" "button" "table" "caption" "tbody" "thead" "tfoot" "tr" "th" "td" "iframe" "object" "canvas" "audio" "video" "embed" !default
+
+%everything
+  +box-sizing(border-box)
+  @if $oldIE
+    *behavior: url($boxsizing_path)
+    // IE 6-7  -- Thank Schepp for the polyfill for legacy IE browsers: https://github.com/Schepp/box-sizing-polyfill
+  //
+  // =======================================================
+  //               the better box model
+  // =======================================================
+  //
+  //
+  //     E   L   E   M   E   N   T      W   I   D   T   H
+  //  |----------------------------------------------------|
+  //  |                  B  O  R  D  E  R                  |
+  //  |   |--------------------------------------------|   |
+  //  | B |               P A D D I N G                | B |
+  //  |   |   |------------------------------------|   |   |
+  //  | O | P |                                    | P | O |
+  //  |   | A |                                    | A |   |
+  //  | R | D |                                    | D | R |
+  //  |   | D |           C O N T E N T            | D |   |
+  //  | D | I |                                    | I | D |
+  //  |   | N |                                    | N |   |
+  //  | E | G |                                    | G | E |
+  //  |   |   |------------------------------------|   |   |
+  //  | R |               P A D D I N G                | R |
+  //  |   |--------------------------------------------|   |
+  //  |                  B  O  R  D  E  R                  |
+  //  | ---------------------------------------------------|
+  //
+  //  NOTE: Padding and border are calculated within an
+  //        element's specified width instead of its total
+  //        width being increased by these properties
+  //
+  //
+  // =======================================================
+  //
+
+%document
+  -webkit-text-size-adjust: none
+
+%html5-elements
+  margin: 0
+  padding: 0
+  border: 0
+  font: inherit
+  vertical-align: baseline
+
+%block-elements
+  display: block
+
+%table-elements
+  border-collapse: collapse
+  border-spacing: 0
+
+@if $reset
+  *, *:after, *:before
+    @extend %everything
+  // reset all $reset-elements (configured in _variables.sass)
+  @for $i from 1 through length($reset-elements)
+    #{nth($reset-elements, $i)}
+      @extend %html5-elements
+  header, footer, aside, menu, nav, section, article, details
+    @extend %block-elements
+  table
+    @extend %table-elements
+  script
+    display: none !important
+  // ensure embedded script tags don't mess up inline lists, etc.

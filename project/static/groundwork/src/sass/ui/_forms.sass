@@ -1,0 +1,175 @@
+// =============================================
+//                   Forms
+//          Last Updated:2013-8-21
+// =============================================
+
+$form-tags: true !default
+$form-classes: false !default
+$form-elements: "fieldset" "legend" "label" "input" "textarea" !default
+$default-radius: 4px !default
+
+$fieldset-color: darken(white, 2%) !default
+
+$border-thickness: 1px !default
+$border-style: solid !default
+$border-color: #dddddd !default
+
+$error-color: #b94a48 !default
+$error-text: white !default
+$error-background: #f2dede !default
+$error-border: #eed3d7 !default
+
+$success-color: #468847 !default
+$success-text: white !default
+$success-background: #dff0d8 !default
+$success-border: #d6e9c6 !default
+
+$question-color: #9855b4 !default
+$question-text: white !default
+$question-background: #f0e6f4 !default
+$question-border: #f1dbfa !default
+
+// shared defaults
+$aria-selectors: true !default
+
+%fieldset
+  background-color: $fieldset-color
+  border: 1px solid $border-color
+  padding: $gutter
+  +rounded($default-radius)
+
+%legend
+  font-weight: 900
+  margin-bottom: 0
+
+%label
+  display: block
+  padding: 0.4em 0.2em
+
+%field
+  display: block
+  width: 100%
+  max-width: 100%
+  margin: 0
+  padding: 0.4em
+  font-family: monospace
+  font-size: 1em
+  line-height: 1.5
+  height: 2.25em
+  background: white
+  border: 1px solid $border-color
+  +rounded($default-radius)
+
+%input
+  @extend %field
+  &[size], &[type="checkbox"], &[type="radio"]
+    height: auto
+  &[type="checkbox"], &[type="radio"]
+    @extend %zero, %inline-block
+    border: 0
+    +rounded(0)
+
+%textarea
+  height: 10em
+
+%error-block
+  background: $error-background
+  color: $error-color
+  border-color: $error-border
+
+%error-block-prefix, %error-block-suffix
+  color: lighten($error-color, 62%)
+  background: $error-color
+  border-color: $error-color
+
+%success-block
+  background: $success-background
+  color: $success-color
+  border-color: $success-border
+
+%success-block-prefix, %success-block-suffix
+  color: lighten($success-color, 62%)
+  background: $success-color
+  border-color: $success-color
+
+%prefix, %suffix
+  display: block
+  position: relative
+  z-index: 1
+  width: 100%
+  overflow: hidden
+  white-space: nowrap
+  text-overflow: ellipsis
+  margin: 0
+  padding: 0.4em
+  font-family: monospace
+  line-height: 1.25
+  height: 2.25em
+  text-align: center
+  color: gray
+  background: darken(white, 12.5%)
+  border: 1px solid darken(white, 17.5%)
+
+%prefix
+  left: 2px
+  +rounded($default-radius 0 0 $default-radius)
+
+%suffix
+  left: -2px
+  +rounded(0 $default-radius $default-radius 0)
+
+.prefix
+  @extend %prefix
+
+.suffix
+  @extend %suffix
+
+.error, .invalid
+  input, select, textarea
+    @extend %error-block
+  .prefix, .suffix
+    @extend %error-block-prefix
+
+input, select, textarea
+  &.invalid, &.error
+    @extend %error-block
+  @if $aria-selectors
+    &[aria-invalid="true"]
+      @extend %error-block
+
+.success, .valid
+  input, select, textarea
+    @extend %success-block
+  .prefix, .suffix
+    @extend %success-block-prefix
+
+input, select, textarea
+  &.valid, &.success
+    @extend %success-block
+  @if $aria-selectors
+    &[aria-invalid="false"]
+      @extend %success-block
+
+@if $form-tags
+  @for $i from 1 through length($form-elements)
+    $element: nth($form-elements, $i)
+    #{$element}
+      @extend %#{$element}
+      @if $element == input or $element == textarea
+        @extend %field
+      @if $element == textarea
+        @extend %textarea
+  select
+    @extend %field
+
+@if $form-classes
+  @for $i from 1 through length($form-elements)
+    $element: nth($form-elements, $i)
+    .#{$element}
+      @extend %#{$element}
+      @if $element == input or $element == textarea
+        @extend %field
+      @if $element == textarea
+        @extend %textarea
+  .input, .select, .textarea
+    @extend %field

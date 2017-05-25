@@ -1,0 +1,113 @@
+$rotate-animations: true !default
+
+@if $rotate-animations
+  .rotateIn
+    animation-name: rotateIn
+  @keyframes rotateInUpLeft
+    0%
+      transform-origin: left bottom
+      transform: rotate(90deg)
+      opacity: 0
+    100%
+      transform-origin: left bottom
+      transform: rotate(0)
+      opacity: 1
+
+  .rotateInUpLeft
+    animation-name: rotateInUpLeft
+  @keyframes rotateInDownLeft
+    0%
+      transform-origin: left bottom
+      transform: rotate(-90deg)
+      opacity: 0
+    100%
+      transform-origin: left bottom
+      transform: rotate(0)
+      opacity: 1
+
+  .rotateInDownLeft
+    animation-name: rotateInDownLeft
+  @keyframes rotateInUpRight
+    0%
+      transform-origin: right bottom
+      transform: rotate(-90deg)
+      opacity: 0
+    100%
+      transform-origin: right bottom
+      transform: rotate(0)
+      opacity: 1
+
+  .rotateInUpRight
+    animation-name: rotateInUpRight
+  @keyframes rotateInDownRight
+    0%
+      transform-origin: right bottom
+      transform: rotate(90deg)
+      opacity: 0
+    100%
+      transform-origin: right bottom
+      transform: rotate(0)
+      opacity: 1
+
+  .rotateInDownRight
+    animation-name: rotateInDownRight
+  @keyframes rotateOut
+    0%
+      transform-origin: center center
+      transform: rotate(0)
+      opacity: 1
+    100%
+      transform-origin: center center
+      transform: rotate(200deg)
+      opacity: 0
+
+  .rotateOut
+    animation-name: rotateOut
+  @keyframes rotateOutUpLeft
+    0%
+      transform-origin: left bottom
+      transform: rotate(0)
+      opacity: 1
+    100%
+      transform-origin: left bottom
+      transform: rotate(-90deg)
+      opacity: 0
+
+  .rotateOutUpLeft
+    animation-name: rotateOutUpLeft
+  @keyframes rotateOutDownLeft
+    0%
+      transform-origin: left bottom
+      transform: rotate(0)
+      opacity: 1
+    100%
+      transform-origin: left bottom
+      transform: rotate(90deg)
+      opacity: 0
+
+  .rotateOutDownLeft
+    animation-name: rotateOutDownLeft
+  @keyframes rotateOutUpRight
+    0%
+      transform-origin: right bottom
+      transform: rotate(0)
+      opacity: 1
+    100%
+      transform-origin: right bottom
+      transform: rotate(90deg)
+      opacity: 0
+
+  .rotateOutUpRight
+    animation-name: rotateOutUpRight
+  @keyframes rotateOutDownRight
+    0%
+      transform-origin: right bottom
+      transform: rotate(0)
+      opacity: 1
+    100%
+      transform-origin: right bottom
+      transform: rotate(-90deg)
+      opacity: 0
+
+  .rotateOutDownRight
+    animation-name: rotateOutDownRight

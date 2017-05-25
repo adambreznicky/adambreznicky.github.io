@@ -1,0 +1,308 @@
+// =============================================
+//                  Buttons
+//          Last Updated:2013-9-6
+// =============================================
+
+$button-tags: true !default
+$button-classes: true !default
+$button-modifiers: "small" "large" "on" "active" "square" "round" "block" !default
+$button-states: "on" "active" "selected" "pressed" "disabled" "info" "alert" "warning" "error" "success" "question" !default
+$aria-selectors: true !default
+$aria-states: "selected" "pressed" "disabled" "readonly" "invalid" !default
+$button-color: lighten(gray, 32.5%) !default
+$button-text: darken(gray, 15%) !default
+$button-border-color: lighten(gray, 27.5%) !default
+$button-active: lighten(gray, 27.5%) !default
+$button-active-text: darken(gray, 12%) !default
+
+// shared defaults
+$border-thickness: 1px !default
+$border-style: solid !default
+$border-color: #dddddd !default
+$default-radius: 4px !default
+$disabled-color: gray !default
+$disabled-text: #dddddd !default
+$disabled-background: lighten($disabled-color, 20%) !default
+$disabled-border: darken($disabled-color, 10%) !default
+
+%button
+  @extend %inline-block
+  word-wrap: break-word
+  padding: 0.25em 1em
+  background: $button-color
+  border: $border-thickness $border-style $button-active
+  color: $button-text
+  +font-stack
+  font-weight: bold
+  text-decoration: none
+  cursor: pointer
+  line-height: 1.5
+  width: auto
+  height: auto
+  text-align: center
+  +transition(background-color 0.25s ease-out)
+  +rounded($default-radius)
+  &:visited
+    color: $button-text
+  &.active, &[aria-selected="true"], &[aria-pressed="true"], &:hover, &:focus
+    @extend %button-active
+  &.disabled, &[disabled="disabled"]
+    +state(disabled, normal, $disabled-background)
+    &:hover, &:focus
+      +state(disabled, normal, $disabled-background)
+
+%button-on, %button-active, %button-selected, %button-pressed
+  background: $button-active
+  text-decoration: none
+  color: $button-active-text
+
+%button-small
+  +_small
+
+%button-medium
+  +_medium
+
+%button-large
+  +_large
+
+%button-square
+  +_square
+
+%button-round
+  +_round
+
+@for $i from 1 through length($modifier-name)
+  %button-#{nth($modifier-name, $i)}
+    background-color: #{nth($modifier-code, $i)}
+    color: #{nth($modifier-text, $i)}
+    border-color: darken(nth($modifier-code, $i), 5%)
+    &.active, &[aria-selected="true"], &[aria-pressed="true"], &:hover, &:focus
+      background: darken(nth($modifier-code, $i), 5%)
+      border-color: darken(nth($modifier-code, $i), 10%)
+    &.disabled, &[disabled="disabled"]
+      +state(disabled, normal, desaturate(nth($modifier-code, $i), 20%))
+
+%button-info
+  background-color: darken($info-background, 40%)
+  color: $info-text
+  border-color: darken($info-border, 40%)
+  &.active, &[aria-selected="true"], &[aria-pressed="true"], &:hover, &:focus
+    background: darken($info-background, 49%)
+  &.disabled, &[disabled="disabled"]
+    +state(disabled, normal, desaturate($info-color, 20%))
+
+%button-disabled, %button-readonly
+  background-color: darken($disabled-background, 40%)
+  color: $disabled-text
+  border-color: darken($disabled-border, 40%)
+  &.active, &[aria-selected="true"], &[aria-pressed="true"], &:hover, &:focus
+    background: darken($disabled-background, 49%)
+  &.disabled, &[disabled="disabled"]
+    +state(disabled, normal, $disabled-background)
+
+%button-alert
+  background-color: darken($alert-background, 40%)
+  color: $alert-text
+  border-color: darken($alert-border, 25%)
+  &.active, &[aria-selected="true"], &[aria-pressed="true"], &:hover, &:focus
+    background: darken($alert-background, 45%)
+  &.disabled, &[disabled="disabled"]
+    +state(disabled, normal, desaturate($alert-color, 20%))
+
+%button-warning
+  background-color: darken($warning-background, 40%)
+  color: $warning-text
+  border-color: darken($warning-border, 40%)
+  &.active, &[aria-selected="true"], &[aria-pressed="true"], &:hover, &:focus
+    background: darken($warning-background, 45%)
+  &.disabled, &[disabled="disabled"]
+    +state(disabled, normal, desaturate($warning-color, 20%))
+
+%button-error, %button-invalid
+  background-color: darken($error-background, 40%)
+  color: $error-text
+  border-color: darken($error-border, 40%)
+  &.active, &[aria-selected="true"], &[aria-pressed="true"], &:hover, &:focus
+    background: darken($error-background, 49%)
+  &.disabled, &[disabled="disabled"]
+    +state(disabled, normal, desaturate($error-color, 20%))
+
+%button-success
+  background-color: darken($success-background, 40%)
+  color: $success-text
+  border-color: darken($success-border, 40%)
+  &.active, &[aria-selected="true"], &[aria-pressed="true"], &:hover, &:focus
+    background: darken($success-background, 49%)
+  &.disabled, &[disabled="disabled"]
+    +state(disabled, normal, desaturate($success-color, 20%))
+
+%button-question
+  background-color: darken($question-background, 40%)
+  color: $question-text
+  border-color: darken($question-border, 40%)
+  &.active, &[aria-selected="true"], &[aria-pressed="true"], &:hover, &:focus
+    background: darken($question-background, 49%)
+  &.disabled, &[disabled="disabled"]
+    +state(disabled, normal, desaturate($question-color, 20%))
+
+%button-block
+  @extend %block
+  width: 100%
+
+%dropdown-holder
+  position: relative
+  @extend %inline-block
+
+%dropdown-button
+  &:after
+    @extend %inline-block, %gap-left
+    +icon-FontAwesome
+    content: $icon-caret-down
+
+%dropdown-list
+  text-align: left
+  margin: 0
+  padding: 0
+  list-style: none
+  display: none
+  background: white
+  border: $border-thickness $border-style $border-color
+  position: absolute
+  left: 0
+  width: 100%
+  z-index: 10
+  +box-shadow(rgba(0, 0, 0, 0.25), 5px, 0, 0)
+  +rounded(0 0 $default-radius $default-radius)
+
+%dropdown-list-item
+  @extend %block
+  %dropdown-menu-item
+    @extend %block
+    width: 100%
+    padding: 0.5em 1em
+    border: none
+    background: none
+    color: $font-color
+    font-size: 1em
+    font-weight: normal
+    text-shadow: none
+    text-decoration: none
+    text-align: left
+    +rounded(0)
+    &:hover, &:focus
+      background: #efefef
+    &.disabled, &[disabled="disabled"]
+      +state(disabled, textOnly)
+  &:last-child
+    +rounded(0 0 $default-radius $default-radius)
+
+%dropdown-divider
+  margin: 0
+  border-color: #ececec
+
+%button-group
+  @extend %zero, %unstyled
+  &:after
+    @extend %block, %clear
+    content: ""
+  li
+    @extend %block
+    float: left
+    margin: 0
+    &:first-child a, &:first-child button
+      +rounded($default-radius 0 0 $default-radius)
+    &:last-child a, &:last-child button
+      +rounded(0 $default-radius $default-radius 0)
+    a, button
+      @extend %block
+      word-wrap: break-word
+      padding: 0.25em 1em
+      background: $button-color
+      border: $border-thickness $border-style $button-active
+      color: $button-text
+      font-weight: bold
+      text-decoration: none
+      cursor: pointer
+      line-height: 1.5
+      +rounded(0)
+      +transition(background-color 0.25s ease-out)
+      &.active, &[aria-selected="true"], &[aria-pressed="true"], &:hover, &:focus
+        background: $button-active
+        text-decoration: none
+        // color: $button-active-text;
+        border: $border-thickness $border-style $button-active
+      &.disabled, &[disabled="disabled"]
+        +state(disabled, normal, $disabled-background)
+
+=button_modifiers
+  @for $i from 1 through length($button-modifiers)
+    &.#{nth($button-modifiers, $i)}
+      @extend %button-#{nth($button-modifiers, $i)}
+  @for $i from 1 through length($button-states)
+    &.#{nth($button-states, $i)}
+      @extend %button-#{nth($button-states, $i)}
+  // modifier colors
+  @for $i from 1 through length($modifier-name)
+    &.#{nth($modifier-name, $i)}
+      @extend %button-#{nth($modifier-name, $i)}
+
+@if $button-tags
+  button,
+  input[type=submit],
+  input[type=button],
+  input[type=reset]
+    @extend %button
+    @if $button-classes
+      +button_modifiers
+  .dropdown
+    @extend %dropdown-holder
+    &.on, &.active, &[aria-selected="true"], &[aria-pressed="true"]
+      ul
+        @extend %block
+    > a, > button
+      @extend %dropdown-button
+    ul
+      @extend %dropdown-list
+      li
+        @extend %dropdown-list-item
+        a, button
+          @extend %dropdown-menu-item
+    hr
+      @extend %dropdown-divider
+
+@if $button-classes
+  .button,
+  a.button,
+  a.button:visited
+    @extend %button
+    +button_modifiers
+  .dropdown
+    @extend %dropdown-holder
+    &.on, &.active, &[aria-selected="true"], &[aria-pressed="true"]
+      ul
+        @extend %block
+    .button
+      @extend %dropdown-button
+    ul
+      @extend %dropdown-list
+      li
+        @extend %dropdown-list-item
+        a, button
+          @extend %dropdown-menu-item
+    hr
+      @extend %dropdown-divider
+  ul.button-group,
+  ol.button-group
+    @extend %button-group
+    li
+      a, button
+        +button_modifiers
+
+@if $aria-selectors
+  [role~="button"]
+    @extend %button
+    @for $i from 1 through length($aria-states)
+      &[aria-#{nth($aria-states, $i)}]
+        @extend %button-#{nth($aria-states, $i)}
+    @if $button-classes
+      +button_modifiers

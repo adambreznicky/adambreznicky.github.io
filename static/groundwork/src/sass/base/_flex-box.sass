@@ -1,0 +1,41 @@
+// =============================================
+//             Flexbox Helpers
+//          Last Updated:2013-8-16
+// =============================================
+
+$flexbox-classes: true !default
+
+// enable output of flexbox classes (optional)
+$flexbox-helpers: "flex-wrapper" "flex-box" "vertical-center" !default
+
+=flex-wrapper
+  display: flex
+
+=flex-box($values: 1)
+  width: percent(1 / $values)
+  flex: $values
+
+=flex-order($val)
+  order: $val
+
+=vertical-center
+  display: box
+  box-orient: vertical
+  box-pack: center
+
+%flex-wrapper
+  +flex-wrapper
+
+%flex-box
+  +flex-box
+
+%vertical-center
+  +vertical-center
+
+@if $flexbox-classes
+  .flex-wrapper
+    @extend %flex-wrapper
+  .flex-box
+    @extend %flex-box
+  .vertical-center
+    @extend %vertical-center

@@ -1,0 +1,61 @@
+// ============================================
+//             Legacy IE Support
+//          Last Updated:2013-8-16
+// ============================================
+
+$container-width: 1200px !default
+
+@import settings
+@import core/all-core
+
+html
+  &.ie
+    .hide-on-desktop
+      display: none
+  &.lt-ie9
+    min-width: $container-width !important
+    body
+      width: auto !important
+    .container
+      width: auto !important
+    // forms
+    input, select, textarea
+      &:focus
+        border-color: $button-active
+    // custom select box
+    span.select
+      &:after
+        display: none
+      select
+        padding: 0
+        height: 2.1em
+        vertical-align: top
+        &:focus
+          border: 1px solid $button-active
+  &.lt-ie8
+    // font awesome for IE7
+    @import icons/font-awesome-ie7
+    // typography
+    h1, h2, h3, h4, h5, h6
+      line-height: 1.5
+    ul, ul.list, 
+    ol, ol.list
+      margin-left: 0
+      padding-left: 25px
+    ul
+      &.list
+        list-style: disc
+    ol
+      &.list
+        list-style: decimal
+        li
+          padding: 0
+    // buttons
+    ul, ol
+      &.button-list
+        margin: 0
+        padding: 0
+    button, .button, a.button
+      &.dropdown
+        ul
+          top: 2em

@@ -1,0 +1,274 @@
+<!DOCTYPE html><!--[if lt IE 7]><html class="no-js ie ie6 lt-ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 7]>   <html class="no-js ie ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 8]>   <html class="no-js ie ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 9]>   <html class="no-js ie ie9 lt-ie10"><![endif]-->
+<!--[if gt IE 9]><html class="no-js ie ie10"><![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>GroundworkCSS &hearts; Responsive Text</title>
+    <!-- Modernizr -->
+    <script src="../js/libs/modernizr-2.6.2.min.js"></script>
+    <!-- jQuery-->
+    <script type="text/javascript" src="../js/libs/jquery-1.10.2.min.js"></script>
+    <!-- framework css --><!--[if gt IE 9]><!-->
+    <link type="text/css" rel="stylesheet" href="../css/groundwork.css"><!--<![endif]--><!--[if lte IE 9]>
+    <link type="text/css" rel="stylesheet" href="../css/groundwork-core.css">
+    <link type="text/css" rel="stylesheet" href="../css/groundwork-type.css">
+    <link type="text/css" rel="stylesheet" href="../css/groundwork-ui.css">
+    <link type="text/css" rel="stylesheet" href="../css/groundwork-anim.css">
+    <link type="text/css" rel="stylesheet" href="../css/groundwork-ie.css"><![endif]-->
+    <style type="text/css">
+      .logo {
+        position: relative;
+        top: -0.5em;
+      }
+      .logo a, .logo a:visited {
+        text-decoration: none;
+        color: #2B2B2D;
+      }
+      .logo img {
+        height: 2em;
+        position: relative;
+        top: 0.55em;
+        margin-right: 0.3em;
+      }
+      
+    </style>
+    <!-- snippet (syntax highlighting for code examples)-->
+    <script type="text/javascript" src="../js/demo/jquery.snippet.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/demo/jquery.snippet.css"><script type="text/javascript">
+(function() {
+
+  $(document).ready(function() {
+    $('pre[data-lang="html"]').snippet("html", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+    $('pre[data-lang="css"]').snippet("css", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+    $('pre[data-lang="sass"]').snippet("sass", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+    return $('pre[data-lang="js"]').snippet("javascript", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+  });
+
+}).call(this);
+</script>
+  </head>
+  <body>
+    <header class="padded">
+      <div class="container">
+        <div class="row">
+          <div class="one half">
+            <h2 class="logo"><a href="/" target="_parent"><img src="../images/groundwork-logo.svg" alt="GroundworkCSS">GroundworkCSS 2</a></h2>
+          </div>
+          <div class="one half">
+            <p class="small double-pad-top no-pad-small-tablet align-right align-left-small-tablet"><a href="https://github.com/groundworkcss/groundwork" target="_parent">Github Project</a> - Version 2.5.0<br>Created & Maintained by <a href="http://twitter.com/ghepting" target="_blank">Gary Hepting</a></p>
+          </div>
+        </div>
+        <nav role="navigation" class="nav gap-top">
+          <ul role="menubar">
+            <li><a href="./home.html"><i class="icon-home"></i> Home</a></li>
+            <li role="menu">
+              <button>Example Layouts</button>
+              <ul>
+                <li><a href="./layout-a.html">Web Page</a></li>
+                <li><a href="./layout-b.html">Image Gallery</a></li>
+                <li><a href="./layout-c.html">Ecommerce Page</a></li>
+                <li><a href="./layout-d.html">Contact Page</a></li>
+              </ul>
+            </li>
+            <li role="menu">
+              <button>Documentation</button>
+              <ul>
+                <li><a href="./grid.html" title="Responsive grid system, grid adapters and helpers">Grid</a></li>
+                <li><a href="./helpers.html" title="Layout helpers, spinners and much more">Helpers</a></li>
+                <li><a href="./typography.html" title="Text elements, quotes, code and web fonts">Typography</a></li>
+                <li role="menu">
+                  <button title="Navigation, buttons, boxes, message boxes, tables, tabs, and forms">UI Elements</button>
+                  <ul>
+                    <li><a href="./navigation.html" title="Navigation">Navigation</a></li>
+                    <li><a href="./buttons.html" title="Buttons, button groups, button menus">Buttons</a></li>
+                    <li><a href="./boxes.html" title="Boxes">Boxes</a></li>
+                    <li><a href="./messages.html" title="Message boxes">Message Boxes</a></li>
+                    <li><a href="./tables.html" title="Tables">Tables</a></li>
+                    <li><a href="./tabs.html" title="Tabs">Tabs</a></li>
+                    <li><a href="./forms.html" title="Form elements">Form Elements</a></li>
+                  </ul>
+                </li>
+                <li><a href="./icons.html" title="Icons">Icons</a></li>
+                <li><a href="./responsive-text.html" title="Responsive text and multi-line text block truncation">Responsive Text</a></li>
+                <li><a href="./placeholder-text.html" title="Placeholder text and placeholder fonts for rapid prototyping and wireframes">Placeholder Text</a></li>
+                <li><a href="./animations.html" title="Pure CSS3 Animations">Animations</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <div class="padded">
+        <div class="row">
+          <div class="three fifths bounceInRight animated">
+            <h1 class="zero museo-slab">Responsive Text</h1>
+            <p class="quicksand">Javascript helpers that make fitting text blocks within responsive designs a breeze. Created by <a href="http://twitter.com/ghepting" target="_blank">Gary Hepting</a></p>
+          </div>
+          <div class="two fifths align-right-ipad align-right-desktop flipInX animated">
+            <p class="quicksand">Component Usage Example 12 of 14</p>
+            <p><a href="icons.html" rel="prev" class="blue button">Back</a> <a href="placeholder-text.html" rel="next" class="green button">Next: Placeholder Content</a></p>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="one whole padded">
+          <h4 class="zero">Truncated Text Blocks</h4>
+          <p class="small zero">(Resize the viewport and the amount of text that is displayed will be adjusted)</p>
+          <div class="row">
+            <div class="one third padded bounceInLeft animated">
+              <p>Two Lines:</p>
+              <p data-truncate="2" class="yellow box">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="one third padded bounceInDown animated">
+              <p>Three Lines:</p>
+              <p data-truncate="3" class="turquoise box">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="one third padded bounceInRight animated">
+              <p>Five Lines:</p>
+              <div class="blue box">
+                <p data-truncate="5" class="zero">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="one third pad-left pad-right bounceInLeft animated">
+              <pre data-lang="html">&lt;p data-truncate=&quot;2&quot; 
+   class=&quot;yellow box&quot;&gt;
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+&lt;/p&gt;</pre>
+            </div>
+            <div class="one third pad-left pad-right bounceInDown animated">
+              <pre data-lang="html">&lt;p data-truncate=&quot;3&quot; 
+   class=&quot;turquoise box&quot;&gt;
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+&lt;/p&gt;</pre>
+            </div>
+            <div class="one third pad-left pad-right bounceInRight animated">
+              <pre data-lang="html">&lt;p data-truncate=&quot;5&quot; 
+   class=&quot;blue box&quot;&gt;
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+&lt;/p&gt;</pre>
+            </div>
+          </div>
+          <hr><br>
+          <h4 class="zero">Responsive Text</h4>
+          <p class="small zero">(Resize the viewport and these will shrink to fit)</p>
+          <div class="row">
+            <div class="one third padded bounceInLeft animated">
+              <h1 data-compression="8.5" class="green responsive">Responsive Heading</h1>
+            </div>
+            <div class="one third padded bounceInUp animated">
+              <h1 data-compression="11.8" class="purple responsive">Longer Responsive Heading</h1>
+            </div>
+            <div class="one third padded bounceInRight animated">
+              <h1 data-compression="13" data-scrollable="true" class="red responsive bounceInUp animated">Scrolling Responsive Heading with Overflowing Text</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="one third pad-left pad-right bounceInLeft animated">
+              <pre data-lang="html" class="gap-top">&lt;h1 class=&quot;responsive&quot; 
+    data-compression=&quot;8.5&quot;&gt; 
+  Responsive Heading
+&lt;/h1&gt;</pre>
+            </div>
+            <div class="one third pad-left pad-right bounceInUp animated">
+              <pre data-lang="html" class="gap-top">&lt;h1 class=&quot;responsive&quot; 
+    data-compression=&quot;11.8&quot;&gt; 
+  Longer Responsive Heading 
+&lt;/h1&gt;</pre>
+            </div>
+            <div class="one third pad-left pad-right bounceInRight animated">
+              <pre data-lang="html" class="gap-top">&lt;h1 class=&quot;responsive&quot; 
+    data-compression=&quot;13&quot; 
+    data-scrollable=&quot;true&quot;&gt; 
+  Scrolling Responsive Heading with Overflowing Text 
+&lt;/h1&gt;</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="gap-top bounceInUp animated">
+      <div class="box square charcoal">
+        <div class="container padded">
+          <div class="row">
+            <div class="one small-tablet fourth padded">
+              <h5 class="green">Example Layouts</h5>
+              <ul class="unstyled">
+                <li><a href="./layout-a.html">Web Page</a></li>
+                <li><a href="./layout-b.html">Image Gallery</a></li>
+                <li><a href="./layout-c.html">Ecommerce Page</a></li>
+                <li><a href="./layout-d.html">Contact Page</a></li>
+              </ul>
+            </div>
+            <div class="three small-tablet fourths padded">
+              <h5 class="blue">Documentation</h5>
+              <ul class="unstyled three-column two-column-mobile">
+                <li><a href="./grid.html" title="Responsive grid system, grid adapters and helpers">Grid</a></li>
+                <li><a href="./helpers.html" title="Layout helpers, spinners and much more">Helpers</a></li>
+                <li><a href="./typography.html" title="Text elements, quotes, code and web fonts">Typography</a></li>
+                <li><a href="./navigation.html" title="Navigation">Navigation</a></li>
+                <li><a href="./buttons.html" title="Buttons, button groups, button menus">Buttons</a></li>
+                <li><a href="./boxes.html" title="Boxes">Boxes</a></li>
+                <li><a href="./messages.html" title="Message boxes">Message Boxes</a></li>
+                <li><a href="./tables.html" title="Tables">Tables</a></li>
+                <li><a href="./tabs.html" title="Tabs">Tabs</a></li>
+                <li><a href="./forms.html" title="Form elements">Form Elements</a></li>
+                <li><a href="./icons.html" title="Icons">Icons</a></li>
+                <li><a href="./responsive-text.html" title="Responsive text and multi-line text block truncation">Responsive Text</a></li>
+                <li><a href="./placeholder-text.html" title="Placeholder text and placeholder fonts for rapid prototyping and wireframes">Placeholder Text</a></li>
+                <li><a href="./animations.html" title="Pure CSS3 Animations">Animations</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box square">
+        <div class="container padded">
+          <div class="row">
+            <div class="one half padded">
+              <p>GroundworkCSS is <b>100% free</b> and <b>open source</b>. <a href="mailto:groundworkcss@gmail.com">Give a shout out</a> if you have any feedback.</p>
+              <p>Find a bug? Help squash it by <a href="https://github.com/groundworkcss/groundwork/issues" target="_blank">filing an issue</a> on Github.</p>
+            </div>
+            <div class="one half padded">
+              <p class="large padded align-right align-center-small-tablet"><a href="http://twitter.com/groundworkcss" target="_blank" title="@groundworkcss" style="text-decoration:none;" class="large inline gapped"></a><a href="http://github.com/groundworkcss" target="_blank" title="@groundworkcss" style="text-decoration:none;" class="large inline gapped"></a><a href="mailto:groundworkcss@gmail.com" title="groundworkcss@gmail.com" style="text-decoration:none;" class="large inline gapped"></a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- javascript-->
+    <script type="text/javascript" src="../js/groundwork.all.js"></script>
+    <!-- google analytics-->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>

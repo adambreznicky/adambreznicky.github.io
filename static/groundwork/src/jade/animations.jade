@@ -1,0 +1,150 @@
+extends template
+
+block title
+  title GroundworkCSS &hearts; Animations
+
+block content
+  .container
+    .padded
+      .row
+        .three.fifths.bounceInRight.animated
+          h1.zero.museo-slab Animations
+          p.quicksand
+            | A collection of pure CSS3 animations, mostly from 
+            a(href='http://daneden.me/animate/', target='_blank') Animate.css
+            |  by 
+            a(href='http://twitter.com/_dte', target='_blank') Dan Eden
+        .two.fifths.align-right-ipad.align-right-desktop.flipInX.animated
+          p.quicksand Component Usage Example 14 of 14
+          p
+            a.blue.button(href='placeholder-text.html', rel='prev')
+              | Back
+            | 
+            a.green.button(href='home.html', rel='next')
+              | Return Home
+      hr
+      br
+  h4.fixed.center(style='width:20em;margin-left:-10em;text-align:center;z-index:1;')
+    button#animateTest.large.asphalt.bounceInLeft.animated I do awesome things.
+  br
+  br
+  br
+  br
+  .container
+    .padded
+      hr
+      br
+      .row
+        .one.half.padded
+          h4 Attention seekers
+          button.gap-bottom(data-test='flash') flash
+          button.gap-bottom(data-test='bounce') bounce
+          button.gap-bottom(data-test='shake') shake
+          button.gap-bottom(data-test='tada') tada
+          button.gap-bottom(data-test='swing') swing
+          button.gap-bottom(data-test='wobble') wobble
+          button.gap-bottom(data-test='pulse') pulse
+        .one.half.padded
+          h4.gap-top Flippers
+          button.gap-bottom(data-test='flip') flip
+          button.gap-bottom(data-test='flipInX') flipInX
+          button.gap-bottom(data-test='flipOutX') flipOutX
+          button.gap-bottom(data-test='flipInY') flipInY
+          button.gap-bottom(data-test='flipOutY') flipOutY
+      .row
+        .one.half.padded
+          h4.gap-top Fading entrances
+          button.gap-bottom(data-test='fadeIn') fadeIn
+          button.gap-bottom(data-test='fadeInUp') fadeInUp
+          button.gap-bottom(data-test='fadeInDown') fadeInDown
+          button.gap-bottom(data-test='fadeInLeft') fadeInLeft
+          button.gap-bottom(data-test='fadeInRight') fadeInRight
+          button.gap-bottom(data-test='fadeInUpBig') fadeInUpBig
+          button.gap-bottom(data-test='fadeInDownBig') fadeInDownBig
+          button.gap-bottom(data-test='fadeInLeftBig') fadeInLeftBig
+          button.gap-bottom(data-test='fadeInRightBig') fadeInRightBig
+        .one.half.padded
+          h4.gap-top Fading exits
+          button.gap-bottom(data-test='fadeOut') fadeOut
+          button.gap-bottom(data-test='fadeOutUp') fadeOutUp
+          button.gap-bottom(data-test='fadeOutDown') fadeOutDown
+          button.gap-bottom(data-test='fadeOutLeft') fadeOutLeft
+          button.gap-bottom(data-test='fadeOutRight') fadeOutRight
+          button.gap-bottom(data-test='fadeOutUpBig') fadeOutUpBig
+          button.gap-bottom(data-test='fadeOutDownBig') fadeOutDownBig
+          button.gap-bottom(data-test='fadeOutLeftBig') fadeOutLeftBig
+          button.gap-bottom(data-test='fadeOutRightBig') fadeOutRightBig
+      .row
+        .one.half.padded
+          h4.gap-top Bouncing entrances
+          button.gap-bottom(data-test='bounceIn') bounceIn
+          button.gap-bottom(data-test='bounceInDown') bounceInDown
+          button.gap-bottom(data-test='bounceInUp') bounceInUp
+          button.gap-bottom(data-test='bounceInLeft') bounceInLeft
+          button.gap-bottom(data-test='bounceInRight') bounceInRight
+        .one.half.padded
+          h4.gap-top Bouncing exits
+          button.gap-bottom(data-test='bounceOut') bounceOut
+          button.gap-bottom(data-test='bounceOutDown') bounceOutDown
+          button.gap-bottom(data-test='bounceOutUp') bounceOutUp
+          button.gap-bottom(data-test='bounceOutLeft') bounceOutLeft
+          button.gap-bottom(data-test='bounceOutRight') bounceOutRight
+      .row
+        .one.half.padded
+          h4.gap-top Rotating entrances
+          button.gap-bottom(data-test='rotateIn') rotateIn
+          button.gap-bottom(data-test='rotateInDownLeft') rotateInDownLeft
+          button.gap-bottom(data-test='rotateInDownRight') rotateInDownRight
+          button.gap-bottom(data-test='rotateInUpLeft') rotateInUpLeft
+          button.gap-bottom(data-test='rotateInUpRight') rotateInUpRight
+        .one.half.padded
+          h4.gap-top Rotating exits
+          button.gap-bottom(data-test='rotateOut') rotateOut
+          button.gap-bottom(data-test='rotateOutDownLeft') rotateOutDownLeft
+          button.gap-bottom(data-test='rotateOutDownRight') rotateOutDownRight
+          button.gap-bottom(data-test='rotateOutUpLeft') rotateOutUpLeft
+          button.gap-bottom(data-test='rotateOutUpRight') rotateOutUpRight
+      .row
+        .one.half.padded
+          h4.gap-top Lightspeed
+          button.gap-bottom(data-test='lightSpeedIn') lightSpeedIn
+          button.gap-bottom(data-test='lightSpeedOut') lightSpeedOut
+        .one.half.padded
+          h4.gap-top Specials
+          button.gap-bottom(data-test='hinge') hinge
+          button.gap-bottom(data-test='rollIn') rollIn
+          button.gap-bottom(data-test='rollOut') rollOut
+      .row
+        .one.third.padded
+          h4.gap-top Spin
+          button.gap-bottom(data-test='spin', data-timing='12000') spin (continuous)
+          button.gap-bottom(data-test='spin-once', data-timing='2000') spin-once
+          button.gap-bottom(data-test='spin-twice', data-timing='4000') spin-twice
+          button.gap-bottom(data-test='spin-thrice', data-timing='6000') spin-thrice
+        .one.third.padded
+          h4.gap-top Spin Fast
+          button.gap-bottom(data-test='spin-fast', data-timing='6000') spin-fast (continuous)
+          button.gap-bottom(data-test='spin-fast-once', data-timing='1000') spin-fast-once
+          button.gap-bottom(data-test='spin-fast-twice', data-timing='2000') spin-fast-twice
+          button.gap-bottom(data-test='spin-fast-thrice', data-timing='3000') spin-fast-thrice
+        .one.third.padded
+          h4.gap-top Spin Slow
+          button.gap-bottom(data-test='spin-slow', data-timing='30000') spin-slow (continuous)
+          button.gap-bottom(data-test='spin-slow-once', data-timing='5000') spin-slow-once
+          button.gap-bottom(data-test='spin-slow-twice', data-timing='10000') spin-slow-twice
+          button.gap-bottom(data-test='spin-slow-thrice', data-timing='15000') spin-slow-thrice
+      
+      :coffeescript
+        $ ->
+          resetTest = ->
+            $('#animateTest').removeClass().addClass('large asphalt animated').text('I do awesome things.')
+
+          $('body').on 'click', '[data-test]', (e) ->
+            resetTest()
+            clearTimeout(window.reset)
+            
+            $('#animateTest').removeClass().addClass('large asphalt animated '+$(this).attr('data-test')).text('I '+$(this).attr('data-test')+'.')
+            
+            window.reset = setTimeout( =>
+              resetTest()
+            , ($(this).attr('data-timing') || 1300) )

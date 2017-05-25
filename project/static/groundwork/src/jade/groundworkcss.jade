@@ -1,0 +1,228 @@
+!!! 5
+| <!--[if lt IE 7]><html class="no-js ie ie6 lt-ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
+| <!--[if IE 7]>   <html class="no-js ie ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
+| <!--[if IE 8]>   <html class="no-js ie ie8 lt-ie9 lt-ie10"><![endif]-->
+| <!--[if IE 9]>   <html class="no-js ie ie9 lt-ie10"><![endif]-->
+| <!--[if gt IE 9]><html class="no-js ie ie10"><![endif]-->
+| <!--[if !IE]><!-->
+html.no-js
+  | <!--<![endif]-->
+
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name='viewport', content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    title GroundworkCSS &hearts; A Responsive HTML5, CSS & Javascript Framework
+
+    // Modernizr 
+    script(src='js/libs/modernizr-2.6.2.min.js')
+
+    // jQuery
+    script(type='text/javascript', src='js/libs/jquery-1.10.2.min.js')
+
+    // framework css 
+    | <!--[if gt IE 9]><!-->
+    link(type='text/css', rel='stylesheet', href='css/groundwork.css')
+    | <!--<![endif]-->
+
+    //if lte IE 9
+      link(type='text/css', rel='stylesheet', href='css/groundwork-core.css')
+      link(type='text/css', rel='stylesheet', href='css/groundwork-type.css')
+      link(type='text/css', rel='stylesheet', href='css/groundwork-ui.css')
+      link(type='text/css', rel='stylesheet', href='css/groundwork-anim.css')
+      link(type='text/css', rel='stylesheet', href='css/groundwork-ie.css')
+
+    style(type='text/css').
+      .logo {
+        position: relative;
+        top: -0.5em;
+      }
+      .logo a, .logo a:visited {
+        text-decoration: none;
+        color: #2B2B2D;
+      }
+      .logo img {
+        height: 2em;
+        position: relative;
+        top: 0.55em;
+        margin-right: 0.3em;
+      }
+
+  body
+    header.padded
+      .container
+        .row
+          .one.half
+            h2.logo
+              a(href='/', target='_parent')
+                img(src='images/groundwork-logo.svg', alt='GroundworkCSS')
+                | GroundworkCSS 2
+          .one.half
+            p.small.double-pad-top.no-pad-small-tablet.align-right.align-left-small-tablet
+              a(href='https://github.com/groundworkcss/groundwork', target='_blank') Github Project
+              |  - Version 2.5.0
+              br
+              | Created & Maintained by 
+              a(href='http://twitter.com/ghepting') Gary Hepting
+        nav.nav.gap-top(role='navigation')
+          ul(role='menubar')
+            li
+              a(href='groundwork/docs/home.html')
+                i.icon-home
+                |  Home
+            li(role='menu')
+              button Example Layouts
+              ul
+                li
+                  a(href='groundwork/docs/layout-a.html') Web Page
+                li
+                  a(href='groundwork/docs/layout-b.html') Image Gallery
+                li
+                  a(href='groundwork/docs/layout-c.html') Ecommerce Page
+            li(role='menu')
+              button Documentation
+              ul
+                li
+                  a(href='groundwork/docs/grid.html', title='Responsive grid system, grid adapters and helpers') Grid
+                li
+                  a(href='groundwork/docs/helpers.html', title='Layout helpers, spinners and much more') Helpers
+                li
+                  a(href='groundwork/docs/typography.html', title='Text elements, quotes, code and web fonts') Typography
+                li(role='menu')
+                  button(title='Navigation, buttons, boxes, message boxes, tables, tabs, and forms') UI Elements
+                  ul
+                    li
+                      a(href='groundwork/docs/navigation.html', title='Navigation') Navigation
+                    li
+                      a(href='groundwork/docs/buttons.html', title='Buttons, button groups, button menus') Buttons
+                    li
+                      a(href='groundwork/docs/boxes.html', title='Boxes') Boxes
+                    li
+                      a(href='groundwork/docs/messages.html', title='Message boxes') Message Boxes
+                    li
+                      a(href='groundwork/docs/tables.html', title='Tables') Tables
+                    li
+                      a(href='groundwork/docs/tabs.html', title='Tabs') Tabs
+                    li
+                      a(href='groundwork/docs/forms.html', title='Form elements') Form Elements
+                li
+                  a(href='groundwork/docs/icons.html', title="Icons") Icons
+                li
+                  a(href='groundwork/docs/responsive-text.html', title='Responsive text and multi-line text block truncation') Responsive Text
+                li
+                  a(href='groundwork/docs/placeholder-text.html', title='Placeholder text and placeholder fonts for rapid prototyping and wireframes') Placeholder Text
+                li
+                  a(href='groundwork/docs/animations.html', title='Pure CSS3 Animations') Animations
+
+    .container
+      .row
+        .one.half.triple-padded.bounceInRight.animated
+          a.button.block.green.noicon(href='groundwork/', target='_parent')
+            h1.zero
+              i.icon-code.icon-4x
+              br
+              | GroundworkCSS 2
+            p A responsive HTML5, CSS & Javascript framework.
+          .row.gap-top
+            a.noicon.pad-right.border-right.gap-right(href='https://github.com/groundworkcss/groundwork/archive/master.zip')
+              | Download ZIP 
+              i.icon-archive
+            a.noicon(href='https://github.com/groundworkcss/groundwork', target='_blank')
+              | Github Project 
+              i.icon-github-sign
+        .one.half.triple-padded.bounceInLeft.animated
+          a.button.block.blue.noicon(href='https://github.com/groundworkcss/groundworkcss-rails', target='_blank')
+            h1.zero
+              i.icon-code-fork.icon-4x
+              br
+              | GroundworkCSS 2 for Rails
+            p Add Groundwork to your rails project in a snap.
+          .row.gap-top
+            a.noicon.pad-right.border-right.gap-right(href='http://rubygems.org/gems/groundworkcss', target='_blank')
+              | Rubygems.org
+            a.noicon(href='https://github.com/groundworkcss/groundworkcss-rails', target='_blank')
+              | Github Project 
+              i.icon-github-sign
+
+    footer.gap-top.bounceInUp.animated
+      .box.square.charcoal
+        .container.padded
+          .row
+            .one.small-tablet.fourth.padded
+              h5.green Example Layouts
+              ul.unstyled
+                li
+                  a(href='groundwork/docs/layout-a.html') Web Page
+                li
+                  a(href='groundwork/docs/layout-b.html') Image Gallery
+                li
+                  a(href='groundwork/docs/layout-c.html') Ecommerce Page
+            .three.small-tablet.fourths.padded
+              h5.blue Documentation
+              ul.unstyled.three-column.two-column-mobile
+                li
+                  a(href='groundwork/docs/grid.html', title='Responsive grid system, grid adapters and helpers') Grid
+                li
+                  a(href='groundwork/docs/helpers.html', title='Layout helpers, spinners and much more') Helpers
+                li
+                  a(href='groundwork/docs/typography.html', title='Text elements, quotes, code and web fonts') Typography
+                li
+                  a(href='groundwork/docs/navigation.html', title='Navigation') Navigation
+                li
+                  a(href='groundwork/docs/buttons.html', title='Buttons, button groups, button menus') Buttons
+                li
+                  a(href='groundwork/docs/boxes.html', title='Boxes') Boxes
+                li
+                  a(href='groundwork/docs/messages.html', title='Message boxes') Message Boxes
+                li
+                  a(href='groundwork/docs/tables.html', title='Tables') Tables
+                li
+                  a(href='groundwork/docs/tabs.html', title='Tabs') Tabs
+                li
+                  a(href='groundwork/docs/forms.html', title='Form elements') Form Elements
+                li
+                  a(href='groundwork/docs/icons.html', title="Icons") Icons
+                li
+                  a(href='groundwork/docs/responsive-text.html', title='Responsive text and multi-line text block truncation') Responsive Text
+                li
+                  a(href='groundwork/docs/placeholder-text.html', title='Placeholder text and placeholder fonts for rapid prototyping and wireframes') Placeholder Text
+                li
+                  a(href='groundwork/docs/animations.html', title='Pure CSS3 Animations') Animations
+      .box.square
+        .container.padded
+          .row
+            .one.half.padded
+              p
+                | GroundworkCSS is 
+                b 100% free
+                |  and 
+                b open source
+                |. 
+                a(href='mailto:groundworkcss@gmail.com')
+                  | Give a shout out
+                |  if you have any feedback.
+              p
+                | Find a bug? Help squash it by 
+                a(href="https://github.com/groundworkcss/groundwork/issues", target="_blank")
+                  | filing an issue
+                |  on Github.
+            .one.half.padded
+              p.large.padded.align-right.align-center-small-tablet
+                a.large.inline.gapped(href="http://twitter.com/groundworkcss", target="_blank", title="@groundworkcss", style="text-decoration:none;")
+                a.large.inline.gapped(href="http://github.com/groundworkcss", target="_blank", title="@groundworkcss", style="text-decoration:none;")
+                a.large.inline.gapped(href="mailto:groundworkcss@gmail.com", title="groundworkcss@gmail.com", style="text-decoration:none;")
+
+    // javascript
+    script(type='text/javascript', src='js/groundwork.all.js')
+
+    // google analytics
+    script(type='text/javascript').
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();

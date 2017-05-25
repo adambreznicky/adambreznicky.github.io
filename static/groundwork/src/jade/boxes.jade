@@ -1,0 +1,129 @@
+extends template
+
+block title
+  title GroundworkCSS &hearts; UI Elements
+
+block content
+  .container
+    .padded
+      .row
+        .three.fifths.bounceInRight.animated
+          h1.zero.museo-slab Boxes
+          p.quicksand Easily wrap content in a box
+        .two.fifths.align-right-ipad.align-right-desktop.flipInX.animated
+          p.quicksand Component Usage Example 6 of 14
+          p
+            a.blue.button(href='buttons.html', rel='prev')
+              | Back
+            | 
+            a.green.button(href='messages.html', rel='next')
+              | Next: Message Boxes
+    hr
+    .row
+      .one.whole.padded
+        .row
+          .one.whole.bounceInLeft.animated
+            .pad-top.pad-left.pad-right
+              h4 Boxes
+              .row
+                .one.half.small-tablet.pad-right.no-pad-mobile
+                  p.box This is a box paragraph.
+                  pre(data-lang='html')
+                    | <p class="box">This is a box paragraph.</p>
+                  br
+                  h2.box This is a box heading 2.
+                  pre(data-lang='html')
+                    | <h2 class="box">This is a box heading 2.</h2>
+                  br
+                  h4.box This is a box heading 4.
+                  pre(data-lang='html')
+                    | <h4 class="box">This is a box heading 4.</h4>
+                  br
+                  h6.box This is a box heading 6.
+                  pre(data-lang='html')
+                    | <h6 class="box">This is a box heading 6.</h6>
+                .one.half.small-tablet.pad-left.no-pad-mobile
+                  .box
+                    h3 Another Box
+                    p Boxes can contain other elements, such as:
+                    .row.gap-bottom
+                      .three.fourths.small-tablet.pad-right.no-pad-mobile
+                        input(placeholder='Input fields')
+                      .one.fourth.small-tablet
+                        button.block.asphalt Buttons
+                    table.asphalt
+                      thead
+                        tr
+                          th(colspan='4') Tables
+                      tbody
+                        tr
+                          td Cell 1
+                          td Cell 2
+                          td Cell 3
+                          td Cell 4
+                    p.gap-top
+                      | And 
+                      em much
+                      |  more.
+                  pre.gap-top(data-lang='html')
+                    | <div class="box">
+                    |   <h3>Another Box</h3>
+                    |   <p>Boxes can contain other elements, such as:</p>
+                    |   <div class="row gap-bottom">
+                    |     <div class="three fourths small-tablet pad-right no-pad-mobile">
+                    |       <input placeholder="Input fields">
+                    |     </div>
+                    |     <div class="one fourth small-tablet">
+                    |       <button class="block asphalt">Buttons</button>
+                    |     </div>
+                    |   </div>
+                    |   <table class="asphalt">
+                    |     <thead>
+                    |       <tr>
+                    |         <th colspan="4">Tables</th>
+                    |       </tr>
+                    |     </thead>
+                    |     <tbody>
+                    |       <tr>
+                    |         <td>Cell 1</td>
+                    |         <td>Cell 2</td>
+                    |         <td>Cell 3</td>
+                    |         <td>Cell 4</td>
+                    |       </tr>
+                    |     </tbody>
+                    |   </table>
+                    |   <p>And <em>much</em> more.</p>
+                    | </div>
+              br
+              .row
+                .one.half.small-tablet.pad-right.no-pad-mobile
+                .one.half.small-tablet.pad-left.no-pad-mobile
+        br
+        .row
+          .one.half.padded.bounceInUp.animated
+            h4 States
+            p.info.box This is an info box.
+            p.success.box This is a success box.
+            p.question.box This is a question box.
+            p.alert.box This is an alert box.
+            p.warning.box This is a warning box.
+            p.error.box This is an error box.
+            br
+            .row
+              .one.small-tablet.half.pad-right.no-pad-mobile
+                h4 Square
+                p.box.square This is a square box.
+              .one.small-tablet.half.pad-left.no-pad-mobile
+                h4 Round
+                p.box.round.align-center This is a round box.
+          .one.half.padded.bounceInDown.animated
+            h4 Colors
+            p.yellow.box This is a yellow box.
+            p.orange.box This is a orange box.
+            p.red.box This is a red box.
+            p.pink.box This is a pink box.
+            p.purple.box This is a purple box.
+            p.asphalt.box This is a asphalt box.
+            p.blue.box This is a blue box.
+            p.turquoise.box This is a turquoise box.
+            p.green.box This is a green box.

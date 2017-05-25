@@ -1,0 +1,885 @@
+<!DOCTYPE html><!--[if lt IE 7]><html class="no-js ie ie6 lt-ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 7]>   <html class="no-js ie ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 8]>   <html class="no-js ie ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 9]>   <html class="no-js ie ie9 lt-ie10"><![endif]-->
+<!--[if gt IE 9]><html class="no-js ie ie10"><![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>GroundworkCSS &hearts; Typography</title>
+    <!-- Modernizr -->
+    <script src="../js/libs/modernizr-2.6.2.min.js"></script>
+    <!-- jQuery-->
+    <script type="text/javascript" src="../js/libs/jquery-1.10.2.min.js"></script>
+    <!-- framework css --><!--[if gt IE 9]><!-->
+    <link type="text/css" rel="stylesheet" href="../css/groundwork.css"><!--<![endif]--><!--[if lte IE 9]>
+    <link type="text/css" rel="stylesheet" href="../css/groundwork-core.css">
+    <link type="text/css" rel="stylesheet" href="../css/groundwork-type.css">
+    <link type="text/css" rel="stylesheet" href="../css/groundwork-ui.css">
+    <link type="text/css" rel="stylesheet" href="../css/groundwork-anim.css">
+    <link type="text/css" rel="stylesheet" href="../css/groundwork-ie.css"><![endif]-->
+    <style type="text/css">
+      .logo {
+        position: relative;
+        top: -0.5em;
+      }
+      .logo a, .logo a:visited {
+        text-decoration: none;
+        color: #2B2B2D;
+      }
+      .logo img {
+        height: 2em;
+        position: relative;
+        top: 0.55em;
+        margin-right: 0.3em;
+      }
+      
+    </style>
+    <!-- snippet (syntax highlighting for code examples)-->
+    <script type="text/javascript" src="../js/demo/jquery.snippet.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/demo/jquery.snippet.css"><script type="text/javascript">
+(function() {
+
+  $(document).ready(function() {
+    $('pre[data-lang="html"]').snippet("html", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+    $('pre[data-lang="css"]').snippet("css", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+    $('pre[data-lang="sass"]').snippet("sass", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+    return $('pre[data-lang="js"]').snippet("javascript", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+  });
+
+}).call(this);
+</script>
+  </head>
+  <body>
+    <header class="padded">
+      <div class="container">
+        <div class="row">
+          <div class="one half">
+            <h2 class="logo"><a href="/" target="_parent"><img src="../images/groundwork-logo.svg" alt="GroundworkCSS">GroundworkCSS 2</a></h2>
+          </div>
+          <div class="one half">
+            <p class="small double-pad-top no-pad-small-tablet align-right align-left-small-tablet"><a href="https://github.com/groundworkcss/groundwork" target="_parent">Github Project</a> - Version 2.5.0<br>Created & Maintained by <a href="http://twitter.com/ghepting" target="_blank">Gary Hepting</a></p>
+          </div>
+        </div>
+        <nav role="navigation" class="nav gap-top">
+          <ul role="menubar">
+            <li><a href="./home.html"><i class="icon-home"></i> Home</a></li>
+            <li role="menu">
+              <button>Example Layouts</button>
+              <ul>
+                <li><a href="./layout-a.html">Web Page</a></li>
+                <li><a href="./layout-b.html">Image Gallery</a></li>
+                <li><a href="./layout-c.html">Ecommerce Page</a></li>
+                <li><a href="./layout-d.html">Contact Page</a></li>
+              </ul>
+            </li>
+            <li role="menu">
+              <button>Documentation</button>
+              <ul>
+                <li><a href="./grid.html" title="Responsive grid system, grid adapters and helpers">Grid</a></li>
+                <li><a href="./helpers.html" title="Layout helpers, spinners and much more">Helpers</a></li>
+                <li><a href="./typography.html" title="Text elements, quotes, code and web fonts">Typography</a></li>
+                <li role="menu">
+                  <button title="Navigation, buttons, boxes, message boxes, tables, tabs, and forms">UI Elements</button>
+                  <ul>
+                    <li><a href="./navigation.html" title="Navigation">Navigation</a></li>
+                    <li><a href="./buttons.html" title="Buttons, button groups, button menus">Buttons</a></li>
+                    <li><a href="./boxes.html" title="Boxes">Boxes</a></li>
+                    <li><a href="./messages.html" title="Message boxes">Message Boxes</a></li>
+                    <li><a href="./tables.html" title="Tables">Tables</a></li>
+                    <li><a href="./tabs.html" title="Tabs">Tabs</a></li>
+                    <li><a href="./forms.html" title="Form elements">Form Elements</a></li>
+                  </ul>
+                </li>
+                <li><a href="./icons.html" title="Icons">Icons</a></li>
+                <li><a href="./responsive-text.html" title="Responsive text and multi-line text block truncation">Responsive Text</a></li>
+                <li><a href="./placeholder-text.html" title="Placeholder text and placeholder fonts for rapid prototyping and wireframes">Placeholder Text</a></li>
+                <li><a href="./animations.html" title="Pure CSS3 Animations">Animations</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <div class="padded">
+        <div class="row">
+          <div class="three fifths bounceInRight animated">
+            <h1 class="zero museo-slab">Typography</h1>
+            <p class="quicksand">Headings, paragraphs, emphasizers, links, lists, web fonts, quotes, code, and colors</p>
+          </div>
+          <div class="two fifths align-right-ipad align-right-desktop flipInX animated">
+            <p class="quicksand">Component Usage Example 3 of 14</p>
+            <p><a href="helpers.html" rel="prev" class="blue button">Back</a> <a href="navigation.html" rel="next" class="green button">Next: Navigation</a></p>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="one whole padded">
+          <div class="bounceInLeft animated">
+            <h4>Headings</h4>
+            <div class="row">
+              <div class="one third padded">
+                <p>Heading 1</p>
+                <h1>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</h1>
+              </div>
+              <div class="one third padded">
+                <p>Heading 2</p>
+                <h2>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</h2>
+              </div>
+              <div class="one third padded">
+                <p>Heading 3</p>
+                <h3>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;h1&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/h1&gt;</pre>
+              </div>
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;h2&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/h2&gt;</pre>
+              </div>
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;h3&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/h3&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one third padded">
+                <p>Heading 4</p>
+                <h4>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</h4>
+              </div>
+              <div class="one third padded">
+                <p>Heading 5</p>
+                <h5>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</h5>
+              </div>
+              <div class="one third padded">
+                <p>Heading 6</p>
+                <h6>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;h4&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/h4&gt;</pre>
+              </div>
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;h5&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/h5&gt;</pre>
+              </div>
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;h6&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/h6&gt;</pre>
+              </div>
+            </div>
+          </div>
+          <hr><br>
+          <div class="bounceInRight animated">
+            <h4>Paragraphs</h4>
+            <div class="row">
+              <div class="one whole padded">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="one whole pad-left pad-right">
+                <pre data-lang="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;</pre>
+              </div>
+            </div>
+          </div>
+          <hr><br>
+          <div class="bounceInLeft animated">
+            <h4 id="link-types">Semantic Link Types</h4>
+            <div class="row">
+              <div class="one fourth padded">
+                <p><a href="home.html">Normal Hyperlink</a></p>
+                <pre data-lang="html">&lt;a href=&quot;home.html&quot;&gt;Normal Hyperlink&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="#link-types">Anchor Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;#&quot;&gt;Anchor Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="https://google.com">Secure Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;https://google.com&quot;&gt;Secure Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="http://google.com" target="_blank">New Window Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;http://google.com&quot; target=&quot;_blank&quot;&gt;New Window Link&lt;/a&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fourth padded">
+                <p><a href="view-source:http://google.com">View Source Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;view-source:http://google.com&quot;&gt;View Source Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="example.gif">Image Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;example.gif&quot;&gt;Image Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="example.pdf">PDF Document Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;example.pdf&quot;&gt;PDF Document Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="example.doc">Word Document Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;example.doc&quot;&gt;Word Document Link&lt;/a&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fourth padded">
+                <p><a href="example.txt">Text Document Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;example.txt&quot;&gt;Text Document Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="example.md">Markdown Document Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;example.md&quot;&gt;Markdown Document Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="example.zip">ZIP File Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;example.zip&quot;&gt;ZIP File Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="example.exe">Executable File Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;example.exe&quot;&gt;Executable File Link&lt;/a&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fourth padded">
+                <p><a href="home.html" rel="home">Home Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;home.html&quot; rel=&quot;home&quot;&gt;Home Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="#" rel="search">Search Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;#&quot; rel=&quot;search&quot;&gt;Search Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="#" rel="author">Author Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;#&quot; rel=&quot;author&quot;&gt;Author Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="#" rel="help">Help Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;#&quot; rel=&quot;help&quot;&gt;Help Link&lt;/a&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fourth padded">
+                <p><a href="#" rel="tag">Tag Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;#&quot; rel=&quot;tag&quot;&gt;Tag Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="#" rel="bookmark">Bookmark Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;#&quot; rel=&quot;bookmark&quot;&gt;Bookmark Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="#" rel="prev">Previous Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;#&quot; rel=&quot;prev&quot;&gt;Previous Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="#" rel="next">Next Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;#&quot; rel=&quot;next&quot;&gt;Next Link&lt;/a&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fourth padded">
+                <p><a href="#" rel="directory">Directory Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;#&quot; rel=&quot;directory&quot;&gt;Directory Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="#" rel="payment">Payment Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;#&quot; rel=&quot;payment&quot;&gt;Payment Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="mailto:user@example.com">Email Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;mailto:user@example.com&quot;&gt;Email Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="tel:5555551212">Telephone Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;tel:5555551212&quot;&gt;Telephone Link&lt;/a&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fourth padded">
+                <p><a href="mailto:user@gmail.com">Gmail Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;mailto:user@gmail.com&quot;&gt;Gmail Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="skype:skypeusername">Skype Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;skype:skypeusername&quot;&gt;Skype Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="example.rss">RSS Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;example.rss&quot;&gt;RSS Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="http://twitter.com">Twitter Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;twitter.com&quot;&gt;Twitter Link&lt;/a&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fourth padded">
+                <p><a href="http://facebook.com">Facebook Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;facebook.com&quot;&gt;Facebook Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="http://tumblr.com">Tumblr Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;http://tumblr.com&quot;&gt;Tumblr Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="http://linkedin.com">LinkedIn Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;http://linkedin.com&quot;&gt;LinkedIn Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="http://plus.google.com">Google Plus Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;http://plus.google.com&quot;&gt;Google Plus Link&lt;/a&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fourth padded">
+                <p><a href="http://youtube.com">Youtube Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;http://youtube.com&quot;&gt;Youtube Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="http://github.com">Github Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;http://github.com&quot;&gt;Github Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="http://stackoverflow.com">Stack Overflow Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;http://stackoverflow.com&quot;&gt;Stack Overflow Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="http://instagram.com">Instagram Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;http://instagram.com&quot;&gt;Instagram Link&lt;/a&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fourth padded">
+                <p><a href="http://flickr.com">Flickr Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;http://flickr.com&quot;&gt;Flickr Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="http://foursquare.com">Foursquare Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;http://foursquare.com&quot;&gt;Foursquare Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="http://dribbble.com">Dribbble Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;http://dribbble.com&quot;&gt;Dribbble Link&lt;/a&gt;</pre>
+              </div>
+              <div class="one fourth padded">
+                <p><a href="http://dropbox.com">Dropbox Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;http://dropbox.com&quot;&gt;Dropbox Link&lt;/a&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fourth padded">
+                <p><a href="http://trello.com">Trello Link</a></p>
+                <pre data-lang="html">&lt;a href=&quot;http://trello.com&quot;&gt;Trello Link&lt;/a&gt;</pre>
+              </div>
+            </div>
+          </div>
+          <hr><br>
+          <div class="bounceInLeft animated">
+            <h4>Emphasizers & Modifiers</h4>
+            <div class="row">
+              <div class="one fourth padded">
+                <p>Paragraph with <sup>superscript</sup></p>
+              </div>
+              <div class="one fourth padded">
+                <p>Paragraph with <sub>subscript</sub></p>
+              </div>
+              <div class="one fourth padded">
+                <p>Paragraph with <small>small text</small></p>
+              </div>
+              <div class="one fourth padded">
+                <p>Paragraph with 
+                  <big>large text</big>
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="one fourth pad-left pad-right">
+                <pre data-lang="html">&lt;p&gt;Paragraph with &lt;sup&gt;superscript&lt;/sup&gt;&lt;/p&gt;</pre>
+              </div>
+              <div class="one fourth pad-left pad-right">
+                <pre data-lang="html">&lt;p&gt;Paragraph with &lt;sub&gt;subscript&lt;/sub&gt;&lt;/p&gt;</pre>
+              </div>
+              <div class="one fourth pad-left pad-right">
+                <pre data-lang="html">&lt;p&gt;Paragraph with &lt;small&gt;small text&lt;/small&gt;&lt;/p&gt;</pre>
+              </div>
+              <div class="one fourth pad-left pad-right">
+                <pre data-lang="html">&lt;p&gt;Paragraph with &lt;big&gt;large text&lt;/big&gt;&lt;/p&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fourth padded">
+                <p>Paragraph with <em>emphasized text</em></p>
+              </div>
+              <div class="one fourth padded">
+                <p>Paragraph with <b>bold text</b></p>
+              </div>
+              <div class="one fourth padded">
+                <p>Paragraph with 
+                  <del>deleted text</del>
+                </p>
+              </div>
+              <div class="one fourth padded">
+                <p>Paragraph with <abbr title="Abreviated">abbr</abbr> text</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="one fourth pad-left pad-right">
+                <pre data-lang="html">&lt;p&gt;Paragraph with &lt;em&gt;emphasized text&lt;/em&gt;&lt;/p&gt;</pre>
+              </div>
+              <div class="one fourth pad-left pad-right">
+                <pre data-lang="html">&lt;p&gt;Paragraph with &lt;b&gt;bold text&lt;/b&gt;&lt;/p&gt;</pre>
+              </div>
+              <div class="one fourth pad-left pad-right">
+                <pre data-lang="html">&lt;p&gt;Paragraph with &lt;del&gt;deleted text&lt;/del&gt;&lt;/p&gt;</pre>
+              </div>
+              <div class="one fourth pad-left pad-right">
+                <pre data-lang="html">&lt;p&gt;Paragraph with &lt;abbr title=&quot;Abreviated&quot;&gt;abbr&lt;/abbr&gt; text&lt;/p&gt;</pre>
+              </div>
+            </div>
+          </div>
+          <hr><br>
+          <div class="bounceInRight animated">
+            <h4>Unordered Lists</h4>
+            <div class="row">
+              <div class="one third padded">
+                <ul class="unstyled">
+                  <li>Unstyled list item 1</li>
+                  <li>Unstyled list item 2</li>
+                </ul>
+              </div>
+              <div class="one third padded">
+                <ul>
+                  <li>Normal list item 1</li>
+                  <li>Normal list item 2</li>
+                </ul>
+              </div>
+              <div class="one third padded">
+                <ul class="list">
+                  <li>Styled list item 1</li>
+                  <li>Styled list item 2</li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;ul class=&quot;unstyled&quot;&gt;
+  &lt;li&gt;Unstyled list item 1&lt;/li&gt;
+  &lt;li&gt;Unstyled list item 2&lt;/li&gt;
+&lt;/ul&gt;</pre>
+              </div>
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;ul&gt;
+  &lt;li&gt;Normal list item 1&lt;/li&gt;
+  &lt;li&gt;Normal list item 2&lt;/li&gt;
+&lt;/ul&gt;</pre>
+              </div>
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;ul class=&quot;list&quot;&gt;
+  &lt;li&gt;Styled list item 1&lt;/li&gt;
+  &lt;li&gt;Styled list item 2&lt;/li&gt;
+&lt;/ul&gt;</pre>
+              </div>
+            </div>
+          </div>
+          <hr><br>
+          <div class="bounceInLeft animated">
+            <h4>Ordered Lists</h4>
+            <div class="row">
+              <div class="one third padded">
+                <ol class="unstyled">
+                  <li>Unstyled ordered list item 1</li>
+                  <li>Unstyled ordered list item 2</li>
+                </ol>
+              </div>
+              <div class="one third padded">
+                <ol>
+                  <li>Ordered list item 1</li>
+                  <li>Ordered list item 2</li>
+                </ol>
+              </div>
+              <div class="one third padded">
+                <ol class="list">
+                  <li>Styled ordered list item 1</li>
+                  <li>Styled ordered list item 2</li>
+                </ol>
+              </div>
+            </div>
+            <div class="row">
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;ol class=&quot;unstyled&quot;&gt;
+  &lt;li&gt;Unstyled ordered list item 1&lt;/li&gt;
+  &lt;li&gt;Unstyled ordered list item 2&lt;/li&gt;
+&lt;/ol&gt;</pre>
+              </div>
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;ol&gt;
+  &lt;li&gt;Ordered list item 1&lt;/li&gt;
+  &lt;li&gt;Ordered list item 2&lt;/li&gt;
+&lt;/ol&gt;</pre>
+              </div>
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;ol class=&quot;list&quot;&gt;
+  &lt;li&gt;Styled ordered list item 1&lt;/li&gt;
+  &lt;li&gt;Styled ordered list item 2&lt;/li&gt;
+&lt;/ol&gt;</pre>
+              </div>
+            </div>
+          </div>
+          <hr><br>
+          <div class="bounceInRight animated">
+            <h4>Checklists</h4>
+            <div class="row">
+              <div class="one third padded">
+                <p>Normal Checklist</p>
+                <ul class="checklist">
+                  <li>Checklist item</li>
+                  <li aria-checked="true">Completed checklist item</li>
+                  <li>Checklist item</li>
+                  <li>Checklist item</li>
+                </ul>
+              </div>
+              <div class="one third padded">
+                <p>Large, Colored Checklist</p>
+                <ul class="checklist large turquoise">
+                  <li>Checklist item</li>
+                  <li aria-checked="true">Completed checklist item</li>
+                  <li>Checklist item</li>
+                  <li>Checklist item</li>
+                </ul>
+              </div>
+              <div class="one third padded">
+                <p>Individually Colored Checklist Items</p>
+                <ul class="checklist">
+                  <li class="blue">Blue checklist item</li>
+                  <li aria-checked="true" class="red">Completed red checklist item</li>
+                  <li class="purple">Purple checklist item</li>
+                  <li class="turquoise">Turquoise checklist item</li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;ul class=&quot;checklist&quot;&gt;
+  &lt;li&gt;Checklist item&lt;/li&gt;
+  &lt;li aria-checked=&quot;true&quot;&gt;Completed checklist item&lt;/li&gt;
+  &lt;li&gt;Checklist item&lt;/li&gt;
+  &lt;li&gt;Checklist item&lt;/li&gt;
+&lt;/ul&gt;</pre>
+              </div>
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;ul class=&quot;checklist large turquoise&quot;&gt;
+  &lt;li&gt;Checklist item&lt;/li&gt;
+  &lt;li aria-checked=&quot;true&quot;&gt;Completed checklist item&lt;/li&gt;
+  &lt;li&gt;Checklist item&lt;/li&gt;
+  &lt;li&gt;Checklist item&lt;/li&gt;
+&lt;/ul&gt;</pre>
+              </div>
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;ul class=&quot;checklist&quot;&gt;
+  &lt;li class=&quot;blue&quot;&gt;Blue checklist item&lt;/li&gt;
+  &lt;li aria-checked=&quot;true&quot; class=&quot;red&quot;&gt;Completed red checklist item&lt;/li&gt;
+  &lt;li class=&quot;purple&quot;&gt;Purple checklist item&lt;/li&gt;
+  &lt;li class=&quot;turquoise&quot;&gt;Turquoise checklist item&lt;/li&gt;
+&lt;/ul&gt;</pre>
+              </div>
+            </div>
+          </div>
+          <hr><br>
+          <div class="bounceInLeft animated">
+            <h4>Web Fonts</h4>
+            <div class="row">
+              <div class="one third padded">
+                <h1 class="source-sans-pro">Source Sans Pro</h1>
+              </div>
+              <div class="one third padded">
+                <h1 class="museo-slab">Museo Slab</h1>
+              </div>
+              <div class="one third padded">
+                <h1 class="quicksand">Quicksand</h1>
+              </div>
+            </div>
+            <div class="row">
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;h1 class=&quot;source-sans-pro&quot;&gt;Source Sans Pro&lt;/h1&gt;</pre>
+              </div>
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;h1 class=&quot;museo-slab&quot;&gt;Museo Slab&lt;/h1&gt;</pre>
+              </div>
+              <div class="one third pad-left pad-right">
+                <pre data-lang="html">&lt;h1 class=&quot;quicksand&quot;&gt;Quicksand&lt;/h1&gt;</pre>
+              </div>
+            </div>
+          </div>
+          <hr><br>
+          <div class="bounceInLeft animated">
+            <h4>Quotations</h4>
+            <div class="row">
+              <div class="one whole padded">
+                <p>This is a sentence with an 
+                  <q>inline quote</q> nested within it.
+                </p>
+                <pre data-lang="html">&lt;p&gt;This is a sentence with an &lt;q&gt;inline quote&lt;/q&gt; nested within it.&lt;/p&gt;</pre>
+              </div>
+            </div>
+          </div>
+          <hr><br>
+          <div class="bounceInRight animated">
+            <h4>Block Quotations & Cites</h4>
+            <div class="row">
+              <div class="one whole padded">
+                <blockquote>A computer once beat me at chess, but it was no match for me at kick boxing.
+                  <cite>Emo Phillips</cite>
+                </blockquote><br>
+                <pre data-lang="html">&lt;blockquote&gt;
+  A computer once beat me at chess, but it was no match for me at kick boxing.
+  &lt;cite&gt;Emo Phillips&lt;/cite&gt;
+&lt;/blockquote&gt;</pre>
+              </div>
+            </div>
+          </div>
+          <hr><br>
+          <div class="bounceInLeft animated">
+            <h4>Code Snippets</h4>
+            <div class="row">
+              <div class="one whole padded">
+                <p>This is some text with some <code>inline code</code></p>
+                <pre data-lang="html">&lt;p&gt;This is some text with some &lt;code&gt;inline code&lt;/code&gt;&lt;/p&gt;</pre>
+              </div>
+            </div>
+          </div>
+          <hr><br>
+          <div class="bounceInRight animated">
+            <h4>Preformatted Code Blocks</h4>
+            <div class="row">
+              <div class="one whole padded"><code class="block">
+                  <pre>%code {
+  @extend %inline-block, %monospace;
+  &amp;.block {
+    @extend %block;
+  }
+  background: darken($background-color, 10%);
+  padding: 0 0.3em;
+  margin: 0 0.2em;
+  font-weight: normal;
+  line-height: inherit;
+}</pre></code><br>
+                <pre data-lang="html">&lt;code class=&quot;block&quot;&gt;
+  &lt;pre&gt;%code {
+  @extend %inline-block, %monospace;
+  &amp;.block {
+    @extend %block;
+  }
+  background: darken($background-color, 10%);
+  padding: 0 0.3em;
+  margin: 0 0.2em;
+  font-weight: normal;
+  line-height: inherit;
+}&lt;/pre&gt;
+&lt;/code&gt;</pre>
+              </div>
+            </div>
+          </div>
+          <hr><br>
+          <div class="bounceInUp animated">
+            <h4>Colors & States</h4>
+            <div class="row">
+              <div class="two eighths padded">
+                <div class="row">
+                  <div class="one mobile half">
+                    <p><span class="yellow">.yellow</span><br><span class="orange">.orange</span><br><span class="red">.red</span><br><span class="pink">.pink</span><br><span class="purple">.purple</span><br><span class="asphalt">.asphalt</span><br><span class="blue">.blue</span><br><span class="turquoise">.turquoise</span><br><span class="green">.green</span><br><span class="charcoal">.charcoal</span></p>
+                  </div>
+                  <div class="one mobile half">
+                    <p><span class="info">.info</span><br><span class="alert">.alert</span><br><span class="warning">.warning</span><br><span class="error">.error</span><br><span class="success">.success</span><br><span class="question">.question</span></p>
+                  </div>
+                </div>
+              </div>
+              <div class="six eighths">
+                <div class="row">
+                  <div class="two fifths padded">
+                    <div class="row">
+                      <div class="one mobile half">
+                        <ul class="list">
+                          <li class="yellow">.yellow list item</li>
+                          <li class="orange">.orange list item</li>
+                          <li class="red">.red list item</li>
+                          <li class="pink">.pink list item</li>
+                          <li class="purple">.purple list item</li>
+                          <li class="asphalt">.asphalt list item</li>
+                          <li class="blue">.blue list item</li>
+                          <li class="turquoise">.turquoise list item</li>
+                          <li class="green">.green list item</li>
+                          <li class="charcoal">.charcoal list item</li>
+                        </ul>
+                      </div>
+                      <div class="one mobile half">
+                        <ul class="list">
+                          <li class="info">.info list item</li>
+                          <li class="alert">.alert list item</li>
+                          <li class="warning">.warning list item</li>
+                          <li class="error">.error list item</li>
+                          <li class="success">.success list item</li>
+                          <li class="question">.question list item</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="three fifths padded">
+                    <div class="row">
+                      <div class="one mobile half">
+                        <ol class="list">
+                          <li class="yellow">.yellow ordered list item</li>
+                          <li class="orange">.orange ordered list item</li>
+                          <li class="red">.red ordered list item</li>
+                          <li class="pink">.pink ordered list item</li>
+                          <li class="purple">.purple ordered list item</li>
+                          <li class="asphalt">.asphalt ordered list item</li>
+                          <li class="blue">.blue ordered list item</li>
+                          <li class="turquoise">.turquoise ordered list item</li>
+                          <li class="green">.green ordered list item</li>
+                          <li class="charcoal">.charcoal ordered list item</li>
+                        </ol>
+                      </div>
+                      <div class="one mobile half">
+                        <ol class="list">
+                          <li class="info">.info ordered list item</li>
+                          <li class="alert">.alert ordered list item</li>
+                          <li class="warning">.warning ordered list item</li>
+                          <li class="error">.error ordered list item</li>
+                          <li class="success">.success ordered list item</li>
+                          <li class="question">.question ordered list item</li>
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h4>Background Colors</h4>
+            <div class="row">
+              <div class="one fifth padded">
+                <p class="yellow-bg">.yellow-bg</p>
+                <p class="orange-bg">.orange-bg</p>
+              </div>
+              <div class="one fifth padded">
+                <p class="red-bg">.red-bg</p>
+                <p class="pink-bg">.pink-bg</p>
+              </div>
+              <div class="one fifth padded">
+                <p class="purple-bg">.purple-bg</p>
+                <p class="asphalt-bg">.asphalt-bg</p>
+              </div>
+              <div class="one fifth padded">
+                <p class="blue-bg">.blue-bg</p>
+                <p class="turquoise-bg">.turquoise-bg</p>
+              </div>
+              <div class="one fifth padded">
+                <p class="green-bg">.green-bg</p>
+                <p class="charcoal-bg">.charcoal-bg</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="one third padded">
+                <p class="info-bg">.info-bg</p>
+              </div>
+              <div class="one third padded">
+                <p class="alert-bg">.alert-bg</p>
+              </div>
+              <div class="one third padded">
+                <p class="warning-bg">.warning-bg</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="one third padded">
+                <p class="error-bg">.error-bg</p>
+              </div>
+              <div class="one third padded">
+                <p class="success-bg">.success-bg</p>
+              </div>
+              <div class="one third padded">
+                <p class="question-bg">.question-bg</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="gap-top bounceInUp animated">
+      <div class="box square charcoal">
+        <div class="container padded">
+          <div class="row">
+            <div class="one small-tablet fourth padded">
+              <h5 class="green">Example Layouts</h5>
+              <ul class="unstyled">
+                <li><a href="./layout-a.html">Web Page</a></li>
+                <li><a href="./layout-b.html">Image Gallery</a></li>
+                <li><a href="./layout-c.html">Ecommerce Page</a></li>
+                <li><a href="./layout-d.html">Contact Page</a></li>
+              </ul>
+            </div>
+            <div class="three small-tablet fourths padded">
+              <h5 class="blue">Documentation</h5>
+              <ul class="unstyled three-column two-column-mobile">
+                <li><a href="./grid.html" title="Responsive grid system, grid adapters and helpers">Grid</a></li>
+                <li><a href="./helpers.html" title="Layout helpers, spinners and much more">Helpers</a></li>
+                <li><a href="./typography.html" title="Text elements, quotes, code and web fonts">Typography</a></li>
+                <li><a href="./navigation.html" title="Navigation">Navigation</a></li>
+                <li><a href="./buttons.html" title="Buttons, button groups, button menus">Buttons</a></li>
+                <li><a href="./boxes.html" title="Boxes">Boxes</a></li>
+                <li><a href="./messages.html" title="Message boxes">Message Boxes</a></li>
+                <li><a href="./tables.html" title="Tables">Tables</a></li>
+                <li><a href="./tabs.html" title="Tabs">Tabs</a></li>
+                <li><a href="./forms.html" title="Form elements">Form Elements</a></li>
+                <li><a href="./icons.html" title="Icons">Icons</a></li>
+                <li><a href="./responsive-text.html" title="Responsive text and multi-line text block truncation">Responsive Text</a></li>
+                <li><a href="./placeholder-text.html" title="Placeholder text and placeholder fonts for rapid prototyping and wireframes">Placeholder Text</a></li>
+                <li><a href="./animations.html" title="Pure CSS3 Animations">Animations</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box square">
+        <div class="container padded">
+          <div class="row">
+            <div class="one half padded">
+              <p>GroundworkCSS is <b>100% free</b> and <b>open source</b>. <a href="mailto:groundworkcss@gmail.com">Give a shout out</a> if you have any feedback.</p>
+              <p>Find a bug? Help squash it by <a href="https://github.com/groundworkcss/groundwork/issues" target="_blank">filing an issue</a> on Github.</p>
+            </div>
+            <div class="one half padded">
+              <p class="large padded align-right align-center-small-tablet"><a href="http://twitter.com/groundworkcss" target="_blank" title="@groundworkcss" style="text-decoration:none;" class="large inline gapped"></a><a href="http://github.com/groundworkcss" target="_blank" title="@groundworkcss" style="text-decoration:none;" class="large inline gapped"></a><a href="mailto:groundworkcss@gmail.com" title="groundworkcss@gmail.com" style="text-decoration:none;" class="large inline gapped"></a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- javascript-->
+    <script type="text/javascript" src="../js/groundwork.all.js"></script>
+    <!-- google analytics-->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>

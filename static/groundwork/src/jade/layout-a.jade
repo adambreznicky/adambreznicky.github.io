@@ -1,0 +1,119 @@
+extends template
+
+block title
+  title GroundworkCSS &hearts;
+
+block content
+  .container
+    .padded
+      .row
+        .three.fifths.bounceInRight.animated
+          h1.zero.museo-slab Web Site Example Layout
+          p.quicksand Demonstrates Typography, Styled Lists, Buttons, Source Reordering, Grid Breakpoint Modifiers and Adapters
+        .two.fifths.align-right-ipad.align-right-desktop.flipInX.animated
+          p.quicksand Example Layout 1 of 4
+          p
+            a.blue.button(href='home.html', rel='prev')
+              | Back
+            | 
+            a.green.button(href='layout-b.html', rel='next')
+              | Next: Image Gallery 
+    hr
+    article.row
+      section.two.fourths.right-one.padded.bounceInDown.animated
+        img(src='http://placehold.it/750x400/2ecc71/ffffff/&text=Main+Image', alt='')
+        hr
+        img.pull-left.gap-right(src='http://placehold.it/250x130/34495e/ffffff/', alt='')
+        h1 Featured Article
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Nunc vel vehicula ante. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Nunc vel vehicula ante.
+        p
+          button.asphalt Read more
+      aside.one.fourth.left-two.padded.border-right.bounceInLeft.animated
+        h1 Left Sidebar
+        .row
+          .one.whole.two-up-small-tablet.one-up-mobile
+            ul.list
+              li Unordered list item #1
+              li Unordered list item #2
+              li Unordered list item #3
+              li Unordered list item #4
+          .one.whole.two-up-small-tablet.one-up-mobile
+            ol.list
+              li Ordered list item #1
+              li Ordered list item #2
+              li Ordered list item #3
+        hr
+        h3 Left Sidebar Image Gallery
+        .row
+          .one.half.three-up-small-tablet.two-up-mobile.padded.align-center
+            img(src='http://placehold.it/120x85/e67e22/ffffff/', alt='')
+          .one.half.three-up-small-tablet.two-up-mobile.padded.align-center
+            img(src='http://placehold.it/120x85/e67e22/ffffff/', alt='')
+          .one.half.three-up-small-tablet.two-up-mobile.padded.align-center
+            img(src='http://placehold.it/120x85/e67e22/ffffff/', alt='')
+          .one.half.three-up-small-tablet.two-up-mobile.padded.align-center
+            img(src='http://placehold.it/120x85/e67e22/ffffff/', alt='')
+          .one.half.three-up-small-tablet.two-up-mobile.padded.align-center
+            img(src='http://placehold.it/120x85/e67e22/ffffff/', alt='')
+          .one.half.three-up-small-tablet.two-up-mobile.padded.align-center
+            img(src='http://placehold.it/120x85/e67e22/ffffff/', alt='')
+        .pad-right.pad-left
+          p.align-right
+            button.orange View more
+      aside.one.fourth.padded.border-left.bounceInRight.animated
+        h1 Right Sidebar
+        .row
+          .one.whole.two-up-small-tablet.one-up-mobile
+            ul.list
+              li Unordered list item #1
+              li Unordered list item #2
+              li Unordered list item #3
+              li Unordered list item #4
+          .one.whole.two-up-small-tablet.one-up-mobile
+            ol.list
+              li Ordered list item #1
+              li Ordered list item #2
+              li Ordered list item #3
+        hr
+        h3 Right Sidebar Image Gallery
+        .row
+          .one.half.three-up-small-tablet.two-up-mobile.padded.align-center
+            img(src='http://placehold.it/120x85/e74c3c/ffffff/', alt='')
+          .one.half.three-up-small-tablet.two-up-mobile.padded.align-center
+            img(src='http://placehold.it/120x85/e74c3c/ffffff/', alt='')
+          .one.half.three-up-small-tablet.two-up-mobile.padded.align-center
+            img(src='http://placehold.it/120x85/e74c3c/ffffff/', alt='')
+          .one.half.three-up-small-tablet.two-up-mobile.padded.align-center
+            img(src='http://placehold.it/120x85/e74c3c/ffffff/', alt='')
+          .one.half.three-up-small-tablet.two-up-mobile.padded.align-center
+            img(src='http://placehold.it/120x85/e74c3c/ffffff/', alt='')
+          .one.half.three-up-small-tablet.two-up-mobile.padded.align-center
+            img(src='http://placehold.it/120x85/e74c3c/ffffff/', alt='')
+        .pad-right.pad-left
+          p.align-right
+            button.red View more
+    article.row.bounceInUp.animated
+      section.one.third.padded
+        h3 Section Heading 3
+        .row
+          .two-up-small-tablet.one-up-mobile.align-center
+            img(src='http://placehold.it/380x200/f02475/ffffff/', alt='')
+          .two-up-small-tablet.one-up-mobile
+            p.padded.no-pad-mobile
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices.
+      section.one.third.padded
+        h3 Section Heading 3
+        .row
+          .two-up-small-tablet.one-up-mobile.align-center
+            img(src='http://placehold.it/380x200/1abc9c/ffffff/', alt='')
+          .two-up-small-tablet.one-up-mobile
+            p.padded.no-pad-mobile
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices.
+      section.one.third.padded
+        h3 Section Heading 3
+        .row
+          .two-up-small-tablet.one-up-mobile.align-center
+            img(src='http://placehold.it/380x200/34495e/ffffff/', alt='')
+          .two-up-small-tablet.one-up-mobile
+            p.padded.no-pad-mobile
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices.

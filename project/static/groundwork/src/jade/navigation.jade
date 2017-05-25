@@ -1,0 +1,168 @@
+mixin nav-structure
+  ul
+    li
+      button Nav Item 1
+    li
+      button Nav Menu 1
+      ul
+        li
+          button Menu Item 1
+        li
+          button Sub Menu 1
+          ul
+            li
+              button Sub Menu Item 1
+            li
+              button Sub Menu Item 2
+        li
+          button Menu Item 2
+    li
+      button Nav Item 3
+
+extends template
+
+block title
+  title GroundworkCSS &hearts; Navigation
+
+block content
+  .container
+    .padded
+      .row
+        .three.fifths.bounceInRight.animated
+          h1.zero.museo-slab Navigation
+          p.quicksand Responsive navigation created by 
+            a(href='http://twitter.com/ghepting', target='_blank') Gary Hepting
+        .two.fifths.align-right-ipad.align-right-desktop.flipInX.animated
+          p.quicksand Component Usage Example 4 of 14
+          p
+            a.blue.button(href='typography.html', rel='prev')
+              | Back
+            | 
+            a.green.button(href='buttons.html', rel='next')
+              | Next: Buttons
+    hr
+    .row
+      .one.whole.padded
+        .bounceInLeft.animated
+          h4 Target Breakpoints
+          .row
+            .one.whole.padded
+              h4 iPad
+              nav.nav(title='iPad Menu', role='navigation')
+                +nav-structure()
+              br
+              pre(data-lang='html')
+                | <nav class="nav" title="iPad Menu">
+                |   <ul>
+                |     <li><button>Nav Item 1</button></li>
+                |     <li><button>Nav Menu 1</button>
+                |       <ul>
+                |         <li><button>Menu Item 1</button></li>
+                |         <li><button>Sub Menu 1</button>
+                |           <ul>
+                |             <li><button>Sub Menu Item 1</button></li>
+                |             <li><button>Sub Menu Item 2</button></li>
+                |           </ul>
+                |         </li>
+                |         <li><button>Menu Item 2</button></li>
+                |       </ul>
+                |     </li>
+                |     <li><button>Nav Item 3</button></li>
+                |   </ul>
+                | </nav>
+          .row
+            .one.whole.padded
+              h4 Small Tablet
+              nav.nav.small-tablet(title='Small Tablet Menu', role='navigation')
+                +nav-structure()
+              br
+              pre(data-lang='html')
+                | <nav class="nav small-tablet" title="Small Tablet Menu">...</nav>
+          .row
+            .one.whole.padded
+              h4 Mobile
+              nav.nav.mobile(title='Mobile Menu', role='navigation')
+                +nav-structure()
+              br
+              pre(data-lang='html')
+                | <nav class="nav mobile" title="Mobile Menu">...</nav>
+          .row
+            .one.whole.padded
+              h4 Vegetarian (No Hamburger)
+              nav.nav.nocollapse(role='navigation')
+                +nav-structure()
+              br
+              pre(data-lang='html')
+                | <nav class="nav nocollapse" title="Vegetarian Menu">...</nav>
+        br
+        h4 Colors
+        .row
+          .one.half.padded
+            nav.nav.yellow(role='navigation')
+              +nav-structure()
+          .one.half.padded
+            nav.nav.orange(role='navigation')
+              +nav-structure()
+        .row.gap-top
+          .one.half.padded
+            nav.nav.red(role='navigation')
+              +nav-structure()
+          .one.half.padded
+            nav.nav.pink(role='navigation')
+              +nav-structure()
+        .row.gap-top
+          .one.half.padded
+            nav.nav.purple(role='navigation')
+              +nav-structure()
+          .one.half.padded
+            nav.nav.asphalt(role='navigation')
+              +nav-structure()
+        .row.gap-top
+          .one.half.padded
+            nav.nav.blue(role='navigation')
+              +nav-structure()
+          .one.half.padded
+            nav.nav.turquoise(role='navigation')
+              +nav-structure()
+        .row.gap-top
+          .one.half.padded
+            nav.nav.green(role='navigation')
+              +nav-structure()
+          .one.half.padded
+            nav.nav.charcoal(role='navigation')
+              +nav-structure()
+        br
+        hr
+        br
+        h4 Vertical Orientation
+        .row
+          .one.third.padded
+            h4 iPad
+            nav.nav.vertical(title='Vertical iPad Menu', role='navigation')
+              +nav-structure()
+            br
+            pre(data-lang='html')
+              | <nav class="nav vertical" title="Vertical iPad Menu">...</nav>
+          .one.third.padded
+            h4 Small Tablet
+            nav.nav.small-tablet.vertical(title='Vertical Small-Tablet Menu', role='navigation')
+              +nav-structure()
+            br
+            pre(data-lang='html')
+              | <nav class="nav small-tablet vertical" title="Vertical Small-Tablet Menu">...</nav>
+          .one.third.padded
+            h4 Mobile
+            nav.nav.mobile.vertical(title='Vertical Mobile Menu', role='navigation')
+              +nav-structure()
+            br
+            pre(data-lang='html')
+              | <nav class="nav mobile vertical" title="Vertical Mobile Menu">...</nav>
+        .row
+          .one.whole.padded
+            h4 Vegetarian (No Hamburger)
+            nav.nav.nocollapse.vertical(role='navigation')
+              +nav-structure()
+            br
+            pre(data-lang='html')
+              | <nav class="nav vertical nocollapse">...</nav
+

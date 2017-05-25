@@ -1,0 +1,377 @@
+extends template
+
+block title
+  title GroundworkCSS &hearts; Buttons
+
+block content
+  .container
+    .padded
+      .row
+        .three.fifths.bounceInRight.animated
+          h1.zero.museo-slab Buttons
+          p.quicksand Easy-to-customize button styles
+        .two.fifths.align-right-ipad.align-right-desktop.flipInX.animated
+          p.quicksand Component Usage Example 5 of 14
+          p
+            a.blue.button(href='navigation.html', rel='prev')
+              | Back
+            | 
+            a.green.button(href='boxes.html', rel='next')
+              | Next: Boxes
+    hr
+    .row
+      .one.whole.padded
+        .bounceInRight.animated
+          h4 Buttons
+          .row
+            .one.small-tablet.third.padded
+              h4 Sizes
+              p
+                button.small Small Button
+              p
+                button Medium Button
+              p
+                button.large Large Button
+            .one.small-tablet.third.padded
+              h4 Types
+              p
+                button Normal Button
+              p
+                button.info Info Button
+              p
+                button.success Success Button
+              p
+                button.alert Alert Button
+              p
+                button.question Question Button
+              p
+                button.warning Warning Button
+              p
+                button.error Error Button
+            .one.small-tablet.third.padded
+              h4 Styles
+              p
+                button Normal Button
+              p
+                button.square Square Button
+              p
+                button.round Round Button
+              p
+                button.block Block Button
+        hr
+        br
+        .bounceInLeft.animated
+          h4 States
+          .row
+            .one.small-tablet.third.padded
+              h4 Normal
+              p
+                button Button
+              p
+                button.info Info
+              p
+                button.success Success
+              p
+                button.alert Alert
+              p
+                button.question Question
+              p
+                button.warning Warning
+              p
+                button.error Error
+            .one.small-tablet.third.padded
+              h4 Active
+              p
+                button(aria-selected="true") Active Button
+              p
+                button.info(aria-selected="true") Active Info
+              p
+                button.success(aria-selected="true") Active Success
+              p
+                button.alert(aria-selected="true") Active Alert
+              p
+                button.question(aria-selected="true") Active Question
+              p
+                button.warning(aria-selected="true") Active Warning
+              p
+                button.error(aria-selected="true") Active Error
+            .one.small-tablet.third.padded
+              h4 Disabled
+              p
+                button(disabled="disabled", aria-disabled="true") Disabled Button
+              p
+                button.info(disabled="disabled", aria-disabled="true") Disabled Info
+              p
+                button.success(disabled="disabled", aria-disabled="true") Disabled Success
+              p
+                button.alert(disabled="disabled", aria-disabled="true") Disabled Alert
+              p
+                button.question(disabled="disabled", aria-disabled="true") Disabled Question
+              p
+                button.warning(disabled="disabled", aria-disabled="true") Disabled Warning
+              p
+                button.error(disabled="disabled", aria-disabled="true") Disabled Error
+        hr
+        br
+        .bounceInRight.animated
+          h4 Colors
+          .row
+            .one.whole
+              button.yellow.gap-right.gap-bottom Yellow Button
+              button.orange.gap-right.gap-bottom Orange Button
+              button.red.gap-right.gap-bottom Red Button
+              button.pink.gap-right.gap-bottom Pink Button
+              button.purple.gap-right.gap-bottom Purple Button
+              button.asphalt.gap-right.gap-bottom Asphalt Button
+              button.blue.gap-right.gap-bottom Blue Button
+              button.turquoise.gap-right.gap-bottom Turquoise Button
+              button.green.gap-right.gap-bottom Green Button
+              button.charcoal.gap-right.gap-bottom Charcoal Button
+        hr
+        br
+        .bounceInRight.animated
+          h4 Semantic Link Types
+          .row
+            .one.whole.padded
+              a.gap-bottom.gap-right(role='button', href='home.html') Hyperlink
+              a.gap-bottom.gap-right(role='button', href='#link-types') Anchor
+              a.gap-bottom.gap-right(role='button', href='https://google.com') Secure
+              a.gap-bottom.gap-right(role='button', href='http://google.com', target='_blank') New Window
+              a.gap-bottom.gap-right(role='button', href='view-source:http://google.com') View Source
+              a.gap-bottom.gap-right(role='button', href='example.gif') Image
+              a.gap-bottom.gap-right(role='button', href='example.pdf') PDF Document
+              a.gap-bottom.gap-right(role='button', href='example.doc') Word Document
+              a.gap-bottom.gap-right(role='button', href='example.txt') Text Document
+              a.gap-bottom.gap-right(role='button', href='example.md') Markdown Document
+              a.gap-bottom.gap-right(role='button', href='example.zip') ZIP File
+              a.gap-bottom.gap-right(role='button', href='example.exe') Executable File
+              a.gap-bottom.gap-right(role='button', href='home.html', rel='home') Home
+              a.gap-bottom.gap-right(role='button', href='#', rel='search') Search
+              a.gap-bottom.gap-right(role='button', href='#', rel='author') Author
+              a.gap-bottom.gap-right(role='button', href='#', rel='help') Help
+              a.gap-bottom.gap-right(role='button', href='#', rel='tag') Tag
+              a.gap-bottom.gap-right(role='button', href='#', rel='bookmark') Bookmark
+              a.gap-bottom.gap-right(role='button', href='#', rel='prev') Previous
+              a.gap-bottom.gap-right(role='button', href='#', rel='next') Next
+              a.gap-bottom.gap-right(role='button', href='#', rel='directory') Directory
+              a.gap-bottom.gap-right(role='button', href='#', rel='payment') Payment
+              a.gap-bottom.gap-right(role='button', href='mailto:user@example.com') Email
+              a.gap-bottom.gap-right(role='button', href='tel:5555551212') Telephone
+              a.gap-bottom.gap-right(role='button', href='mailto:user@gmail.com') Gmail
+              a.gap-bottom.gap-right(role='button', href='skype:skypeusername') Skype
+              a.gap-bottom.gap-right(role='button', href='example.rss') RSS
+              a.gap-bottom.gap-right(role='button', href='http://twitter.com') Twitter
+              a.gap-bottom.gap-right(role='button', href='http://facebook.com') Facebook
+              a.gap-bottom.gap-right(role='button', href='http://tumblr.com') Tumblr
+              a.gap-bottom.gap-right(role='button', href='http://linkedin.com') LinkedIn
+              a.gap-bottom.gap-right(role='button', href='http://plus.google.com') Google Plus
+              a.gap-bottom.gap-right(role='button', href='http://youtube.com') Youtube
+              a.gap-bottom.gap-right(role='button', href='http://github.com') Github
+              a.gap-bottom.gap-right(role='button', href='http://stackoverflow.com') Stack Overflow
+              a.gap-bottom.gap-right(role='button', href='http://instagram.com') Instagram
+              a.gap-bottom.gap-right(role='button', href='http://flickr.com') Flickr
+              a.gap-bottom.gap-right(role='button', href='http://foursquare.com') Foursquare
+              a.gap-bottom.gap-right(role='button', href='http://dribbble.com') Dribbble
+              a.gap-bottom.gap-right(role='button', href='http://dropbox.com') Dropbox
+              a.gap-bottom.gap-right(role='button', href='http://trello.com') Trello
+          //- .row
+          //-   .one.whole
+          //-     a.gap-right.gap-bottom(href='#link-types', role='button') Anchor Link
+          //-     a.gap-right.gap-bottom(href='https://google.com', role='button') Secure Link
+          //-     a.gap-right.gap-bottom(href='https://google.com', target='_blank', role='button') New Window Link
+          //-     a.gap-right.gap-bottom(href='view-source:https://google.com', role='button') View Source Link
+          //-     a.gap-right.gap-bottom(href='example.pdf', role='button') PDF Document Link
+          //-     a.gap-right.gap-bottom(href='example.doc', role='button') Word Document Link
+          //-     a.gap-right.gap-bottom(href='example.txt', role='button') Text Document Link
+          //-     a.gap-right.gap-bottom(href='example.md', role='button') Markdown Document Link
+          //-     a.gap-right.gap-bottom(href='example.zip', role='button') ZIP File Link
+          //-     a.gap-right.gap-bottom(href='example.exe', role='button') Executable File Link
+          //-     a.gap-right.gap-bottom(href='home.html', rel='home', role='button') Home Link
+          //-     a.gap-right.gap-bottom(href='#', rel='search', role='button') Search Link
+          //-     a.gap-right.gap-bottom(href='#', rel='author', role='button') Author Link
+          //-     a.gap-right.gap-bottom(href='#', rel='help', role='button') Help Link
+          //-     a.gap-right.gap-bottom(href='#', rel='tag', role='button') Tag Link
+          //-     a.gap-right.gap-bottom(href='#', rel='bookmark', role='button') Bookmark Link
+          //-     a.gap-right.gap-bottom(href='#', rel='prev', role='button') Previous Link
+          //-     a.gap-right.gap-bottom(href='#', rel='next', role='button') Next Link
+          //-     a.gap-right.gap-bottom(href='mailto:user@example.com', role='button') Email Link
+          //-     a.gap-right.gap-bottom(href='mailto:user@gmail.com', role='button') Gmail Link
+          //-     a.gap-right.gap-bottom(href='tel:5555551212', role='button') Telephone Link
+          //-     a.gap-right.gap-bottom(href='example.rss', role='button') RSS Link
+          //-     a.gap-right.gap-bottom(href='http://twitter.com', role='button') Twitter Link
+          //-     a.gap-right.gap-bottom(href='http://facebook.com', role='button') Facebook Link
+          //-     a.gap-right.gap-bottom(href='http://tumblr.com', role='button') Tumblr Link
+          //-     a.gap-right.gap-bottom(href='http://linkedin.com', role='button') LinkedIn Link
+          //-     a.gap-right.gap-bottom(href='http://plus.google.com', role='button') Google Plus Link
+          //-     a.gap-right.gap-bottom(href='http://youtube.com', role='button') Youtube Link
+          //-     a.gap-right.gap-bottom(href='http://github.com', role='button') Github Link
+          //-     a.gap-right.gap-bottom(href='http://stackoverflow.com', role='button') Stack Overflow Link
+          //-     a.gap-right.gap-bottom(href='http://instagram.com', role='button') Instagram Link
+          //-     a.gap-right.gap-bottom(href='http://flickr.com', role='button') Flickr Link
+          //-     a.gap-right.gap-bottom(href='http://foursquare.com', role='button') Foursquare Link
+          //-     a.gap-right.gap-bottom(href='http://dribbble.com', role='button') Dribbble Link
+          //-     a.gap-right.gap-bottom(href='http://dropbox.com', role='button') Dropbox Link
+          //-     a.gap-right.gap-bottom(href='http://trello.com', role='button') Trello Link
+          //-     a.gap-right.gap-bottom(href='skype:skypeusername', role='button') Skype Link
+        hr
+        br
+        h4 Button Groups
+        .row
+          .one.half.padded
+            ul.button-group
+              li
+                button Normal
+              li
+                button(disabled="disabled", aria-disabled="true") Disabled
+              li
+                button(aria-selected="true") Active
+          .one.half.padded
+            ul.button-group
+              li
+                button.blue Normal
+              li
+                button.turquoise(disabled="disabled", aria-disabled="true") Disabled
+              li
+                button.green(aria-selected="true") Active
+        .row
+          .one.half.padded
+            ul.button-group
+              li
+                button
+                  i.icon-github-alt
+              li
+                button
+                  i.icon-twitter
+              li
+                button
+                  i.icon-linkedin-sign
+              li
+                button
+                  i.icon-google-plus
+              li
+                button
+                  i.icon-facebook-sign
+              li
+                button
+                  i.icon-pinterest
+          .one.half.padded
+            ul.button-group
+              li
+                button.yellow
+                  i.icon-github-alt
+              li
+                button.orange
+                  i.icon-twitter
+              li
+                button.red
+                  i.icon-linkedin-sign
+              li
+                button.pink
+                  i.icon-google-plus
+              li
+                button.purple
+                  i.icon-facebook-sign
+              li
+                button.asphalt
+                  i.icon-pinterest
+        hr
+        br
+        h4 Button Dropdown Menus
+        .row
+          .one.half.padded
+            .dropdown
+              button
+                | Dropdown Menu Button
+              ul
+                li
+                  button
+                    i.icon-home
+                    |  Example Menu Item 1
+                li
+                  button
+                    i.icon-envelope-alt
+                    |  Example Menu Item 2
+                li
+                  hr
+                li
+                  button
+                    i.icon-heart
+                    |  Seperated Menu Item
+          .one.half.padded
+            .dropdown.large
+              button
+                | Large Dropdown Button
+              ul
+                li
+                  button
+                    i.icon-home
+                    |  Example Menu Item 1
+                li
+                  button
+                    i.icon-envelope-alt
+                    |  Example Menu Item 2
+                li
+                  hr
+                li
+                  button
+                    i.icon-heart
+                    |  Seperated Menu Item
+          .row
+            .one.half.padded
+              .dropdown
+                button.blue
+                  | Dropdown Menu Button
+                ul
+                  li
+                    button
+                      i.icon-home
+                      |  Example Menu Item 1
+                  li
+                    button
+                      i.icon-envelope-alt
+                      |  Example Menu Item 2
+                  li
+                    hr
+                  li
+                    button
+                      i.icon-heart
+                      |  Seperated Menu Item
+    hr
+    br
+    .row
+      .one.whole.padded
+        h4 Example Usage
+        .row
+          .one.half
+            .row
+              .one.third.small-tablet.pad-top.pad-left.pad-right.align-center
+                .pad-top
+                  button Normal Button
+              .two.thirds.small-tablet.padded
+                pre(data-lang='html')
+                  | <button>Normal Button</button>
+          .one.half
+            .row
+              .one.third.small-tablet.pad-top.pad-left.pad-right.align-center
+                .pad-top
+                  input(type='button', value='Input Button')
+              .two.thirds.small-tablet.padded
+                pre(data-lang='html')
+                  | <input type="button" value="Input Button" />
+        .row
+          .one.half
+            .row
+              .one.third.small-tablet.pad-top.pad-left.pad-right.align-center
+                .pad-top
+                  a.gap-bottom.gap-right(role='button', href='#') ARIA Role Button
+              .two.thirds.small-tablet.padded
+                pre(data-lang='html')
+                  | <a role="button" href="#">ARIA Role Button</button>
+          .one.half
+            .row
+              .one.third.small-tablet.pad-top.pad-left.pad-right.align-center
+                .pad-top
+                  a.blue.button(href='#') Blue Button
+              .two.thirds.small-tablet.padded
+                pre(data-lang='html')
+                  | <a class="blue button" href="#">Blue Button</a>

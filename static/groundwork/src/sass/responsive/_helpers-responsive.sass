@@ -1,0 +1,28 @@
+// =============================================
+//        Conditional Content Helpers
+//          Last Updated:2013-8-16
+// =============================================
+
+$responsive: true !default
+$inline-conditional-helpers: false !default
+
+@if $responsive
+  // desktop helpers
+  .desktop-only
+    display: block
+  @if $inline-conditional-helpers
+    span.desktop-only
+      display: inline
+  .hide-on-desktop
+  // ipad helpers
+  .ipad-only
+    display: none !important
+  .hide-on-ipad
+  // small tablet helpers
+  .small-tablet-only
+    display: none !important
+  .hide-on-small-tablet
+  // mobile helpers
+  .mobile-only
+    display: none !important
+  .hide-on-mobile

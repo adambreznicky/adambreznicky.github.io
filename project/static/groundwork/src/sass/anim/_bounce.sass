@@ -1,0 +1,154 @@
+$bounce-animations: true !default
+
+@if $bounce-animations
+  @keyframes bounce
+    0%, 20%, 50%, 80%, 100%
+      transform: translateY(0)
+    40%
+      transform: translateY(-30px)
+    60%
+      transform: translateY(-15px)
+
+  .bounce
+    animation-name: bounce
+  @keyframes bounceIn
+    0%
+      opacity: 0
+      transform: scale(0.3)
+    50%
+      opacity: 1
+      transform: scale(1.05)
+    70%
+      transform: scale(0.9)
+    100%
+      transform: scale(1)
+
+  .bounceIn
+    animation-name: bounceIn
+  @keyframes bounceInUp
+    0%
+      opacity: 0
+      transform: translateY(2000px)
+    60%
+      opacity: 1
+      transform: translateY(-30px)
+    80%
+      transform: translateY(10px)
+    100%
+      transform: translateY(0)
+
+  .bounceInUp
+    animation-name: bounceInUp
+  @keyframes bounceInDown
+    0%
+      opacity: 0
+      transform: translateY(-2000px)
+    60%
+      opacity: 1
+      transform: translateY(30px)
+    80%
+      transform: translateY(-10px)
+    100%
+      transform: translateY(0)
+
+  .bounceInDown
+    animation-name: bounceInDown
+  @keyframes bounceInLeft
+    0%
+      opacity: 0
+      transform: translateX(-2000px)
+    60%
+      opacity: 1
+      transform: translateX(30px)
+    80%
+      transform: translateX(-10px)
+    100%
+      transform: translateX(0)
+
+  .bounceInLeft
+    animation-name: bounceInLeft
+  @keyframes bounceInRight
+    0%
+      opacity: 0
+      transform: translateX(2000px)
+    60%
+      opacity: 1
+      transform: translateX(-30px)
+    80%
+      transform: translateX(10px)
+    100%
+      transform: translateX(0)
+
+  .bounceInRight
+    animation-name: bounceInRight
+  @keyframes bounceOut
+    0%
+      transform: scale(1)
+    25%
+      transform: scale(0.95)
+    50%
+      opacity: 1
+      transform: scale(1.1)
+    100%
+      opacity: 0
+      transform: scale(0.3)
+
+  .bounceOut
+    animation-name: bounceOut
+  @keyframes bounceOutUp
+    0%
+      transform: translateY(0)
+    20%
+      opacity: 1
+      transform: translateY(20px)
+    100%
+      opacity: 0
+      transform: translateY(-2000px)
+
+  .bounceOutUp
+    animation-name: bounceOutUp
+  @keyframes bounceOutDown
+    0%
+      transform: translateY(0)
+    20%
+      opacity: 1
+      transform: translateY(-20px)
+    100%
+      opacity: 0
+      transform: translateY(2000px)
+
+  .bounceOutDown
+    animation-name: bounceOutDown
+  @keyframes bounceOutLeft
+    0%
+      transform: translateX(0)
+    20%
+      opacity: 1
+      transform: translateX(20px)
+    100%
+      opacity: 0
+      transform: translateX(-2000px)
+
+  .bounceOutLeft
+    animation-name: bounceOutLeft
+  @keyframes bounceOutRight
+    0%
+      transform: translateX(0)
+    20%
+      opacity: 1
+      transform: translateX(-20px)
+    100%
+      opacity: 0
+      transform: translateX(2000px)
+
+  .bounceOutRight
+    animation-name: bounceOutRight
+  @keyframes rotateIn
+    0%
+      transform-origin: center center
+      transform: rotate(-200deg)
+      opacity: 0
+    100%
+      transform-origin: center center
+      transform: rotate(0)
+      opacity: 1

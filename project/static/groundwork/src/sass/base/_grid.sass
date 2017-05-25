@@ -1,0 +1,183 @@
+// =============================================
+//    Fractional grid system by Gary Hepting
+//          Last Updated:2013-8-16
+//
+//    ***** REQUIRES BORDER BOX SIZING *****
+//
+// =============================================
+
+$numerators: "one" "two" "three" "four" "five" "six" "seven" "eight" "nine" "ten" "eleven" "twelve" !default
+$denominators: "whole" "half" "third" "fourth" "fifth" "sixth" "seventh" "eighth" "ninth" "tenth" "eleventh" "twelfth" !default
+$denominators-plural: "wholes" "halves" "thirds" "fourths" "fifths" "sixths" "sevenths" "eighths" "ninths" "tenths" "elevenths" "twelfths" !default
+$grid-classes: true !default
+$grid-adapter-classes: true !default
+$grid-adapters: $one-whole $one-half $one-third $one-fourth $one-fifth !default
+$container-width: 1200px !default
+$gutter: 10px !default
+$responsive: true !default
+
+///////////////////////////////////////////////
+//    grid system - placeholders & classes   //
+///////////////////////////////////////////////
+
+%container
+  @if $responsive
+    max-width: $container-width
+  @else
+    width: $container-width
+  margin: 0 auto
+
+%row
+  +_clear
+  width: $one-whole
+
+=_column
+  float: left
+  position: relative
+  min-height: 1px
+
+%column
+  +_column
+
+%centered
+  float: none !important
+  margin-left: auto !important
+  margin-right: auto !important
+
+@if $grid-classes
+  .container
+    @extend %container
+  .row
+    @extend %row
+  .column
+    @extend %column
+  .centered
+    @extend %centered
+
+// generate grid selectors
+$selectors: if($grid-classes, "%" ".", "%")
+
+@for $i from 1 through length($selectors)
+  @for $j from 1 through length($numerators)
+    #{nth($selectors, $i) + nth($denominators, $j)},
+    #{nth($selectors, $i) + nth($denominators-plural, $j)}
+      width: percentage(1 / $j)
+      @extend %column
+      @for $width from 1 through $j
+        &#{nth($selectors, $i) + nth($numerators, $width)}
+          width: percentage($width / $j)
+          @extend %column
+      @if $j > 1
+        @for $right-left-skip from 1 through $j - 1
+          &#{nth($selectors, $i) + "right-" + nth($numerators, $right-left-skip)}
+            left: percentage($right-left-skip / $j)
+          &#{nth($selectors, $i) + "left-" + nth($numerators, $right-left-skip)}
+            right: percentage($right-left-skip / $j)
+          &#{nth($selectors, $i) + "skip-" + nth($numerators, $right-left-skip)}
+            margin-left: percentage($right-left-skip / $j)
+
+@if $grid-adapter-classes
+  @for $i from 1 through length($grid-adapters)
+    .#{nth($numerators, $i)}-up,
+    .#{nth($numerators, $i)}-up-desktop
+      width: nth($grid-adapters, $i) !important
+      clear: none !important
+      float: left !important
+      left: 0 !important
+      right: 0 !important
+  // grid adapters nth clearfix
+  @for $i from 1 through length($grid-adapters)
+    .#{nth($numerators, $i)}-up,
+    .#{nth($numerators, $i)}-up-desktop
+      &:nth-child(#{$i}n+1)
+        clear: both !important
+
+@if $responsive and $grid-adapter-classes
+  // ipad grid adapters
+  @media #{$ipad}
+    @for $i from 1 through length($grid-adapters)
+      .#{nth($numerators, $i)}-up-ipad
+        width: nth($grid-adapters, $i) !important
+        clear: none !important
+        float: left !important
+        left: 0 !important
+        right: 0 !important
+  // ipad grid adapters nth clearfix
+  @media #{$ipad} and #{$tablet} and #{$not-mobile}
+    @for $i from 1 through length($grid-adapters)
+      .#{nth($numerators, $i)}-up-ipad
+        &:nth-child(#{$i}n+1)
+          clear: both !important
+  // small-tablet grid adapters
+  @media #{$small-tablet} and #{$not-mobile}
+    @for $i from 1 through length($grid-adapters)
+      .#{nth($numerators, $i)}-up-small-tablet
+        width: nth($grid-adapters, $i) !important
+        clear: none !important
+        float: left !important
+        left: 0 !important
+        right: 0 !important
+  // small-tablet grid adapters nth clearfix
+  @media #{$small-tablet} and #{$not-mobile}
+    @for $i from 1 through length($grid-adapters)
+      .#{nth($numerators, $i)}-up-small-tablet
+        &:nth-child(#{$i}n+1)
+          clear: both !important
+  // mobile grid adapters
+  @media #{$mobile}
+    @for $i from 1 through length($grid-adapters)
+      .#{nth($numerators, $i)}-up-mobile
+        width: nth($grid-adapters, $i) !important
+        clear: none !important
+        float: left !important
+        left: 0 !important
+        right: 0 !important
+        &:nth-child(#{$i + 1})
+          clear: both !important
+  // mobile grid adapters nth clearfix
+  @media #{$mobile}
+    @for $i from 1 through length($grid-adapters)
+      .#{nth($numerators, $i)}-up-mobile
+        &:nth-child(#{$i}n+1)
+          clear: both !important
+
+// grid classes responsive
+=grid-responsive($both: true)
+  $nots: ":not(.mobile)"
+  // set up mobile nots
+  @if $grid-adapter-classes
+    @for $i from 1 through length($grid-adapters)
+      $nots: $nots + ":not(." + unquote(#{nth($numerators, $i)}) + "-up-mobile)"
+  %responsive-grid#{$both}
+    // reset grid
+    width: 100% !important
+    float: none
+    clear: both
+  %responsive-grid-right#{$both}
+    // reset push
+    left: 0
+  %responsive-grid-left#{$both}
+    // reset pull
+    right: 0
+  %responsive-grid-skip#{$both}
+    // reset offset
+    margin-left: 0
+  @for $i from 1 through length($selectors)
+    @for $j from 2 through length($numerators)
+      @if $both
+        $nots: $nots + ":not(.small-tablet)"
+        // setup tablet $nots
+        @if $grid-adapter-classes
+          @for $i from 1 through length($grid-adapters)
+            $nots: $nots + ":not(." + unquote(#{nth($numerators, $i)}) + "-up-small-tablet)"
+      #{nth($selectors, $i) + nth($denominators, $j) + $nots},
+      #{nth($selectors, $i) + nth($denominators-plural, $j) + $nots}
+        @extend %responsive-grid#{$both}
+        @for $width from 1 through $j
+          @if $width < $j
+            &#{nth($selectors, $i) + "left-" + nth($numerators, $width)}
+              @extend %responsive-grid-left#{$both}
+            &#{nth($selectors, $i) + "right-" + nth($numerators, $width)}
+              @extend %responsive-grid-right#{$both}
+            &#{nth($selectors, $i) + "skip-" + nth($numerators, $width)}
+              @extend %responsive-grid-skip#{$both}

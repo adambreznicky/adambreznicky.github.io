@@ -1,16 +1,37 @@
 @font-face {
   font-family: AUdimat-Regular;
-  src: url("font/AUdimat-Regular.otf") format("opentype");
+  src: url("./font/AUdimat-Regular.otf") format("opentype");
 }
 
 @font-face {
     font-family: AUdimat-Bold;
     font-weight: bold;
-    src: url("font/AUdimat-Bold.otf") format("opentype");
+    src: url("./font/AUdimat-Bold.otf") format("opentype");
 }
 
 @font-face {
     font-family: AUdimat-Italic;
     font-weight: italic;
-    src: url("font/AUdimat-Italic.otf") format("opentype");
+    src: url("./font/AUdimat-Italic.otf") format("opentype");
+}
+
+body, h1, h6 {
+  font-family: AUdimat-Regular !important;
+  text-transform: lowercase !important;
+}
+
+.title-vert {
+  line-height: 80px;
+}
+
+#title-name {
+  padding-left: 20px;
+}
+
+#gravatar {
+  border-radius: 50px;
+}
+
+.nav a {
+  border-top: 0 !important;
 }

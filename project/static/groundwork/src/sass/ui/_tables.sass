@@ -1,0 +1,139 @@
+// =============================================
+//                  Tables
+//          Last Updated:2013-8-16
+// =============================================
+
+$table-tags: true !default
+$table-classes: true !default
+$tables-states: "info" "alert" "warning" "error" "success" "question" !default
+
+%table
+  border: 1px solid $border-color
+  width: 100%
+  max-width: 100%
+  padding: 0
+  margin: 0
+  font-size: 1em
+
+%center-table
+  th, td
+    text-align: center
+
+%responsive-table
+  table-layout: fixed
+
+%table-cells
+  padding: $gutter
+  background: darken(white, 1%)
+  white-space: normal
+  word-wrap: break-word
+  text-align: left
+
+%table-cell
+  font-size: 0.85em
+
+%even-cells
+  background: darken(white, 5%)
+
+%table-head-th
+  font-size: 1em
+  font-weight: bold
+
+%table-head-cells
+  background: lighten(gray, 32.5%)
+  color: darken(gray, 15%)
+
+%table-info
+  %table-head-cells
+    background: #{$info-background}
+    color: #{$info-color}
+
+%table-success
+  %table-head-cells
+    background: #{$success-background}
+    color: #{$success-color}
+
+%table-alert
+  %table-head-cells
+    background: #{$alert-background}
+    color: #{$alert-color}
+
+%table-question
+  %table-head-cells
+    background: #{$question-background}
+    color: #{$question-color}
+
+%table-warning
+  %table-head-cells
+    background: #{$warning-background}
+    color: #{$warning-color}
+
+%table-error
+  %table-head-cells
+    background: #{$error-background}
+    color: #{$error-color}
+
+@for $i from 1 through length($modifier-name)
+  %table-#{nth($modifier-name, $i)}
+    %table-head-cells
+      background: #{nth($modifier-code, $i)}
+      color: #{nth($modifier-text, $i)}
+
+%table-head-cell
+  font-weight: normal
+
+%table-body-th
+  font-size: 0.95em
+
+%table-foot-th
+  font-size: 0.85em
+
+%table-foot-cell
+  background: lighten(gray, 37.5%)
+  color: darken(gray, 15%)
+  font-size: 0.75em
+
+@if $table-tags
+  table
+    @extend %table
+    th, td
+      @extend %table-cells
+    td
+      @extend %table-cell
+    tr:nth-child(even)
+      th, td
+        @extend %even-cells
+    thead
+      tr
+        th
+          @extend %table-head-th
+        th, td
+          @extend %table-head-cells
+        td
+          @extend %table-head-cell
+    tbody
+      tr
+        th
+          @extend %table-body-th
+    tfoot
+      tr
+        th
+          @extend %table-foot-th
+        td
+          @extend %table-foot-cell
+    @if $table-classes
+      &.align-center
+        th, td
+          @extend %center-table
+      &.responsive
+        @extend %responsive-table
+      @for $i from 1 through length($modifier-name)
+        &.#{nth($modifier-name, $i)}
+          @extend %table-#{nth($modifier-name, $i)}
+      @for $i from 1 through length($tables-states)
+        &.#{nth($tables-states, $i)}
+          @extend %table-#{nth($tables-states, $i)}
+      // modifier colors
+      @for $i from 1 through length($modifier-name)
+        &.#{nth($modifier-name, $i)}
+          @extend %table-#{nth($modifier-name, $i)}

@@ -1,0 +1,240 @@
+// =============================================
+//                Navigation
+//          Last Updated:2013-8-21
+// =============================================
+
+$navigation-classes: true !default
+$navigation-states: "on" "active" !default
+$nav-color: lighten(gray, 32.5%) !default
+$nav-text: darken(gray, 15%) !default
+$nav-border-color: lighten(gray, 27.5%) !default
+$nav-active: lighten(gray, 27.5%) !default
+$nav-active-text: darken(gray, 12%) !default
+
+// shared defaults
+$aria-selectors: true !default
+$border-thickness: 1px !default
+$border-style: solid !default
+$border-color: #dddddd !default
+$default-radius: 4px !default
+
+%navigation
+  @extend %relative
+  +_clear
+  background: $nav-color
+  color: $nav-text
+  border: $border-thickness $border-style $nav-border-color
+  +rounded($default-radius)
+
+%navigation-list
+  @extend %unstyled, %zero, %clear
+
+%navigation-list-item
+  @extend %block, %relative, %pull-left
+
+%vertical-navigation-list-item
+  @extend %pull-none
+
+%navigation-link
+  @extend %inline-block, %align-center, %strong
+  background: $nav-color
+  color: $nav-text
+  cursor: pointer
+  padding: 0.25em 1em
+  text-decoration: none
+  cursor: pointer
+  line-height: 1.5
+  border: 0
+  border-top: $border-thickness $border-style $nav-border-color
+  +rounded(0)
+  &:hover, &:focus
+    @extend %navigation-link-active
+
+%vertical-navigation-link
+  display: block
+  width: 100%
+  text-align: left
+
+%hamburger-button
+  @extend %pull-right
+  display: none
+  background: none
+  color: $nav-active-text
+  border: 0
+  &:hover, &:focus
+    background: none !important
+
+%navigation-link-on, %navigation-link-active
+  background: $nav-active
+  color: $nav-active-text
+  text-decoration: none
+
+%navigation-link-disabled
+  +state(disabled, normal, desaturate($nav-color, 20%))
+
+%navigation-menu
+  display: none
+  position: absolute
+  z-index: 9
+  min-width: 100%
+  border: $border-thickness $border-style $nav-border-color
+  font-size: 0.9em
+  +rounded(0 0 $default-radius $default-radius)
+
+%vertical-navigation-menu
+  position: static
+  border: 0
+  +rounded(0 !important)
+
+@for $i from 1 through length($modifier-name)
+  %navigation-#{nth($modifier-name, $i)},
+  %navigation-menu-#{nth($modifier-name, $i)}
+    background-color: #{nth($modifier-code, $i)}
+    color: #{nth($modifier-text, $i)}
+    border-color: darken(nth($modifier-code, $i), 5%)
+  %navigation-link-#{nth($modifier-name, $i)}
+    background-color: #{nth($modifier-code, $i)}
+    color: #{nth($modifier-text, $i)}
+    border-color: darken(nth($modifier-code, $i), 5%)
+    &.active, &:hover, &:focus
+      background: darken(nth($modifier-code, $i), 5%)
+      border-color: darken(nth($modifier-code, $i), 10%)
+    &.disabled
+      +state(disabled, normal, desaturate(nth($modifier-code, $i), 20%))
+
+@if $navigation-classes
+  .no-js
+    .nav
+      ul
+        li
+          &:hover, &:focus
+            > ul
+              display: block
+  .nav
+    @extend %navigation
+    button.hamburger
+      @extend %hamburger-button
+    // modifier colors
+    @for $i from 1 through length($modifier-name)
+      &.#{nth($modifier-name, $i)}
+        @extend %navigation-#{nth($modifier-name, $i)}
+        button.hamburger
+          color: #{nth($modifier-text, $i)}
+        li[role="menu"]
+          ul
+            @extend %navigation-menu-#{nth($modifier-name, $i)}
+            a, button
+              @extend %navigation-link-#{nth($modifier-name, $i)}
+          &[aria-expanded="true"]
+            > a, > button
+              background: darken(nth($modifier-code, $i), 5%)
+              border-color: darken(nth($modifier-code, $i), 10%)
+              color: nth($modifier-text, $i)
+        a, button
+          @extend %navigation-link-#{nth($modifier-name, $i)}
+    &.vertical
+      > ul
+        > li:first-child
+          > a, > button
+            border-top-width: 0
+        > li
+          > a, > button
+            border-top-width: $border-thickness
+      li
+        li
+          a, button
+            text-indent: $gutter
+          li
+            a, button
+              text-indent: $gutter * 2
+        @extend %vertical-navigation-list-item
+        &[role="menu"]
+          > a, > button
+            &:after
+              content: $icon-caret-down
+          &[aria-pressed="true"]
+            > a, > button
+              &:after
+                content: $icon-caret-up
+        ul
+          @extend %vertical-navigation-menu
+        li
+          +rounded(0 0 0 0)
+          &:last-child
+            a, button
+              +rounded(0 0 0 0)
+          ul
+            li
+              &:first-child
+                a, button
+                  +rounded(0 0 0 0)
+      a, button:not(.hamburger)
+        @extend %vertical-navigation-link
+    ul
+      @extend %navigation-list
+    li
+      @extend %navigation-list-item
+      &[role="menu"]
+        > a, > button
+          &:after
+            @extend %pull-right
+            margin-left: 0.5em
+            content: $icon-caret-down
+            font-family: FontAwesome
+            font-weight: normal
+            font-style: normal
+            text-decoration: inherit
+            -webkit-font-smoothing: antialiased
+        &[aria-expanded="true"]
+          > a, > button
+            @extend %navigation-link-active
+      ul
+        @extend %navigation-menu
+        > li
+          &:first-child
+            > a, > button
+              border-top-width: 0
+        a, button
+          @extend %align-left
+          display: block
+          width: 100%
+      li
+        float: none
+        &:last-child
+          a, button
+            +rounded(0 0 $default-radius $default-radius)
+        &[role="menu"]
+          > a, > button
+            &:after
+              content: $icon-caret-right
+        ul
+          top: 0
+          left: 100%
+          min-width: none
+          font-size: 1em
+          +rounded(0 $default-radius $default-radius $default-radius)
+          li
+            &:first-child
+              a, button
+                +rounded(0 $default-radius 0 0)
+            &:last-child
+              a, button
+                +rounded(0 0 $default-radius $default-radius)
+    ul[aria-expanded="true"]
+      display: block
+    a, a:visited, button
+      @extend %navigation-link
+      @for $i from 1 through length($navigation-states)
+        &.#{nth($navigation-states, $i)}
+          @extend %navigation-link-#{nth($navigation-states, $i)}
+    > ul
+      > li
+        > a, > button
+          border-top-width: 0
+        &:first-child
+          > a, > button
+            border-top-width: 0
+
+@if $aria-selectors
+  [role~="navigation"]
+    @extend %navigation

@@ -1,0 +1,225 @@
+!!! 5
+| <!--[if lt IE 7]><html class="no-js ie ie6 lt-ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
+| <!--[if IE 7]>   <html class="no-js ie ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
+| <!--[if IE 8]>   <html class="no-js ie ie8 lt-ie9 lt-ie10"><![endif]-->
+| <!--[if IE 9]>   <html class="no-js ie ie9 lt-ie10"><![endif]-->
+| <!--[if gt IE 9]><html class="no-js ie ie10"><![endif]-->
+| <!--[if !IE]><!-->
+html.no-js
+  | <!--<![endif]-->
+
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name='viewport', content='width=device-width, initial-scale=1, minimum-scale=1')
+
+    block title
+
+    // Modernizr 
+    script(src='../js/libs/modernizr-2.6.2.min.js')
+
+    // jQuery
+    script(type='text/javascript', src='../js/libs/jquery-1.10.2.min.js')
+
+    // framework css 
+    | <!--[if gt IE 9]><!-->
+    link(type='text/css', rel='stylesheet', href='../css/groundwork.css')
+    | <!--<![endif]-->
+
+    //if lte IE 9
+      link(type='text/css', rel='stylesheet', href='../css/groundwork-core.css')
+      link(type='text/css', rel='stylesheet', href='../css/groundwork-type.css')
+      link(type='text/css', rel='stylesheet', href='../css/groundwork-ui.css')
+      link(type='text/css', rel='stylesheet', href='../css/groundwork-anim.css')
+      link(type='text/css', rel='stylesheet', href='../css/groundwork-ie.css')
+
+    style(type='text/css').
+      .logo {
+        position: relative;
+        top: -0.5em;
+      }
+      .logo a, .logo a:visited {
+        text-decoration: none;
+        color: #2B2B2D;
+      }
+      .logo img {
+        height: 2em;
+        position: relative;
+        top: 0.55em;
+        margin-right: 0.3em;
+      }
+
+    // snippet (syntax highlighting for code examples)
+    script(type='text/javascript', src='../js/demo/jquery.snippet.min.js')
+    link(type='text/css', rel='stylesheet', href='../css/demo/jquery.snippet.css')
+    :coffeescript
+      $(document).ready ->
+        $('pre[data-lang="html"]').snippet("html", {
+          style:"groundwork"
+          clipboard:"../js/demo/ZeroClipboard.swf"
+        })
+        $('pre[data-lang="css"]').snippet("css", {
+          style:"groundwork"
+          clipboard:"../js/demo/ZeroClipboard.swf"
+        })
+        $('pre[data-lang="sass"]').snippet("sass", {
+          style:"groundwork"
+          clipboard:"../js/demo/ZeroClipboard.swf"
+        })
+        $('pre[data-lang="js"]').snippet("javascript", {
+          style:"groundwork"
+          clipboard:"../js/demo/ZeroClipboard.swf"
+        })
+  body
+    header.padded
+      .container
+        .row
+          .one.half
+            h2.logo
+              a(href='/', target='_parent')
+                img(src='../images/groundwork-logo.svg', alt='GroundworkCSS')
+                | GroundworkCSS 2
+          .one.half
+            p.small.double-pad-top.no-pad-small-tablet.align-right.align-left-small-tablet
+              a(href='https://github.com/groundworkcss/groundwork', target="_parent") Github Project
+              |  - Version 2.5.0
+              br
+              | Created & Maintained by 
+              a(href='http://twitter.com/ghepting', target='_blank') Gary Hepting
+        nav.nav.gap-top(role='navigation')
+          ul(role='menubar')
+            li
+              a(href='./home.html')
+                i.icon-home
+                |  Home
+            li(role='menu')
+              button Example Layouts
+              ul
+                li
+                  a(href='./layout-a.html') Web Page
+                li
+                  a(href='./layout-b.html') Image Gallery
+                li
+                  a(href='./layout-c.html') Ecommerce Page
+                li
+                  a(href='./layout-d.html') Contact Page
+            li(role='menu')
+              button Documentation
+              ul
+                li
+                  a(href='./grid.html', title='Responsive grid system, grid adapters and helpers') Grid
+                li
+                  a(href='./helpers.html', title='Layout helpers, spinners and much more') Helpers
+                li
+                  a(href='./typography.html', title='Text elements, quotes, code and web fonts') Typography
+                li(role='menu')
+                  button(title='Navigation, buttons, boxes, message boxes, tables, tabs, and forms') UI Elements
+                  ul
+                    li
+                      a(href='./navigation.html', title='Navigation') Navigation
+                    li
+                      a(href='./buttons.html', title='Buttons, button groups, button menus') Buttons
+                    li
+                      a(href='./boxes.html', title='Boxes') Boxes
+                    li
+                      a(href='./messages.html', title='Message boxes') Message Boxes
+                    li
+                      a(href='./tables.html', title='Tables') Tables
+                    li
+                      a(href='./tabs.html', title='Tabs') Tabs
+                    li
+                      a(href='./forms.html', title='Form elements') Form Elements
+                li
+                  a(href='./icons.html', title="Icons") Icons
+                li
+                  a(href='./responsive-text.html', title='Responsive text and multi-line text block truncation') Responsive Text
+                li
+                  a(href='./placeholder-text.html', title='Placeholder text and placeholder fonts for rapid prototyping and wireframes') Placeholder Text
+                li
+                  a(href='./animations.html', title='Pure CSS3 Animations') Animations
+
+    block content
+
+    footer.gap-top.bounceInUp.animated
+      .box.square.charcoal
+        .container.padded
+          .row
+            .one.small-tablet.fourth.padded
+              h5.green Example Layouts
+              ul.unstyled
+                li
+                  a(href='./layout-a.html') Web Page
+                li
+                  a(href='./layout-b.html') Image Gallery
+                li
+                  a(href='./layout-c.html') Ecommerce Page
+                li
+                  a(href='./layout-d.html') Contact Page
+            .three.small-tablet.fourths.padded
+              h5.blue Documentation
+              ul.unstyled.three-column.two-column-mobile
+                li
+                  a(href='./grid.html', title='Responsive grid system, grid adapters and helpers') Grid
+                li
+                  a(href='./helpers.html', title='Layout helpers, spinners and much more') Helpers
+                li
+                  a(href='./typography.html', title='Text elements, quotes, code and web fonts') Typography
+                li
+                  a(href='./navigation.html', title='Navigation') Navigation
+                li
+                  a(href='./buttons.html', title='Buttons, button groups, button menus') Buttons
+                li
+                  a(href='./boxes.html', title='Boxes') Boxes
+                li
+                  a(href='./messages.html', title='Message boxes') Message Boxes
+                li
+                  a(href='./tables.html', title='Tables') Tables
+                li
+                  a(href='./tabs.html', title='Tabs') Tabs
+                li
+                  a(href='./forms.html', title='Form elements') Form Elements
+                li
+                  a(href='./icons.html', title="Icons") Icons
+                li
+                  a(href='./responsive-text.html', title='Responsive text and multi-line text block truncation') Responsive Text
+                li
+                  a(href='./placeholder-text.html', title='Placeholder text and placeholder fonts for rapid prototyping and wireframes') Placeholder Text
+                li
+                  a(href='./animations.html', title='Pure CSS3 Animations') Animations
+      .box.square
+        .container.padded
+          .row
+            .one.half.padded
+              p
+                | GroundworkCSS is 
+                b 100% free
+                |  and 
+                b open source
+                |. 
+                a(href='mailto:groundworkcss@gmail.com')
+                  | Give a shout out
+                |  if you have any feedback.
+              p
+                | Find a bug? Help squash it by 
+                a(href="https://github.com/groundworkcss/groundwork/issues", target="_blank")
+                  | filing an issue
+                |  on Github.
+            .one.half.padded
+              p.large.padded.align-right.align-center-small-tablet
+                a.large.inline.gapped(href="http://twitter.com/groundworkcss", target="_blank", title="@groundworkcss", style="text-decoration:none;")
+                a.large.inline.gapped(href="http://github.com/groundworkcss", target="_blank", title="@groundworkcss", style="text-decoration:none;")
+                a.large.inline.gapped(href="mailto:groundworkcss@gmail.com", title="groundworkcss@gmail.com", style="text-decoration:none;")
+
+    // javascript
+    script(type='text/javascript', src='../js/groundwork.all.js')
+
+    // google analytics
+    script(type='text/javascript').
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();

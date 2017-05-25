@@ -1,0 +1,115 @@
+extends template
+
+block title
+  title GroundworkCSS 2 &hearts; A Responsive HTML5, CSS & Javascript Framework
+
+block content
+  .container
+    .padded
+      .row
+        .three.fifths.bounceInRight.animated
+          h1.zero.museo-slab
+            | Responsive Design Made Easy
+          p.quicksand
+            | A responsive HTML5, CSS & Javascript framework created and maintained by 
+            a(href='http://twitter.com/ghepting', target='_blank') Gary Hepting
+          p.quicksand 
+        .two.fifths.align-right-ipad.align-right-desktop.flipInX.animated
+          p.quicksand Get Started
+          p
+            a.green.button(href='layout-a.html', rel='next')
+              | View Example Layouts 
+    hr
+    .row
+      .one.whole.padded.bounceInLeft.animated
+        h1.quicksand.responsive(data-compression='22.25', data-min='22')
+          | A Responsive HTML5, CSS
+          br
+          | and Javascript Framework
+        h4 Create scalable, accessible web applications that work on virtually anything.
+        .row.white.box
+          .three-up.two-up-small-tablet.padded
+            h4.zero
+              i.icon-th.icon-2x.gap-right
+              |  Grid System
+            p A highly configurable, nestable, fractions-based, responsive & adaptive, fluid grid layout system
+          .three-up.two-up-small-tablet.padded
+            h4.zero
+              i.icon-tablet.icon-2x.gap-right
+              |  Works Everywhere
+            p Works on virtually everything &mdash; mobile phones, tablets, notebooks, desktops, retina and big screens
+          .three-up.two-up-small-tablet.padded
+            h4.zero
+              i.icon-plus-sign-alt.icon-2x.gap-right
+              |  Highly Accessible
+            p
+              | Built with a focus on accessibility, supporting 
+              abbr(title='Accessible Rich Internet Applications') ARIA
+              |  state/role and semantic element selectors
+          .three-up.two-up-small-tablet.padded
+            h4.zero
+              i.icon-thumbs-up.icon-2x.gap-right
+              |  Semantic
+            p Supports semantic markup with 
+              abbr(title='Accessible Rich Internet Applications') ARIA
+              |  attribute selectors, using Sass' @extend, @mixins, %placeholders & more
+          .three-up.two-up-small-tablet.padded
+            h4.zero
+              i.icon-magic.icon-2x.gap-right
+              |  Built with Sass
+            p
+              | Built from the ground up with 
+              a(href='http://sass-lang.com/', target='_blank') Sass
+              | , the world's most powerful CSS preprocessor
+          .three-up.two-up-small-tablet.padded
+            h4.zero
+              i.icon-cogs.icon-2x.gap-right
+              |  Write Less, Do more
+            p
+              | Keep source code free of vendor prefixes. 
+              a(href='https://github.com/ai/autoprefixer', target='_blank') Autoprefixer
+              |  is a CSS postprocessor that keeps code future-friendly
+          .three-up.two-up-small-tablet.padded
+            h4.zero
+              i.icon-edit-sign.icon-2x.gap-right
+              |  Customizable
+            p Easy to customize, and add your own styles and bolt on additional functionality
+          .three-up.two-up-small-tablet.padded
+            h4.zero
+              i.icon-text-width.icon-2x.gap-right
+              |  Responsive Text
+            p Includes the tools you need to create responsive headings, responsive text blocks and responsive tables
+          .three-up.two-up-small-tablet.padded
+            h4.zero
+              i.icon-star.icon-2x.gap-right
+              |  Rapid Prototyping
+            p Rapid prototyping and wireframes with dynamic placeholder text, images and fonts
+    hr
+    .pad-top.pad-left.pad-right.bounceInRight.animated
+      h4.zero Example Layouts and Documentation
+      p Rapid prototypes and usage examples to get you started.
+    .row
+      .one.fourth.two-up-small-tablet.padded.bounceInDown.animated
+        a(href='./layout-a.html')
+          h5.asphalt.box.align-center
+            .gap-top.gap-bottom
+              img.round(src='../images/layout-a.png')
+              .small.turquoise.button Web Site Layout
+      .one.fourth.two-up-small-tablet.padded.bounceInLeft.animated
+        a(href='./layout-b.html')
+          h5.yellow.box.align-center
+            .gap-top.gap-bottom
+              img.round(src='../images/layout-b.png')
+              .small.orange.button Image Gallery
+      .one.fourth.two-up-small-tablet.padded.bounceInUp.animated
+        a(href='./layout-c.html')
+          h5.pink.box.align-center
+            .gap-top.gap-bottom
+              img.round(src='../images/layout-c.png')
+              .small.purple.button Ecommerce
+      .one.fourth.two-up-small-tablet.padded.bounceInRight.animated
+        a(href='./grid.html')
+          h5.green.box.align-center
+            .gap-top.gap-bottom
+              img.round(src='../images/example-usage.png')
+              .small.asphalt.button Usage Examples

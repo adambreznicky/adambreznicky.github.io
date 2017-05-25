@@ -1,0 +1,300 @@
+// =============================================
+//               Small Tablet
+//          Last Updated:2013-8-16
+// =============================================
+
+$responsive: true !default
+$navigation-classes: true !default
+$multi-column-classes: true !default
+$multi-column-names: "one-column" "two-column" "three-column" "four-column" "five-column" !default
+$inline-conditional-helpers: false !default
+
+=small-tablet
+  @if $responsive
+    @media #{$small-tablet}
+      // responsive grid
+      +grid-responsive
+      // conditional helpers
+      .desktop-only
+        display: none !important
+      .ipad-only
+        display: none !important
+      .small-tablet-only
+        display: block !important
+      .mobile-only
+        display: none !important
+      .hide-on-small-tablet
+        display: none !important
+      @if $inline-conditional-helpers
+        span.small-tablet-only
+          display: inline !important
+      .no-border-small-tablet
+        border: 0
+      @if $size-classes
+        .small-small-tablet
+          +_small
+        .medium-small-tablet
+          +_medium
+        .large-small-tablet
+          +_large
+      @if $spacer-classes
+        // spacer overrides
+        .zero-small-tablet
+          +helper_reset
+        .padded-small-tablet
+          +_padded
+        .pad-top-small-tablet
+          +_pad-top
+        .pad-right-small-tablet
+          +_pad-right
+        .pad-bottom-small-tablet
+          +_pad-bottom
+        .pad-left-small-tablet
+          +_pad-left
+        .no-padding-small-tablet,
+        .no-padded-small-tablet,
+        .no-pad-small-tablet
+          +helper_reset(padding, $spacers: padded pad-top pad-right pad-bottom pad-left)
+        .no-pad-top-small-tablet
+          +_pad-top(0)
+        .no-pad-right-small-tablet
+          +_pad-right(0)
+        .no-pad-bottom-small-tablet
+          +_pad-bottom(0)
+        .no-pad-left-small-tablet
+          +_pad-left(0)
+        .gapped-small-tablet
+          +_gapped
+        .gap-top-small-tablet
+          +_gap-top
+        .gap-right-small-tablet
+          +_gap-right
+        .gap-bottom-small-tablet
+          +_gap-bottom
+        .gap-left-small-tablet
+          +_gap-left
+        .no-margin-small-tablet,
+        .no-gapped-small-tablet,
+        .no-gap-small-tablet
+          +helper_reset(margin, $spacers: gapped gap-top gap-right gap-bottom gap-left)
+        .no-gap-top-small-tablet
+          +_gap-top(0)
+        .no-gap-right-small-tablet
+          +_gap-right(0)
+        .no-gap-bottom-small-tablet
+          +_gap-bottom(0)
+        .no-gap-left-small-tablet
+          +_gap-left(0)
+        .offset-small-tablet
+          +_offset
+        .offset-top-small-tablet
+          +_offset-top
+        .offset-right-small-tablet
+          +_offset-right
+        .offset-bottom-small-tablet
+          +_offset-bottom
+        .offset-left-small-tablet
+          +_offset-left
+        .no-offset-top-small-tablet
+          +_offset-top(0)
+        .no-offset-right-small-tablet
+          +_offset-right(0)
+        .no-offset-bottom-small-tablet
+          +_offset-bottom(0)
+        .no-offset-left-small-tablet
+          +_offset-left(0)
+      @if $spacer-mod-classes
+        .half-padded-small-tablet
+          +_padded(0.5)
+        .double-padded-small-tablet
+          +_padded(2)
+        .triple-padded-small-tablet
+          +_padded(3)
+        .half-pad-top-small-tablet
+          +_pad-top(0.5)
+        .double-pad-top-small-tablet
+          +_pad-top(2)
+        .triple-pad-top-small-tablet
+          +_pad-top(3)
+        .half-pad-right-small-tablet
+          +_pad-right(0.5)
+        .double-pad-right-small-tablet
+          +_pad-right(2)
+        .triple-pad-right-small-tablet
+          +_pad-right(3)
+        .half-pad-bottom-small-tablet
+          +_pad-bottom(0.5)
+        .double-pad-bottom-small-tablet
+          +_pad-bottom(2)
+        .triple-pad-bottom-small-tablet
+          +_pad-bottom(3)
+        .half-pad-left-small-tablet
+          +_pad-left(0.5)
+        .double-pad-left-small-tablet
+          +_pad-left(2)
+        .triple-pad-left-small-tablet
+          +_pad-left(3)
+        .half-gapped-small-tablet
+          +_gapped(0.5)
+        .double-gapped-small-tablet
+          +_gapped(2)
+        .triple-gapped-small-tablet
+          +_gapped(3)
+        .half-gap-top-small-tablet
+          +_gap-top(0.5)
+        .double-gap-top-small-tablet
+          +_gap-top(2)
+        .triple-gap-top-small-tablet
+          +_gap-top(3)
+        .half-gap-right-small-tablet
+          +_gap-right(0.5)
+        .double-gap-right-small-tablet
+          +_gap-right(2)
+        .triple-gap-right-small-tablet
+          +_gap-right(3)
+        .half-gap-bottom-small-tablet
+          +_gap-bottom(0.5)
+        .double-gap-bottom-small-tablet
+          +_gap-bottom(2)
+        .triple-gap-bottom-small-tablet
+          +_gap-bottom(3)
+        .half-gap-left-small-tablet
+          +_gap-left(0.5)
+        .double-gap-left-small-tablet
+          +_gap-left(2)
+        .triple-gap-left-small-tablet
+          +_gap-left(3)
+        .half-offset-small-tablet
+          +_offset(0.5)
+        .double-offset-small-tablet
+          +_offset(2)
+        .triple-offset-small-tablet
+          +_offset(3)
+        .half-offset-top-small-tablet
+          +_offset-top(0.5)
+        .double-offset-top-small-tablet
+          +_offset-top(2)
+        .triple-offset-top-small-tablet
+          +_offset-top(3)
+        .half-offset-right-small-tablet
+          +_offset-right(0.5)
+        .double-offset-right-small-tablet
+          +_offset-right(2)
+        .triple-offset-right-small-tablet
+          +_offset-right(3)
+        .half-offset-bottom-small-tablet
+          +_offset-bottom(0.5)
+        .double-offset-bottom-small-tablet
+          +_offset-bottom(2)
+        .triple-offset-bottom-small-tablet
+          +_offset-bottom(3)
+        .half-offset-left-small-tablet
+          +_offset-left(0.5)
+        .double-offset-left-small-tablet
+          +_offset-left(2)
+        .triple-offset-left-small-tablet
+          +_offset-left(3)
+      @if $positioning-classes
+        .fixed-small-tablet
+          +_fixed
+        .fixed-top-small-tablet
+          +_fixed(top)
+        .fixed-right-small-tablet
+          +_fixed(right)
+        .fixed-bottom-small-tablet
+          +_fixed(bottom)
+        .fixed-left-small-tablet
+          +_fixed(left)
+        .fixed-middle-small-tablet
+          +_fixed(middle)
+        .fixed-center-small-tablet
+          +_fixed(center)
+        .absolute-small-tablet
+          +_absolute
+        .absolute-top-small-tablet
+          +_absolute(top)
+        .absolute-right-small-tablet
+          +_absolute(right)
+        .absolute-bottom-small-tablet
+          +_absolute(bottom)
+        .absolute-left-small-tablet
+          +_absolute(left)
+        .absolute-middle-small-tablet
+          +_absolute(middle)
+        .absolute-center-small-tablet
+          +_absolute(center)
+        .static-small-tablet
+          +_static
+      @if $layout-classes
+        .inline-small-tablet
+          +_inline
+        .block-small-tablet
+          +_block
+        .clear-small-tablet
+          +_clear
+        .center-small-tablet
+          +_center
+        .pull-right-small-tablet
+          +_pull-right
+        .pull-left-small-tablet
+          +_pull-left
+        .pull-none-small-tablet
+          +_pull-none
+      @if $border-classes
+        .bordered-small-tablet
+          +_bordered
+        .border-top-small-tablet
+          +_border-top
+        .border-right-small-tablet
+          +_border-right
+        .border-bottom-small-tablet
+          +_border-bottom
+        .border-left-small-tablet
+          +_border-left
+      @if $typography-helpers
+        .align-top-small-tablet
+          +_align-top
+        .align-right-small-tablet
+          +_align-right
+        .align-bottom-small-tablet
+          +_align-bottom
+        .align-left-small-tablet
+          +_align-left
+        .align-center-small-tablet
+          +_align-center
+        .justify-small-tablet
+          +_justify
+        .truncate-small-tablet
+          +_truncate
+      @if $rotation-classes
+        .rotate-90-small-tablet
+          +_rotate-90
+        .rotate-90-ctr-small-tablet
+          +_rotate-90-ctr
+        .rotate-180-small-tablet
+          +_rotate-180
+        .rotate-180-ctr-small-tablet
+          +_rotate-180-ctr
+        .rotate-270-small-tablet
+          +_rotate-270
+        .rotate-270-ctr-small-tablet
+          +_rotate-270-ctr
+        .rotate-360-small-tablet
+          +_rotate-360
+        .rotate-360-ctr-small-tablet
+          +_rotate-360-ctr
+      @if $multi-column-classes
+        @for $i from 1 through length($multi-column-names)
+          .#{nth($multi-column-names, $i)}-small-tablet, .#{nth($multi-column-names, $i)}s-small-tablet
+            +_multi-column($i)
+      @content
+
+///////////////////////
+//    small tablet   //
+///////////////////////
+
+@if $responsive
+  +small-tablet
+    // do not remove -- required for small-tablet helpers
+    @if $navigation-classes
+      +hamburger-mode(":not(.mobile)")

@@ -1,0 +1,110 @@
+// =============================================
+//              Spin Animations
+//          Last Updated:2013-8-9
+// =============================================
+
+$spin-animations: true !default
+
+$spin-helpers: "spin" "spin-once" "spin-twice" "spin-thrice" "spin-fast" "spin-fast-once" "spin-fast-twice" "spin-fast-thrice" "spin-slow" "spin-slow-once" "spin-slow-twice" "spin-slow-thrice" !default
+
+=animation($animation: spin, $count: infinite, $speed: 2s, $easing: linear)
+  animation: $animation $speed $easing
+  animation-iteration-count: $count
+
+=spin($count: infinite, $speed: 2s)
+  +animation(spin, $count, $speed)
+
+=_spin
+  +_inline
+  +spin
+
+=_spin-once
+  +_inline
+  +spin(1)
+
+=_spin-twice
+  +_inline
+  +spin(2)
+
+=_spin-thrice
+  +_inline
+  +spin(3)
+
+=_spin-fast
+  +_inline
+  +spin(infinite, 1s)
+
+=_spin-fast-once
+  +_inline
+  +spin(1, 1s)
+
+=_spin-fast-twice
+  +_inline
+  +spin(2, 1s)
+
+=_spin-fast-thrice
+  +_inline
+  +spin(3, 1s)
+
+=_spin-slow
+  +_inline
+  +spin(infinite, 5s)
+
+=_spin-slow-once
+  +_inline
+  +spin(1, 5s)
+
+=_spin-slow-twice
+  +_inline
+  +spin(2, 5s)
+
+=_spin-slow-thrice
+  +_inline
+  +spin(3, 5s)
+
+%spin
+  +_spin
+
+%spin-once
+  +_spin-once
+
+%spin-twice
+  +_spin-twice
+
+%spin-thrice
+  +_spin-thrice
+
+%spin-fast
+  +_spin-fast
+
+%spin-fast-once
+  +_spin-fast-once
+
+%spin-fast-twice
+  +_spin-fast-twice
+
+%spin-fast-thrice
+  +_spin-fast-thrice
+
+%spin-slow
+  +_spin-slow
+
+%spin-slow-once
+  +_spin-slow-once
+
+%spin-slow-twice
+  +_spin-slow-twice
+
+%spin-slow-thrice
+  +_spin-slow-thrice
+
+@if $spin-animations
+  @keyframes spin
+    0%
+      transform: rotate(0deg)
+    100%
+      transform: rotate(359deg)
+
+  @for $i from 1 through length($spin-helpers)
+    .#{nth($spin-helpers, $i)}
+      @extend %#{nth($spin-helpers, $i)}

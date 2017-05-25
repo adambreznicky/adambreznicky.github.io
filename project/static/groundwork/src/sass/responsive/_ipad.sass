@@ -1,0 +1,298 @@
+// =============================================
+//                   iPad
+//          Last Updated:2013-8-16
+// =============================================
+
+$responsive: true !default
+$navigation-classes: true !default
+$multi-column-classes: true !default
+$multi-column-names: "one-column" "two-column" "three-column" "four-column" "five-column" !default
+$inline-conditional-helpers: false !default
+
+=ipad
+  @if $responsive
+    @media #{$ipad}
+      // conditional helpers
+      .desktop-only
+        display: none !important
+      .ipad-only
+        display: block !important
+      .small-tablet-only
+        display: none !important
+      .mobile-only
+        display: none !important
+      .hide-on-ipad
+        display: none !important
+      @if $inline-conditional-helpers
+        span.ipad-only
+          display: inline !important
+      .no-border-ipad
+        border: 0
+      @if $size-classes
+        .small-ipad
+          +_small
+        .medium-ipad
+          +_medium
+        .large-ipad
+          +_large
+      @if $spacer-classes
+        // spacer overrides
+        .zero-ipad
+          +helper_reset
+        .padded-ipad
+          +_padded
+        .pad-top-ipad
+          +_pad-top
+        .pad-right-ipad
+          +_pad-right
+        .pad-bottom-ipad
+          +_pad-bottom
+        .pad-left-ipad
+          +_pad-left
+        .no-padding-ipad,
+        .no-padded-ipad,
+        .no-pad-ipad
+          +helper_reset(padding, $spacers: padded pad-top pad-right pad-bottom pad-left)
+        .no-pad-top-ipad
+          +_pad-top(0)
+        .no-pad-right-ipad
+          +_pad-right(0)
+        .no-pad-bottom-ipad
+          +_pad-bottom(0)
+        .no-pad-left-ipad
+          +_pad-left(0)
+        .gapped-ipad
+          +_gapped
+        .gap-top-ipad
+          +_gap-top
+        .gap-right-ipad
+          +_gap-right
+        .gap-bottom-ipad
+          +_gap-bottom
+        .gap-left-ipad
+          +_gap-left
+        .no-margin-ipad,
+        .no-gapped-ipad,
+        .no-gap-ipad
+          +helper_reset(margin, $spacers: gapped gap-top gap-right gap-bottom gap-left)
+        .no-gap-top-ipad
+          +_gap-top(0)
+        .no-gap-right-ipad
+          +_gap-right(0)
+        .no-gap-bottom-ipad
+          +_gap-bottom(0)
+        .no-gap-left-ipad
+          +_gap-left(0)
+        .offset-ipad
+          +_offset
+        .offset-top-ipad
+          +_offset-top
+        .offset-right-ipad
+          +_offset-right
+        .offset-bottom-ipad
+          +_offset-bottom
+        .offset-left-ipad
+          +_offset-left
+        .no-offset-top-ipad
+          +_offset-top(0)
+        .no-offset-right-ipad
+          +_offset-right(0)
+        .no-offset-bottom-ipad
+          +_offset-bottom(0)
+        .no-offset-left-ipad
+          +_offset-left(0)
+      @if $spacer-mod-classes
+        .half-padded-ipad
+          +_padded(0.5)
+        .double-padded-ipad
+          +_padded(2)
+        .triple-padded-ipad
+          +_padded(3)
+        .half-pad-top-ipad
+          +_pad-top(0.5)
+        .double-pad-top-ipad
+          +_pad-top(2)
+        .triple-pad-top-ipad
+          +_pad-top(3)
+        .half-pad-right-ipad
+          +_pad-right(0.5)
+        .double-pad-right-ipad
+          +_pad-right(2)
+        .triple-pad-right-ipad
+          +_pad-right(3)
+        .half-pad-bottom-ipad
+          +_pad-bottom(0.5)
+        .double-pad-bottom-ipad
+          +_pad-bottom(2)
+        .triple-pad-bottom-ipad
+          +_pad-bottom(3)
+        .half-pad-left-ipad
+          +_pad-left(0.5)
+        .double-pad-left-ipad
+          +_pad-left(2)
+        .triple-pad-left-ipad
+          +_pad-left(3)
+        .half-gapped-ipad
+          +_gapped(0.5)
+        .double-gapped-ipad
+          +_gapped(2)
+        .triple-gapped-ipad
+          +_gapped(3)
+        .half-gap-top-ipad
+          +_gap-top(0.5)
+        .double-gap-top-ipad
+          +_gap-top(2)
+        .triple-gap-top-ipad
+          +_gap-top(3)
+        .half-gap-right-ipad
+          +_gap-right(0.5)
+        .double-gap-right-ipad
+          +_gap-right(2)
+        .triple-gap-right-ipad
+          +_gap-right(3)
+        .half-gap-bottom-ipad
+          +_gap-bottom(0.5)
+        .double-gap-bottom-ipad
+          +_gap-bottom(2)
+        .triple-gap-bottom-ipad
+          +_gap-bottom(3)
+        .half-gap-left-ipad
+          +_gap-left(0.5)
+        .double-gap-left-ipad
+          +_gap-left(2)
+        .triple-gap-left-ipad
+          +_gap-left(3)
+        .half-offset-ipad
+          +_offset(0.5)
+        .double-offset-ipad
+          +_offset(2)
+        .triple-offset-ipad
+          +_offset(3)
+        .half-offset-top-ipad
+          +_offset-top(0.5)
+        .double-offset-top-ipad
+          +_offset-top(2)
+        .triple-offset-top-ipad
+          +_offset-top(3)
+        .half-offset-right-ipad
+          +_offset-right(0.5)
+        .double-offset-right-ipad
+          +_offset-right(2)
+        .triple-offset-right-ipad
+          +_offset-right(3)
+        .half-offset-bottom-ipad
+          +_offset-bottom(0.5)
+        .double-offset-bottom-ipad
+          +_offset-bottom(2)
+        .triple-offset-bottom-ipad
+          +_offset-bottom(3)
+        .half-offset-left-ipad
+          +_offset-left(0.5)
+        .double-offset-left-ipad
+          +_offset-left(2)
+        .triple-offset-left-ipad
+          +_offset-left(3)
+      @if $positioning-classes
+        .fixed-ipad
+          +_fixed
+        .fixed-top-ipad
+          +_fixed(top)
+        .fixed-right-ipad
+          +_fixed(right)
+        .fixed-bottom-ipad
+          +_fixed(bottom)
+        .fixed-left-ipad
+          +_fixed(left)
+        .fixed-middle-ipad
+          +_fixed(middle)
+        .fixed-center-ipad
+          +_fixed(center)
+        .absolute-ipad
+          +_absolute
+        .absolute-top-ipad
+          +_absolute(top)
+        .absolute-right-ipad
+          +_absolute(right)
+        .absolute-bottom-ipad
+          +_absolute(bottom)
+        .absolute-left-ipad
+          +_absolute(left)
+        .absolute-middle-ipad
+          +_absolute(middle)
+        .absolute-center-ipad
+          +_absolute(center)
+        .static-ipad
+          +_static
+      @if $layout-classes
+        .inline-ipad
+          +_inline
+        .block-ipad
+          +_block
+        .clear-ipad
+          +_clear
+        .center-ipad
+          +_center
+        .pull-right-ipad
+          +_pull-right
+        .pull-left-ipad
+          +_pull-left
+        .pull-none-ipad
+          +_pull-none
+      @if $border-classes
+        .bordered-ipad
+          +_bordered
+        .border-top-ipad
+          +_border-top
+        .border-right-ipad
+          +_border-right
+        .border-bottom-ipad
+          +_border-bottom
+        .border-left-ipad
+          +_border-left
+      @if $typography-helpers
+        .align-top-ipad
+          +_align-top
+        .align-right-ipad
+          +_align-right
+        .align-bottom-ipad
+          +_align-bottom
+        .align-left-ipad
+          +_align-left
+        .align-center-ipad
+          +_align-center
+        .justify-ipad
+          +_justify
+        .truncate-ipad
+          +_truncate
+      @if $rotation-classes
+        .rotate-90-ipad
+          +_rotate-90
+        .rotate-90-ctr-ipad
+          +_rotate-90-ctr
+        .rotate-180-ipad
+          +_rotate-180
+        .rotate-180-ctr-ipad
+          +_rotate-180-ctr
+        .rotate-270-ipad
+          +_rotate-270
+        .rotate-270-ctr-ipad
+          +_rotate-270-ctr
+        .rotate-360-ipad
+          +_rotate-360
+        .rotate-360-ipad
+          +_rotate-360-ctr
+      @if $multi-column-classes
+        @for $i from 1 through length($multi-column-names)
+          .#{nth($multi-column-names, $i)}-ipad, .#{nth($multi-column-names, $i)}s-ipad
+            +_multi-column($i)
+      @content
+
+///////////////////////
+//       ipad        //
+///////////////////////
+
+@if $responsive
+  +ipad
+    // do not remove -- required for ipad helpers
+    @if $navigation-classes
+      +hamburger-mode(":not(.small-tablet):not(.mobile)")

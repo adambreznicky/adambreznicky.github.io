@@ -1,0 +1,146 @@
+extends template
+
+block title
+  title GroundworkCSS &hearts; Breakpoints
+
+block content
+  .container
+    .padded
+      .row
+        .three.fifths.bounceInRight.animated
+          h1.zero.museo-slab Targeted Breakpoints
+          p.quicksand
+            | Logical 
+            a(href='media-queries.html') media queries
+            |  targeting browsers that meet the declared conditions
+        .two.fifths.align-right-ipad.align-right-desktop.flipInX.animated
+          p.quicksand Documentation: Breakpoints
+          p
+            a.green.button(href='media-queries.html', rel='next')
+              | Also See: Media Queries
+    hr
+    .row
+      .one.whole.padded
+        .bounceInLeft.animated
+          h4 Logically Named Breakpoints
+          .row
+            .one.half.padded
+              dl
+                dt Small Mobiles
+                dd Designed to target mobile devices with viewport sizes smaller than an iPhone.
+              pre(data-lang='css')
+                | $small-mobile: "(max-width: 319px)";
+            .one.half.padded
+              dl
+                dt iPhone (up to 4S)
+                dd Designed to target mobile devices with viewport sizes up to the iPhone 4/4S.
+              pre(data-lang='css')
+                | $iphone: "(min-device-width: 320px) and (max-device-width: 480px)";
+          br
+          .row
+            .one.half.padded
+              dl
+                dt iPhone (up to 5)
+                dd Designed to target mobile devies with viewport sizes up to the iPhones 5.
+              pre(data-lang='css')
+                | $iphone5: "(min-device-width: 320px) and (max-device-width: 568px)";
+            .one.half.padded
+              dl
+                dt Mobile
+                dd Designed to target mobile devices with viewport sizes similar to the larger Androids.
+              pre(data-lang='css')
+                | $mobile: "(max-width: 480px)";
+          br
+          .row
+            .one.half.padded
+              dl
+                dt Not Mobile
+                dd
+                  | Designed to target devices with viewport sizes greater than those within the 
+                  em "mobile"
+                  |  category.
+              pre(data-lang='css')
+                | $not-mobile: "(min-width: 481px)";
+            .one.half.padded
+              dl
+                dt Small Tablet
+                dd Designed to target devices with viewport sizes smaller than an iPad.
+              pre(data-lang='css')
+                | $small-tablet: "(max-width: 767px)";
+          br
+          .row
+            .one.half.padded
+              dl
+                dt Tablet
+                dd Designed to target devices with viewport sizes similar to or greater than an iPad.
+              pre(data-lang='css')
+                | $tablet: "(min-width: 768px)";
+            .one.half.padded
+              dl
+                dt iPad (including iPad Mini)
+                dd Designed to target devices with viewport sizes similar to an iPad.
+              pre(data-lang='css')
+                | $ipad: "(min-width: 768px) and (max-width:1024px)";
+          br
+          .row
+            .one.half.padded
+              dl
+                dt iPad (Retina only)
+                dd Designed to target devices with viewport sizes similar to an iPad, and with retina display.
+              pre(data-lang='css')
+                | $retina-ipad: "(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2)";
+            .one.half.padded
+              dl
+                dt Not Desktop
+                dd Designed to target devices with viewport sizes up to, but not greater than an iPad.
+              pre(data-lang='css')
+                | $not-desktop: "(max-width: 1024px)";
+          br
+          .row
+            .one.half.padded
+              dl
+                dt Desktop
+                dd Designed to target devices with viewport sizes greater than an iPad.
+              pre(data-lang='css')
+                | $desktop: "(min-width: 1025px)";
+            .one.half.padded
+              dl
+                dt Retina
+                dd Designed to target devices of any size with retina display.
+              pre(data-lang='css')
+                | $retina: "(-webkit-min-device-pixel-ratio: 1.5)";
+          br
+          hr
+          br
+          h4 Example Usage (Sass)
+          pre(data-lang='css')
+            | .custom_thing
+            |   font-size: 1em
+            |   color: green
+            |   @media \#{$mobile}
+            |     font-size: 2em
+            |     color: blue
+          br
+          h4 Result (CSS)
+          pre(data-lang='css')
+            | .custom_thing {
+            |   font-size: 1em;
+            |   color: green;
+            | }
+            | @media (max-width: 480px) {
+            |   .custom_thing {
+            |     font-size: 2em;
+            |     color: blue;
+            |   }
+            | }
+          br
+          hr
+          br
+        .bounceInUp.animated
+          h4 Media Queries
+          p
+            a(href='media-queries.html') Media queries
+            |  using these named breakpoints are what make Groundwork responsive &mdash; along with some help from Javascript when it's needed for additional functionality.
+          p
+            a.green.button(href='media-queries.html', rel='next')
+              | Read More

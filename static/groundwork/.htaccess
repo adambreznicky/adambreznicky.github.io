@@ -1,0 +1,7 @@
+# support boxsizing.htc polyfill
+AddType text/x-component .htc
+
+Options +FollowSymlinks
+RewriteEngine on
+RewriteRule ^pages/(.*) docs/$1
+

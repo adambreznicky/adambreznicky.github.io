@@ -1,0 +1,87 @@
+extends template
+
+block title
+  title GroundworkCSS &hearts;
+
+block content
+  .container
+    .padded
+      .row
+        .three.fifths.bounceInRight.animated
+          h1.zero.museo-slab Contact Page Example Layout
+          p.quicksand Demonstrates Typography, Form Elements, Buttons, Grid Breakpoint Modifiers and Adapters
+        .two.fifths.align-right-ipad.align-right-desktop.flipInX.animated
+          p.quicksand Example Layout 2 of 4
+          p
+            a.blue.button(href='home.html', rel='prev')
+              | Back
+            | 
+            a.green.button(href='grid.html', rel='next')
+              | Next: Grid System
+    hr
+    article.row
+      section.two.small-tablet.thirds.padded.bounceInDown.animated
+        h1 Contact Us
+        p We love to hear from you and welcome your feedback. Use the form below to send us an email:
+        form
+          fieldset
+            legend Contact Form
+            .row
+              .one.small-tablet.fourth.padded.no-pad-bottom-mobile
+                label(for='name') Your Name
+              .three.small-tablet.fourths.padded.no-pad-top-mobile
+                input(id='name', name='name', type='text', placeholder='Your Name')
+            .row
+              .one.small-tablet.fourth.padded.no-pad-bottom-mobile
+                label(for='email') Your Email
+              .three.small-tablet.fourths.padded.no-pad-top-mobile
+                input(id='email', name='email', type='text', placeholder='you@example.com')
+            .row
+              .one.whole.pad-left.pad-right.pad-top
+                label(for='message') Your Message
+            .row
+              .one.whole.pad-left.pad-right.pad-bottom
+                textarea(id='message', name='message', placeholder='Write us a message here...')
+            .row
+              .one.whole.padded.align-right
+                button.asphalt(type='submit') Send Message
+
+      aside.one.small-tablet.third.padded.border-left.no-border-mobile.bounceInRight.animated
+        h3 Our Location
+        h5
+          address
+            | 12345 Some Street
+            br
+            | San Francisco, CA 94018
+        p.double-gap-bottom
+          a.green.noicon(href='https://maps.google.com/maps?f=d&source=s_q&hl=en&geocode=%3BCWTrT4dujQbzFYZxQAIdei-0-Cl7MGKmg4CFgDFQ-cEtDAGZ_Q&q=SOMA+san+francisco&aq=&sll=37.77493,-122.419416&sspn=0.292536,0.657463&t=h&ie=UTF8&hq=&hnear=South+of+Market,+San+Francisco,+California&z=14&vpsrc=0&iwloc=A&daddr=South+of+Market,+San+Francisco,+CA', role='button', target='_blank')
+            i.icon-map-marker.gap-right
+            | Get Directions
+        iframe(width="100%", height="350", frameborder="0", scrolling="no", marginheight="0", marginwidth="0", src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=SOMA+san+francisco&amp;aq=&amp;sll=37.77493,-122.419416&amp;sspn=0.292536,0.657463&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=South+of+Market,+San+Francisco,+California&amp;z=14&amp;ll=37.777798,-122.409094&amp;output=embed")
+    hr.gapped.hide-on-mobile
+    article.row
+      section.one.small-tablet.third.pad-left.pad-right.pad-top.bounceInLeft.animated
+        h3.zero User Forums
+        p Browse the user forums
+        p.mobile-only
+          a.blue(href='#', role='button') Visit Forums
+      section.one.small-tablet.third.pad-left.pad-right.pad-top.bounceInUp.animated
+        h3.zero FAQs
+        p Browse the frequently asked questions
+        p.mobile-only
+          a.pink(href='#', role='button') View FAQs
+      section.one.small-tablet.third.pad-left.pad-right.pad-top.bounceInRight.animated
+        h3.zero Get Support
+        p Live chat with support 24 hours a day, 7 days a week
+        p.mobile-only
+          a.yellow(href='#', role='button') Live Chat
+    article.row.hide-on-mobile
+      section.one.small-tablet.third.pad-left.pad-right.pad-bottom.bounceInLeft.animated
+        p
+          img(src='http://placehold.it/380x200/3498db/ffffff')
+      section.one.small-tablet.third.pad-left.pad-right.pad-bottom.bounceInUp.animated
+        p
+          img(src='http://placehold.it/380x200/f02475/ffffff')
+      section.one.small-tablet.third.pad-left.pad-right.pad-bottom.bounceInUp.animated
+        p
+          img(src='http://placehold.it/380x200/f1c40f/ffffff')

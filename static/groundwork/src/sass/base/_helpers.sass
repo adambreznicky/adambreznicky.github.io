@@ -1,0 +1,697 @@
+// =============================================
+//              Layout Helpers
+//          Last Updated:2013-8-16
+// =============================================
+
+$positioning-classes: true !default
+
+$spacer-classes: true !default
+
+$spacer-helpers: "padded" "pad-top" "pad-right" "pad-bottom" "pad-left" "gapped" "gap-top" "gap-right" "gap-bottom" "gap-left" "offset" "offset-top" "offset-right" "offset-bottom" "offset-left" !default
+
+$spacer-mod-classes: true !default
+$spacer-modifiers: "half" "double" "triple" !default
+
+$size-classes: true !default
+$size-helpers: "small" "medium" "large" !default
+
+$layout-classes: true !default
+
+$layout-helpers: "inline" "inline-block" "block" "hidden" "zero" "pull-right" "pull-left" "pull-none" "clear" "center" !default
+
+$typography-classes: true !default
+
+$typography-helpers: "align-top" "align-right" "align-bottom" "align-left" "align-center" "justify" "truncate" "unstyled" !default
+
+$border-classes: true !default
+$border-helpers: "bordered" "border-right" "border-left" "border-top" "border-bottom" !default
+
+$radius-classes: true !default
+$radius-helpers: "square" "round" !default
+
+$rotation-classes: true !default
+$rotation-helpers: "rotate-90" "rotate-90-ctr" "rotate-180" "rotate-180-ctr" "rotate-270" "rotate-270-ctr" "rotate-360" "rotate-360-ctr" !default
+
+$transition-classes: true !default
+$gutter: 10px !default
+
+///////////////////////
+//       mixins      //
+///////////////////////
+
+=_clear
+  clear: both
+  &:after
+    content: " "
+    display: block
+    height: 0
+    font-size: 0
+    clear: both
+    visibility: hidden
+
+=_clearfix
+  +_clear
+
+// alias
+
+=_padded($multiple: 1)
+  padding: $gutter * $multiple
+
+=_pad-top($multiple: 1)
+  padding-top: $gutter * $multiple
+
+=_pad-right($multiple: 1)
+  padding-right: $gutter * $multiple
+
+=_pad-bottom($multiple: 1)
+  padding-bottom: $gutter * $multiple
+
+=_pad-left($multiple: 1)
+  padding-left: $gutter * $multiple
+
+=_gapped($multiple: 1)
+  margin: $gutter * $multiple
+
+=_gap-top($multiple: 1)
+  margin-top: $gutter * $multiple
+
+=_gap-right($multiple: 1)
+  margin-right: $gutter * $multiple
+
+=_gap-bottom($multiple: 1)
+  margin-bottom: $gutter * $multiple
+
+=_gap-left($multiple: 1)
+  margin-left: $gutter * $multiple
+
+=_offset($multiple: 1)
+  margin: -$gutter * $multiple
+
+=_offset-top($multiple: 1)
+  margin-top: -$gutter * $multiple
+
+=_offset-right($multiple: 1)
+  margin-right: -$gutter * $multiple
+
+=_offset-bottom($multiple: 1)
+  margin-bottom: -$gutter * $multiple
+
+=_offset-left($multiple: 1)
+  margin-left: -$gutter * $multiple
+
+=_fixed($position: null)
+  position: fixed
+  @each $anchor in top, right, bottom, left
+    @if $position == $anchor
+      #{$position}: 0
+  @if $position == middle
+    top: 50%
+  @if $position == center
+    left: 50%
+
+=_absolute($position: null)
+  position: absolute
+  @each $anchor in top, right, bottom, left
+    @if $position == $anchor
+      #{$position}: 0
+  @if $position == middle
+    top: 50%
+  @if $position == center
+    left: 50%
+
+=_relative
+  position: relative
+
+=_static
+  position: static
+
+=_inline
+  display: inline
+
+=_inline-block
+  display: inline-block
+  width: auto
+
+=_block
+  display: block
+
+=_hidden
+  display: none !important
+
+=_small
+  font-size: 0.8em
+
+=_medium
+  font-size: 1em
+
+=_large
+  font-size: 1.5em
+
+=_italic
+  font-style: italic
+
+=_bold
+  font-weight: 900
+
+=_zero
+  margin: 0
+  padding: 0
+
+=_pull-right
+  float: right
+
+=_pull-left
+  float: left
+
+=_pull-none
+  float: none
+
+=_bordered
+  border: 1px solid $border-color
+
+=_border-top
+  border-top: 1px solid $border-color
+
+=_border-right
+  border-right: 1px solid $border-color
+
+=_border-bottom
+  border-bottom: 1px solid $border-color
+
+=_border-left
+  border-left: 1px solid $border-color
+
+=_align-top
+  display: table-cell
+  vertical-align: top
+
+// must have height (experimental)
+=_align-right
+  text-align: right
+
+=_align-bottom
+  display: table-cell
+  vertical-align: bottom
+
+// must have height (experimental)
+=_align-left
+  text-align: left
+
+=_align-center
+  text-align: center
+
+=_justify
+  text-align: justify
+
+=_unstyled
+  margin: 0
+  padding: 0
+  list-style: none
+
+=_truncate
+  overflow: hidden
+  white-space: nowrap
+  text-overflow: ellipsis
+
+=_center
+  +_block
+  margin: 0 auto
+
+=_square
+  +border-radius(0)
+
+=_round
+  +rounded(9999em)
+
+=_rotate-90
+  +_inline-block
+  +rotate(90deg)
+
+=_rotate-180
+  +_inline-block
+  +rotate(180deg)
+
+=_rotate-270
+  +_inline-block
+  +rotate(270deg)
+
+=_rotate-360
+  +_inline-block
+  +rotate(360deg)
+
+=_rotate-90-ctr
+  +_inline-block
+  +rotate(-90deg)
+
+=_rotate-180-ctr
+  +_inline-block
+  +rotate(-180deg)
+
+=_rotate-270-ctr
+  +_inline-block
+  +rotate(-270deg)
+
+=_rotate-360-ctr
+  +_inline-block
+  +rotate(-360deg)
+
+///////////////////////
+//    placeholders   //
+///////////////////////
+
+%clear, %clearfix
+  clear: both
+  &:after
+    content: " "
+    display: block
+    height: 0
+    font-size: 0
+    clear: both
+    visibility: hidden
+
+%padded
+  +_padded
+
+%half-padded
+  +_padded(0.5)
+
+%double-padded
+  +_padded(2)
+
+%triple-padded
+  +_padded(3)
+
+%pad-top
+  +_pad-top
+
+%half-pad-top
+  +_pad-top(0.5)
+
+%double-pad-top
+  +_pad-top(2)
+
+%triple-pad-top
+  +_pad-top(3)
+
+%pad-right
+  +_pad-right
+
+%half-pad-right
+  +_pad-right(0.5)
+
+%double-pad-right
+  +_pad-right(2)
+
+%triple-pad-right
+  +_pad-right(3)
+
+%pad-bottom
+  +_pad-bottom
+
+%half-pad-bottom
+  +_pad-bottom(0.5)
+
+%double-pad-bottom
+  +_pad-bottom(2)
+
+%triple-pad-bottom
+  +_pad-bottom(3)
+
+%pad-left
+  +_pad-left
+
+%half-pad-left
+  +_pad-left(0.5)
+
+%double-pad-left
+  +_pad-left(2)
+
+%triple-pad-left
+  +_pad-left(3)
+
+%gapped
+  +_gapped
+
+%half-gapped
+  +_gapped(0.5)
+
+%double-gapped
+  +_gapped(2)
+
+%triple-gapped
+  +_gapped(3)
+
+%gap-top
+  +_gap-top
+
+%half-gap-top
+  +_gap-top(0.5)
+
+%double-gap-top
+  +_gap-top(2)
+
+%triple-gap-top
+  +_gap-top(3)
+
+%gap-right
+  +_gap-right
+
+%half-gap-right
+  +_gap-right(0.5)
+
+%double-gap-right
+  +_gap-right(2)
+
+%triple-gap-right
+  +_gap-right(3)
+
+%gap-bottom
+  +_gap-bottom
+
+%half-gap-bottom
+  +_gap-bottom(0.5)
+
+%double-gap-bottom
+  +_gap-bottom(2)
+
+%triple-gap-bottom
+  +_gap-bottom(3)
+
+%gap-left
+  +_gap-left
+
+%half-gap-left
+  +_gap-left(0.5)
+
+%double-gap-left
+  +_gap-left(2)
+
+%triple-gap-left
+  +_gap-left(3)
+
+%offset
+  +_offset
+
+%half-offset
+  +_offset(0.5)
+
+%double-offset
+  +_offset(2)
+
+%triple-offset
+  +_offset(3)
+
+%offset-top
+  +_offset-top
+
+%half-offset-top
+  +_offset-top(0.5)
+
+%double-offset-top
+  +_offset-top(2)
+
+%triple-offset-top
+  +_offset-top(3)
+
+%offset-right
+  +_offset-right
+
+%half-offset-right
+  +_offset-right(0.5)
+
+%double-offset-right
+  +_offset-right(2)
+
+%triple-offset-right
+  +_offset-right(3)
+
+%offset-bottom
+  +_offset-bottom
+
+%half-offset-bottom
+  +_offset-bottom(0.5)
+
+%double-offset-bottom
+  +_offset-bottom(2)
+
+%triple-offset-bottom
+  +_offset-bottom(3)
+
+%offset-left
+  +_offset-left
+
+%half-offset-left
+  +_offset-left(0.5)
+
+%double-offset-left
+  +_offset-left(2)
+
+%triple-offset-left
+  +_offset-left(3)
+
+%fixed
+  +_fixed
+
+%fixed-top
+  +_fixed(top)
+
+%fixed-right
+  +_fixed(right)
+
+%fixed-bottom
+  +_fixed(bottom)
+
+%fixed-left
+  +_fixed(left)
+
+%fixed-middle
+  +_fixed(middle)
+
+%fixed-center
+  +_fixed(center)
+
+%absolute
+  +_absolute
+
+%absolute-top
+  +_absolute(top)
+
+%absolute-right
+  +_absolute(right)
+
+%absolute-bottom
+  +_absolute(bottom)
+
+%absolute-left
+  +_absolute(left)
+
+%absolute-middle
+  +_absolute(middle)
+
+%absolute-center
+  +_absolute(center)
+
+%relative
+  +_relative
+
+%static
+  +_static
+
+%inline
+  +_inline
+
+%inline-block
+  +_inline-block
+
+%block
+  +_block
+
+%hidden
+  +_hidden
+
+%small
+  +_small
+
+%medium
+  +_medium
+
+%big, %large
+  +_large
+
+%em, %italic
+  +_italic
+
+%b, %bold, %strong
+  +_bold
+
+%zero
+  +_zero
+
+%pull-right
+  +_pull-right
+
+%pull-left
+  +_pull-left
+
+%pull-none
+  +_pull-none
+
+%bordered
+  +_bordered
+
+%border-top
+  +_border-top
+
+%border-right
+  +_border-right
+
+%border-bottom
+  +_border-bottom
+
+%border-left
+  +_border-left
+
+%align-top
+  +_align-top
+
+// must have height (experimental)
+%align-right
+  +_align-right
+
+%align-bottom
+  +_align-bottom
+
+// must have height (experimental)
+%align-left
+  +_align-left
+
+%align-center
+  +_align-center
+
+%justify
+  +_justify
+
+%unstyled
+  @extend %zero
+  list-style: none
+
+%truncate
+  +_truncate
+
+%center
+  +_center
+
+%square
+  +_square
+
+%round
+  +_round
+
+%rotate-90
+  +_rotate-90
+
+%rotate-90-ctr
+  +_rotate-90-ctr
+
+%rotate-180
+  +_rotate-180
+
+%rotate-180-ctr
+  +_rotate-180-ctr
+
+%rotate-270
+  +_rotate-270
+
+%rotate-270-ctr
+  +_rotate-270-ctr
+
+%rotate-360
+  +_rotate-360
+
+%rotate-360-ctr
+  +_rotate-360-ctr
+
+///////////////////////
+//      classes      //
+///////////////////////
+
+@if $layout-classes
+  @for $i from 1 through length($layout-helpers)
+    .#{nth($layout-helpers, $i)}
+      @extend %#{nth($layout-helpers, $i)}
+  .clear, .clearfix
+    @extend %clear
+
+@if $positioning-classes
+  .stick, .fixed
+    @extend %fixed
+    &.top
+      @extend %fixed-top
+    &.right
+      @extend %fixed-right
+    &.bottom
+      @extend %fixed-bottom
+    &.left
+      @extend %fixed-left
+    &.middle
+      @extend %fixed-middle
+    &.center
+      @extend %fixed-center
+  .absolute
+    @extend %absolute
+    &.top
+      @extend %absolute-top
+    &.right
+      @extend %absolute-right
+    &.bottom
+      @extend %absolute-bottom
+    &.left
+      @extend %absolute-left
+    &.middle
+      @extend %absolute-middle
+    &.center
+      @extend %absolute-center
+  .relative
+    @extend %relative
+  .static
+    @extend %static
+
+@if $typography-classes
+  @for $i from 1 through length($typography-helpers)
+    .#{nth($typography-helpers, $i)}
+      @extend %#{nth($typography-helpers, $i)}
+
+@if $size-classes
+  @for $i from 1 through length($size-helpers)
+    .#{nth($size-helpers, $i)}
+      @extend %#{nth($size-helpers, $i)}
+
+@if $border-classes
+  @for $i from 1 through length($border-helpers)
+    .#{nth($border-helpers, $i)}
+      @extend %#{nth($border-helpers, $i)}
+
+@if $radius-classes
+  @for $i from 1 through length($radius-helpers)
+    .#{nth($radius-helpers, $i)}
+      @extend %#{nth($radius-helpers, $i)}
+
+@if $rotation-classes
+  @for $i from 1 through length($rotation-helpers)
+    .#{nth($rotation-helpers, $i)}
+      @extend %#{nth($rotation-helpers, $i)}
+
+@if $spacer-classes
+  @for $i from 1 through length($spacer-helpers)
+    .#{nth($spacer-helpers, $i)}
+      @extend %#{nth($spacer-helpers, $i)}
+    @if $spacer-mod-classes
+      @for $j from 1 through length($spacer-modifiers)
+        .#{nth($spacer-modifiers, $j)}-#{nth($spacer-helpers, $i)}
+          @extend %#{nth($spacer-modifiers, $j)}-#{nth($spacer-helpers, $i)}
+
+@if $transition-classes
+  .transition
+    +transition
+  .no-transition
+    transition: none !important

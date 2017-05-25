@@ -1,0 +1,88 @@
+extends template
+
+block title
+  title GroundworkCSS &hearts; UI Elements
+
+block content
+  .container
+    .padded
+      .row
+        .three.fifths.bounceInRight.animated
+          h1.zero.museo-slab Message Boxes
+          p.quicksand Provide users with feedback or instructions.
+        .two.fifths.align-right-ipad.align-right-desktop.flipInX.animated
+          p.quicksand Component Usage Example 7 of 14
+          p
+            a.blue.button(href='boxes.html', rel='prev')
+              | Back
+            | 
+            a.green.button(href='tables.html', rel='next')
+              | Next: Tables
+    hr
+    .row
+      .one.whole.padded
+        .row
+          .one.whole.bounceInLeft.animated
+            .pad-top.pad-left.pad-right
+              h4 Message Boxes
+            .row
+              .one.half.pad-left.pad-right.pad-bottom
+                p.message This is an important message.
+              .one.half.pad-left.pad-right.pad-bottom
+                p.dismissible.message This is a dismissible message.
+            .row
+              .one.half.pad-left.pad-right
+                pre(data-lang='html')
+                  | <p class="message">This is an important message.</p>
+              .one.half.pad-left.pad-right
+                pre(data-lang='html')
+                  | <p class="message dismissible">This is a dismissible message.</p>
+        br
+        .row
+          .one.half.padded.bounceInUp.animated
+            h4 States
+            p.info.message This is an info message.
+            p.info.dismissible.message This is a dismissible info message.
+            p.success.message This is a success message.
+            p.success.dismissible.message This is a dismissible success message.
+            p.question.message This is a question message.
+            p.question.dismissible.message This is a dismissible question message.
+            p.alert.message This is an alert message.
+            p.alert.dismissible.message This is a dismissible alert message.
+            p.warning.message This is a warning message.
+            p.warning.dismissible.message This is a dismissible warning message.
+            p.error.message This is an error message.
+            p.error.dismissible.message This is a dismissible error message.
+            br
+            .row
+              .one.half.small-tablet.pad-right.no-pad-mobile
+                h4 Square
+                p.message.square This is a square message.
+                p.message.square.dismissible This is a dismissible square message.
+              .one.half.small-tablet
+                h4 Round
+                p.message.round.align-center This is a round message.
+                p.message.round.dismissible.align-center This is a dismissible round message.
+          .one.half.padded.bounceInDown.animated
+            h4 Colors
+            p.yellow.message This is a yellow message.
+            p.dismissible.yellow.message This is a dismissible yellow message.
+            p.orange.message This is a orange message.
+            p.dismissible.orange.message This is a dismissible orange message.
+            p.red.message This is a red message.
+            p.dismissible.red.message This is a dismissible red message.
+            p.pink.message This is a pink message.
+            p.dismissible.pink.message This is a dismissible pink message.
+            p.purple.message This is a purple message.
+            p.dismissible.purple.message This is a dismissible purple message.
+            p.asphalt.message This is a asphalt message.
+            p.dismissible.asphalt.message This is a dismissible asphalt message.
+            p.blue.message This is a blue message.
+            p.dismissible.blue.message This is a dismissible blue message.
+            p.turquoise.message This is a turquoise message.
+            p.dismissible.turquoise.message This is a dismissible turquoise message.
+            p.green.message This is a green message.
+            p.dismissible.green.message This is a dismissible green message.
+            p.charcoal.message This is a charcoal message.
+            p.dismissible.charcoal.message This is a dismissible charcoal message.
+            

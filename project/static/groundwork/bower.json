@@ -1,0 +1,21 @@
+{
+  "name"        : "groundworkcss",
+  "version"     : "2.5.0",
+  "main"        : [
+    "js/groundwork.all.js",
+    "css/groundwork.css"
+  ],
+  "ignore"      : [
+    "**/.*",
+    "*.json",
+    "*.rb",
+    "css/demo",
+    "js/demo",
+    "Gruntfile.coffee",
+    "node_modules"
+  ],
+  "dependencies": {
+    "jquery": "~1.10.2",
+    "modernizr": "~2.6.2"
+  }
+}

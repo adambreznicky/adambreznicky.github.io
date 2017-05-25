@@ -1,0 +1,79 @@
+extends template
+
+block title
+  title GroundworkCSS &hearts; Placeholder Text
+
+block content
+  .container
+    .padded
+      .row
+        .three.fifths.bounceInRight.animated
+          h1.zero.museo-slab Placeholder Text
+          p.quicksand
+            | Rapid prototyping with dynamic placeholder text and the 
+            a(href='https://github.com/christiannaths/Redacted-Font', target='_blank') Redacted
+            |  placeholder fonts.
+        .two.fifths.align-right-ipad.align-right-desktop.flipInX.animated
+          p.quicksand Component Usage Example 13 of 14
+          p
+            a.blue.button(href='responsive-text.html', rel='prev')
+              | Back
+            | 
+            a.green.button(href='animations.html', rel='next')
+              | Next: Animations
+    hr
+    .row
+      .one.whole.padded
+        .bounceInLeft.animated
+          h4.zero Dynamic Placeholder Text
+          p.small.zero Dynamically generated placeholder text
+          .row
+            .one.whole.padded
+              .row
+                .one.third.padded
+                  .placeholderText
+                .one.third.padded
+                  .placeholderText(data-placeholder-type='words', data-placeholder-amount='100')
+                .one.third.padded
+                  h1.placeholderText(data-placeholder-type='words', data-placeholder-amount='3', data-placeholder-punctuation='false', data-placeholder-html='false')
+              .row
+                .one.third.pad-left.pad-right
+                  pre.gap-top(data-lang='html')
+                    | <div class="placeholderText"></div>
+                  p.small Default options (1 paragraph, including HTML paragraph tags and punctuation)
+                .one.third.pad-left.pad-right
+                  pre.gap-top(data-lang='html')
+                    | <div class="placeholderText" 
+                    |      data-placeholder-type="words" 
+                    |      data-placeholder-amount="100">
+                    | </div>
+                  p.small 100 words, including HTML paragraph tags and punctuation
+                .one.third.pad-left.pad-right
+                  pre.gap-top(data-lang='html')
+                    | <h1 class="placeholderText"
+                    |      data-placeholder-type="words"
+                    |      data-placeholder-amount="3"
+                    |      data-placeholder-punctuation="false"
+                    |      data-placeholder-html="false">
+                    | </h1>
+                  p.small 3 words without HTML paragraph tags or punctuation
+        .bounceInRight.animated
+          br
+          hr
+          h4.zero Redacted Placeholder Fonts
+          .row
+            .one.whole.padded
+              .row
+                .one.whole.padded
+                  p Redacted
+                  .placeholderText.redacted(data-placeholder-amount='3')
+              .row
+                .one.third.padded
+                  p Redacted Script
+                  .placeholderText.redacted-script(data-placeholder-amount='1')
+                .one.third.padded
+                  p Redacted Script Light
+                  .placeholderText.redacted-script-light(data-placeholder-amount='1')
+                .one.third.padded
+                  p Redacted Script Bold
+                  .placeholderText.redacted-script-bold(data-placeholder-amount='1')

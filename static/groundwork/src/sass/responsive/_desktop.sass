@@ -1,0 +1,296 @@
+// =============================================
+//                  Desktop
+//          Last Updated:2013-8-16
+// =============================================
+
+$responsive: true !default
+$navigation-classes: true !default
+$multi-column-classes: true !default
+$multi-column-names: "one-column" "two-column" "three-column" "four-column" "five-column" !default
+$inline-conditional-helpers: false !default
+
+=desktop
+  @if $responsive
+    @media #{$desktop}
+      // conditional helpers
+      .desktop-only
+        display: block !important
+      .ipad-only
+        display: none !important
+      .small-tablet-only
+        display: none !important
+      .mobile-only
+        display: none !important
+      .hide-on-desktop
+        display: none !important
+      @if $inline-conditional-helpers
+        span.desktop-only
+          display: inline !important
+      .no-border-desktop
+        border: 0
+      @if $size-classes
+        .small-desktop
+          +_small
+        .medium-desktop
+          +_medium
+        .large-desktop
+          +_large
+      @if $spacer-classes
+        // spacer overrides
+        .zero-desktop
+          +helper_reset
+        .padded-desktop
+          +_padded
+        .pad-top-desktop
+          +_pad-top
+        .pad-right-desktop
+          +_pad-right
+        .pad-bottom-desktop
+          +_pad-bottom
+        .pad-left-desktop
+          +_pad-left
+        .no-padding-desktop,
+        .no-padded-desktop,
+        .no-pad-desktop
+          +helper_reset(padding, $spacers: padded pad-top pad-right pad-bottom pad-left)
+        .no-pad-top-desktop
+          +_pad-top(0)
+        .no-pad-right-desktop
+          +_pad-right(0)
+        .no-pad-bottom-desktop
+          +_pad-bottom(0)
+        .no-pad-left-desktop
+          +_pad-left(0)
+        .gapped-desktop
+          +_gapped
+        .gap-top-desktop
+          +_gap-top
+        .gap-right-desktop
+          +_gap-right
+        .gap-bottom-desktop
+          +_gap-bottom
+        .gap-left-desktop
+          +_gap-left
+        .no-margin-desktop,
+        .no-gapped-desktop,
+        .no-gap-desktop
+          +helper_reset(margin, $spacers: gapped gap-top gap-right gap-bottom gap-left)
+        .no-gap-top-desktop
+          +_gap-top(0)
+        .no-gap-right-desktop
+          +_gap-right(0)
+        .no-gap-bottom-desktop
+          +_gap-bottom(0)
+        .no-gap-left-desktop
+          +_gap-left(0)
+        .offset-desktop
+          +_offset
+        .offset-top-desktop
+          +_offset-top
+        .offset-right-desktop
+          +_offset-right
+        .offset-bottom-desktop
+          +_offset-bottom
+        .offset-left-desktop
+          +_offset-left
+        .no-offset-top-desktop
+          +_offset-top(0)
+        .no-offset-right-desktop
+          +_offset-right(0)
+        .no-offset-bottom-desktop
+          +_offset-bottom(0)
+        .no-offset-left-desktop
+          +_offset-left(0)
+      @if $spacer-mod-classes
+        .half-padded-desktop
+          +_padded(0.5)
+        .double-padded-desktop
+          +_padded(2)
+        .triple-padded-desktop
+          +_padded(3)
+        .half-pad-top-desktop
+          +_pad-top(0.5)
+        .double-pad-top-desktop
+          +_pad-top(2)
+        .triple-pad-top-desktop
+          +_pad-top(3)
+        .half-pad-right-desktop
+          +_pad-right(0.5)
+        .double-pad-right-desktop
+          +_pad-right(2)
+        .triple-pad-right-desktop
+          +_pad-right(3)
+        .half-pad-bottom-desktop
+          +_pad-bottom(0.5)
+        .double-pad-bottom-desktop
+          +_pad-bottom(2)
+        .triple-pad-bottom-desktop
+          +_pad-bottom(3)
+        .half-pad-left-desktop
+          +_pad-left(0.5)
+        .double-pad-left-desktop
+          +_pad-left(2)
+        .triple-pad-left-desktop
+          +_pad-left(3)
+        .half-gapped-desktop
+          +_gapped(0.5)
+        .double-gapped-desktop
+          +_gapped(2)
+        .triple-gapped-desktop
+          +_gapped(3)
+        .half-gap-top-desktop
+          +_gap-top(0.5)
+        .double-gap-top-desktop
+          +_gap-top(2)
+        .triple-gap-top-desktop
+          +_gap-top(3)
+        .half-gap-right-desktop
+          +_gap-right(0.5)
+        .double-gap-right-desktop
+          +_gap-right(2)
+        .triple-gap-right-desktop
+          +_gap-right(3)
+        .half-gap-bottom-desktop
+          +_gap-bottom(0.5)
+        .double-gap-bottom-desktop
+          +_gap-bottom(2)
+        .triple-gap-bottom-desktop
+          +_gap-bottom(3)
+        .half-gap-left-desktop
+          +_gap-left(0.5)
+        .double-gap-left-desktop
+          +_gap-left(2)
+        .triple-gap-left-desktop
+          +_gap-left(3)
+        .half-offset-desktop
+          +_offset(0.5)
+        .double-offset-desktop
+          +_offset(2)
+        .triple-offset-desktop
+          +_offset(3)
+        .half-offset-top-desktop
+          +_offset-top(0.5)
+        .double-offset-top-desktop
+          +_offset-top(2)
+        .triple-offset-top-desktop
+          +_offset-top(3)
+        .half-offset-right-desktop
+          +_offset-right(0.5)
+        .double-offset-right-desktop
+          +_offset-right(2)
+        .triple-offset-right-desktop
+          +_offset-right(3)
+        .half-offset-bottom-desktop
+          +_offset-bottom(0.5)
+        .double-offset-bottom-desktop
+          +_offset-bottom(2)
+        .triple-offset-bottom-desktop
+          +_offset-bottom(3)
+        .half-offset-left-desktop
+          +_offset-left(0.5)
+        .double-offset-left-desktop
+          +_offset-left(2)
+        .triple-offset-left-desktop
+          +_offset-left(3)
+      @if $positioning-classes
+        .fixed-desktop
+          +_fixed
+        .fixed-top-desktop
+          +_fixed(top)
+        .fixed-right-desktop
+          +_fixed(right)
+        .fixed-bottom-desktop
+          +_fixed(bottom)
+        .fixed-left-desktop
+          +_fixed(left)
+        .fixed-middle-desktop
+          +_fixed(middle)
+        .fixed-center-desktop
+          +_fixed(center)
+        .absolute-desktop
+          +_absolute
+        .absolute-top-desktop
+          +_absolute(top)
+        .absolute-right-desktop
+          +_absolute(right)
+        .absolute-bottom-desktop
+          +_absolute(bottom)
+        .absolute-left-desktop
+          +_absolute(left)
+        .absolute-middle-desktop
+          +_absolute(middle)
+        .absolute-center-desktop
+          +_absolute(center)
+        .static-desktop
+          +_static
+      @if $layout-classes
+        .inline-desktop
+          +_inline
+        .block-desktop
+          +_block
+        .clear-desktop
+          +_clear
+        .center-desktop
+          +_center
+        .pull-right-desktop
+          +_pull-right
+        .pull-left-desktop
+          +_pull-left
+        .pull-none-desktop
+          +_pull-none
+      @if $border-classes
+        .bordered-desktop
+          +_bordered
+        .border-top-desktop
+          +_border-top
+        .border-right-desktop
+          +_border-right
+        .border-bottom-desktop
+          +_border-bottom
+        .border-left-desktop
+          +_border-left
+      @if $typography-helpers
+        .align-top-desktop
+          +_align-top
+        .align-right-desktop
+          +_align-right
+        .align-bottom-desktop
+          +_align-bottom
+        .align-left-desktop
+          +_align-left
+        .align-center-desktop
+          +_align-center
+        .justify-desktop
+          +_justify
+        .truncate-desktop
+          +_truncate
+      @if $rotation-classes
+        .rotate-90-desktop
+          +_rotate-90
+        .rotate-90-ctr-desktop
+          +_rotate-90-ctr
+        .rotate-180-desktop
+          +_rotate-180
+        .rotate-180-ctr-desktop
+          +_rotate-180-ctr
+        .rotate-270-desktop
+          +_rotate-270
+        .rotate-270-ctr-desktop
+          +_rotate-270-ctr
+        .rotate-360-desktop
+          +_rotate-360
+        .rotate-360-ctr-desktop
+          +_rotate-360-ctr
+      @if $multi-column-classes
+        @for $i from 1 through length($multi-column-names)
+          .#{nth($multi-column-names, $i)}-desktop, .#{nth($multi-column-names, $i)}s-desktop
+            +_multi-column($i)
+      @content
+
+///////////////////////
+//      desktop      //
+///////////////////////
+
+@if $responsive
+  +desktop
+    // do not remove -- required for desktop helpers

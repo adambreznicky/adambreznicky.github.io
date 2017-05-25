@@ -1,0 +1,946 @@
+<!DOCTYPE html><!--[if lt IE 7]><html class="no-js ie ie6 lt-ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 7]>   <html class="no-js ie ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 8]>   <html class="no-js ie ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 9]>   <html class="no-js ie ie9 lt-ie10"><![endif]-->
+<!--[if gt IE 9]><html class="no-js ie ie10"><![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>GroundworkCSS &hearts; Responsive/Adaptive Grid System</title>
+    <style type="text/css">
+      .snippet-container {
+        margin-top: 10px;
+      }
+      .demo .row {
+        background: #f6f6f6;
+      }
+      .demo .whole,
+      .demo .half, .demo .halves,
+      .demo .third, .demo .thirds,
+      .demo .fourth, .demo .fourths,
+      .demo .fifth, .demo .fifths,
+      .demo .sixth, .demo .sixths,
+      .demo .seventh, .demo .sevenths,
+      .demo .eighth, .demo .eighths,
+      .demo .ninth, .demo .ninths,
+      .demo .tenth, .demo .tenths,
+      .demo .eleventh, .demo .elevenths,
+      .demo .twelfth, .demo .twelfths {
+        text-align: center;
+        min-height: 1em;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background: #1abc9c;
+        border: 1px dashed white;
+        margin-top: -1px;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.25), 5px, 0, 0;
+        -moz-box-shadow: rgba(0, 0, 0, 0.25), 5px, 0, 0;
+        box-shadow: rgba(0, 0, 0, 0.25), 5px, 0, 0;
+        color: white;
+        font-size: 0.8em;
+      }
+      .demo .row:not(.equalize) .whole,
+      .demo .row:not(.equalize) .half, .demo .row:not(.equalize) .halves,
+      .demo .row:not(.equalize) .third, .demo .row:not(.equalize) .thirds,
+      .demo .row:not(.equalize) .fourth, .demo .row:not(.equalize) .fourths,
+      .demo .row:not(.equalize) .fifth, .demo .row:not(.equalize) .fifths,
+      .demo .row:not(.equalize) .sixth, .demo .row:not(.equalize) .sixths,
+      .demo .row:not(.equalize) .seventh, .demo .row:not(.equalize) .sevenths,
+      .demo .row:not(.equalize) .eighth, .demo .row:not(.equalize) .eighths,
+      .demo .row:not(.equalize) .ninth, .demo .row:not(.equalize) .ninths,
+      .demo .row:not(.equalize) .tenth, .demo .row:not(.equalize) .tenths,
+      .demo .row:not(.equalize) .eleventh, .demo .row:not(.equalize) .elevenths,
+      .demo .row:not(.equalize) .twelfth, .demo .row:not(.equalize) .twelfths {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .demo .whole.small-tablet,
+      .demo .half.small-tablet, .demo .halves.small-tablet,
+      .demo .third.small-tablet, .demo .thirds.small-tablet,
+      .demo .fourth.small-tablet, .demo .fourths.small-tablet,
+      .demo .fifth.small-tablet, .demo .fifths.small-tablet,
+      .demo .sixth.small-tablet, .demo .sixths.small-tablet,
+      .demo .seventh.small-tablet, .demo .sevenths.small-tablet,
+      .demo .eighth.small-tablet, .demo .eighths.small-tablet,
+      .demo .ninth.small-tablet, .demo .ninths.small-tablet,
+      .demo .tenth.small-tablet, .demo .tenths.small-tablet,
+      .demo .eleventh.small-tablet, .demo .elevenths.small-tablet,
+      .demo .twelfth.small-tablet, .demo .twelfths.small-tablet {
+        background: #3498db;
+      }
+      .demo .whole.mobile,
+      .demo .half.mobile, .demo .halves.mobile,
+      .demo .third.mobile, .demo .thirds.mobile,
+      .demo .fourth.mobile, .demo .fourths.mobile,
+      .demo .fifth.mobile, .demo .fifths.mobile,
+      .demo .sixth.mobile, .demo .sixths.mobile,
+      .demo .seventh.mobile, .demo .sevenths.mobile,
+      .demo .eighth.mobile, .demo .eighths.mobile,
+      .demo .ninth.mobile, .demo .ninths.mobile,
+      .demo .tenth.mobile, .demo .tenths.mobile,
+      .demo .eleventh.mobile, .demo .elevenths.mobile,
+      .demo .twelfth.mobile, .demo .twelfths.mobile {
+        background: #2ecc71;
+      }
+      .demo.reordering .whole,
+      .demo.reordering .half, .demo.reordering .halves,
+      .demo.reordering .third, .demo.reordering .thirds,
+      .demo.reordering .fourth, .demo.reordering .fourths,
+      .demo.reordering .fifth, .demo.reordering .fifths,
+      .demo.reordering .sixth, .demo.reordering .sixths,
+      .demo.reordering .seventh, .demo.reordering .sevenths,
+      .demo.reordering .eighth, .demo.reordering .eighths,
+      .demo.reordering .ninth, .demo.reordering .ninths,
+      .demo.reordering .tenth, .demo.reordering .tenths,
+      .demo.reordering .eleventh, .demo.reordering .elevenths,
+      .demo.reordering .twelfth, .demo.reordering .twelfths {
+        background: #e74c3c;
+      }
+      .demo.centering .whole,
+      .demo.centering .half, .demo.centering .halves,
+      .demo.centering .third, .demo.centering .thirds,
+      .demo.centering .fourth, .demo.centering .fourths,
+      .demo.centering .fifth, .demo.centering .fifths,
+      .demo.centering .sixth, .demo.centering .sixths,
+      .demo.centering .seventh, .demo.centering .sevenths,
+      .demo.centering .eighth, .demo.centering .eighths,
+      .demo.centering .ninth, .demo.centering .ninths,
+      .demo.centering .tenth, .demo.centering .tenths,
+      .demo.centering .eleventh, .demo.centering .elevenths,
+      .demo.centering .twelfth, .demo.centering .twelfths {
+        background: #f1c40f;
+      }
+      .demo.offsetting .whole,
+      .demo.offsetting .half, .demo.offsetting .halves,
+      .demo.offsetting .third, .demo.offsetting .thirds,
+      .demo.offsetting .fourth, .demo.offsetting .fourths,
+      .demo.offsetting .fifth, .demo.offsetting .fifths,
+      .demo.offsetting .sixth, .demo.offsetting .sixths,
+      .demo.offsetting .seventh, .demo.offsetting .sevenths,
+      .demo.offsetting .eighth, .demo.offsetting .eighths,
+      .demo.offsetting .ninth, .demo.offsetting .ninths,
+      .demo.offsetting .tenth, .demo.offsetting .tenths,
+      .demo.offsetting .eleventh, .demo.offsetting .elevenths,
+      .demo.offsetting .twelfth, .demo.offsetting .twelfths {
+        background: #34495e;
+      }
+      .demo.equal-columns .whole,
+      .demo.equal-columns .half, .demo.equal-columns .halves,
+      .demo.equal-columns .third, .demo.equal-columns .thirds,
+      .demo.equal-columns .fourth, .demo.equal-columns .fourths,
+      .demo.equal-columns .fifth, .demo.equal-columns .fifths,
+      .demo.equal-columns .sixth, .demo.equal-columns .sixths,
+      .demo.equal-columns .seventh, .demo.equal-columns .sevenths,
+      .demo.equal-columns .eighth, .demo.equal-columns .eighths,
+      .demo.equal-columns .ninth, .demo.equal-columns .ninths,
+      .demo.equal-columns .tenth, .demo.equal-columns .tenths,
+      .demo.equal-columns .eleventh, .demo.equal-columns .elevenths,
+      .demo.equal-columns .twelfth, .demo.equal-columns .twelfths {
+        background: #3498db;
+      }
+      .demo .two-up-ipad.whole,
+      .demo .two-up-ipad.half, .demo .two-up-ipad.halves,
+      .demo .two-up-ipad.third, .demo .two-up-ipad.thirds,
+      .demo .two-up-ipad.fourth, .demo .two-up-ipad.fourths,
+      .demo .two-up-ipad.fifth, .demo .two-up-ipad.fifths,
+      .demo .two-up-ipad.sixth, .demo .two-up-ipad.sixths,
+      .demo .two-up-ipad.seventh, .demo .two-up-ipad.sevenths,
+      .demo .two-up-ipad.eighth, .demo .two-up-ipad.eighths,
+      .demo .two-up-ipad.ninth, .demo .two-up-ipad.ninths,
+      .demo .two-up-ipad.tenth, .demo .two-up-ipad.tenths,
+      .demo .two-up-ipad.eleventh, .demo .two-up-ipad.elevenths,
+      .demo .two-up-ipad.twelfth, .demo .two-up-ipad.twelfths {
+        background: #f1c40f;
+      }
+      .demo .two-up-small-tablet.whole,
+      .demo .two-up-small-tablet.half, .demo .two-up-small-tablet.halves,
+      .demo .two-up-small-tablet.third, .demo .two-up-small-tablet.thirds,
+      .demo .two-up-small-tablet.fourth, .demo .two-up-small-tablet.fourths,
+      .demo .two-up-small-tablet.fifth, .demo .two-up-small-tablet.fifths,
+      .demo .two-up-small-tablet.sixth, .demo .two-up-small-tablet.sixths,
+      .demo .two-up-small-tablet.seventh, .demo .two-up-small-tablet.sevenths,
+      .demo .two-up-small-tablet.eighth, .demo .two-up-small-tablet.eighths,
+      .demo .two-up-small-tablet.ninth, .demo .two-up-small-tablet.ninths,
+      .demo .two-up-small-tablet.tenth, .demo .two-up-small-tablet.tenths,
+      .demo .two-up-small-tablet.eleventh, .demo .two-up-small-tablet.elevenths,
+      .demo .two-up-small-tablet.twelfth, .demo .two-up-small-tablet.twelfths {
+        background: #e67e22;
+      }
+      .demo .two-up-mobile.whole,
+      .demo .two-up-mobile.half, .demo .two-up-mobile.halves,
+      .demo .two-up-mobile.third, .demo .two-up-mobile.thirds,
+      .demo .two-up-mobile.fourth, .demo .two-up-mobile.fourths,
+      .demo .two-up-mobile.fifth, .demo .two-up-mobile.fifths,
+      .demo .two-up-mobile.sixth, .demo .two-up-mobile.sixths,
+      .demo .two-up-mobile.seventh, .demo .two-up-mobile.sevenths,
+      .demo .two-up-mobile.eighth, .demo .two-up-mobile.eighths,
+      .demo .two-up-mobile.ninth, .demo .two-up-mobile.ninths,
+      .demo .two-up-mobile.tenth, .demo .two-up-mobile.tenths,
+      .demo .two-up-mobile.eleventh, .demo .two-up-mobile.elevenths,
+      .demo .two-up-mobile.twelfth, .demo .two-up-mobile.twelfths {
+        background: #f02475;
+      }
+      .demo .two-up-mobile.three-up-small-tablet {
+        background: #9b59b6;
+      }
+      
+      
+    </style>
+    <!-- Modernizr -->
+    <script src="../js/libs/modernizr-2.6.2.min.js"></script>
+    <!-- jQuery-->
+    <script type="text/javascript" src="../js/libs/jquery-1.10.2.min.js"></script>
+    <!-- framework css --><!--[if gt IE 9]><!-->
+    <link type="text/css" rel="stylesheet" href="../css/groundwork.css"><!--<![endif]--><!--[if lte IE 9]>
+    <link type="text/css" rel="stylesheet" href="../css/groundwork-core.css">
+    <link type="text/css" rel="stylesheet" href="../css/groundwork-type.css">
+    <link type="text/css" rel="stylesheet" href="../css/groundwork-ui.css">
+    <link type="text/css" rel="stylesheet" href="../css/groundwork-anim.css">
+    <link type="text/css" rel="stylesheet" href="../css/groundwork-ie.css"><![endif]-->
+    <style type="text/css">
+      .logo {
+        position: relative;
+        top: -0.5em;
+      }
+      .logo a, .logo a:visited {
+        text-decoration: none;
+        color: #2B2B2D;
+      }
+      .logo img {
+        height: 2em;
+        position: relative;
+        top: 0.55em;
+        margin-right: 0.3em;
+      }
+      
+    </style>
+    <!-- snippet (syntax highlighting for code examples)-->
+    <script type="text/javascript" src="../js/demo/jquery.snippet.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/demo/jquery.snippet.css"><script type="text/javascript">
+(function() {
+
+  $(document).ready(function() {
+    $('pre[data-lang="html"]').snippet("html", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+    $('pre[data-lang="css"]').snippet("css", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+    $('pre[data-lang="sass"]').snippet("sass", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+    return $('pre[data-lang="js"]').snippet("javascript", {
+      style: "groundwork",
+      clipboard: "../js/demo/ZeroClipboard.swf"
+    });
+  });
+
+}).call(this);
+</script>
+  </head>
+  <body>
+    <header class="padded">
+      <div class="container">
+        <div class="row">
+          <div class="one half">
+            <h2 class="logo"><a href="/" target="_parent"><img src="../images/groundwork-logo.svg" alt="GroundworkCSS">GroundworkCSS 2</a></h2>
+          </div>
+          <div class="one half">
+            <p class="small double-pad-top no-pad-small-tablet align-right align-left-small-tablet"><a href="https://github.com/groundworkcss/groundwork" target="_parent">Github Project</a> - Version 2.5.0<br>Created & Maintained by <a href="http://twitter.com/ghepting" target="_blank">Gary Hepting</a></p>
+          </div>
+        </div>
+        <nav role="navigation" class="nav gap-top">
+          <ul role="menubar">
+            <li><a href="./home.html"><i class="icon-home"></i> Home</a></li>
+            <li role="menu">
+              <button>Example Layouts</button>
+              <ul>
+                <li><a href="./layout-a.html">Web Page</a></li>
+                <li><a href="./layout-b.html">Image Gallery</a></li>
+                <li><a href="./layout-c.html">Ecommerce Page</a></li>
+                <li><a href="./layout-d.html">Contact Page</a></li>
+              </ul>
+            </li>
+            <li role="menu">
+              <button>Documentation</button>
+              <ul>
+                <li><a href="./grid.html" title="Responsive grid system, grid adapters and helpers">Grid</a></li>
+                <li><a href="./helpers.html" title="Layout helpers, spinners and much more">Helpers</a></li>
+                <li><a href="./typography.html" title="Text elements, quotes, code and web fonts">Typography</a></li>
+                <li role="menu">
+                  <button title="Navigation, buttons, boxes, message boxes, tables, tabs, and forms">UI Elements</button>
+                  <ul>
+                    <li><a href="./navigation.html" title="Navigation">Navigation</a></li>
+                    <li><a href="./buttons.html" title="Buttons, button groups, button menus">Buttons</a></li>
+                    <li><a href="./boxes.html" title="Boxes">Boxes</a></li>
+                    <li><a href="./messages.html" title="Message boxes">Message Boxes</a></li>
+                    <li><a href="./tables.html" title="Tables">Tables</a></li>
+                    <li><a href="./tabs.html" title="Tabs">Tabs</a></li>
+                    <li><a href="./forms.html" title="Form elements">Form Elements</a></li>
+                  </ul>
+                </li>
+                <li><a href="./icons.html" title="Icons">Icons</a></li>
+                <li><a href="./responsive-text.html" title="Responsive text and multi-line text block truncation">Responsive Text</a></li>
+                <li><a href="./placeholder-text.html" title="Placeholder text and placeholder fonts for rapid prototyping and wireframes">Placeholder Text</a></li>
+                <li><a href="./animations.html" title="Pure CSS3 Animations">Animations</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <div class="padded">
+        <div class="row">
+          <div class="three fifths bounceInRight animated">
+            <h1 class="zero museo-slab">Grid System</h1>
+            <p class="quicksand">A responsive and adaptive fractional grid system created by <a href="http://twitter.com/ghepting" target="_blank">Gary Hepting</a></p>
+          </div>
+          <div class="two fifths align-right-ipad align-right-desktop flipInX animated">
+            <p class="quicksand">Component Usage Example 1 of 14</p>
+            <p><a href="layout-c.html" rel="prev" class="blue button">Back</a> <a href="helpers.html" rel="next" class="green button">Next: Helpers</a></p>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="one whole padded">
+          <div class="bounceInLeft animated">
+            <h4 class="zero">Grid Breakpoint Helpers</h4>
+            <p class="small">By default, grid columns collapse into rows at the <code class="inline">$small-tablet</code> breakpoint. The grid breakpoint helpers allow you to target the breakpoint that the grid structure should persist through.</p>
+            <div class="row">
+              <div class="one fifth">
+                <p>Desktop Grid (default)</p>
+              </div>
+              <div class="four fifths">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one half">1/2</div>
+                    <div class="one half">1/2</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one half&quot;&gt;1/2&lt;/div&gt;
+  &lt;div class=&quot;one half&quot;&gt;1/2&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fifth">
+                <p>Small-Tablet Grid</p>
+              </div>
+              <div class="four fifths">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one half small-tablet">1/2</div>
+                    <div class="one half small-tablet">1/2</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one half small-tablet&quot;&gt;1/2&lt;/div&gt;
+  &lt;div class=&quot;one half small-tablet&quot;&gt;1/2&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fifth">
+                <p>Mobile Grid</p>
+              </div>
+              <div class="four fifths">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one half mobile">1/2</div>
+                    <div class="one half mobile">1/2</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one half mobile&quot;&gt;1/2&lt;/div&gt;
+  &lt;div class=&quot;one half mobile&quot;&gt;1/2&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div><br>
+          <hr><br>
+          <div class="bounceInRight animated">
+            <h4>Grid Adapters</h4>
+            <div class="row">
+              <div class="one fifth small-tablet">
+                <p>iPad Adapters</p>
+              </div>
+              <div class="four fifths small-tablet">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one fourth two-up-ipad">1/4 to 2-up</div>
+                    <div class="one fourth two-up-ipad">1/4 to 2-up</div>
+                    <div class="one fourth two-up-ipad">1/4 to 2-up</div>
+                    <div class="one fourth two-up-ipad">1/4 to 2-up</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one fourth two-up-ipad&quot;&gt;1/4 to 2-up&lt;/div&gt;
+  &lt;div class=&quot;one fourth two-up-ipad&quot;&gt;1/4 to 2-up&lt;/div&gt;
+  &lt;div class=&quot;one fourth two-up-ipad&quot;&gt;1/4 to 2-up&lt;/div&gt;
+  &lt;div class=&quot;one fourth two-up-ipad&quot;&gt;1/4 to 2-up&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fifth small-tablet">
+                <p>Small-Tablet Adapters</p>
+              </div>
+              <div class="four fifths small-tablet">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one fourth two-up-small-tablet">1/4 to 2-up</div>
+                    <div class="one fourth two-up-small-tablet">1/4 to 2-up</div>
+                    <div class="one fourth two-up-small-tablet">1/4 to 2-up</div>
+                    <div class="one fourth two-up-small-tablet">1/4 to 2-up</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one fourth two-up-small-tablet&quot;&gt;1/4 to 2-up&lt;/div&gt;
+  &lt;div class=&quot;one fourth two-up-small-tablet&quot;&gt;1/4 to 2-up&lt;/div&gt;
+  &lt;div class=&quot;one fourth two-up-small-tablet&quot;&gt;1/4 to 2-up&lt;/div&gt;
+  &lt;div class=&quot;one fourth two-up-small-tablet&quot;&gt;1/4 to 2-up&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fifth small-tablet">
+                <p>Mobile Adapters</p>
+              </div>
+              <div class="four fifths small-tablet">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one fourth small-tablet two-up-mobile">1/4 to 2-up</div>
+                    <div class="one fourth small-tablet two-up-mobile">1/4 to 2-up</div>
+                    <div class="one fourth small-tablet two-up-mobile">1/4 to 2-up</div>
+                    <div class="one fourth small-tablet two-up-mobile">1/4 to 2-up</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one fourth small-tablet two-up-mobile&quot;&gt;1/4 to 2-up&lt;/div&gt;
+  &lt;div class=&quot;one fourth small-tablet two-up-mobile&quot;&gt;1/4 to 2-up&lt;/div&gt;
+  &lt;div class=&quot;one fourth small-tablet two-up-mobile&quot;&gt;1/4 to 2-up&lt;/div&gt;
+  &lt;div class=&quot;one fourth small-tablet two-up-mobile&quot;&gt;1/4 to 2-up&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fifth small-tablet">
+                <p>Combined Adapters</p>
+              </div>
+              <div class="four fifths small-tablet">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one sixth three-up-small-tablet two-up-mobile">1/6 to 3-up to 2-up</div>
+                    <div class="one sixth three-up-small-tablet two-up-mobile">1/6 to 3-up to 2-up</div>
+                    <div class="one sixth three-up-small-tablet two-up-mobile">1/6 to 3-up to 2-up</div>
+                    <div class="one sixth three-up-small-tablet two-up-mobile">1/6 to 3-up to 2-up</div>
+                    <div class="one sixth three-up-small-tablet two-up-mobile">1/6 to 3-up to 2-up</div>
+                    <div class="one sixth three-up-small-tablet two-up-mobile">1/6 to 3-up to 2-up</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one sixth three-up-small-tablet two-up-mobile&quot;&gt;1/6 to 3-up to 2-up&lt;/div&gt;
+  &lt;div class=&quot;one sixth three-up-small-tablet two-up-mobile&quot;&gt;1/6 to 3-up to 2-up&lt;/div&gt;
+  &lt;div class=&quot;one sixth three-up-small-tablet two-up-mobile&quot;&gt;1/6 to 3-up to 2-up&lt;/div&gt;
+  &lt;div class=&quot;one sixth three-up-small-tablet two-up-mobile&quot;&gt;1/6 to 3-up to 2-up&lt;/div&gt;
+  &lt;div class=&quot;one sixth three-up-small-tablet two-up-mobile&quot;&gt;1/6 to 3-up to 2-up&lt;/div&gt;
+  &lt;div class=&quot;one sixth three-up-small-tablet two-up-mobile&quot;&gt;1/6 to 3-up to 2-up&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div><br>
+          <hr><br>
+          <div class="bounceInLeft animated">
+            <h4>Grid Fractions</h4>
+            <div class="row">
+              <div class="one fifth small-tablet">
+                <p>Halves</p>
+              </div>
+              <div class="four fifths small-tablet">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one half">1/2</div>
+                    <div class="one half">1/2</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one half&quot;&gt;1/2&lt;/div&gt;
+  &lt;div class=&quot;one half&quot;&gt;1/2&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fifth small-tablet">
+                <p>Thirds</p>
+              </div>
+              <div class="four fifths small-tablet">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one third">1/3</div>
+                    <div class="two thirds">2/3</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one third&quot;&gt;1/3&lt;/div&gt;
+  &lt;div class=&quot;two thirds&quot;&gt;2/3&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fifth small-tablet">
+                <p>Fourths</p>
+              </div>
+              <div class="four fifths small-tablet">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one fourth">1/4</div>
+                    <div class="three fourths">3/4</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one fourth&quot;&gt;1/4&lt;/div&gt;
+  &lt;div class=&quot;three fourths&quot;&gt;3/4&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fifth small-tablet">
+                <p>Fifths</p>
+              </div>
+              <div class="four fifths small-tablet">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one fifth">1/5</div>
+                    <div class="three fifths">3/5</div>
+                    <div class="one fifth">1/5</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one fifth&quot;&gt;1/5&lt;/div&gt;
+  &lt;div class=&quot;three fifths&quot;&gt;3/5&lt;/div&gt;
+  &lt;div class=&quot;one fifth&quot;&gt;1/5&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fifth small-tablet">
+                <p>Sixths</p>
+              </div>
+              <div class="four fifths small-tablet">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one sixth">1/6</div>
+                    <div class="two sixths">2/6</div>
+                    <div class="three sixths">3/6</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one sixth&quot;&gt;1/6&lt;/div&gt;
+  &lt;div class=&quot;two sixths&quot;&gt;2/6&lt;/div&gt;
+  &lt;div class=&quot;three sixths&quot;&gt;3/6&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fifth small-tablet">
+                <p>Sevenths</p>
+              </div>
+              <div class="four fifths small-tablet">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one seventh">1/7</div>
+                    <div class="two sevenths">2/7</div>
+                    <div class="four sevenths">4/7</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one seventh&quot;&gt;1/7&lt;/div&gt;
+  &lt;div class=&quot;two sevenths&quot;&gt;2/7&lt;/div&gt;
+  &lt;div class=&quot;four sevenths&quot;&gt;4/7&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fifth small-tablet">
+                <p>Eighths</p>
+              </div>
+              <div class="four fifths small-tablet">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one eighth">1/8</div>
+                    <div class="two eighths">2/8</div>
+                    <div class="five eighths">5/8</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one eighth&quot;&gt;1/8&lt;/div&gt;
+  &lt;div class=&quot;two eighths&quot;&gt;2/8&lt;/div&gt;
+  &lt;div class=&quot;five eighths&quot;&gt;5/8&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fifth small-tablet">
+                <p>Ninths</p>
+              </div>
+              <div class="four fifths small-tablet">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one ninth">1/9</div>
+                    <div class="three ninths">3/9</div>
+                    <div class="five ninths">5/9</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one ninth&quot;&gt;1/9&lt;/div&gt;
+  &lt;div class=&quot;three ninths&quot;&gt;3/9&lt;/div&gt;
+  &lt;div class=&quot;five ninths&quot;&gt;5/9&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fifth small-tablet">
+                <p>Tenths</p>
+              </div>
+              <div class="four fifths small-tablet">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one tenth">1/10</div>
+                    <div class="three tenths">3/10</div>
+                    <div class="five tenths">5/10</div>
+                    <div class="one tenth">1/10</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one tenth&quot;&gt;1/10&lt;/div&gt;
+  &lt;div class=&quot;three tenths&quot;&gt;3/10&lt;/div&gt;
+  &lt;div class=&quot;five tenths&quot;&gt;5/10&lt;/div&gt;
+  &lt;div class=&quot;one tenth&quot;&gt;1/10&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fifth small-tablet">
+                <p>Elevenths</p>
+              </div>
+              <div class="four fifths small-tablet">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one eleventh">1/11</div>
+                    <div class="three elevenths">3/11</div>
+                    <div class="five elevenths">5/11</div>
+                    <div class="two elevenths">2/11</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one eleventh&quot;&gt;1/11&lt;/div&gt;
+  &lt;div class=&quot;three elevenths&quot;&gt;3/11&lt;/div&gt;
+  &lt;div class=&quot;five elevenths&quot;&gt;5/11&lt;/div&gt;
+  &lt;div class=&quot;two elevenths&quot;&gt;2/11&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="one fifth small-tablet">
+                <p>Twelfths</p>
+              </div>
+              <div class="four fifths small-tablet">
+                <div class="demo">
+                  <div class="row">
+                    <div class="one twelfth">1/12</div>
+                    <div class="three twelfths">3/12</div>
+                    <div class="five twelfths">5/12</div>
+                    <div class="two twelfths">2/12</div>
+                    <div class="one twelfth">1/12</div>
+                  </div>
+                </div>
+                <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one twelfth&quot;&gt;1/12&lt;/div&gt;
+  &lt;div class=&quot;three twelfths&quot;&gt;3/12&lt;/div&gt;
+  &lt;div class=&quot;five twelfths&quot;&gt;5/12&lt;/div&gt;
+  &lt;div class=&quot;two twelfths&quot;&gt;2/12&lt;/div&gt;
+  &lt;div class=&quot;one twelfth&quot;&gt;1/12&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div><br>
+          <hr><br>
+          <div class="bounceInRight animated">
+            <h4 class="zero">Column Shuffling/Source Reordering</h4>
+            <p>(Adapting column ordering without changing source order)</p>
+            <div class="demo reordering">
+              <div class="row">
+                <div class="one fifth right-four">1/5 (first)</div>
+                <div class="four fifths left-one">4/5 (last)</div>
+              </div>
+              <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one fifth right-four&quot;&gt;1/5 (first)&lt;/div&gt;
+  &lt;div class=&quot;four fifths left-one&quot;&gt;4/5 (last)&lt;/div&gt;
+&lt;/div&gt;</pre><br>
+              <div class="row">
+                <div class="two thirds right-one">2/3 (first)</div>
+                <div class="one third left-two">1/3 (last)</div>
+              </div>
+              <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;two thirds right-one&quot;&gt;2/3 (first)&lt;/div&gt;
+  &lt;div class=&quot;one third left-two&quot;&gt;1/3 (last)&lt;/div&gt;
+&lt;/div&gt;</pre><br>
+              <div class="row">
+                <div class="one fourth right-two">1/4 (first)</div>
+                <div class="one fourth left-one">1/4 (second)</div>
+                <div class="one fourth right-one">1/4 (third)</div>
+                <div class="one fourth left-two">1/4 (fourth)</div>
+              </div>
+              <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one fourth right-two&quot;&gt;1/4 (first)&lt;/div&gt;
+  &lt;div class=&quot;one fourth left-one&quot;&gt;1/4 (second)&lt;/div&gt;
+  &lt;div class=&quot;one fourth right-one&quot;&gt;1/4 (third)&lt;/div&gt;
+  &lt;div class=&quot;one fourth left-two&quot;&gt;1/4 (fourth)&lt;/div&gt;
+&lt;/div&gt;</pre><br>
+              <div class="row">
+                <div class="three eighths right-five">3/8 (first)</div>
+                <div class="two eighths left-three">2/8 (second)</div>
+                <div class="three eighths left-three">3/8 (third)</div>
+              </div>
+              <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;three eighths right-five&quot;&gt;3/8 (first)&lt;/div&gt;
+  &lt;div class=&quot;two eighths left-three&quot;&gt;2/8 (second)&lt;/div&gt;
+  &lt;div class=&quot;three eighths left-three&quot;&gt;3/8 (third)&lt;/div&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div><br>
+          <hr><br>
+          <div class="bounceInLeft animated">
+            <h4>Centering</h4>
+            <div class="demo centering">
+              <div class="row">
+                <div class="one centered mobile seventh">1/7</div>
+              </div><br>
+              <div class="row">
+                <div class="one centered mobile fifth">1/5</div>
+              </div><br>
+              <div class="row">
+                <div class="one centered mobile third">1/3</div>
+              </div>
+              <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one centered mobile seventh&quot;&gt;1/7&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one centered mobile fifth&quot;&gt;1/5&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one centered mobile third&quot;&gt;1/3&lt;/div&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div><br>
+          <hr><br>
+          <div class="bounceInRight animated">
+            <h4>Offsetting</h4>
+            <div class="offsetting demo">
+              <div class="row">
+                <div class="eleven mobile twelfths skip-one">11</div>
+              </div><br>
+              <div class="row">
+                <div class="ten mobile twelfths skip-two">10</div>
+              </div><br>
+              <div class="row">
+                <div class="nine mobile twelfths skip-three">9</div>
+              </div><br>
+              <div class="row">
+                <div class="eight mobile twelfths skip-four">8</div>
+              </div><br>
+              <div class="row">
+                <div class="seven mobile twelfths skip-five">7</div>
+              </div><br>
+              <div class="row">
+                <div class="six mobile twelfths skip-six">6</div>
+              </div><br>
+              <div class="row">
+                <div class="one mobile twelfth">1</div>
+                <div class="five mobile twelfths skip-six">5</div>
+              </div><br>
+              <div class="row">
+                <div class="two mobile twelfths">2</div>
+                <div class="four mobile twelfths skip-six">4</div>
+              </div><br>
+              <div class="row">
+                <div class="three mobile twelfths">3</div>
+                <div class="three mobile twelfths skip-six">3</div>
+              </div><br>
+              <div class="row">
+                <div class="four mobile twelfths">4</div>
+                <div class="two mobile twelfths skip-six">2</div>
+              </div><br>
+              <div class="row">
+                <div class="five mobile twelfths">5</div>
+                <div class="one mobile twelfth skip-six">1</div>
+              </div><br>
+              <div class="row">
+                <div class="four mobile fifths skip-one">4/5</div>
+              </div><br>
+              <div class="row">
+                <div class="eight mobile elevenths skip-three">8/11</div>
+              </div><br>
+              <div class="row">
+                <div class="five mobile sevenths skip-two">5/7</div>
+              </div>
+              <pre data-lang="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;eleven mobile twelfths skip-one&quot;&gt;11&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;ten mobile twelfths skip-two&quot;&gt;10&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;nine mobile twelfths skip-three&quot;&gt;9&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;eight mobile twelfths skip-four&quot;&gt;8&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;seven mobile twelfths skip-five&quot;&gt;7&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;six mobile twelfths skip-six&quot;&gt;6&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;one mobile twelfth&quot;&gt;1&lt;/div&gt;
+  &lt;div class=&quot;five mobile twelfths skip-six&quot;&gt;5&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;two mobile twelfths&quot;&gt;2&lt;/div&gt;
+  &lt;div class=&quot;four mobile twelfths skip-six&quot;&gt;4&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;three mobile twelfths&quot;&gt;3&lt;/div&gt;
+  &lt;div class=&quot;three mobile twelfths skip-six&quot;&gt;3&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;four mobile twelfths&quot;&gt;4&lt;/div&gt;
+  &lt;div class=&quot;two mobile twelfths skip-six&quot;&gt;2&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;five mobile twelfths&quot;&gt;5&lt;/div&gt;
+  &lt;div class=&quot;one mobile twelfth skip-six&quot;&gt;1&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;four mobile fifths skip-one&quot;&gt;4/5&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;eight mobile elevenths skip-three&quot;&gt;8/11&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;five mobile sevenths skip-two&quot;&gt;5/7&lt;/div&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div><br>
+          <hr><br>
+          <div class="bounceInUp animated">
+            <h4>Equal Columns</h4>
+            <div class="demo equal-columns">
+              <div class="equalize row">
+                <div class="one third padded">
+                  <h1>First Column</h1>
+                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                </div>
+                <div class="one third padded">
+                  <h1>Second Column</h1>
+                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+                </div>
+                <div class="one third padded">
+                  <h1>Third Column</h1>
+                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                </div>
+              </div>
+            </div>
+            <pre data-lang="html">&lt;div class=&quot;equalize row&quot;&gt;
+  &lt;div class=&quot;one third padded&quot;&gt;
+    &lt;h1&gt;First Column&lt;/h1&gt;
+    &lt;p&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;one third padded&quot;&gt;
+    &lt;h1&gt;Second Column&lt;/h1&gt;
+    &lt;p&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;one third padded&quot;&gt;
+    &lt;h1&gt;Third Column&lt;/h1&gt;
+    &lt;p&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div><br>
+        </div>
+      </div>
+    </div>
+    <footer class="gap-top bounceInUp animated">
+      <div class="box square charcoal">
+        <div class="container padded">
+          <div class="row">
+            <div class="one small-tablet fourth padded">
+              <h5 class="green">Example Layouts</h5>
+              <ul class="unstyled">
+                <li><a href="./layout-a.html">Web Page</a></li>
+                <li><a href="./layout-b.html">Image Gallery</a></li>
+                <li><a href="./layout-c.html">Ecommerce Page</a></li>
+                <li><a href="./layout-d.html">Contact Page</a></li>
+              </ul>
+            </div>
+            <div class="three small-tablet fourths padded">
+              <h5 class="blue">Documentation</h5>
+              <ul class="unstyled three-column two-column-mobile">
+                <li><a href="./grid.html" title="Responsive grid system, grid adapters and helpers">Grid</a></li>
+                <li><a href="./helpers.html" title="Layout helpers, spinners and much more">Helpers</a></li>
+                <li><a href="./typography.html" title="Text elements, quotes, code and web fonts">Typography</a></li>
+                <li><a href="./navigation.html" title="Navigation">Navigation</a></li>
+                <li><a href="./buttons.html" title="Buttons, button groups, button menus">Buttons</a></li>
+                <li><a href="./boxes.html" title="Boxes">Boxes</a></li>
+                <li><a href="./messages.html" title="Message boxes">Message Boxes</a></li>
+                <li><a href="./tables.html" title="Tables">Tables</a></li>
+                <li><a href="./tabs.html" title="Tabs">Tabs</a></li>
+                <li><a href="./forms.html" title="Form elements">Form Elements</a></li>
+                <li><a href="./icons.html" title="Icons">Icons</a></li>
+                <li><a href="./responsive-text.html" title="Responsive text and multi-line text block truncation">Responsive Text</a></li>
+                <li><a href="./placeholder-text.html" title="Placeholder text and placeholder fonts for rapid prototyping and wireframes">Placeholder Text</a></li>
+                <li><a href="./animations.html" title="Pure CSS3 Animations">Animations</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box square">
+        <div class="container padded">
+          <div class="row">
+            <div class="one half padded">
+              <p>GroundworkCSS is <b>100% free</b> and <b>open source</b>. <a href="mailto:groundworkcss@gmail.com">Give a shout out</a> if you have any feedback.</p>
+              <p>Find a bug? Help squash it by <a href="https://github.com/groundworkcss/groundwork/issues" target="_blank">filing an issue</a> on Github.</p>
+            </div>
+            <div class="one half padded">
+              <p class="large padded align-right align-center-small-tablet"><a href="http://twitter.com/groundworkcss" target="_blank" title="@groundworkcss" style="text-decoration:none;" class="large inline gapped"></a><a href="http://github.com/groundworkcss" target="_blank" title="@groundworkcss" style="text-decoration:none;" class="large inline gapped"></a><a href="mailto:groundworkcss@gmail.com" title="groundworkcss@gmail.com" style="text-decoration:none;" class="large inline gapped"></a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- javascript-->
+    <script type="text/javascript" src="../js/groundwork.all.js"></script>
+    <!-- google analytics-->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>
