@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="cache-control" content="max-age=0" />
   <meta http-equiv="cache-control" content="no-cache" />
-  <title>Brez</title>
+  <title>brez.</title>
 
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   <script src="{{ url_for('static', filename='groundwork/js/libs/modernizr-2.6.2.min.js') }}"></script>
@@ -27,13 +27,15 @@
 
       <h1 id="title-name" class="inline-block title-vert">adam breznicky</h1>
 
-      <h6 class="pull-right title-vert">why choose a side when the best view is from on top the fence?</h6>
+      <h6 class="pull-right title-vert">full stack geospatial web developer</h6>
 
   </div>
   <div class="row" id="nav">
-    <nav class="nav nocollapse" title="Vegetarian Menu">
-      <a href="{{ url_for('home') }}"><i class="icon-home"></i> Home</a>
-      <a href="https://github.com/adambreznicky/adambreznicky.github.io">Source</a>
+    <nav class="nav nocollapse">
+      <a href="{{ url_for('home') }}" title="Home"><i class="icon-home"></i> Home</a>
+      <a href="{{ url_for('story') }}" title="My Story"><i class="icon-book"></i> Story</a>
+      <a href="https://github.com/adambreznicky/" title="Github Profile">Github</a>
+      <a href="https://github.com/adambreznicky/adambreznicky.github.io" title="Source Code">Source</a>
     </nav>
   </div>
 

@@ -10,6 +10,10 @@ def home():
         key=lambda page: page.meta['date'])
     return render_template('index.html', pages=sorted_posts)
 
+@app.route('/story')
+def story():
+    return render_template('story.html')
+
 @app.route('/<path:path>/')
 def page(path):
     # `path` is the filename of a page, without the file extension
