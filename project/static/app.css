@@ -43,3 +43,7 @@ h4>ul>li {
 i.italic {
   font-family: AUdimat-Italic !important;
 }
+
+img {
+  border-radius: 10px;
+}
