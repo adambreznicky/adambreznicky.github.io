@@ -10,7 +10,7 @@ def home():
         key=lambda page: page.meta['date'])
     return render_template('index.html', pages=sorted_posts)
 
-@app.route('/story')
+@app.route('/story.html')
 def story():
     return render_template('story.html')
 
