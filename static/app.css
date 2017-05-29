@@ -45,5 +45,10 @@ i.italic {
 }
 
 img {
-  border-radius: 10px;
+  border-radius: 15px;
+}
+
+#map {
+  height: 450px;
+  width: 100%;
 }

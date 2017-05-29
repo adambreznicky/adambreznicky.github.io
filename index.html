@@ -3,21 +3,30 @@
 <html lang='en' class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="cache-control" content="max-age=0" />
-  <meta http-equiv="cache-control" content="no-cache" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
   <title>brez.</title>
 
-  <script src="/adambreznicky.github.io/static/js/script.js"></script>
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
+     integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
+     crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+    integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
+    crossorigin=""/>
+
   <script src="/adambreznicky.github.io/static/groundwork/js/libs/modernizr-2.6.2.min.js"></script>
 
   <link rel="stylesheet" href="/adambreznicky.github.io/static/app.css">
-  <link rel="stylesheet" href="">
   <link type="text/css" rel="stylesheet" href="/adambreznicky.github.io/static/groundwork/css/groundwork.css">
   <link type="text/css" rel="stylesheet" href="/adambreznicky.github.io/static/groundwork/css/groundwork-core.css">
   <link type="text/css" rel="stylesheet" href="/adambreznicky.github.io/static/groundwork/css/groundwork-type.css">
   <link type="text/css" rel="stylesheet" href="/adambreznicky.github.io/static/groundwork/css/groundwork-ui.css">
   <link type="text/css" rel="stylesheet" href="/adambreznicky.github.io/static/groundwork/css/groundwork-anim.css">
   <link type="text/css" rel="stylesheet" href="/adambreznicky.github.io/static/groundwork/css/groundwork-ie.css">
+  <link rel="shortcut icon" href="https://www.gravatar.com/avatar/0dfc6a92b9979c99c780e40ab58e2c6d" />
+
+
+
+
   
 
 
@@ -56,7 +65,7 @@
     <img src="../static/images/super_bee.jpg" />
     <hr>
     <h2>About</h2>
-    <img src="../static/images/alli_mud.jpg" width="150" height="265" class="pull-right gap-left" alt/>
+    <img src="../static/images/alli_mud.jpg" width="150" height="265" class="pull-right gap-left padded" alt/>
     <p>
       Welcome! My name is Adam. I am a husband, a dog-father, and a goofball.
       I am a web developer with experience playing with all parts of the full
@@ -72,6 +81,12 @@
       I am an individual. We are all individuals; And we should all conduct
       ourselves as such.
     </p>
+    <hr>
+    <h4 class="pull-right">Currently located in Austin, Texas</h4>
+<div id="map"></div>
+
+<script src="/adambreznicky.github.io/static/js/map.js"></script>
+    <hr>
   </section>
   <section class="one fourth left-two padded border-right bounceInLeft animated">
     <h4>Operating Systems</h4>
@@ -82,43 +97,94 @@
     </ul>
     <hr>
     <h4 class="pull-right">Database Management</h4>
-    <ul class="page-list pull-right">
-      <li>Postgres w/ PostGIS</li>
-      <li>SQL Server</li>
-      <li>AWS RDS</li>
-      <li>SQLite</li>
-      <li>RethinkDB</li>
-      <li>ESRI ArcServer</li>
-      <li>ESRI ArcSde</li>
-    </ul>
+    <div class="row">
+      <div class="one half">
+        <img src="../static/images/postgres.png"  width="80" height="80" class="center" alt/>
+        <img src="../static/images/rds.png"  width="80" height="80" class="center" alt/>
+      </div>
+      <div class="one half">
+        <ul class="page-list pull-right">
+          <li>Postgres w/ PostGIS</li>
+          <li>SQL Server</li>
+          <li>AWS RDS</li>
+          <li>SQLite</li>
+          <li>RethinkDB</li>
+          <li>ESRI ArcServer</li>
+          <li>ESRI ArcSde</li>
+        </ul>
+      </div>
+    </div>
     <hr>
-    <h4>GIS</h4>
-    <ul class="page-list">
-      <li>ESRI ArcGIS Suite</li>
-      <li>QGIS</li>
-      <li>ArcGIS Online</li>
-      <li>ESRI REST Services</li>
-    </ul>
+    <div class="row">
+      <div class="one half">
+        <h4>GIS</h4>
+        <ul class="page-list">
+          <li>ESRI ArcGIS Suite</li>
+          <li>QGIS</li>
+          <li>ArcGIS Online</li>
+          <li>ESRI REST Services</li>
+        </ul>
+      </div>
+      <div class="one half">
+        <img src="../static/images/arcgis.png"  class="pull-right gap-left" alt/>
+        <img src="../static/images/qgis.png"  style="max-width:80px;" class="center" alt/>
+      </div>
+    </div>
     <hr>
     <h4 class="pull-right" style="text-align:right;">Texas Natural Resources<br>Information System</h4>
-    <p class="pull-right" style="text-align:right;">
-      <a href="http://tnris.org" title="tnris.org">
-        <img src="../static/images/tnris.jpeg" width="80" height="80" class="pull-left gap-right" alt/>
-      </a>
-      GIS data provider, historical aerial archive, LiDAR facilitator, and community leader<br>
-      <a href="https://github.com/TNRIS" title="Github Organization">Github</a>
-    </p>
+    <div class="row">
+      <div class="one half">
+        <a href="http://tnris.org" title="tnris.org">
+          <img src="../static/images/tnris.jpeg" width="80" height="80" class="center" alt/>
+        </a>
+      </div>
+      <div class="one half">
+        <p class="pull-right" style="text-align:right;">
+          GIS data provider, historical aerial archive, LiDAR facilitator, and community leader<br>
+          <a href="https://github.com/TNRIS" title="Github Organization">Github</a>
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="one half">
+        <img src="../static/images/react.png" style="max-width:80px;" class="center" alt/>
+        <img src="../static/images/material.png" style="max-width:80px;" class="center padded" alt/>
+        <img src="../static/images/jquery.png" style="max-width:80px;" class="center padded" alt/>
+        <img src="../static/images/bootstrap.png" class="center padded" alt/>
+      </div>
+      <div class="one half pad-top">
+        <h4 class="center" style="max-width:40%;" >Libraries</h4>
+        <ul class="page-list center" style="max-width:40%;" >
+          <li>React JS</li>
+          <li>Angular JS</li>
+          <li>jQuery</li>
+          <li>Bootstrap</li>
+          <li>Material Design</li>
+        </ul>
+      </div>
+    </div>
+    <hr>
   </section>
   <section class="one fourth padded border-left bounceInRight animated">
     <h4 class="pull-right">Languages &amp; Engines</h4>
-    <ul class="page-list pull-right">
-      <li>Javascript +ES6, Node.js</li>
-      <li>Python +3, Flask</li>
-      <li>HTML +5</li>
-      <li>CSS, SCSS</li>
-      <li>GIT, Markdown, Makefile</li>
-      <li>SQL</li>
-    </ul>
+    <div class="row">
+      <div class="one half">
+        <img src="../static/images/node.png" class="center double-padded" alt/>
+        <img src="../static/images/python.png" class="center" alt/>
+        <img src="../static/images/git.png" class="center double-padded" alt/>
+      </div>
+      <div class="one half">
+        <ul class="page-list pull-right">
+          <li>Javascript +ES6, Node.js</li>
+          <li>Python +3, Flask</li>
+          <li>HTML +5</li>
+          <li>CSS, SCSS</li>
+          <li>GIT, Markdown, Makefile</li>
+          <li>SQL</li>
+        </ul>
+      </div>
+    </div>
     <hr>
     <h4>Projects</h4>
     <ul class="page-list">
@@ -127,26 +193,42 @@
       <li><a href="/adambreznicky.github.io/projects.html#iswp" title="ISWP">Texas Interactive State Water Plan</a></li>
       <li><a href="/adambreznicky.github.io/projects.html#dusa" title="DUSA">DUSA</a></li>
       <li><a href="/adambreznicky.github.io/projects.html#tnris_org" title="tnris.org">tnris.org</a></li>
-      <li><a href="/adambreznicky.github.io/projects.html#cri" title="County Road Inventory">County Road Inventory</a></li>
-
-
+      <li><a href="/adambreznicky.github.io/projects.html#get" title="Guardrail End Treatment Acquisition">Guardrail End Treatments</a></li>
     </ul>
     <hr>
     <h4 class="pull-right">Web Mapping &amp; Visualization</h4>
-    <ul class="page-list pull-right">
-      <li>Leaflet JS</li>
-      <li>ESRI JS API</li>
-      <li>WMS Services</li>
-      <li>REST Services</li>
-      <li>Google Maps API</li>
-    </ul><hr>
+    <div class="row">
+      <div class="one half">
+        <img src="../static/images/leaflet.png" class="center padded" alt/>
+      </div>
+      <div class="one half">
+        <ul class="page-list pull-right">
+          <li>Leaflet JS</li>
+          <li>ESRI JS API</li>
+          <li>WMS Services</li>
+          <li>REST Services</li>
+          <li>Google Maps API</li>
+        </ul>
+      </div>
+    </div>
+    <hr>
     <h4 class="pull-left">Network &amp; Deployments</h4>
-    <ul class="page-list pull-left">
-      <li>Amazon Web Services</li>
-      <li>Terraform</li>
-      <li>Docker</li>
-      <li>Ansible</li>
-    </ul>
+    <div class="row">
+      <div class="one half">
+        <ul class="page-list pull-left">
+          <li>Amazon Web Services</li>
+          <li>Terraform</li>
+          <li>Docker</li>
+          <li>Ansible</li>
+        </ul>
+      </div>
+      <div class="one half">
+        <img src="../static/images/aws_large.png" class="center padded" alt/>
+        <img src="../static/images/terraform.png" style="max-width:80px;" class="center" alt/>
+        <img src="../static/images/docker.png" class="center padded" alt/>
+      </div>
+    </div>
+    <hr>
   </section>
 </article>
 
