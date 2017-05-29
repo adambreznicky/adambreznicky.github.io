@@ -4,11 +4,10 @@
 {% block content %}
 
 
-<arctile class="row">
+<article class="row">
   <section class="two fourths right-one padded bounceInDown animated">
     <img src="../static/images/super_bee.jpg" />
     <hr>
-
     <h2>About</h2>
     <img src="../static/images/alli_mud.jpg" width="150" height="265" class="pull-right gap-left" alt/>
     <p>
@@ -26,7 +25,6 @@
       I am an individual. We are all individuals; And we should all conduct
       ourselves as such.
     </p>
-
   </section>
   <section class="one fourth left-two padded border-right bounceInLeft animated">
     <h4>Operating Systems</h4>
@@ -39,7 +37,10 @@
     <h4 class="pull-right">Database Management</h4>
     <ul class="page-list pull-right">
       <li>Postgres w/ PostGIS</li>
+      <li>SQL Server</li>
       <li>AWS RDS</li>
+      <li>SQLite</li>
+      <li>RethinkDB</li>
       <li>ESRI ArcServer</li>
       <li>ESRI ArcSde</li>
     </ul>
@@ -52,7 +53,6 @@
       <li>ESRI REST Services</li>
     </ul>
     <hr>
-
     <h4 class="pull-right" style="text-align:right;">Texas Natural Resources<br>Information System</h4>
     <p class="pull-right" style="text-align:right;">
       <a href="http://tnris.org" title="tnris.org">
@@ -60,9 +60,7 @@
       </a>
       GIS data provider, historical aerial archive, LiDAR facilitator, and community leader<br>
       <a href="https://github.com/TNRIS" title="Github Organization">Github</a>
-
     </p>
-
   </section>
   <section class="one fourth padded border-left bounceInRight animated">
     <h4 class="pull-right">Languages &amp; Engines</h4>
@@ -75,17 +73,28 @@
       <li>SQL</li>
     </ul>
     <hr>
-    <h4>Applications</h4>
+    <h4>Projects</h4>
     <ul class="page-list">
-      {% for page in pages %}
-          <li><a href="{{ url_for('page', path=page.path) }}">
-              {{ page.meta.title }}
-          </a>- {{ page.meta.date }}</li>
-      {% endfor %}
+      <li><a href="{{ url_for('projects', _anchor='flood') }}" title="Flood Viewer">Flood Information Viewer</a></li>
+      <li><a href="{{ url_for('projects', _anchor='road_runner') }}" title="Road Runner">Road Runner</a></li>
+      <li><a href="{{ url_for('projects', _anchor='iswp') }}" title="ISWP">Texas Interactive State Water Plan</a></li>
+      <li><a href="{{ url_for('projects', _anchor='dusa') }}" title="DUSA">DUSA</a></li>
+      <li><a href="{{ url_for('projects', _anchor='tnris_org') }}" title="tnris.org">tnris.org</a></li>
+      <li><a href="{{ url_for('projects', _anchor='cri') }}" title="County Road Inventory">County Road Inventory</a></li>
+
+
     </ul>
     <hr>
-    <h4 class="pull-right">Network &amp; Deployments</h4>
+    <h4 class="pull-right">Web Mapping &amp; Visualization</h4>
     <ul class="page-list pull-right">
+      <li>Leaflet JS</li>
+      <li>ESRI JS API</li>
+      <li>WMS Services</li>
+      <li>REST Services</li>
+      <li>Google Maps API</li>
+    </ul><hr>
+    <h4 class="pull-left">Network &amp; Deployments</h4>
+    <ul class="page-list pull-left">
       <li>Amazon Web Services</li>
       <li>Terraform</li>
       <li>Docker</li>
