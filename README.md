@@ -13,13 +13,14 @@ css styles from [groundworkcss2](https://groundworkcss.github.io/)
 python [virtual environments](http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/) are always a good idea :)
 
 1. cd into the repo folder and run `pip install -r requirements.txt`
-1. run `python run.py` will run the app locally via port 5000
+1. run `python run.py` will run the app locally via port 5000. local build is edited
+and hosted out of the '<repo>/project/' directory.
 
 # deployment
 
 1. run `python freeze.py`to compile and build the static site. it will be dumped
 into the root of the repo
 1. github pages auto deploy when new code is pushed up to the master branch of the repo.
-⋅⋅* add files from latest build `git add -A`
-..* then commit changes `git commit -am "<comment>"`
-..* push up `git push`
+  * add files from latest build `git add -A`
+  * then commit changes `git commit -am "<comment>"`
+  * push up `git push`
