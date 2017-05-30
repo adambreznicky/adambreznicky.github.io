@@ -45,10 +45,15 @@ i.italic {
 }
 
 img {
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 #map {
   height: 450px;
   width: 100%;
+  position: relative;
+}
+
+a.leaflet-popup-close-button:after {
+  content: none !important;
 }

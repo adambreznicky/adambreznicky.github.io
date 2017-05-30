@@ -1,6 +1,8 @@
 (function() {
   var map = new L.Map('map', {
-    zoomControl: false
+    zoomControl: false,
+    dragging: !L.Browser.mobile,
+    touchZoom: true
   });
 
   function onLocationFound(e) {
@@ -25,8 +27,9 @@
   	map.setView(new L.LatLng(30.2793421,-97.7395106),9);
   	map.addLayer(osm);
     var marker = new L.Marker([30.2793421,-97.7395106], {
-      title: "Adam's in the Stephen F. Austin building"
+      title: "TNRIS is in Stephen F. Austin building"
     }).addTo(map);
+    marker.bindPopup("TNRIS is in the Stephen F. Austin building.").openPopup();
 
     //find the user's lcoation and add it to the map
     //currently disabled as per SSL requirements
