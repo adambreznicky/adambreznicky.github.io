@@ -1,8 +1,8 @@
 (function() {
   var map = new L.Map('map', {
-    zoomControl: false,
     dragging: !L.Browser.mobile,
-    touchZoom: true
+    touchZoom: true,
+    tap: true
   });
 
   function onLocationFound(e) {
