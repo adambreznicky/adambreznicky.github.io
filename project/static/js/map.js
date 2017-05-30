@@ -1,6 +1,6 @@
 (function() {
   var map = new L.Map('map', {
-    dragging: !L.Browser.mobile,
+    // dragging: !L.Browser.mobile,
     touchZoom: true,
     tap: true
   });
