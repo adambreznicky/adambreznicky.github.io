@@ -48,6 +48,10 @@ img {
   border-radius: 10px;
 }
 
+a.noLogo:before {
+  content: none !important;
+}
+
 #map {
   height: 450px;
   width: 100%;

@@ -62,41 +62,150 @@
 <h8><i class="italic pull-left">Some example projects I lead or participated in.</i></h8>
 <article class="row">
   <section class="two fourths padded bounceInRight animated">
-    <h4 id="flood">Flood Information Viewer</h4>
+    <h4 id="flood">Flood Information Viewer
+      <a href="https://github.com/TNRIS/flood" title="Project Github Repo"></a>
+      <a href="http://map.texasflood.org" title="Live Site"><i class="icon-eye-open"></i></a>
+    </h4>
     <p>
-      exas is no stranger to flood. With its diverse geography and extensive,
+      Texas is no stranger to flood. With its diverse geography and extensive,
       hurricane-prone coastline, the state frequently leads the nation not only
-      in structural damage but also in loss of lives related to flooding events. 
+      in structural damage but also in loss of lives related to flooding events.<br>
+      As part of the developer team at TNRIS, our crew inherited the original concept
+      of the Flood Information Viewer and fed it adrenaline for 6 months until it
+      became a well-oiled machine of public safety. This application utilizes a
+      backend Python engine which utilizes Celery tasks to scrape the NOAA/NWS
+      flood gage database, processes the data, and dumps it into a Carto hosted
+      Postgres database in an frontend interpretable format. The backend also connects
+      with AWS SNS services to alert users via SMS text messages when flood gages
+      are at dangerous levels. Even further, the backend engine performs routine
+      self-maintenance tasks to moderate the various database tables.<br>
+      The application frontend is a Node JS &amp; Webpack compiled site hosted
+      within an AWS S3 bucket and dispersed via AWS Cloudfront technology for
+      performance and certification. The UI is built with React JS and styled with
+      Material Design Lite. The Flood Information Viewer's mapping functionality
+      is constructed with Leaflet and pulling data from Carto and the Aeri's Weather
+      API.<br>
+      This application uses AWS Cognito to handle user accounts and sercurity for
+      the flood gage status subscription service.
+    </p>
+    <img src="/adambreznicky.github.io/static/images/floodapp.png" class="center" alt/>
+    <p>
+      <i class="italic">
+        <small>
+          Original Developers: <a href="https://github.com/wilsaj" class="noLogo">Andy Wilson</a>,
+          <a href="https://github.com/jseppi" class="noLogo">James Seppi</a>, &amp;
+          <a href="https://github.com/sashahart" class="noLogo">Sasha Hart</a><br>
+          TNRIS Dev Team: <a href="https://github.com/adambreznicky" class="noLogo">Adam Breznicky</a>,
+          <a href="https://github.com/DavidHickman" class="noLogo">David Hickman</a>, &amp;
+          <a href="https://github.com/JasonKleinert" class="noLogo">Jason Kleinert</a>
+        </small>
+      </i>
     </p>
     <hr>
-    <h4 id="dusa">DUSA</h4>
+    <h4 id="dusa">Data Updates &amp; Sharing Application (DUSA)
+      <a href="https://github.com/adambreznicky/smudge_js/tree/master/DUSA" title="Project Github Repo"></a>
+      <a href="http://www.dot.state.tx.us/apps/statewide_mapping/dusa/" title="Live Site (Requires Credentials)"><i class="icon-eye-open"></i></a>
+    </h4>
     <p>
-      Data Updates &amp; Sharing Application - Designed to empower local subject
-      matter experts with GIS capabilities by providing a spatial environment for
-      the review and markup of the current geospatial road inventory in a desktop
-      environment. With capabilites to edit, download, and upload REST service
-      data, this is a revolution of the traditional paper methods used for
-      routine update projects.
+      Creating and maintaining an asset database is a no small feat for any major
+      organization or government. While employed at the Texas Department of
+      Transportation, reporting assests was a monumental priority and it was evident
+      collusion tools could help get the job done. This application was designed to
+      empower local subject matter experts with GIS capabilities by providing a
+      spatial environment for the review and markup of their current geospatial road
+      inventory asset data on file with the State. With capabilites to edit,
+      download, and upload data, this is a revolution of the traditional paper
+      methods used for routine update projects.<br>
+      This is a static, single page web application heavily utilizing ESRI tools.
+      The web map and data editing tools are built from the ESRI JS API. All data
+      is hosted from ESRI REST Services within ArcGIS Online. REST Service data is
+      downloadable while formatted Shapefiles can also be uploaded through the
+      application, both via custom Python Geoprocessing Tools published to ArcServer.<br>
+      Styling and CSS from Bootstrap.
+    </p>
+    <img src="/adambreznicky.github.io/static/images/dusaapp.png" class="center" alt/>
+    <p>
+      <i class="italic">
+        <small>
+          Complete Design &amp; Development: <a href="https://github.com/adambreznicky" class="noLogo">Adam Breznicky</a>
+        </small>
+      </i>
     </p>
     <hr>
-    <h4 id="tnris_org">tnris.org</h4>
+    <h4 id="tnris_org">Texas Natural Resources Information System (TNRIS) Website
+      <a href="https://github.com/TNRIS/tnris.org" title="Project Github Repo"></a>
+      <a href="http://tnris.org/" title="Live Site"><i class="icon-eye-open"></i></a>
+    </h4>
     <p>
-      This repository contains the content and code used to generate Texas Natural
-      Resources Information System website: tnris.org
+      The Texas Natural Resources Information System's Official Website: tnris.org<br>
+      Inherited by the current TNRIS Developer Team, the official TNRIS website
+      is the central hub for finding and acquiring GIS data within the State of
+      Texas. TNRIS collects and publicly provides community news, geospatial data,
+      LiDAR, &amp; historical aerial imagery while also assuming the role of
+      community leader organizing conferences, meetings, and cost share initiatives.<br>
+      This is a static website compiled via Gulp tasks &amp; Webpack assembling
+      various templates with their associated code. The Data Catalog functionality
+      is a frontend search and sortable listing of the data TNRIS provides. The
+      Data Download page is an independent Angular JS application whose API
+      provides TNRIS.org users the capability to query their desired datasets
+      and access it for download from AWS S3 storage. This website's contact forms
+      are also channeled through a separate application to handle and deliver the forms.
+    </p>
+    <img src="/adambreznicky.github.io/static/images/tnrisapp.png" class="center" alt/>
+    <p>
+      <i class="italic">
+        <small>
+          Original Developers: <a href="https://github.com/wilsaj" class="noLogo">Andy Wilson</a>, &amp;
+          <a href="https://github.com/jseppi" class="noLogo">James Seppi</a><br>
+          TNRIS Dev Team: <a href="https://github.com/adambreznicky" class="noLogo">Adam Breznicky</a>,
+          <a href="https://github.com/DavidHickman" class="noLogo">David Hickman</a>, &amp;
+          <a href="https://github.com/JasonKleinert" class="noLogo">Jason Kleinert</a>
+        </small>
+      </i>
     </p>
   </section>
   <section class="two fourths padded bounceInLeft animated">
-    <h4 id="road_runner">Road Runner</h4>
+    <h4 id="road_runner">Road Runner (Suite)
+      <a href="https://github.com/adambreznicky/smudge_js/tree/master/RoadRunner" title="Project Github Repo"></a>
+      <a href="http://www.txdot.gov/apps/statewide_mapping/roadrunner/rr.html" title="Live Site (Requires Credentials)"><i class="icon-eye-open"></i></a>
+    </h4>
     <p>
-      Road Runner - A transformative application for non-technical users to perform
-      routine field work in a digital record environment using geolocation and
-      smart mobile devices. This application retires old paper methods as
+      A transformative application suite for non-technical users to perform
+      routine their field workflow in a digital record environment using geolocation
+      and smart mobile devices. This application suite retires old paper methods as
       information is instantly logged to REST services complete with location,
-      attribution, and attachments.<br>
-      Coyote - The sibling application to the Road Runner, the Coyote permits
-      supervisors to query, navigate, monitor, map, and update data directly in
-      the field after it has been collected from the Road Runner application
-      using their smart mobile device.
+      attribution, and attachments. It also permits supervisors to query, navigate,
+      monitor, map, and update data directly in the field using their smart mobile device.<br>
+      The suite consists of four single page, static applications; one for each:<br>
+        &emsp;- Collecting data in the field of work to be done (Road Runner)<br>
+        &emsp;- Work/Data reviewed with status logging from the field (Coyote)<br>
+        &emsp;- Work Completed progress mapping (Web Map)<br>
+        &emsp;- Work Status Summarization from the office (Report)<br>
+      The applications utilize the ESRI JS API for mapping and display of the data.
+      The field applications use HTML5 Geolocation and are designed for use from
+      common smart mobile devices. They communicate with data hosted via REST Services
+      within ArcGIS Online to view, edit, and add information. The Road Runner
+      data collector empowers users to take pictures with their smart devices and
+      attribute them as assests to the data collected.<br>
+      The office applications query and analyze the REST Services while the Web
+      Map visually displays the spatial data and permits users to edit from the
+      office parallel to the field work.<br>
+      All applications leverage Bootstrap and Dojo for styling.
+    </p>
+    <div class="container">
+      <div class="one half">
+        <img src="/adambreznicky.github.io/static/images/rrapp.png" class="center padded" alt/>
+      </div>
+      <div class="one half">
+        <img src="/adambreznicky.github.io/static/images/coyoteapp.png" class="center padded" alt/>
+      </div>
+    </div>
+    <p>
+      <i class="italic">
+        <small>
+          Complete Design &amp; Development: <a href="https://github.com/adambreznicky" class="noLogo">Adam Breznicky</a>
+        </small>
+      </i>
     </p>
     <hr>
     <h4 id="iswp">Texas Interactive State Water Plan</h4>
