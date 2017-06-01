@@ -36,6 +36,12 @@ h4>ul>li {
   border-radius: 50px;
 }
 
+@media only screen and (max-width: 600px) {
+    .geospatial-title {
+      padding-top: 0px !important;
+    }
+}
+
 .nav a {
   border-top: 0 !important;
 }

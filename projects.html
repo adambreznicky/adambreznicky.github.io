@@ -39,7 +39,7 @@
 
           <h1 id="title-name" class="inline-block double-pad-top">adam breznicky</h1>
 
-          <h6 class="pull-right triple-pad-top">full stack geospatial web developer</h6>
+          <h6 class="geospatial-title pull-right triple-pad-top">full stack geospatial web developer</h6>
 
       </div>
       <nav role="navigation" class="nav gap-top" title="Menu">
@@ -81,10 +81,12 @@
       self-maintenance tasks to moderate the various database tables.<br>
       The application frontend is a Node JS &amp; Webpack compiled site hosted
       within an AWS S3 bucket and dispersed via AWS Cloudfront technology for
-      performance and certification. The UI is built with React JS and styled with
-      Material Design Lite. The Flood Information Viewer's mapping functionality
-      is constructed with Leaflet and pulling data from Carto and the Aeri's Weather
-      API.<br>
+      performance and certification.The javascript is written in the latest version
+      ES6 and converted to ES5 during compilation via Babel.<br>
+      The UI is built with React JS modeled from
+      a Redux state store and styled with Material Design Lite. The Flood
+      Information Viewer's mapping functionality is constructed with Leaflet and
+      pulling data from Carto and the Aeri's Weather API.<br>
       This application uses AWS Cognito to handle user accounts and sercurity for
       the flood gage status subscription service.
     </p>
@@ -146,10 +148,11 @@
       This is a static website compiled via Gulp tasks &amp; Webpack assembling
       various templates with their associated code. The Data Catalog functionality
       is a frontend search and sortable listing of the data TNRIS provides. The
-      Data Download page is an independent Angular JS application whose API
-      provides TNRIS.org users the capability to query their desired datasets
-      and access it for download from AWS S3 storage. This website's contact forms
-      are also channeled through a separate application to handle and deliver the forms.
+      Data Download page is an independent Angular JS application run within a Docker
+      container whose API provides TNRIS.org users the capability to query their
+      desired datasets and access it for download from AWS S3 storage. This
+      website's contact forms are also channeled through a separate Docker containerized
+      application to handle and deliver the forms.
     </p>
     <img src="/adambreznicky.github.io/static/images/tnrisapp.png" class="center" alt/>
     <p>
@@ -208,29 +211,72 @@
       </i>
     </p>
     <hr>
-    <h4 id="iswp">Texas Interactive State Water Plan</h4>
+    <h4 id="iswp">Texas Interactive State Water Plan (ISWP)
+      <a href="https://github.com/TNRIS/iswp2017" title="Project Github Repo"></a>
+      <a href="http://2017.texasstatewaterplan.org/statewide" title="Live Site"><i class="icon-eye-open"></i></a>
+    </h4>
     <p>
-      This website is an integral part of the 2017 State Water Plan that lets
-      water users statewide take an up-close look at data in the 2017 State
+      This website is an integral part of the 2017 Texas State Water Plan that lets
+      water users statewide take an up-close look at data in the 2017 Texas State
       Water Plan and how water needs change over time. The user-friendly website,
       which is also easily viewed on most mobile devices, now shows:<br>
-           - projected water demands,<br>
-           - existing water supplies,<br>
-           - the relative severity and projected water needs (potential shortages),<br>
-           - the water management strategies recommended to address potential shortages, and<br>
-           - recommended capital projects and their sponsors.<br>
-      over the next 50 years in geographical and tabular forms. Note that all
-      county-based water user group categories are mapped to the same location
-      at the center of each county.
+        &emsp;- projected water demands,<br>
+        &emsp;- existing water supplies,<br>
+        &emsp;- the relative severity and projected water needs (potential shortages),<br>
+        &emsp;- the water management strategies recommended to address potential shortages, and<br>
+        &emsp;- recommended capital projects and their sponsors.<br>
+      over the next 50 years in geographical and tabular forms.<br>
+      This application displays numerous representations of the Texas Water Plan
+      data through various charts, maps, and statistics. The Docker containerized
+      application holds the data within a localized SQLite3 database with access
+      via a publically accessible JS API. The frontend is assembled with React JS
+      modeling out of a Flux state store. A Hapi server manages the routing for this
+      Webpack assembled, Babel converted ES6 web application.
+    </p>
+    <img src="/adambreznicky.github.io/static/images/iswpapp.png" class="center" alt/>
+    <p>
+      <i class="italic">
+        <small>
+          Original Developer: <a href="https://github.com/jseppi" class="noLogo">James Seppi</a><br>
+          TNRIS Dev Team: <a href="https://github.com/adambreznicky" class="noLogo">Adam Breznicky</a>
+        </small>
+      </i>
     </p>
     <hr>
-    <h4 id="get">Guardrail End Treatments</h4>
+    <h4 id="get">Guardrail End Treatment (GET) Acquisition
+      <a href="https://github.com/adambreznicky/smudge_js/tree/master/Guardrail" title="Project Github Repo"></a>
+      <i class="icon-eye-close" title="Site is no longer Live"></i>
+    </h4>
     <p>
-      Guardrail End Treatment Acquisition - A simple but exceptionally powerful
+      A simple but exceptionally powerful
       application used for a time sensitive G.E.T. field data collection effort
       to satisfy a high priority data request. This application empowered
       non-technical users the ability to participate in data collection at a
-      record pace using only their smart mobile devices.
+      record pace using only their smart mobile devices.<br>
+      <img src="/adambreznicky.github.io/static/images/getapp1.png" class="pull-left" style="max-width:50%;" alt/>
+      This is was an extremely high stakes and high speed project. Upon awareness
+      of safety sensitive guardrail end treatments existing on Texas Highways, the
+      state put upon the highest priority to locate, count, and geospatially catalog
+      all GET assets within the state as fast as possible. We took advantage of
+      our field maintenance personnel across the state with their mobile devices
+      by developing this application which attributed GET types to geolocated
+      positions while users drove the highways as regular driving speeds.<br>
+      The application is an extremely simple, single page, static HTML interface
+      (cached for non-cell service use) utilizing local storage for data collection
+      and ArcGIS REST Services for data upload and collection. The compiled dataset
+      was then easily mapped and statistically analyzed.<br>
+      This project was a monumental achievement with a complete duration of
+      less than two months including cause, concept, design, implementation, data
+      collection, and analysis. Over 130,000 data points were collected in approximately
+      three weeks.
+    </p>
+    <img src="/adambreznicky.github.io/static/images/getapp2.png" class="center" alt/>
+    <p>
+      <i class="italic">
+        <small>
+          Complete Design &amp; Development: <a href="https://github.com/adambreznicky" class="noLogo">Adam Breznicky</a>
+        </small>
+      </i>
     </p>
   </section>
 </article>

@@ -30,56 +30,77 @@
     <hr>
   </section>
   <section class="one fourth left-two padded border-right bounceInLeft animated">
-    <h4>Operating Systems</h4>
-    <ul style="list-style: none;margin-left:0px;">
-      <li><i class="icon-linux"></i> Unix - Ubuntu, CentOS, xfce</li>
-      <li><i class="icon-windows"></i> Microsoft Windows</li>
-      <li><i class="icon-th"></i> Google Chrome</li>
-    </ul>
-    <hr>
-    <h4 class="pull-right">Database Management</h4>
+    <h4>Operating Systems <i class="icon-linux"></i></h4>
     <div class="row">
-      <div class="one half">
-        <img src="{{ url_for('static', filename='images/postgres.png') }}"  width="80" height="80" class="center padded" alt/>
-        <img src="{{ url_for('static', filename='images/rds.png') }}"  width="80" height="80" class="center" alt/>
+      <div class="one half two-up-mobile">
+        <a href="http://www.ubuntu.com/" title="Ubuntu">
+          <img src="{{ url_for('static', filename='images/ubuntu.png') }}" class="center triple-pad-left pad-top pad-right pad-bottom" alt/>
+        </a>
+        <a href="http://xfce.org/" title="XFCE">
+          <img src="{{ url_for('static', filename='images/xfce.png') }}" class="center triple-pad-left pad-top pad-right pad-bottom" alt/>
+        </a>
       </div>
-      <div class="one half">
-        <ul class="page-list pull-right">
-          <li>Postgres w/ PostGIS</li>
-          <li>SQL Server</li>
-          <li>AWS RDS</li>
-          <li>SQLite</li>
-          <li>RethinkDB</li>
-          <li>ESRI ArcServer</li>
-          <li>ESRI ArcSde</li>
-        </ul>
+      <div class="one half two-up-mobile">
+        <a href="http://www.microsoft.com/en-us/windows/" title="Windows">
+          <img src="{{ url_for('static', filename='images/windows.png') }}" class="center triple-pad-right pad-top pad-left pad-bottom" alt/>
+        </a>
+        <a href="http://www.google.com/chromebook/" title="Google Chrome OS">
+          <img src="{{ url_for('static', filename='images/chrome.png') }}" class="center triple-pad-right pad-top pad-left pad-bottom" alt/>
+        </a>
       </div>
     </div>
     <hr>
+    <h4 class="pull-right">Database Management</h4>
     <div class="row">
-      <div class="one half">
-        <h4>GIS</h4>
-        <ul class="page-list">
-          <li>ESRI ArcGIS Suite</li>
-          <li>QGIS</li>
-          <li>ArcGIS Online</li>
-          <li>ESRI REST Services</li>
-        </ul>
+      <div class="one half two-up-mobile">
+        <a href="http://www.postgresql.org/" title="PostgreSQL">
+          <img src="{{ url_for('static', filename='images/postgres.png') }}" class="center padded" alt/>
+        </a>
+        <a href="http://aws.amazon.com/rds/" title="Amazon RDS">
+          <img src="{{ url_for('static', filename='images/rds.png') }}" class="center double-pad-right double-pad-left" alt/>
+        </a>
+        <a href="http://www.npmjs.com/package/sqlite3" title="SQLite3">
+          <img src="{{ url_for('static', filename='images/sqlite.png') }}" class="center padded" alt/>
+        </a>
       </div>
-      <div class="one half">
-        <img src="{{ url_for('static', filename='images/arcgis.png') }}"  class="pull-right gap-left" alt/>
-        <img src="{{ url_for('static', filename='images/qgis.png') }}"  style="max-width:80px;" class="center" alt/>
+      <div class="one half two-up-mobile">
+        <a href="http://www.postgresql.org/" title="ArcGIS Server">
+          <img src="{{ url_for('static', filename='images/arcserver.png') }}" class="center padded" alt/>
+        </a>
+        <a href="http://www.rethinkdb.com/" title="RethinkDB">
+          <img src="{{ url_for('static', filename='images/rethinkdb.png') }}" class="center padded" alt/>
+        </a>
+        <a href="http://www.mapd.com/" title="MapD">
+          <img src="{{ url_for('static', filename='images/mapd.png') }}" class="center padded" alt/>
+        </a>
+      </div>
+    </div>
+    <hr>
+    <h4>GIS</h4>
+    <div class="row">
+      <div class="one half two-up-mobile">
+        <a href="http://www.arcgis.com/" title="ESRI ArcGIS">
+          <img src="{{ url_for('static', filename='images/arcgis.png') }}"  class="center" alt/>
+        </a>
+        <a href="http://www.qgis.org/en/site/" title="QGIS">
+          <img src="{{ url_for('static', filename='images/qgis.png') }}" class="center double-padded" alt/>
+        </a>
+      </div>
+      <div class="one half two-up-mobile">
+        <a href="http://www.esri.com/software/arcgis/arcgisonline" title="ArcGIS Online">
+          <img src="{{ url_for('static', filename='images/arcgisonline.png') }}" class="center double-padded" alt/>
+        </a>
       </div>
     </div>
     <hr>
     <h4 class="pull-right" style="text-align:right;">Texas Natural Resources<br>Information System</h4>
     <div class="row">
-      <div class="one half">
+      <div class="one half two-up-mobile">
         <a href="http://tnris.org" title="tnris.org">
-          <img src="{{ url_for('static', filename='images/tnris.jpeg') }}" width="80" height="80" class="center" alt/>
+          <img src="{{ url_for('static', filename='images/tnris.jpeg') }}" class="center pad-right pad-bottom" style="border-radius:20px;" alt/>
         </a>
       </div>
-      <div class="one half">
+      <div class="one half two-up-mobile">
         <p class="pull-right" style="text-align:right;">
           GIS data provider, historical aerial archive, LiDAR facilitator, and community leader<br>
           <a href="https://github.com/TNRIS" title="Github Organization">Github</a>
@@ -87,22 +108,26 @@
       </div>
     </div>
     <hr>
+    <h4 class="center">Frontend Libraries</h4>
     <div class="row">
-      <div class="one half">
-        <img src="{{ url_for('static', filename='images/react.png') }}" style="max-width:80px;" class="center" alt/>
-        <img src="{{ url_for('static', filename='images/material.png') }}" style="max-width:80px;" class="center padded" alt/>
-        <img src="{{ url_for('static', filename='images/jquery.png') }}" style="max-width:80px;" class="center padded" alt/>
-        <img src="{{ url_for('static', filename='images/bootstrap.png') }}" class="center padded" alt/>
+      <div class="one half two-up-mobile">
+        <a href="http://reactjs.net/" title="React JS">
+          <img src="{{ url_for('static', filename='images/react.png') }}" class="center padded" alt/>
+        </a>
+        <a href="http://getmdl.io/" title="Material Design Lite">
+          <img src="{{ url_for('static', filename='images/material.png') }}" class="center double-padded" alt/>
+        </a>
       </div>
-      <div class="one half pad-top">
-        <h4 class="center" style="max-width:40%;" >Libraries</h4>
-        <ul class="page-list center" style="max-width:40%;" >
-          <li>React JS</li>
-          <li>Angular JS</li>
-          <li>jQuery</li>
-          <li>Bootstrap</li>
-          <li>Material Design</li>
-        </ul>
+      <div class="one half two-up-mobile">
+        <a href="http://jquery.com/" title="jQuery">
+          <img src="{{ url_for('static', filename='images/jquery.png') }}" style="max-width:80px;" class="center padded" alt/>
+        </a>
+        <a href="http://angularjs.org/" title="Angular JS">
+          <img src="{{ url_for('static', filename='images/angularjs.png') }}" class="center padded" alt/>
+        </a>
+        <a href="http://getbootstrap.com/" title="Bootstrap (Twitter)">
+          <img src="{{ url_for('static', filename='images/bootstrap.png') }}" class="center padded" alt/>
+        </a>
       </div>
     </div>
     <hr>
@@ -110,20 +135,36 @@
   <section class="one fourth padded border-left bounceInRight animated">
     <h4 class="pull-right">Languages &amp; Engines</h4>
     <div class="row">
-      <div class="one half">
-        <img src="{{ url_for('static', filename='images/node.png') }}" class="center double-padded" alt/>
-        <img src="{{ url_for('static', filename='images/python.png') }}" class="center" alt/>
-        <img src="{{ url_for('static', filename='images/git.png') }}" class="center double-padded" alt/>
+      <div class="one half two-up-mobile">
+        <a href="http://nodejs.org/en/" title="Node JS">
+          <img src="{{ url_for('static', filename='images/node.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://www.python.org/" title="Python">
+          <img src="{{ url_for('static', filename='images/python.png') }}" class="center" alt/>
+        </a>
+        <a href="http://flask.pocoo.org/" title="Flask">
+          <img src="{{ url_for('static', filename='images/flask.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://git-scm.com/" title="Git">
+          <img src="{{ url_for('static', filename='images/git.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://en.wikipedia.org/wiki/Markdown" title="Markdown">
+          <img src="{{ url_for('static', filename='images/markdown.png') }}" class="center double-padded" alt/>
+        </a>
       </div>
-      <div class="one half">
-        <ul class="page-list pull-right">
-          <li>Javascript +ES6, Node.js</li>
-          <li>Python +3, Flask</li>
-          <li>HTML +5</li>
-          <li>CSS, SCSS</li>
-          <li>GIT, Markdown, Makefile</li>
-          <li>SQL</li>
-        </ul>
+      <div class="one half two-up-mobile">
+        <a href="http://es6-features.org/#Constants" title="JS ES6">
+          <img src="{{ url_for('static', filename='images/es6.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://www.w3schools.com/html/html5_intro.asp" title="HTML">
+          <img src="{{ url_for('static', filename='images/html5.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://sass-lang.com/" title="ScSS">
+          <img src="{{ url_for('static', filename='images/scss.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://en.wikipedia.org/wiki/SQL" title="SQL">
+          <img src="{{ url_for('static', filename='images/sql.png') }}" class="center double-padded" alt/>
+        </a>
       </div>
     </div>
     <hr>
@@ -139,34 +180,52 @@
     <hr>
     <h4 class="pull-right">Web Mapping &amp; Visualization</h4>
     <div class="row">
-      <div class="one half">
-        <img src="{{ url_for('static', filename='images/leaflet.png') }}" class="center padded" alt/>
+      <div class="one half two-up-mobile">
+        <a href="http://leafletjs.com/" title="Leaflet JS">
+          <img src="{{ url_for('static', filename='images/leaflet.png') }}" class="center padded" alt/>
+        </a>
+        <a href="http://developers.arcgis.com/javascript/" title="ESRI JS API">
+          <img src="{{ url_for('static', filename='images/esrijs.png') }}" class="center double-padded" alt/>
+        </a>
       </div>
-      <div class="one half">
-        <ul class="page-list pull-right">
-          <li>Leaflet JS</li>
-          <li>ESRI JS API</li>
-          <li>WMS Services</li>
-          <li>REST Services</li>
-          <li>Google Maps API</li>
-        </ul>
+      <div class="one half two-up-mobile">
+        <a href="http://developers.google.com/maps/documentation/javascript/" title="Google Maps">
+          <img src="{{ url_for('static', filename='images/googlemaps.png') }}" class="center double-padded" alt/>
+        </a>
       </div>
     </div>
     <hr>
-    <h4 class="pull-left">Network &amp; Deployments</h4>
+    <h4 class="pull-left">Cloud, Network, &amp; Deployments</h4>
     <div class="row">
-      <div class="one half">
-        <ul class="page-list pull-left">
-          <li>Amazon Web Services</li>
-          <li>Terraform</li>
-          <li>Docker</li>
-          <li>Ansible</li>
-        </ul>
+      <div class="one half two-up-mobile">
+        <a href="http://aws.amazon.com/" title="Amazon Web Services">
+          <img src="{{ url_for('static', filename='images/aws_large.png') }}" class="center padded" alt/>
+        </a>
+        <a href="http://terraform.io" title="Terraform">
+          <img src="{{ url_for('static', filename='images/terraform.png') }}" class="center double-pad-left double-pad-right double-pad-bottom pad-top" alt/>
+        </a>
       </div>
-      <div class="one half">
-        <img src="{{ url_for('static', filename='images/aws_large.png') }}" class="center padded" alt/>
-        <img src="{{ url_for('static', filename='images/terraform.png') }}" style="max-width:80px;" class="center" alt/>
-        <img src="{{ url_for('static', filename='images/docker.png') }}" class="center padded" alt/>
+      <div class="one half two-up-mobile">
+        <a href="http://www.docker.com/" title="Docker">
+          <img src="{{ url_for('static', filename='images/docker.png') }}" class="center double-pad-top" alt/>
+        </a>
+        <a href="http://www.ansible.com/" title="Ansible">
+          <img src="{{ url_for('static', filename='images/ansible.png') }}" class="center double-padded" alt/>
+        </a>
+      </div>
+    </div>
+    <hr>
+    <h4 class="pull-right">Bloodline</h4>
+    <div class="row">
+      <div class="one half two-up-mobile">
+        <a href="http://www.hotrod.com/articles/history-of-the-scat-pack-through-ads-from-1960s/" title="Scat Pack Club">
+          <img src="{{ url_for('static', filename='images/scatpack.png') }}" class="center double-pad-left double-pad-right" alt/>
+        </a>
+      </div>
+      <div class="one half two-up-mobile">
+        <a href="http://jerryshotrods.com" title="Jerry's Hot Rods">
+          <img src="{{ url_for('static', filename='images/jerryshotrods.JPG') }}" class="center" alt/>
+        </a>
       </div>
     </div>
     <hr>
