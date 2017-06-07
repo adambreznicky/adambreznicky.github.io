@@ -20,12 +20,10 @@
   }
 
   function initializeMap () {
-  	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-  	var osmAttrib='Map data © <a href="http://openstreetmap.org">OSM</a>';
-  	var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib});
+    var layer = new L.StamenTileLayer("watercolor");
 
-  	map.setView(new L.LatLng(30.2793421,-97.7395106),9);
-  	map.addLayer(osm);
+  	map.setView(new L.LatLng(30.2793421,-97.7395106),11);
+  	map.addLayer(layer);
     var marker = new L.Marker([30.2793421,-97.7395106], {
       title: "TNRIS is in Stephen F. Austin building"
     }).addTo(map);

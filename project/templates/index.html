@@ -9,7 +9,7 @@
     <img src="{{ url_for('static', filename='images/super_bee.jpg') }}" />
     <hr>
     <h2>About</h2>
-    <img src="{{ url_for('static', filename='images/alli_mud.jpg') }}" width="150" height="265" class="pull-right gap-left padded" alt/>
+    <img src="{{ url_for('static', filename='images/alli_mud.jpg') }}" width="150" height="265" class="pull-right gap-left gap-bottom" alt/>
     <p>
       Welcome! My name is Adam. I am a husband, a dog-father, and a goofball.
       I am a web developer with experience playing with all parts of the full
@@ -27,6 +27,25 @@
     </p>
     <hr>
     {% include "map.html" %}
+    <hr>
+    <h4>Community</h4>
+    <a href="http://tnris.org/georodeo/" title="TNRIS Georodeo">
+      <img src="{{ url_for('static', filename='images/geojohnson.png') }}" width="150" height="140" class="pull-left gap-right" alt/>
+    </a>
+    <p>
+      As a member of the Texas Developer community, I take great pride in
+      participating in professional events. I consistently attend conferences around
+      the country and continually learn as much as I can to stay on the forefront
+      of technology as it evolves. I have spoken at events such as the ESRI International
+      User Conference and the TxDOT Planning Conference presenting applications
+      and projects which I have coordinated and developed.<br>
+      Now as an employee of TNRIS, I play a significant role in the planning, facilitation,
+      and execution of the annual TNRIS GeoRodeo Geospatial Developer Conference. This
+      is a sponsored event hosted for developers in Texas and beyond. With hundreds
+      of attendees each year, the GeoRodeo serves as an exploration of cutting edge,
+      open source programming tools and projects purely for the greater good
+      of our developer community.
+    </p>
     <hr>
   </section>
   <section class="one fourth left-two padded border-right bounceInLeft animated">
@@ -209,6 +228,9 @@
         </a>
         <a href="http://terraform.io" title="Terraform">
           <img src="{{ url_for('static', filename='images/terraform.png') }}" class="center double-pad-left double-pad-right double-pad-bottom pad-top" alt/>
+        </a>
+        <a href="http://aws.amazon.com/ecs/" title="AWS ECS">
+          <img src="{{ url_for('static', filename='images/ecs.png') }}" class="center double-pad-left double-pad-right double-pad-bottom pad-top" alt/>
         </a>
       </div>
       <div class="one half two-up-mobile">
