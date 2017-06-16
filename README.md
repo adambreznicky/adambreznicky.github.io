@@ -8,9 +8,16 @@ initial structure templated from [here](http://stevenloria.com/hosting-static-fl
 
 css styles from [groundworkcss2](https://groundworkcss.github.io/)
 
+if assembling, don't forget to add "__init__.py" files to your reference folders and to add the project python to the system paths. this can be done in the base python script using:
+```python
+import sys
+sys.path.insert(0, "./project")
+```
+
 # setup and local dev
 
 python [virtual environments](http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/) are always a good idea :)
+
 
 1. cd into the repo folder and run `pip install -r requirements.txt`
 1. run `python run.py` will run the app locally via port 5000. local build is edited
