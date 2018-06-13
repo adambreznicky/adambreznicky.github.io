@@ -1,0 +1,282 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<article class="row">
+  <section class="two fourths right-one padded bounceInDown animated">
+    <img src="{{ url_for('static', filename='images/super_bee.jpg') }}" />
+    <hr>
+    <h2>About</h2>
+    <img src="{{ url_for('static', filename='images/alli_mud.jpg') }}" width="150" height="265" class="pull-right gap-left gap-bottom" alt/>
+    <p>
+      Welcome! My name is Adam. I am a husband, a dog-father, and a goofball.
+      I am a web developer with experience playing with all parts of the full
+      stack and a strong history in geospatial data.
+      This is my little ditty of a <i class="italic">profile</i>, <i class="italic">resume</i>, or whatever
+      you'd like to call it.<br>
+      I'm a very driven person with a thirst to be the best I can be at what I do.
+      There's a little tick inside me that will not allow me to rest until <i class="italic">
+      it feels</i> the task is complete. I value knowing how to find the knowledge
+      far more than I value the knowledge itself. I think music is medicine and
+      make sure I self medicate as necessary. I believe in comedy as a crucial
+      necessity to be applied to all things in life.<br>
+      I am an individual. We are all individuals; And we should all conduct
+      ourselves as such.
+    </p>
+    <hr>
+    {% include "map.html" %}
+    <hr>
+    <h4>Community</h4>
+    <a href="http://tnris.org/georodeo/" title="TNRIS Georodeo">
+      <img src="{{ url_for('static', filename='images/geojohnson.png') }}" width="150" height="140" class="pull-left gap-right" alt/>
+    </a>
+    <p>
+      As a member of the Texas Developer community, I take great pride in
+      participating in professional events. I consistently attend conferences around
+      the country and continually learn as much as I can to stay on the forefront
+      of technology as it evolves. I have spoken at events such as the ESRI International
+      User Conference and the TxDOT Planning Conference presenting applications
+      and projects which I have coordinated and developed.<br>
+      Now as an employee of TNRIS, I play a significant role in the planning, facilitation,
+      and execution of the annual TNRIS GeoRodeo Geospatial Developer Conference. This
+      is a sponsored event hosted for developers in Texas and beyond. With hundreds
+      of attendees each year, the GeoRodeo serves as an exploration of cutting edge,
+      open source programming tools and projects purely for the greater good
+      of our developer community.
+    </p>
+    <hr>
+  </section>
+  <section class="one fourth left-two padded border-right bounceInLeft animated">
+    <h4>Operating Systems <i class="icon-linux"></i></h4>
+    <div class="row">
+      <div class="one half two-up-mobile">
+        <a href="http://www.ubuntu.com/" title="Ubuntu">
+          <img src="{{ url_for('static', filename='images/ubuntu.png') }}" class="center triple-pad-left pad-top pad-right pad-bottom" alt/>
+        </a>
+        <a href="http://xfce.org/" title="XFCE">
+          <img src="{{ url_for('static', filename='images/xfce.png') }}" class="center triple-pad-left pad-top pad-right pad-bottom" alt/>
+        </a>
+        <a href="http://www.virtualbox.org/" title="Oracle VM Virtual Box">
+          <img src="{{ url_for('static', filename='images/virtualbox.png') }}" class="center triple-pad-left pad-top pad-right pad-bottom" alt/>
+        </a>
+      </div>
+      <div class="one half two-up-mobile">
+        <a href="http://www.microsoft.com/en-us/windows/" title="Windows">
+          <img src="{{ url_for('static', filename='images/windows.png') }}" class="center triple-pad-right pad-top pad-left pad-bottom" alt/>
+        </a>
+        <a href="http://www.google.com/chromebook/" title="Google Chrome OS">
+          <img src="{{ url_for('static', filename='images/chrome.png') }}" class="center triple-pad-right pad-top pad-left pad-bottom" alt/>
+        </a>
+      </div>
+    </div>
+    <hr>
+    <h4 class="pull-right">Database Management</h4>
+    <div class="row">
+      <div class="one half two-up-mobile">
+        <a href="http://www.postgresql.org/" title="PostgreSQL">
+          <img src="{{ url_for('static', filename='images/postgres.png') }}" class="center padded" alt/>
+        </a>
+        <a href="http://aws.amazon.com/rds/" title="Amazon RDS">
+          <img src="{{ url_for('static', filename='images/rds.png') }}" class="center double-pad-right double-pad-left" alt/>
+        </a>
+        <a href="http://www.npmjs.com/package/sqlite3" title="SQLite3">
+          <img src="{{ url_for('static', filename='images/sqlite.png') }}" class="center padded" alt/>
+        </a>
+      </div>
+      <div class="one half two-up-mobile">
+        <a href="http://www.postgresql.org/" title="ArcGIS Server">
+          <img src="{{ url_for('static', filename='images/arcserver.png') }}" class="center padded" alt/>
+        </a>
+        <a href="http://www.rethinkdb.com/" title="RethinkDB">
+          <img src="{{ url_for('static', filename='images/rethinkdb.png') }}" class="center padded" alt/>
+        </a>
+        <a href="http://www.mapd.com/" title="MapD">
+          <img src="{{ url_for('static', filename='images/mapd.png') }}" class="center padded" alt/>
+        </a>
+      </div>
+    </div>
+    <hr>
+    <h4>GIS</h4>
+    <div class="row">
+      <div class="one half two-up-mobile">
+        <a href="http://www.arcgis.com/" title="ESRI ArcGIS">
+          <img src="{{ url_for('static', filename='images/arcgis.png') }}"  class="center" alt/>
+        </a>
+        <a href="http://www.gdal.org/" title="GDAL">
+          <img src="{{ url_for('static', filename='images/gdal.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://www.qgis.org/en/site/" title="QGIS">
+          <img src="{{ url_for('static', filename='images/qgis.png') }}" class="center double-padded" alt/>
+        </a>
+      </div>
+      <div class="one half two-up-mobile">
+        <a href="http://www.esri.com/software/arcgis/arcgisonline" title="ArcGIS Online">
+          <img src="{{ url_for('static', filename='images/arcgisonline.png') }}" class="center double-padded" alt/>
+        </a>
+      </div>
+    </div>
+    <hr>
+    <h4 class="pull-right" style="text-align:right;">Texas Natural Resources<br>Information System</h4>
+    <div class="row">
+      <div class="one half two-up-mobile">
+        <a href="http://tnris.org" title="tnris.org">
+          <img src="{{ url_for('static', filename='images/tnris.jpeg') }}" class="center pad-right pad-bottom" style="border-radius:20px;" alt/>
+        </a>
+      </div>
+      <div class="one half two-up-mobile">
+        <p class="pull-right" style="text-align:right;">
+          GIS data provider, historical aerial archive, LiDAR facilitator, and community leader<br>
+          <a href="https://github.com/TNRIS" title="Github Organization">Github</a>
+        </p>
+      </div>
+    </div>
+    <hr>
+    <h4 class="center">Frontend Libraries</h4>
+    <div class="row">
+      <div class="one half two-up-mobile">
+        <a href="http://reactjs.net/" title="React JS">
+          <img src="{{ url_for('static', filename='images/react.png') }}" class="center padded" alt/>
+        </a>
+        <a href="http://getmdl.io/" title="Material Design Lite">
+          <img src="{{ url_for('static', filename='images/material.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://groundworkcss.github.io/" title="Groundwork CSS">
+          <img src="{{ url_for('static', filename='images/groundworkcss.png') }}" class="center double-padded" alt/>
+        </a>
+      </div>
+      <div class="one half two-up-mobile">
+        <a href="http://jquery.com/" title="jQuery">
+          <img src="{{ url_for('static', filename='images/jquery.png') }}" style="max-width:80px;" class="center padded" alt/>
+        </a>
+        <a href="http://angularjs.org/" title="Angular JS">
+          <img src="{{ url_for('static', filename='images/angularjs.png') }}" class="center padded" alt/>
+        </a>
+        <a href="http://getbootstrap.com/" title="Bootstrap (Twitter)">
+          <img src="{{ url_for('static', filename='images/bootstrap.png') }}" class="center padded" alt/>
+        </a>
+      </div>
+    </div>
+    <hr>
+  </section>
+  <section class="one fourth padded border-left bounceInRight animated">
+    <h4 class="pull-right">Languages &amp; Engines</h4>
+    <div class="row">
+      <div class="one half two-up-mobile">
+        <a href="http://nodejs.org/en/" title="Node JS">
+          <img src="{{ url_for('static', filename='images/node.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://www.npmjs.com/" title="NPM">
+          <img src="{{ url_for('static', filename='images/npm.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://www.python.org/" title="Python">
+          <img src="{{ url_for('static', filename='images/python.png') }}" class="center" alt/>
+        </a>
+        <a href="http://flask.pocoo.org/" title="Flask">
+          <img src="{{ url_for('static', filename='images/flask.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://git-scm.com/" title="Git">
+          <img src="{{ url_for('static', filename='images/git.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://en.wikipedia.org/wiki/Markdown" title="Markdown">
+          <img src="{{ url_for('static', filename='images/markdown.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://en.wikipedia.org/wiki/SQL" title="SQL">
+          <img src="{{ url_for('static', filename='images/sql.png') }}" class="center double-padded" alt/>
+        </a>
+      </div>
+      <div class="one half two-up-mobile">
+        <a href="http://es6-features.org/#Constants" title="JS ES6">
+          <img src="{{ url_for('static', filename='images/es6.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://www.w3schools.com/html/html5_intro.asp" title="HTML">
+          <img src="{{ url_for('static', filename='images/html5.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://sass-lang.com/" title="ScSS">
+          <img src="{{ url_for('static', filename='images/scss.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://webpack.github.io/" title="Webpack">
+          <img src="{{ url_for('static', filename='images/webpack.png') }}" class="center double-padded" alt/>
+        </a>
+      </div>
+    </div>
+    <hr>
+    <h4>Projects</h4>
+    <ul class="page-list">
+      <li><a href="{{ url_for('projects', _anchor='flood') }}" title="Flood Viewer">Flood Information Viewer</a></li>
+      <li><a href="{{ url_for('projects', _anchor='road_runner') }}" title="Road Runner">Road Runner</a></li>
+      <li><a href="{{ url_for('projects', _anchor='iswp') }}" title="ISWP">Texas Interactive State Water Plan</a></li>
+      <li><a href="{{ url_for('projects', _anchor='dusa') }}" title="DUSA">DUSA</a></li>
+      <li><a href="{{ url_for('projects', _anchor='tnris_org') }}" title="tnris.org">tnris.org</a></li>
+      <li><a href="{{ url_for('projects', _anchor='get') }}" title="Guardrail End Treatment Acquisition">Guardrail End Treatments</a></li>
+    </ul>
+    <hr>
+    <h4 class="pull-right">Web Mapping &amp; Visualization</h4>
+    <div class="row">
+      <div class="one half two-up-mobile">
+        <a href="http://leafletjs.com/" title="Leaflet JS">
+          <img src="{{ url_for('static', filename='images/leaflet.png') }}" class="center padded" alt/>
+        </a>
+        <a href="http://developers.arcgis.com/javascript/" title="ESRI JS API">
+          <img src="{{ url_for('static', filename='images/esrijs.png') }}" class="center double-padded" alt/>
+        </a>
+      </div>
+      <div class="one half two-up-mobile">
+        <a href="http://developers.google.com/maps/documentation/javascript/" title="Google Maps">
+          <img src="{{ url_for('static', filename='images/googlemaps.png') }}" class="center double-padded" alt/>
+        </a>
+      </div>
+    </div>
+    <hr>
+    <h4 class="pull-left">Cloud, Network, &amp; Deployments</h4>
+    <div class="row">
+      <div class="one half two-up-mobile">
+        <a href="http://aws.amazon.com/" title="Amazon Web Services">
+          <img src="{{ url_for('static', filename='images/aws_large.png') }}" class="center padded" alt/>
+        </a>
+        <a href="http://terraform.io" title="Terraform">
+          <img src="{{ url_for('static', filename='images/terraform.png') }}" class="center double-pad-left double-pad-right double-pad-bottom pad-top" alt/>
+        </a>
+        <a href="http://jenkins.io/" title="Jenkins">
+          <img src="{{ url_for('static', filename='images/jenkins.png') }}" class="center double-pad-left double-pad-right double-pad-bottom pad-top" alt/>
+        </a>
+        <a href="http://aws.amazon.com/ecs/" title="AWS ECS">
+          <img src="{{ url_for('static', filename='images/ecs.png') }}" class="center double-pad-left double-pad-right double-pad-bottom pad-top" alt/>
+        </a>
+      </div>
+      <div class="one half two-up-mobile">
+        <a href="http://www.docker.com/" title="Docker">
+          <img src="{{ url_for('static', filename='images/docker.png') }}" class="center double-pad-top" alt/>
+        </a>
+        <a href="http://travis-ci.org/" title="Travis CI">
+          <img src="{{ url_for('static', filename='images/travisci.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://www.ansible.com/" title="Ansible">
+          <img src="{{ url_for('static', filename='images/ansible.png') }}" class="center double-padded" alt/>
+        </a>
+        <a href="http://www.nginx.com/" title="Nginx">
+          <img src="{{ url_for('static', filename='images/nginx.png') }}" class="center double-padded" alt/>
+        </a>
+      </div>
+    </div>
+    <hr>
+    <h4 class="pull-right">Bloodline</h4>
+    <div class="row">
+      <!-- <div class="one half two-up-mobile"> -->
+      <div>
+        <a href="http://www.hotrod.com/articles/history-of-the-scat-pack-through-ads-from-1960s/" title="Scat Pack Club">
+          <img src="{{ url_for('static', filename='images/scatpack.png') }}" class="center double-pad-left double-pad-right" style="max-height:80px;" alt/>
+        </a>
+      </div>
+      <!-- <div class="one half two-up-mobile">
+        <a href="http://jerryshotrods.com" title="Jerry's Hot Rods">
+          <img src="{{ url_for('static', filename='images/jerryshotrods.JPG') }}" class="center" alt/>
+        </a>
+      </div> -->
+    </div>
+    <hr>
+  </section>
+</article>
+
+{% endblock %}

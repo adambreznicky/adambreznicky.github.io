@@ -15,7 +15,7 @@
     src: url("./font/AUdimat-Italic.otf") format("opentype");
 }
 
-body, h1, h2, h4, h6 {
+body, h1, h2, h3, h4, h6 {
   font-family: AUdimat-Regular !important;
   text-transform: lowercase !important;
 }
@@ -70,4 +70,8 @@ a.leaflet-popup-close-button:after {
 
 a.leaflet-control-zoom-in, a.leaflet-control-zoom-out {
   padding: 0px;
+}
+
+.blog_content > p {
+  font-size: 16px !important;
 }

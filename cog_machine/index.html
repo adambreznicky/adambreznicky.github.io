@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <title>brez.</title>
+
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
+     integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
+     crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+    integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
+    crossorigin=""/>
+
+  <script src="../adambreznicky.github.io/static/groundwork/js/libs/modernizr-2.6.2.min.js"></script>
+
+  <link rel="stylesheet" href="../adambreznicky.github.io/static/app.css">
+  <link type="text/css" rel="stylesheet" href="../adambreznicky.github.io/static/groundwork/css/groundwork.css">
+  <link type="text/css" rel="stylesheet" href="../adambreznicky.github.io/static/groundwork/css/groundwork-core.css">
+  <link type="text/css" rel="stylesheet" href="../adambreznicky.github.io/static/groundwork/css/groundwork-type.css">
+  <link type="text/css" rel="stylesheet" href="../adambreznicky.github.io/static/groundwork/css/groundwork-ui.css">
+  <link type="text/css" rel="stylesheet" href="../adambreznicky.github.io/static/groundwork/css/groundwork-anim.css">
+  <link type="text/css" rel="stylesheet" href="../adambreznicky.github.io/static/groundwork/css/groundwork-ie.css">
+  <link rel="shortcut icon" href="https://www.gravatar.com/avatar/0dfc6a92b9979c99c780e40ab58e2c6d" />
+
+
+
+
+  
+
+
+</head>
+<body class="box">
+  <header class="padded">
+    <div class="container">
+      <div class="row">
+          <img id="gravatar" class="pull-left" src="https://www.gravatar.com/avatar/0dfc6a92b9979c99c780e40ab58e2c6d" />
+
+          <h1 id="title-name" class="inline-block double-pad-top">adam breznicky</h1>
+
+          <h6 class="geospatial-title pull-right triple-pad-top">full stack geospatial web developer</h6>
+
+      </div>
+      <nav role="navigation" class="nav gap-top" title="Menu">
+        <ul role="menubar">
+          <li><a href="../adambreznicky.github.io/index.html" title="Home"><i class="icon-home"></i> Home</a></li>
+          <li><a href="../adambreznicky.github.io/resume.html" title="Resume"><i class="icon-file-text"></i> Resume</a></li>
+          <li><a href="../adambreznicky.github.io/story.html" title="My Story"><i class="icon-book"></i> Story</a></li>
+          <li><a href="../adambreznicky.github.io/projects.html" title="Projects"><i class="icon-cogs"></i> Projects</a></li>
+          <li><a href="https://github.com/adambreznicky/" title="Github Profile">Github</a></li>
+          <li><a href="http://www.npmjs.com/~adambreznicky" title="npm"><i class="icon-archive"></i> npm</a></li>
+          <li><a href="https://github.com/adambreznicky/adambreznicky.github.io" title="Source Code">Source</a></li>
+          <li><a href="mailto:adambreznicky@gmail.com?Subject=Hey%20Adam!" title="Contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="content" role="main">
+      
+<h1>Just Another COG in the Machine</h1>
+<p>2018-06-12 21:30:00</p>
+<h6>
+  Lets build a lambda raster processing machine to build COGs and then serve them through programmatically managed WMS Services straight out of S3.
+</h6>
+
+<div class="blog_content">
+  <h3>Backstory</h3>
+  <p>
+    TNRIS has a lot of historical imagery. It is the official archive for the State of Texas (and Texas is big). We're talking filiing cabinets, almost ceiling tall, filled with millions of physical aerial photos dating back almost a hundred years. They exist as a resource for anybody to come utilize. Although, naturally it is a little difficult to find what you're looking for (or at) as you sift through it all. Call me crazy but with today's technology I think the whole archive could be digital and freely available for the public to navigate, download, and view within a web map.
+  </p>
+  <p>
+    Hell, if companies like Planet are processing and serving global satellite imagery on a daily basis I think a few millions black-n-white photos from a dirty basement is... <i>manageable</i>.
+  </p>
+  <p>
+    Sure, it will be a lot of work but the hard part is getting it digital and georeferenced. If we can get a lambda raster processing machine up and running, we can make everything already digital immediately available. Then as every new photo frame gets scanned, it can be turned into a COG, cataloged, and served without any extensive work beyond the simple and conscious act of scanning (and georeferencing) the photo.
+  </p>
+  <h4>Sorry, but the process is still be explored and solidified so that i can come back here and give you all the details. Come back super soon and check it out!</h4>
+</div>
+
+    </div>
+
+  </div>
+
+  <script type="text/javascript" src="../adambreznicky.github.io/static/groundwork/js/libs/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="../adambreznicky.github.io/static/groundwork/js/groundwork.all.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-83132109-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</body>
+</html>
