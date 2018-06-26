@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
   font-family: AUdimat-Regular;
   src: url("./font/AUdimat-Regular.otf") format("opentype");
 }
@@ -7,17 +7,18 @@
     font-family: AUdimat-Bold;
     font-weight: bold;
     src: url("./font/AUdimat-Bold.otf") format("opentype");
-}
+}*/
 
-@font-face {
+/*@font-face {
     font-family: AUdimat-Italic;
     font-weight: italic;
     src: url("./font/AUdimat-Italic.otf") format("opentype");
-}
+}*/
 
 body, h1, h2, h3, h4, h6 {
-  font-family: AUdimat-Regular !important;
+  font-family: source-sans-pro,Helvetica,Arial,Geneva,sans-serif !important;
   text-transform: lowercase !important;
+  background: white !important;
 }
 
 h4>ul>li {
@@ -46,8 +47,8 @@ h4>ul>li {
   border-top: 0 !important;
 }
 
-i.italic {
-  font-family: AUdimat-Italic !important;
+i {
+  font-style: italic !important;
 }
 
 img {
