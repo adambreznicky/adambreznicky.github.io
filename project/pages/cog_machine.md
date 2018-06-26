@@ -21,7 +21,24 @@ date: 2018-06-12 21:30:00
     The project github repo can be found here: <a href="https://github.com/TNRIS/lambda-s4">https://github.com/TNRIS/lambda-s4</a>
   </p>
   <p>
-    So with the backstory in mind, I conceptualized the entire process as a series of lambda functions chained together. The project repo consists of numerous directories named with their numerical order within the process. Each directory is a step in the engine and serves a specific functionality and which the next step is dependent upon. Inside the base of the repo is 'exploration_instructional.md' which is a super messy documentation of every command I ran as I was working out the process as a whole. I left it in there simply for reference to the raw tests and manual steps used to prove the concept before cleaning it all up for clean, documented deployment.
+    So with the backstory in mind, I conceptualized the entire process as a series of lambda functions chained together. The project repo consists of numerous directories named to include their numerical order and function within the process. Each directory is a step in the engine and serves a specific functionality (which the next step is dependent upon). Inside the base of the repo is 'exploration_instructional.md' which is a super messy documentation of every command I ran as I was working out the process as a whole. I left it in there simply for reference to the raw tests and manual steps used to prove the concept before cleaning it all up for documented deployment.
+    <br />
+
+  </p>
+  <p>
+
+  </p>
+
+  <h3>AWS Architecture</h3>
+  <p>
+    <ul>
+      <li>s3 bucket</li>
+      <li>MapServer docker running in ECS on EC2's with custom AMI that has a FUSE s3fs pointing a directory at s3. Initially for discovery and testing, the docker was spun up on a plain AWS OS EC2 and when it was completely configured it was the basis for the custom AMI to be used by ECS.</li>
+      <li>User with permissions to project s3 bucket for MapServer to use.</li>
+      <li>Lambda IAM Role with full Lambda permissions and full s3 permissions to project s3 bucket.</li>
+      <li>Lambda function for each step in the process with appropriate environment variables, role, and event triggers.</li>
+      <li>Postgres RDS provisioned with PostGIS installed and a user for the lambda functions to utilize.</li>
+    </ul>
   </p>
 
   <h3>Hurdles</h3>
@@ -30,7 +47,7 @@ date: 2018-06-12 21:30:00
     <ul>
       <li>s3 key structures which organize the tifs so that scanners/georeferencers can drop off new images and the process can consistently handle them.</li>
       <li>setting up FUSE s3fs such that scanners/georeferencers can just drop off new images <i>in a folder</i> to let the process do it's thing. setting this up also lets the host mapserver use s3 for all the mapfiles. by hosting mapfiles from s3, the process can create new mapfiles and put them in a specific key structure which the mapserver automatically reads without redeployment of any kind. in short: new image uploaded = autmatically created new WMS</li>
-      <li>almost the entire process uses GDAL binaries. this is a major issue when it comes to serverless lambda as the size of these binaries are waaaaaay too large for the compressed 50 MB function upload limit (or 250 MB uncompressed via the more forgiving s3 route).<br />The first part of the process used indepedent GDAL Translate and GDAL Addo binaries, precompiled and supplied by Mark Korver (shoutout below) which  allow the tif to COG conversion to be possible.<br />The second part of the process uses Rasterio with ManyLinux Wheels to do a python version of gdaltindex to create the tile index (shoutout below). Luckily, a rasterio python package has been in development to incorporate them - this was a life saving necessity. The package was still too large to deploy though until I read Seth Fitzsimmons' (shoutout below) clever hack to remove all unused python dependency files and shrink the deployment.</li>
+      <li>almost the entire process uses GDAL binaries. this is a major issue when it comes to serverless lambda as the size of these binaries are waaaaaay too large for the compressed 50 MB function upload limit (or 250 MB uncompressed via the more forgiving s3 route).<br />The first part of the process used indepedent GDAL Translate and GDAL Addo binaries, precompiled and supplied by Mark Korver (shoutout below) which allow the tif to COG conversion to be possible. These binaries are available and can be snatched from the function directory folder inside it's '/bin' subfolder.<br />The second part of the process uses Rasterio with ManyLinux Wheels to do a python version of gdaltindex to create the tile index (shoutout below). Luckily, a rasterio python package has been in development to incorporate them - this was a life saving necessity. The package was still too large to deploy though until I read Seth Fitzsimmons' (shoutout below) clever hack to remove all unused python dependency files and shrink the deployment.</li>
     </ul>
     Details related to the s3 key structure (repo wiki), setting up FUSE s3fs, Rasterio with ManyLinux Wheels, and shrinking of the lambda function for deployment can be found in the github repo README.
   </p>

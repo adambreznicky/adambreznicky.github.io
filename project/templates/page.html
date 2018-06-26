@@ -1,7 +1,11 @@
 
 {% extends "base.html" %}
 {% block content %}
-<h1>{{ page.meta.title }}</h1>
-<p>{{ page.meta.date }}</p>
-{{ page }}
+<div class="row">
+  <div class="one centered three fifth">
+    <h1>{{ page.meta.title }}</h1>
+    <p>{{ page.meta.date }}</p>
+    {{ page }}
+  </div>
+</div>
 {% endblock %}
