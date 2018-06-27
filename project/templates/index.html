@@ -7,7 +7,7 @@
   <ul>
     {% for p in pages %}
       <li>
-        <a href="./cog_machine" title="{{ p.title }}">{{ p.title }} - {{ p.date }}</a>
+        <a href="./{{ p.path }}" title="{{ p.title }}">{{ p.title }} - {{ p.date }}</a>
       </li>
     {% endfor %}
   </ul>

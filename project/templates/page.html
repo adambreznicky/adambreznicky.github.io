@@ -1,11 +1,15 @@
 
 {% extends "base.html" %}
 {% block content %}
-<div class="row">
+<div class="blog-row row">
   <div class="one centered three fifth">
     <h1>{{ page.meta.title }}</h1>
     <p>{{ page.meta.date }}</p>
     {{ page }}
   </div>
+</div>
+<div class="footer one centered three fifth">
+  <h3>that's all folks!!</h3>
+  <a role="button" href="../" class="gap-bottom gap-right"><i class="icon-arrow-left"></i>  Back to Blog List</a>
 </div>
 {% endblock %}

@@ -47,7 +47,7 @@ h4>ul>li {
   border-top: 0 !important;
 }
 
-i {
+i.italic {
   font-style: italic !important;
 }
 
@@ -73,6 +73,22 @@ a.leaflet-control-zoom-in, a.leaflet-control-zoom-out {
   padding: 0px;
 }
 
+.blog-row {
+  padding-top: 35px;
+}
+
 .blog_content > p {
   font-size: 16px !important;
+}
+
+.blog_content > h3 {
+  text-decoration: underline;
+}
+
+code {
+  font-size: 14px !important;
+}
+
+.footer > h3 {
+  padding-top: 50px;
 }
