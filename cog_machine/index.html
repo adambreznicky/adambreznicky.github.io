@@ -99,21 +99,21 @@
           <li>Uploaded image key declares 'bw' or 'rgb' so the function uses different band declarations when calling the gdal translate command</li>
           <li>Environment Variables:<br/>
                 <code>gdalArgs='-co tiled=yes -co BLOCKXSIZE=512 -co BLOCKYSIZE=512 -co NUM_THREADS=ALL_CPUS -co COMPRESS=DEFLATE -co PREDICTOR=2'</code> (gdal translate arguments)<br/>
-                <code>uploadBucket= 'project-bucket-name'</code> (project bucket name)<br/>
-                <code>uploadKeyAcl= 'private'</code> (output s3 upload acl)<br/>
-                <code>bwBands= '-b 1'</code> (band arguments for single band raster)<br/>
-                <code>rgbBands= '-b 1 -b 2 -b 3'</code> (band arguments for rgb raster)<br/>
-                <code>georefSubDir= 'deflate/'</code> (subdirectory for key upload; must be same as ls4-02-overviews)</li>
+                <code>uploadBucket='project-bucket-name'</code> (project bucket name)<br/>
+                <code>uploadKeyAcl='private'</code> (output s3 upload acl)<br/>
+                <code>bwBands='-b 1'</code> (band arguments for single band raster)<br/>
+                <code>rgbBands='-b 1 -b 2 -b 3'</code> (band arguments for rgb raster)<br/>
+                <code>georefSubDir='deflate/'</code> (subdirectory for key upload; must be same as ls4-02-overviews)</li>
         </ul>
       <li>The second lambda function `ls4-02-overviews` creates overviews on the compressed tif and dumps them alongside it in the sub directory (.ovr). This function has a sub directory environment variable which it verifies is part of the compressed tif key in order to run -- <b>this means the sub directory environment variable for both functions must be the same</b>. This triggers the third lambda function by an event wired to monitor the bucket for all ovr extensions.</li>
         <ul>
           <li>Uses gdaladdo binary</li>
           <li>NodeJS 6.10 runtime</li>
           <li>Environment Variables:<br/>
-                <code>uploadBucket= 'project-bucket-name'</code> (project bucket name)<br/>
+                <code>uploadBucket='project-bucket-name'</code> (project bucket name)<br/>
                 <code>gdaladdoLayers='2 4 8 16 32 64'</code> (gdal addo layer arguments)<br/>
                 <code>gdaladdoArgs='-r average -ro'</code> (gdal addo arguments)<br/>
-                <code>georefSubDir= 'deflate/'</code> (subdirectory for key upload; must be same as ls4-02-overviews)</li>
+                <code>georefSubDir='deflate/'</code> (subdirectory for key upload; must be same as ls4-02-overviews)</li>
         </ul>
       <li>The third lambda function `ls4-03-cog` creates the cloud optimized geotiff (COG) from tif and ovr in the sub directory. Then it invokes the fourth lambda directly (doesn't use event because you cannot duplicate trigger on mulitple lambdas and the output is also a .tif).</li>
         <ul>
@@ -121,23 +121,29 @@
           <li>NodeJS 6.10 runtime</li>
           <li>Uploaded image key declares 'bw' or 'rgb' so the function uses different byte and compression tyeps when calling the gdal translate command</li>
           <li>Environment Variables:<br/>
-                <code>uploadBucket= 'project-bucket-name'</code> (project bucket name)<br/>
-                <code>uploadKeyAcl= 'public-read'</code> (output s3 upload acl)<br/>
+                <code>uploadBucket='project-bucket-name'</code> (project bucket name)<br/>
+                <code>uploadKeyAcl='public-read'</code> (output s3 upload acl)<br/>
                 <code>bwGdalArgs='-of GTiff -ot Byte -a_nodata 256 -co TILED=YES -co BLOCKXSIZE=512 -co BLOCKYSIZE=512 -co COMPRESS=DEFLATE -co COPY_SRC_OVERVIEWS=YES --config GDAL_TIFF_OVR_BLOCKSIZE 512'</code> (gdal translate arguments for single band raster)<br/>
                 <code>ncGdalArgs='-of GTiff -co TILED=YES -co BLOCKXSIZE=512 -co BLOCKYSIZE=512 -co COMPRESS=JPEG -co JPEG_QUALITY=85 -co PHOTOMETRIC=YCBCR -co COPY_SRC_OVERVIEWS=YES --config GDAL_TIFF_OVR_BLOCKSIZE 512'</code> (gdal translate arguments for rgb raster)<br/>
-                <code>georefSubDir= 'deflate/'</code> (subdirectory for key upload; must be same as ls4-02-overviews)</li>
+                <code>georefSubDir='deflate/'</code> (subdirectory for key upload; must be same as ls4-02-overviews)</li>
         </ul>
-      <li>The fourth lambda function `ls4-04-shp_index` creates the shapefile tile index of all COGs in s3 for the collection and drops it off in s3. This triggers the fifth lambda function by an event wired to monitor the bucket for all .shp extensions.</li>
+      <li>The fourth lambda function `ls4-04-shp_index` creates the shapefile tile index of all COGs in s3 for the collection and drops it off in s3. Then it uploads a copy of the tile index to a new table in a PostGIS RDS for the Mapserver mapfile to use. This function is special insofar as accessing the RDS; the RDS is within a VPC so the lambda function must be within the same VPC to access it (security!). When a lambda function is deployed within a VPC, it no longer has access to S3 except through a VPC Endpoint. So, a VPC endpoint is deployed alongside this function with the function, RDS, and endpoint all residing in (or pointing to) the same subnets. This function triggers the fifth lambda function by an event wired to monitor the bucket for all .shp extensions.</li>
         <ul>
           <li>Uses rasterio with ManyLinux Wheels</li>
           <li>python 3.6 runtime</li>
-          <li>No environment variables</li>
+          <li>Environment Variables:<br/>
+                <code>DB_DRIVER='postgresql'</code> (sqlalchemy database driver)<br/>
+                <code>DB_NAME='database-name'</code> (database name)<br/>
+                <code>DB_USER='username'</code> (user with table create, drop, and update permissions)<br/>
+                <code>DB_PASSWORD='password'</code> (user password)<br/>
+                <code>DB_HOST='host connection url'</code> (RDS host url)<br/>
+                <code>DB_PORT='5432'</code> (database port. postgres default is 5432)</li>
         </ul>
     </ol>
   </p>
 
   <h4> ------------ </h4>
-  <h4>Sorry, but the process is still be explored and solidified so that i can come back here and give you all the details. Come back super soon and check it out!</h4>
+  <h4>Sorry, but the process is still be explored and solidified so that i can come back here and give you all the details. Come back super soon and check out the progress!</h4>
   <h4> ------------ </h4>
 
   <h3>AWS Architecture</h3>
@@ -149,6 +155,7 @@
       <li>Lambda IAM Role with full Lambda permissions and full s3 permissions to project s3 bucket.</li>
       <li>Lambda function for each step in the process with appropriate environment variables, role, and event triggers.</li>
       <li>Postgres RDS provisioned with PostGIS installed and a user for the lambda functions to utilize.</li>
+      <li>VPC Endpoint for Function 4 for s3 access since it is deployed within VPC to access RDS.</li>
     </ul>
   </p>
 
