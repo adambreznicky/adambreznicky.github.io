@@ -16,7 +16,7 @@ date: 2018-06-12 21:30:00
     Sure, it will be a lot of work but the hard part is getting it digital and georeferenced. If we can get a lambda raster processing machine up and running, we can make everything already digital immediately available. Then as every new photo frame gets scanned, it can be turned into a COG, cataloged, and served without any extensive work beyond the simple and conscious act of scanning (and georeferencing) the photo.
   </p>
 
-  <h3>Project</h3>
+  <h3>Processing Pipeline</h3>
   <p>
     The project github repo can be found here: <a href="https://github.com/TNRIS/lambda-s4">https://github.com/TNRIS/lambda-s4</a>
   </p>
@@ -74,7 +74,49 @@ date: 2018-06-12 21:30:00
                 <code>DB_HOST='host connection url'</code> (RDS host url)<br/>
                 <code>DB_PORT='5432'</code> (database port. postgres default is 5432)</li>
         </ul>
+      <li>The fifth lambda function `ls4-05-mapfile` creates the mapfile for the collection and drops it off in s3. This is accomplished by using a template ('template.map') mapfile previously setup for WMS with placeholders for python to overwrite with the specifics related to the collection. Placeholders are variable names surrounded by less-than and greater-than carrots. Psycopg2 is used to query the collection's tile index in PostGIS for the 'EXTENT' x/y minimums and maximums. The mapfile does require an AWS user access key and secret access key. These are used to access s3 to retrieve the COGs. I setup a new user with only s3 permissions to the project for use in these mapfiles and by the Mapserver EC2 for mounting the bucket with FUSE s3fs (see below). Note: the mapfiles are uploaded with specific headers declaring the owner and permissions of the file so it can be read by Mapserver (see below).</li>
+        <ul>
+          <li>Uses standard python packages; no special binaries</li>
+          <li>python 3.6 runtime</li>
+          <li>Environment Variables:<br/>
+                <code>DB_NAME='database-name'</code> (database name)<br/>
+                <code>DB_USER='username'</code> (user with table create, drop, and update permissions)<br/>
+                <code>DB_PASSWORD='password'</code> (user password)<br/>
+                <code>DB_HOST='host connection url'</code> (RDS host url)<br/>
+                <code>DB_PORT='5432'</code> (database port. postgres default is 5432)<br/>
+                <code>MAPSERVER_ACCESS_KEY_ID=''</code> (mapserver user's access key id)<br/>
+                <code>MAPSERVER_SECRET_ACCESS_KEY=''</code> (mapserver user's seecret access key)</li>
+        </ul>
     </ol>
+  </p>
+
+  <h3>Mapserver</h3>
+  <p>
+    Okee dokee, so the processing pipeline is setup and successfully converts individually uploaded image frames into COGS while continually regenerating (in order to update with new frames) the tile index of all frames and a mapfile to server them out as a WMS Service. The other half of the project is the Mapserver to actually host the services by reading the mapfiles and serving out the COGs from s3. The step-by-step details of setting up such a Mapserver are outlined in my post <a href="./fuse_mapserver">FUSE s3 Mapserver</a> but here I'll just provide an overview of the main points to know and consider.
+  </p>
+  <p>
+    <ul>
+      <li>Started with an Amazon OS AMI with Docker since I would be running Mapserver within a container. Originally spun up a basic micro EC2 for testing but once all the kinks were worked out, I re-provisioned a new AMI for use with ECS and spun up a new cluster to utilize it.</li>
+      <li><a href="https://cloudkul.com/blog/mounting-s3-bucket-linux-ec2-instance/">Used these basic instructions</a> to install fuse and mount s3 as a drive on the machine.</li>
+      <li>FUSE s3fs uses an IAM User Key ID and Secret Key for permissions to connect to the s3 bucket so I created a user to represent the Mapserver. I created a custom permission policy to assign to this user with only permissions to read and write to only the project bucket.</li>
+      <li>FUSE accesses the user key/secret with a <code>.passwd-s3fs</code> file located in the 'ec2-user' home directory. When setting up this file, be sure to <code>chown</code> the file to the 'ec2-user' user. <a href="https://github.com/s3fs-fuse/s3fs-fuse/wiki/Fuse-Over-Amazon">Permissions instructions here</a>.</li>
+      <li>You'll have to sudo edit <code>/etc/fuse.conf</code> to to uncomment out the 'user_allow_other' line to permit machine users to access the mounted s3 directory.</li>
+      <li>You'll want to setup the directory to automatically mount on machine bootup. Probably good practice if managing a single EC2 but definitely a requirement if setting up an AMI for ECS since ECS machines may come and go. New ones will need the directory already mounted as they turn on.</li>
+      <li>s3 is an object store but FUSE s3fs mounts as a directory and recognizes 'folders'. Therefore, the 'directory' where the mapfiles reside in the s3 bucket must be owned by the os user ('ec2-user') running the docker container. This is accomplished by mounting the bucket, then doing a simple <code>mkdir</code> to create the folder rather than creating it in the AWS Console (which creates them as 'root').</li>
+      <li>Same as the mapfile directory owner, the actual '.map' mapfiles need to be owned by 'ec2-user' and have the proper permissions. Since we are creating our mapfiles programatically, this is accomplished by using the proper headers when uploaded to s3 within function 5 `ls4-05-mapfile`. Boto3 is used to accomplish this:
+      <code style="display:block;white-space: pre-wrap;text-transform:none;">
+    import boto3
+    s3 = boto3.resource('s3')
+
+    bucket_name = '<-- bucket name -->'
+    upload_file = '/<-- path to file -->/<-- filename -->.map'
+    upload_key = '<-- upload key with filename including .map -->' # example: 'testt/test2.map'
+    s3.Bucket(bucket_name).upload_file(upload_file,upload_key,ExtraArgs={'Metadata':{'mode':'33204','uid':'500','gid':'500','mtime':'1528814551'}})
+      </code>
+      It is within the ExtraArgs - Metadata that we can apply the required 'mode', 'uid', 'gid', and 'mtime' of the uploaded mapfile. The user and group IDs (uid, gid) should be that of the OS user 'ec2-user'.
+      </li>
+      <li>Spin up mapserver docker with a <code>-v</code> volume flag passing the machine FUSE mounted directory to the docker. Example: <code style="white-space: pre-wrap;">sudo docker run --detach -v /home/ec2-user/<-- mounted bucket -->/<-- bucket folder -->:/mapfiles:ro --publish 8080:80 --name mapserver geodata/mapserver</code></li>
+    </ul>
   </p>
 
   <h4> ------------ </h4>
@@ -99,8 +141,8 @@ date: 2018-06-12 21:30:00
     The main hurdles that needed ironing out were:
     <ul>
       <li>s3 key structures which organize the tifs so that scanners/georeferencers can drop off new images and the process can consistently handle them.</li>
-      <li>setting up FUSE s3fs such that scanners/georeferencers can just drop off new images <i class="italic">in a folder</i> to let the process do it's thing. setting this up also lets the host mapserver use s3 for all the mapfiles. by hosting mapfiles from s3, the process can create new mapfiles and put them in a specific key structure which the mapserver automatically reads without redeployment of any kind. in short: new image uploaded = autmatically created new WMS</li>
-      <li>almost the entire process uses GDAL binaries. this is a major issue when it comes to serverless lambda as the size of these binaries are waaaaaay too large for the compressed 50 MB function upload limit (or 250 MB uncompressed via the more forgiving s3 route).<br />The first part of the process used indepedent GDAL Translate and GDAL Addo binaries, precompiled and supplied by Mark Korver (shoutout below) which allow the tif to COG conversion to be possible. These binaries are available and can be snatched from the function directory folder inside it's '/bin' subfolder.<br />The second part of the process uses Rasterio with ManyLinux Wheels to do a python version of gdaltindex to create the tile index (shoutout below). Luckily, a rasterio python package has been in development to incorporate them - this was a life saving necessity. The package was still too large to deploy though until I read Seth Fitzsimmons' (shoutout below) clever hack to remove all unused python dependency files and shrink the deployment.</li>
+      <li>setting up FUSE s3fs such that scanners/georeferencers can just drop off new images <i class="italic">in a folder</i> to let the process do it's thing. setting this up also lets the host mapserver use s3 for all the mapfiles. by hosting mapfiles from s3, the process can create new mapfiles and put them in a specific key structure which the mapserver automatically reads without redeployment of any kind. in short: new image uploaded = autmatically created new WMS. I detailed the process of creating this Mapserver in my post <a href="./fuse_mapserver">FUSE s3 Mapserver</a>.</li>
+      <li>almost the entire process uses GDAL binaries. this is a major issue when it comes to serverless lambda as the size of these binaries are waaaaaay too large for the compressed 50 MB function upload limit (or 250 MB uncompressed via the more forgiving s3 route).<br />The first part of the process used indepedent GDAL Translate and GDAL Addo binaries, precompiled and supplied by Mark Korver (shoutout below) which allow the tif to COG conversion to be possible. These binaries are available and can be snatched from the function directory folder inside it's '/bin' subfolder.<br />The second part of the process uses Rasterio with ManyLinux Wheels to do a python version of gdaltindex to create the tile index (shoutout below). Luckily, a rasterio python package has been in development to incorporate them - this was a life saving necessity. The package was still too large to deploy though until I read Seth Fitzsimmons' (shoutout below) clever hack to remove all unused python dependency files and shrink the deployment. I expanded on Seth's instruction with details and specific commands in my post <a href="./lambda_shrinkage">Got Shrinkage?</a>.</li>
     </ul>
     Details related to the s3 key structure (repo wiki), setting up FUSE s3fs, Rasterio with ManyLinux Wheels, and shrinking of the lambda function for deployment can be found in the github repo README.
   </p>

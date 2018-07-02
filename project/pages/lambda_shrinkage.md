@@ -56,7 +56,7 @@ date: 2018-06-27 07:46:00
     <li>
       Run a quick little python script to walk the function directory and delete all unused files (files not in the dep_whitelist.txt). My script was named 'dep_cleanup.py' and sat in the lambda function directory. Be sure to explicitly include the lambda function, requirements, and whitelist files in your whitelist. This is seen with the 'hrd_whitelist' list variable. My 'dep_cleanup.py' looked like this:
 
-        <code style="display:block;white-space: pre-wrap;">
+        <code style="display:block;white-space: pre-wrap;text-transform:none;">
   import os
 
   # get this directory
