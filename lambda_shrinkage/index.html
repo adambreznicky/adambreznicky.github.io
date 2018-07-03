@@ -64,7 +64,7 @@
 <div class="blog-row row">
   <div class="one centered three fifth">
     <h1>Got Shrinkage? Rasterio and ManyLinux Wheels in Serverless Lambda</h1>
-    <p>2018-06-27 07:46:00</p>
+    <p>2018-06-27</p>
     <h6>
   Rasterio with <a href="https://github.com/pypa/manylinux">ManyLinux Wheels</a> are super awesome! You can get the power and functionality of GDAL binaries compiled and packaged up to be on-the-go. Exactly what you need for serverless functions (lambda).
 </h6>
@@ -72,7 +72,7 @@
 <div class="blog_content">
   <h3>Backstory</h3>
   <p>
-    I developed a <a href="./cog_machine">raster image processing pipeline</a> to convert TNRIS's huge historical archive from geotiffs into COGs served as WMS services from s3. A major hurdle in that project was getting what I was doing locally with 'gdaltindex' up into a serverless lambda function. I don't have any experience in any C languages and compiling an independent GDAL binary to deploy with the function code was out of reach for me. If I wrote the function in python, I could use Rasterio as the package utilizes GDAL but the package doesn't stand independently with GDAL inherent in it. The saving grace was when I came across <a href="https://github.com/mapbox/rasterio/issues/942">this</a> github issue which revealed to me I was not alone. Luckily, Mapbox was working on a Rasterio package utilizing ManyLinux wheels which compiled the GDAL binaries in the package.
+    I developed a <a href="../cog_machine">raster image processing pipeline</a> to convert TNRIS's huge historical archive from geotiffs into COGs served as WMS services from s3. A major hurdle in that project was getting what I was doing locally with 'gdaltindex' up into a serverless lambda function. I don't have any experience in any C languages and compiling an independent GDAL binary to deploy with the function code was out of reach for me. If I wrote the function in python, I could use Rasterio as the package utilizes GDAL but the package doesn't stand independently with GDAL inherent in it. The saving grace was when I came across <a href="https://github.com/mapbox/rasterio/issues/942">this</a> github issue which revealed to me I was not alone. Luckily, Mapbox was working on a Rasterio package utilizing ManyLinux wheels which compiled the GDAL binaries in the package.
   </p>
   <p>
     <code>pip install --pre rasterio[s3]>=1.0b4</code>
@@ -159,6 +159,9 @@
         </code>
     </li>
   </ol>
+  <p>
+    For the actual code, project, and context I was working this in, visit the github repo here: <a href="https://github.com/TNRIS/lambda-s4">https://github.com/TNRIS/lambda-s4</a>. The lambda function which utilizes this process is the directory `ls4-04-shp_index` within the repo. It contains the 'dep_cleanup.py' file.
+  </p>
 </div>
   </div>
 </div>

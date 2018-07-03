@@ -64,7 +64,7 @@
 <div class="blog-row row">
   <div class="one centered three fifth">
     <h1>Just Another COG in the Machine</h1>
-    <p>2018-06-12 21:30:00</p>
+    <p>2018-06-12</p>
     <h6>
   Lets build a lambda raster processing machine to build COGs and then serve them through programmatically managed WMS Services straight out of S3.
 </h6>
@@ -98,7 +98,7 @@
           <li>NodeJS 6.10 runtime</li>
           <li>Uploaded image key declares 'bw' or 'rgb' so the function uses different band declarations when calling the gdal translate command</li>
           <li>Environment Variables:<br/>
-                <code>gdalArgs='-co tiled=yes -co BLOCKXSIZE=512 -co BLOCKYSIZE=512 -co NUM_THREADS=ALL_CPUS -co COMPRESS=DEFLATE -co PREDICTOR=2'</code> (gdal translate arguments)<br/>
+                <code style="white-space: pre-wrap;">gdalArgs='-co tiled=yes -co BLOCKXSIZE=512 -co BLOCKYSIZE=512 -co NUM_THREADS=ALL_CPUS -co COMPRESS=DEFLATE -co PREDICTOR=2'</code> (gdal translate arguments)<br/>
                 <code>uploadBucket='project-bucket-name'</code> (project bucket name)<br/>
                 <code>uploadKeyAcl='private'</code> (output s3 upload acl)<br/>
                 <code>bwBands='-b 1'</code> (band arguments for single band raster)<br/>
@@ -123,8 +123,8 @@
           <li>Environment Variables:<br/>
                 <code>uploadBucket='project-bucket-name'</code> (project bucket name)<br/>
                 <code>uploadKeyAcl='public-read'</code> (output s3 upload acl)<br/>
-                <code>bwGdalArgs='-of GTiff -ot Byte -a_nodata 256 -co TILED=YES -co BLOCKXSIZE=512 -co BLOCKYSIZE=512 -co COMPRESS=DEFLATE -co COPY_SRC_OVERVIEWS=YES --config GDAL_TIFF_OVR_BLOCKSIZE 512'</code> (gdal translate arguments for single band raster)<br/>
-                <code>ncGdalArgs='-of GTiff -co TILED=YES -co BLOCKXSIZE=512 -co BLOCKYSIZE=512 -co COMPRESS=JPEG -co JPEG_QUALITY=85 -co PHOTOMETRIC=YCBCR -co COPY_SRC_OVERVIEWS=YES --config GDAL_TIFF_OVR_BLOCKSIZE 512'</code> (gdal translate arguments for rgb raster)<br/>
+                <code style="white-space: pre-wrap;">bwGdalArgs='-of GTiff -ot Byte -a_nodata 256 -co TILED=YES -co BLOCKXSIZE=512 -co BLOCKYSIZE=512 -co COMPRESS=DEFLATE -co COPY_SRC_OVERVIEWS=YES --config GDAL_TIFF_OVR_BLOCKSIZE 512'</code> (gdal translate arguments for single band raster)<br/>
+                <code style="white-space: pre-wrap;">ncGdalArgs='-of GTiff -co TILED=YES -co BLOCKXSIZE=512 -co BLOCKYSIZE=512 -co COMPRESS=JPEG -co JPEG_QUALITY=85 -co PHOTOMETRIC=YCBCR -co COPY_SRC_OVERVIEWS=YES --config GDAL_TIFF_OVR_BLOCKSIZE 512'</code> (gdal translate arguments for rgb raster)<br/>
                 <code>georefSubDir='deflate/'</code> (subdirectory for key upload; must be same as ls4-02-overviews)</li>
         </ul>
       <li>The fourth lambda function `ls4-04-shp_index` creates the shapefile tile index of all COGs in s3 for the collection and drops it off in s3. Then it uploads a copy of the tile index to a new table in a PostGIS RDS for the Mapserver mapfile to use. This function is special insofar as accessing the RDS; the RDS is within a VPC so the lambda function must be within the same VPC to access it (security!). When a lambda function is deployed within a VPC, it no longer has access to S3 except through a VPC Endpoint. So, a VPC endpoint is deployed alongside this function with the function, RDS, and endpoint all residing in (or pointing to) the same subnets. This function triggers the fifth lambda function by an event wired to monitor the bucket for all .shp extensions.</li>
@@ -157,7 +157,7 @@
 
   <h3>Mapserver</h3>
   <p>
-    Okee dokee, so the processing pipeline is setup and successfully converts individually uploaded image frames into COGS while continually regenerating (in order to update with new frames) the tile index of all frames and a mapfile to server them out as a WMS Service. The other half of the project is the Mapserver to actually host the services by reading the mapfiles and serving out the COGs from s3. The step-by-step details of setting up such a Mapserver are outlined in my post <a href="./fuse_mapserver">FUSE s3 Mapserver</a> but here I'll just provide an overview of the main points to know and consider.
+    Okee dokee, so the processing pipeline is setup and successfully converts individually uploaded image frames into COGS while continually regenerating (in order to update with new frames) the tile index of all frames and a mapfile to serve them out as a WMS Service. The other half of the project is the Mapserver to actually host the services by reading the mapfiles and serving out the COGs from s3. The step-by-step details of setting up such a Mapserver are outlined in my post <a href="../fuse_mapserver">FUSE s3 Mapserver</a> but here I'll just provide an overview of the main points to know and consider.
   </p>
   <p>
     <ul>
@@ -194,7 +194,7 @@
       <li>s3 bucket</li>
       <li>MapServer docker running in ECS on EC2's with custom AMI that has a FUSE s3fs pointing a directory at s3. Initially for discovery and testing, the docker was spun up on a plain AWS OS EC2 and when it was completely configured it was the basis for the custom AMI to be used by ECS.</li>
       <li>User with permissions to project s3 bucket for MapServer to use.</li>
-      <li>Lambda IAM Role with full Lambda permissions and full s3 permissions to project s3 bucket.</li>
+      <li>Lambda IAM Role with full Lambda permissions and full s3 permissions to the project s3 bucket.</li>
       <li>Lambda function for each step in the process with appropriate environment variables, role, and event triggers.</li>
       <li>Postgres RDS provisioned with PostGIS installed and a user for the lambda functions to utilize.</li>
       <li>VPC Endpoint for Function 4 for s3 access since it is deployed within VPC to access RDS.</li>
@@ -206,8 +206,8 @@
     The main hurdles that needed ironing out were:
     <ul>
       <li>s3 key structures which organize the tifs so that scanners/georeferencers can drop off new images and the process can consistently handle them.</li>
-      <li>setting up FUSE s3fs such that scanners/georeferencers can just drop off new images <i class="italic">in a folder</i> to let the process do it's thing. setting this up also lets the host mapserver use s3 for all the mapfiles. by hosting mapfiles from s3, the process can create new mapfiles and put them in a specific key structure which the mapserver automatically reads without redeployment of any kind. in short: new image uploaded = autmatically created new WMS. I detailed the process of creating this Mapserver in my post <a href="./fuse_mapserver">FUSE s3 Mapserver</a>.</li>
-      <li>almost the entire process uses GDAL binaries. this is a major issue when it comes to serverless lambda as the size of these binaries are waaaaaay too large for the compressed 50 MB function upload limit (or 250 MB uncompressed via the more forgiving s3 route).<br />The first part of the process used indepedent GDAL Translate and GDAL Addo binaries, precompiled and supplied by Mark Korver (shoutout below) which allow the tif to COG conversion to be possible. These binaries are available and can be snatched from the function directory folder inside it's '/bin' subfolder.<br />The second part of the process uses Rasterio with ManyLinux Wheels to do a python version of gdaltindex to create the tile index (shoutout below). Luckily, a rasterio python package has been in development to incorporate them - this was a life saving necessity. The package was still too large to deploy though until I read Seth Fitzsimmons' (shoutout below) clever hack to remove all unused python dependency files and shrink the deployment. I expanded on Seth's instruction with details and specific commands in my post <a href="./lambda_shrinkage">Got Shrinkage?</a>.</li>
+      <li>setting up FUSE s3fs such that scanners/georeferencers can just drop off new images <i class="italic">in a folder</i> to let the process do it's thing. setting this up also lets the host mapserver use s3 for all the mapfiles. by hosting mapfiles from s3, the process can create new mapfiles and put them in a specific key structure which the mapserver automatically reads without redeployment of any kind. in short: new image uploaded = autmatically created new WMS. I detailed the process of creating this Mapserver in my post <a href="../fuse_mapserver">FUSE s3 Mapserver</a>.</li>
+      <li>almost the entire process uses GDAL binaries. this is a major issue when it comes to serverless lambda as the size of these binaries are waaaaaay too large for the compressed 50 MB function upload limit (or 250 MB uncompressed via the more forgiving s3 route).<br />The first part of the process used indepedent GDAL Translate and GDAL Addo binaries, precompiled and supplied by Mark Korver (shoutout below) which allow the tif to COG conversion to be possible. These binaries are available and can be snatched from the function directory folder inside it's '/bin' subfolder.<br />The second part of the process uses Rasterio with ManyLinux Wheels to do a python version of gdaltindex to create the tile index (shoutout below). Luckily, a rasterio python package has been in development to incorporate them - this was a life saving necessity. The package was still too large to deploy though until I read Seth Fitzsimmons' (shoutout below) clever hack to remove all unused python dependency files and shrink the deployment. I expanded on Seth's instruction with details and specific commands in my post <a href="../lambda_shrinkage">Got Shrinkage?</a>.</li>
     </ul>
     Details related to the s3 key structure (repo wiki), setting up FUSE s3fs, Rasterio with ManyLinux Wheels, and shrinking of the lambda function for deployment can be found in the github repo README.
   </p>
