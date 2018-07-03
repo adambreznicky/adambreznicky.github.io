@@ -113,7 +113,7 @@ date: 2018-06-12
     upload_key = '<-- upload key with filename including .map -->' # example: 'testt/test2.map'
     s3.Bucket(bucket_name).upload_file(upload_file,upload_key,ExtraArgs={'Metadata':{'mode':'33204','uid':'500','gid':'500','mtime':'1528814551'}})
       </code>
-      It is within the ExtraArgs - Metadata that we can apply the required 'mode', 'uid', 'gid', and 'mtime' of the uploaded mapfile. The user and group IDs (uid, gid) should be that of the OS user 'ec2-user'.
+      It is within the ExtraArgs - Metadata that we can apply the required 'mode', 'uid', 'gid', and 'mtime' of the uploaded mapfile. The user and group IDs (uid, gid) should be that of the OS user 'ec2-user'. It seems standard and reliable to me that Amazon OS default user 'ec2-user' is UID and GID <code>500</code>.
       </li>
       <li>Spin up mapserver docker with a <code>-v</code> volume flag passing the machine FUSE mounted directory to the docker. Example: <code style="white-space: pre-wrap;">sudo docker run --detach -v /home/ec2-user/<-- mounted bucket -->/<-- bucket folder -->:/mapfiles:ro --publish 8080:80 --name mapserver geodata/mapserver</code></li>
     </ul>
