@@ -223,6 +223,9 @@ user_allow_other
         </code>
       </li>
       <li>
+        Under the exact same guise as the previous step, if the mapfiles will be in any 'sub-directories' of the bucket rather than the root, those directories need to have 'ec2-user' filesystem ownership and permissions for Mapserver to access them. A simple <code>mkdir</code> as 'ec2-user' while SSH'd in accomplishes this. Just note that if you upload mapfiles to any s3 'folders' which were created in the AWS Console, the owner will be root and mapserver will not have access.
+      </li>
+      <li>
         <code>exit</code> to end the SSH session.
       </li>
       <li>
