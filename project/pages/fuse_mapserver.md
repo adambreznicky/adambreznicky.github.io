@@ -161,4 +161,9 @@ user_allow_other
     </ol>
   </p>
 
+  <h5>Test</h5>
+  <p>
+    Sample WMS Service mapfile in COG project directory in function 05 but it's way more complex than needed for a simple test.
+  </p>
+
 </div>
