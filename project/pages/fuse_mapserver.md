@@ -145,6 +145,19 @@ user_allow_other
         Then save and close the file by clicking the <code>ESC</code> key, then typing <code>:wq!</code>, and finally hitting <code>Enter</code>.
       </li>
       <li>
+        <b>Very Important:</b> Mapfiles in s3 need to have the proper headers with the 'mode', 'mtime', 'uid', and 'gid'. This is so that they have the proper ownership and permissions as file metadata through s3fs. If uploading Mapfiles manually through the console, you can edit add these headers in the object's 'Properties' -> 'Metadata'. If uploading via an SDK, you can add these headers as  ExtraArgs when doing the file upload. The 'uid' and 'gid' need to be that of the user running Mapserver.
+        <br/>
+        <code>id -u ec2-user</code> & <code>id -g ec2-user</code> to get 'ec2-user' user's UID and GID. It seems standard and reliable to me that Amazon OS default user 'ec2-user' is UID and GID <code>500</code>.
+        <br/>
+        Specifically, these headers should work for the mapfiles:
+        <code style="white-space: pre-wrap;">
+'mode':'33204'
+'uid':'500'
+'gid':'500'
+'mtime':'1528814551'
+        </code>
+      </li>
+      <li>
         <code>exit</code> to end the SSH session.
       </li>
       <li>
