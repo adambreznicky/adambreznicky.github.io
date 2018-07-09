@@ -133,15 +133,16 @@ date: 2018-06-12
   <p>
     <ul>
       <li>s3 bucket which holds the rasters/COGs, tile index shapfiles, and mapfiles.</li>
-      <li>Mapserver docker instance (details above). Initially for discovery and testing, the docker was spun up on a plain AWS OS EC2 and when it was completely configured it was the basis for the custom AMI to be used by ECS. In production, use a MapServer docker running in ECS on an EC2 with custom AMI that has a FUSE s3fs pointing a directory at the COG/Mapfile s3 bucket. This includes:
+      <li>Mapserver docker instance (some details above but <a href="../fuse_mapserver">super details here</a>). Initially for discovery and testing, the docker was spun up on a plain AWS OS EC2 and when it was completely configured it was the basis for the custom AMI to be used by ECS. In production, use a MapServer docker running in ECS on an EC2 with custom AMI that has a FUSE s3fs pointing a directory at the COG/Mapfile s3 bucket. This includes:
         <ul>
           <li>ECS Cluster running necessary machine (we use r3 large) with custom AMI</li>
           <li>ECS Service in the cluster with a task definiton containing the proper port mappings from the machine to the docker, proper mounted /mapfile volume, and custom docker image</li>
           <li>Elastic Load Balancer pointing http traffic to the cluster machines</li>
           <li>DNS record pointing toward the Elastic Load Balancer</li>
+          <li>ECR (container registry) to store custom docker image if using ECS</li>
         </ul>
       </li>
-      <li>User with policy permissions to project s3 bucket for MapServer to use. Generate an Access Key ID and Secret Access Key for use as environment variables in function `ls4-05-mapfile`.</li>
+      <li>IAM User with policy permissions to project s3 bucket for MapServer to use. Generate an Access Key ID and Secret Access Key for use as environment variables in function `ls4-05-mapfile`.</li>
       <li>Lambda IAM Role with full Lambda permissions and full s3 permissions to the project s3 bucket. Apply this role to every lambda function being mindful that function 4 is inside the VPC and needs additional subnet & VPC endpoint configuration.</li>
       <li>VPC Endpoint for Function 4 for s3 access since it is deployed within VPC to access RDS.</li>
       <li>Lambda function for each step in the process with appropriate environment variables, role, and event triggers as outlined above.</li>

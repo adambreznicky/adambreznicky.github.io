@@ -151,6 +151,7 @@
                 <code>DB_PORT='5432'</code> (database port. postgres default is 5432)<br/>
                 <code>MAPSERVER_ACCESS_KEY_ID=''</code> (mapserver user's access key id)<br/>
                 <code>MAPSERVER_SECRET_ACCESS_KEY=''</code> (mapserver user's seecret access key)</li>
+                <code>DNS_URL='http://server.yourdomain.com'</code> (mapserver instance dns url)</li>
         </ul>
     </ol>
   </p>
@@ -161,9 +162,9 @@
   </p>
   <p>
     <ul>
-      <li>Started with an Amazon OS AMI with Docker since I would be running Mapserver within a container. Originally spun up a basic micro EC2 for testing but once all the kinks were worked out, I re-provisioned a new AMI for use with ECS and spun up a new cluster to utilize it.</li>
+      <li>Started with an Amazon OS ECS Optimized AMI with Docker since I would be running Mapserver within a container. Originally spun up a basic micro EC2 for testing but once all the kinks were worked out, I re-provisioned a new AMI for use with ECS and spun up a new cluster to utilize it.</li>
       <li><a href="https://cloudkul.com/blog/mounting-s3-bucket-linux-ec2-instance/">Used these basic instructions</a> to install fuse and mount s3 as a drive on the machine.</li>
-      <li>FUSE s3fs uses an IAM User Key ID and Secret Key for permissions to connect to the s3 bucket so I created a user to represent the Mapserver. I created a custom permission policy to assign to this user with only permissions to read and write to only the project bucket.</li>
+      <li>FUSE s3fs uses an IAM User Key ID and Secret Key for permissions to connect to the s3 bucket so I created a user to represent the Mapserver. I created a custom permission policy to assign to this user with only permissions to read and write to only the project bucket. This user's key and secret can also be used in mapfiles for AWS bucket access to COGs.</li>
       <li>FUSE accesses the user key/secret with a <code>.passwd-s3fs</code> file located in the 'ec2-user' home directory. When setting up this file, be sure to <code>chown</code> the file to the 'ec2-user' user. <a href="https://github.com/s3fs-fuse/s3fs-fuse/wiki/Fuse-Over-Amazon">Permissions instructions here</a>.</li>
       <li>You'll have to sudo edit <code>/etc/fuse.conf</code> to uncomment out the 'user_allow_other' line to permit machine users to access the mounted s3 directory.</li>
       <li>You'll want to setup the directory to automatically mount on machine bootup. Probably good practice if managing a single EC2 but definitely a requirement if setting up an AMI for ECS since ECS machines may come and go. New ones will need the directory already mounted as they turn on.</li>
@@ -178,26 +179,40 @@
     upload_key = '<-- upload key with filename including .map -->' # example: 'testt/test2.map'
     s3.Bucket(bucket_name).upload_file(upload_file,upload_key,ExtraArgs={'Metadata':{'mode':'33204','uid':'500','gid':'500','mtime':'1528814551'}})
       </code>
-      It is within the ExtraArgs - Metadata that we can apply the required 'mode', 'uid', 'gid', and 'mtime' of the uploaded mapfile. The user and group IDs (uid, gid) should be that of the OS user 'ec2-user'.
+      It is within the ExtraArgs - Metadata that we can apply the required 'mode', 'uid', 'gid', and 'mtime' of the uploaded mapfile. The user and group IDs (uid, gid) should be that of the OS user 'ec2-user'. It seems standard and reliable to me that Amazon OS default user 'ec2-user' is UID and GID <code>500</code>.
       </li>
-      <li>Spin up mapserver docker with a <code>-v</code> volume flag passing the machine FUSE mounted directory to the docker. Example: <code style="white-space: pre-wrap;">sudo docker run --detach -v /home/ec2-user/<-- mounted bucket -->/<-- bucket folder -->:/mapfiles:ro --publish 8080:80 --name mapserver geodata/mapserver</code></li>
+      <li>Spin up mapserver docker with a <code>-v</code> volume flag passing the machine FUSE mounted directory to the docker. Example: <code style="white-space: pre-wrap;">sudo docker run --detach -v /home/ec2-user/<-- mounted bucket -->/<-- bucket folder -->:/mapfiles:ro --publish 8080:80 --name mapserver geodata/mapserver</code> After the docker is running, setup an error log file with these commands:
+        <ol>
+          <li><code>sudo docker exec mapserver touch /var/log/ms_error.log</code></li>
+          <li><code>sudo docker exec mapserver chown www-data /var/log/ms_error.log</code></li>
+          <li><code>sudo docker exec mapserver chmod 644 /var/log/ms_error.log</code></li>
+          <li>Then you can use <code>sudo docker exec mapserver cat /var/log/ms_error.log</code> to view the logs</li>
+        </ol>
+      </li>
+      <li>Alternative to the previous point, create a custom docker image to utilize (opposed to DockerHub's "geodata/mapserver") which already has the error log file already provisioned. This is required if deploying to ECS.</li>
+      <li><a href="https://github.com/TNRIS/lambda-s4/blob/master/ls4-05-mapfile/template.map">Template WMS Service Mapfile</a></li>
     </ul>
   </p>
-
-  <h4> ------------ </h4>
-  <h4>Sorry, but the process is still be explored and solidified so that i can come back here and give you all the details. Come back super soon and check out the progress!</h4>
-  <h4> ------------ </h4>
 
   <h3>AWS Architecture</h3>
   <p>
     <ul>
-      <li>s3 bucket</li>
-      <li>MapServer docker running in ECS on EC2's with custom AMI that has a FUSE s3fs pointing a directory at s3. Initially for discovery and testing, the docker was spun up on a plain AWS OS EC2 and when it was completely configured it was the basis for the custom AMI to be used by ECS.</li>
-      <li>User with permissions to project s3 bucket for MapServer to use.</li>
-      <li>Lambda IAM Role with full Lambda permissions and full s3 permissions to the project s3 bucket.</li>
-      <li>Lambda function for each step in the process with appropriate environment variables, role, and event triggers.</li>
-      <li>Postgres RDS provisioned with PostGIS installed and a user for the lambda functions to utilize.</li>
+      <li>s3 bucket which holds the rasters/COGs, tile index shapfiles, and mapfiles.</li>
+      <li>Mapserver docker instance (some details above but <a href="../fuse_mapserver">super details here</a>). Initially for discovery and testing, the docker was spun up on a plain AWS OS EC2 and when it was completely configured it was the basis for the custom AMI to be used by ECS. In production, use a MapServer docker running in ECS on an EC2 with custom AMI that has a FUSE s3fs pointing a directory at the COG/Mapfile s3 bucket. This includes:
+        <ul>
+          <li>ECS Cluster running necessary machine (we use r3 large) with custom AMI</li>
+          <li>ECS Service in the cluster with a task definiton containing the proper port mappings from the machine to the docker, proper mounted /mapfile volume, and custom docker image</li>
+          <li>Elastic Load Balancer pointing http traffic to the cluster machines</li>
+          <li>DNS record pointing toward the Elastic Load Balancer</li>
+          <li>ECR (container registry) to store custom docker image if using ECS</li>
+        </ul>
+      </li>
+      <li>IAM User with policy permissions to project s3 bucket for MapServer to use. Generate an Access Key ID and Secret Access Key for use as environment variables in function `ls4-05-mapfile`.</li>
+      <li>Lambda IAM Role with full Lambda permissions and full s3 permissions to the project s3 bucket. Apply this role to every lambda function being mindful that function 4 is inside the VPC and needs additional subnet & VPC endpoint configuration.</li>
       <li>VPC Endpoint for Function 4 for s3 access since it is deployed within VPC to access RDS.</li>
+      <li>Lambda function for each step in the process with appropriate environment variables, role, and event triggers as outlined above.</li>
+      <li>Postgres RDS provisioned with PostGIS installed and a user for the lambda functions to utilize. The user should be granted permissions to create and alter tables and maintain ownership of the spatial_ref_sys PostGIS table.</li>
+      <li>Appropriate networking and security amongst these cloud services will be required; the details of which I will not go through here, sorry.</li>
     </ul>
   </p>
 
