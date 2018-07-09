@@ -25,13 +25,19 @@ date: 2018-07-27
   <p>
     <ul>
       <li>
-        s3 Bucket for the mapfiles. For the instructions below, we will assume it is named "mapserver-bucket"
+        s3 Bucket for the mapfiles (and COGs in our case). For the instructions below, we will assume it is named "mapserver-bucket"
       </li>
       <li>
         AWS IAM User with an Access Key ID and Secret Access Key. Set the keys aside as we will need them to provision the ECS Optimized EC2 AMI. (If serving WMS Services pointed at s3 like in <a href="../cog_machine">this</a> project, you can use these keys in the mapfiles to access the COGS)
       </li>
       <li>
         Create and apply an IAM Permission Policy to the user with read and write permissions to the s3 bucket
+      </li>
+      <li>
+        Local install of Docker
+      </li>
+      <li>
+        Local install and configuration of AWS CLI. You'll need AWS permissions to EC2, ECS, and s3 at least.
       </li>
     </ul>
   </p>
@@ -169,17 +175,84 @@ user_allow_other
     </ol>
   </p>
 
+  <h5>Create a Custom Mapserver Docker Image</h5>
+  <p>
+    You can manually spin up the dockerized Mapserver instance on the AWS EC2 with just a few commands but we will have to go further to cut down on the steps of the manual process in preparation for ECS. We will use the image "geodata/mapserver" from DockerHub. For peace of mind, I'll list the steps for the manual spin-up here:
+  </p>
+  <p>
+    <ol>
+      <li>
+        <code>ssh</code> onto the EC2
+      </li>
+      <li>
+        <code style="white-space: pre-wrap;">sudo docker run --detach -v /home/ec2-user/bucket:/mapfiles:ro --publish 8080:80 --name mapserver geodata/mapserver</code> to spin up the docker container. This connects the local s3fs bucket mounted volue to the container's '/mapfiles' directory and the EC2's port 8080 to the container's port 80 where Mapserver is exposed.
+      </li>
+      <li>
+        <code>sudo docker exec mapserver touch /var/log/ms_error.log</code> to create an error log file.
+      </li>
+      <li>
+        <code>sudo docker exec mapserver chown www-data /var/log/ms_error.log</code> to change ownership of the error log file.
+      </li>
+      <li>
+        <code>sudo docker exec mapserver chmod 644 /var/log/ms_error.log</code> to change permissions of the error log file.
+      </li>
+      <li>
+        Now the docker is running and the log file is setup accordingly. Use <code>sudo docker exec mapserver cat /var/log/ms_error.log</code> to print the error log file.
+      </li>
+    </ol>
+  </p>
+  <p>
+    This multi-step manual spin up process isn't 100&#37; necessary but it <i class="italic">almost</i> is. If you declare the error log file in your mapfiles, mapserver requires it to be there or it simply won't work. Besides, logs are nice.
+  </p>
+  <p>
+    Alternatively, since we are deploying to ECS, AWS (the ECS agent) will be turning on the Mapserver docker. The ECS agent won't be running the error log file commands after it does so, which means we should create a custom docker image to use in ECS with the error log file already provisioned. We will be running the same basic commands but on your local machine:
+  </p>
+  <p>
+    <ol>
+      <li>
+        <code style="white-space: pre-wrap;">aws ecr create-repository --repository-name <-- aws account number -->.dkr.ecr.us-east-1.amazonaws.com/custom-mapserver</code> to create an ECR repository for our image. I called it 'custom-mapserver' but you can replace this with whatever name you'd like
+      </li>
+      <li>
+        <code>sudo docker run --detach --name mapserver geodata/mapserver</code> to spin up the docker container.
+      </li>
+      <li>
+        <code>sudo docker exec mapserver touch /var/log/ms_error.log</code> to create an error log file.
+      </li>
+      <li>
+        <code>sudo docker exec mapserver chown www-data /var/log/ms_error.log</code> to change ownership of the error log file.
+      </li>
+      <li>
+        <code>sudo docker exec mapserver chmod 644 /var/log/ms_error.log</code> to change permissions of the error log file.
+      </li>
+      <li>
+        <code style="white-space: pre-wrap;">sudo docker commit mapserver <-- aws account number -->.dkr.ecr.us-east-1.amazonaws.com/custom-mapserver</code> to create an image of the running container tagged as 'latest'
+      </li>
+      <li>
+        <code style="white-space: pre-wrap;">sudo $(shell aws ecr get-login --region us-east-1 --no-include-email --profile default)</code> to login and get a token for the new ECR repository
+      </li>
+      <li>
+        <code>sudo docker push <-- aws account number -->.dkr.ecr.us-east-1.amazonaws.com/custom-mapserver</code> to upload the image
+      </li>
+    </ol>
+  </p>
+  <p>
+    And that's that. The Mapserver docker image has gotten a error log file built into it and is now save in our ECR so that when we deploy an ECS service we can just tell it to use that image.
+  </p>
+
   <h5>Deploy to ECS</h5>
   <p>
     <ol>
       <li>
+        Create cluster with AMI
       </li>
+
+      task definition
     </ol>
   </p>
 
   <h5>Test</h5>
   <p>
-    Sample WMS Service mapfile in COG project directory in function 05 but it's way more complex than needed for a simple test.
+    A sample/template WMS Service mapfile can be found in the Just Another COG in the Machine project <a href="https://github.com/TNRIS/lambda-s4">Github Repo</a>. <a href="https://github.com/TNRIS/lambda-s4/blob/master/ls4-05-mapfile/template.map">Here is a direct link</a> but it's way more complex than needed for a simple test. Simpler, static layer mapfile examples are abound the web if you look.
   </p>
 
 </div>
