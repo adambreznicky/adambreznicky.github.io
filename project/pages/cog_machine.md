@@ -39,13 +39,13 @@ date: 2018-06-12
         <ul>
           <li>Uses gdal_translate binary</li>
           <li>NodeJS 6.10 runtime</li>
-          <li>Uploaded image key declares 'bw' or 'rgb' so the function uses different band declarations when calling the gdal translate command</li>
+          <li>Uploaded image key declares 'bw' or 'nc' (nc means natural color - or, RGB) so the function uses different band declarations when calling the gdal translate command</li>
           <li>Environment Variables:<br/>
                 <code style="white-space: pre-wrap;">gdalArgs='-co tiled=yes -co BLOCKXSIZE=512 -co BLOCKYSIZE=512 -co NUM_THREADS=ALL_CPUS -co COMPRESS=DEFLATE -co PREDICTOR=2'</code> (gdal translate arguments)<br/>
                 <code>uploadBucket='project-bucket-name'</code> (project bucket name)<br/>
                 <code>uploadKeyAcl='private'</code> (output s3 upload acl)<br/>
                 <code>bwBands='-b 1'</code> (band arguments for single band raster)<br/>
-                <code>rgbBands='-b 1 -b 2 -b 3'</code> (band arguments for rgb raster)<br/>
+                <code>ncBands='-b 1 -b 2 -b 3'</code> (band arguments for nc raster)<br/>
                 <code>georefSubDir='deflate/'</code> (subdirectory for key upload; must be same as ls4-00-reproject and ls4-02-overviews)</li>
                 <code>epsgSubDir='epsg3857/'</code> (subdirectory for key upload; must be same as ls4-00-reproject)</li>
         </ul>
@@ -63,12 +63,12 @@ date: 2018-06-12
         <ul>
           <li>Uses gdal_translate binary</li>
           <li>NodeJS 6.10 runtime</li>
-          <li>Uploaded image key declares 'bw' or 'rgb' so the function uses different byte and compression tyeps when calling the gdal translate command</li>
+          <li>Uploaded image key declares 'bw' or 'nc' (nc means natural color - or, RGB) so the function uses different byte and compression tyeps when calling the gdal translate command</li>
           <li>Environment Variables:<br/>
                 <code>uploadBucket='project-bucket-name'</code> (project bucket name)<br/>
                 <code>uploadKeyAcl='public-read'</code> (output s3 upload acl)<br/>
                 <code style="white-space: pre-wrap;">bwGdalArgs='-of GTiff -ot Byte -a_nodata 256 -co TILED=YES -co BLOCKXSIZE=512 -co BLOCKYSIZE=512 -co COMPRESS=DEFLATE -co COPY_SRC_OVERVIEWS=YES --config GDAL_TIFF_OVR_BLOCKSIZE 512'</code> (gdal translate arguments for single band raster)<br/>
-                <code style="white-space: pre-wrap;">ncGdalArgs='-of GTiff -co TILED=YES -co BLOCKXSIZE=512 -co BLOCKYSIZE=512 -co COMPRESS=JPEG -co JPEG_QUALITY=85 -co PHOTOMETRIC=YCBCR -co COPY_SRC_OVERVIEWS=YES --config GDAL_TIFF_OVR_BLOCKSIZE 512'</code> (gdal translate arguments for rgb raster)<br/>
+                <code style="white-space: pre-wrap;">ncGdalArgs='-of GTiff -co TILED=YES -co BLOCKXSIZE=512 -co BLOCKYSIZE=512 -co COMPRESS=JPEG -co JPEG_QUALITY=85 -co PHOTOMETRIC=YCBCR -co COPY_SRC_OVERVIEWS=YES --config GDAL_TIFF_OVR_BLOCKSIZE 512'</code> (gdal translate arguments for nc raster)<br/>
                 <code>georefSubDir='deflate/'</code> (subdirectory for key upload; must be same as ls4-02-overviews)</li>
         </ul>
       <li>The fourth lambda function `ls4-04-shp_index` creates the shapefile tile index of all COGs in s3 for the collection and drops it off in s3. Then it uploads a copy of the tile index to a new table in a PostGIS RDS for the Mapserver mapfile to use. This function is special insofar as accessing the RDS; the RDS is within a VPC so the lambda function must be within the same VPC to access it (security!). When a lambda function is deployed within a VPC, it no longer has access to S3 except through a VPC Endpoint. So, a VPC endpoint is deployed alongside this function with the function, RDS, and endpoint all residing in (or pointing to) the same subnets. This function triggers the fifth lambda function by an event wired to monitor the bucket for all .shp extensions.</li>
