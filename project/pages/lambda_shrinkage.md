@@ -29,20 +29,23 @@ date: 2018-06-27
 
   <h3>How To Shrink the Package</h3>
   <p>
-    Let's start with a directory that is ready for lambda deployment but is too large. In it is the lambda code and all the dependency packages. I'm working on Fedora 27 which has 'atime' disabled by default so the first thing I had to do was enable it. The simplest instruction I discovered to this was <a href="https://bugzilla.redhat.com/show_bug.cgi?id=75667">here</a>.
+    Let's start with a directory that is ready for lambda deployment but is too large. In it is the lambda code and all the dependency packages. I'm working on Fedora 27 which has 'atime' disabled by default so the first thing I had to do was enable it. The simplest instruction I discovered to this was <a href="https://bugzilla.redhat.com/show_bug.cgi?id=75667">here</a>. Be sure to apply strictatime to the mounted volume where the python script is running. You can find this with `df -h <path to lambda function file>` then replace '/dev/mapper/fedora-home' in the commands below with the printed volume 'Filesystem'
   </p>
   <ol>
     <li>
-      <code>findmnt /boot</code> shows 'relatime' is enabled which blocks atime updates
+      <code>df -h ./lambda_function.py</code> to find the mounted volume where the python script is running. This will print the volume 'Filesystem'. Obviously, path to the location of your lambda function opposed to my example relative path.
     </li>
     <li>
-      <code>mount -o remount,strictatime /boot</code> disables 'relatime' by enabling 'strictatime'
+      <code>findmnt /dev/mapper/fedora-home</code> shows 'relatime' is enabled which blocks atime updates. Swap out the volume 'Filesystem' with the response from step 1 if it differs
     </li>
     <li>
-      <code>findmnt /boot</code> ran again proves 'relatime' is removed
+      <code>sudo mount -o remount,strictatime /dev/mapper/fedora-home</code> disables 'relatime' by enabling 'strictatime'
     </li>
     <li>
-      With 'atime' enabled, <code>cd</code> into the lambda function directory
+      <code>findmnt /dev/mapper/fedora-home</code> ran again proves 'relatime' is removed
+    </li>
+    <li>
+      With both 'atime' and your python virtual environment enabled, <code>cd</code> into the lambda function directory
     </li>
     <li>
       <code>touch start</code> to create an arbitrary file to compare against
