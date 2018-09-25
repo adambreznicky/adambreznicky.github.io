@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <title>brez.</title>
+
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
+     integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
+     crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+    integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
+    crossorigin=""/>
+
+  <script src="../adambreznicky.github.io/static/groundwork/js/libs/modernizr-2.6.2.min.js"></script>
+
+  <link rel="stylesheet" href="../adambreznicky.github.io/static/app.css">
+  <link type="text/css" rel="stylesheet" href="../adambreznicky.github.io/static/groundwork/css/groundwork.css">
+  <link type="text/css" rel="stylesheet" href="../adambreznicky.github.io/static/groundwork/css/groundwork-core.css">
+  <link type="text/css" rel="stylesheet" href="../adambreznicky.github.io/static/groundwork/css/groundwork-type.css">
+  <link type="text/css" rel="stylesheet" href="../adambreznicky.github.io/static/groundwork/css/groundwork-ui.css">
+  <link type="text/css" rel="stylesheet" href="../adambreznicky.github.io/static/groundwork/css/groundwork-anim.css">
+  <link type="text/css" rel="stylesheet" href="../adambreznicky.github.io/static/groundwork/css/groundwork-ie.css">
+  <link rel="shortcut icon" href="https://www.gravatar.com/avatar/0dfc6a92b9979c99c780e40ab58e2c6d" />
+
+
+
+
+  
+
+
+</head>
+<body class="box">
+  <header class="padded">
+    <div class="container">
+      <div class="row">
+          <img id="gravatar" class="pull-left" src="https://www.gravatar.com/avatar/0dfc6a92b9979c99c780e40ab58e2c6d" />
+
+          <h1 id="title-name" class="inline-block double-pad-top">adam breznicky</h1>
+
+          <h6 class="geospatial-title pull-right triple-pad-top">full stack geospatial web developer</h6>
+
+      </div>
+      <nav role="navigation" class="nav gap-top" title="Menu">
+        <ul role="menubar">
+          <li><a href="../adambreznicky.github.io/index.html" title="Home"><i class="icon-home"></i> Home</a></li>
+          <li><a href="../adambreznicky.github.io/resume.html" title="Resume"><i class="icon-file-text"></i> Resume</a></li>
+          <li><a href="../adambreznicky.github.io/story.html" title="My Story"><i class="icon-book"></i> Story</a></li>
+          <li><a href="../adambreznicky.github.io/projects.html" title="Projects"><i class="icon-cogs"></i> Projects</a></li>
+          <li><a href="https://github.com/adambreznicky/" title="Github Profile">Github</a></li>
+          <li><a href="http://www.npmjs.com/~adambreznicky" title="npm"><i class="icon-archive"></i> npm</a></li>
+          <li><a href="https://github.com/adambreznicky/adambreznicky.github.io" title="Source Code">Source</a></li>
+          <li><a href="mailto:adambreznicky@gmail.com?Subject=Hey%20Adam!" title="Contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="content" role="main">
+      
+<div class="blog-row row">
+  <div class="one centered three fifth">
+    <h1>How to add transparent images to your ArcMap Desktop layout</h1>
+    <p>2018-09-25</p>
+    <h6>
+  ESRI ArcMap Desktop is one of the most common GIS Desktop analysis and editing programs out there. It has a newer, 64bit sibling now available that is capable of all sorts of new tricks but the reality is that a large portion of ESRI consumers still use ArcMap rather than the ArcPro for numerous reasons (none of which concern me or this blog). The problem then arises; ArcMap is still a 32bit program and when you want to make some cool maps with transparent graphics the program simply won't let you export or print to PDF these transparent images... unless you know a trick.
+</h6>
+
+<div>
+  <img src="../static/images/arcmap_png_screenshots/2attempt.JPG" class="gap-bottom" alt/>
+</div>
+
+<div class="blog_content">
+  <h3>Backstory</h3>
+  <img src="../static/images/arcmap_png_screenshots/bigfoot_transparent.png" height="265" class="pull-right gap-left gap-bottom" alt/>
+  <p>
+    I'm a web developer but come from a GIS Analyst background. I haven't used ArcMap a few years but when the opportunity arose to submit a map to a poster competition I was compelled to participate. I hopped onto ArcMap to make the map but ran into trouble when trying to get it onto paper. Exporting to an image (tif, etc.), exporting to a PDF, and printing to a PDF all resulted in uglyness where transparency should reside. Googling around you will find lots of "it is not possible to use transparent images in the ArcMap layout". They were wrong and this is how I made it happen. It is not <i class="italic">convenient</i> by any stretch but it works in a pinch.
+  </p>
+  <hr />
+
+  <ol>
+    <li>
+      <img src="../static/images/arcmap_png_screenshots/4toc.JPG" height="100" class="pull-right gap-left gap-bottom" alt/>
+      Open your MXD with that fancy-pants pretty map in it that you want to add transparent images to. In the Catalog window, create a new shapefile or feature class in your workspace. I was using a file geodatabase for all my data so I just created a new Feature Class called 'bigfoot' in it. This is should be a <b>point</b> geometry and in the same projection as your map. Fields don't matter so don't waste your time declaring any. Then add the new shapefile/feature class to your map.
+      <br />
+      <img src="../static/images/arcmap_png_screenshots/3newFC.JPG" height="300" class="gap-left gap-bottom" alt/>
+    </li>
+    <li>
+      Right click the layer, select 'Properties'. When the window opens, choose the 'Symbology' tab and click the point symbol in the little, outlined 'Symbol' section.
+      <br />
+      <img src="../static/images/arcmap_png_screenshots/5symbologytab.JPG" height="300" class="gap-left gap-bottom" alt/>
+    </li>
+    <li>
+      In the new 'Symbol Selector' window, choose to 'Edit Symbol'.
+      <br />
+      <img src="../static/images/arcmap_png_screenshots/6symbolselector.JPG" height="300" class="gap-left gap-bottom" alt/>
+    </li>
+    <li>
+      The 'Symbol Property Editor window' will appear. In the dropdown at the top center, choose <b>Picture Marker Symbol</b>. The file chooser window will immediately appear. Navigate to your transparent (I've tested PNG format and can confirm it works) image and select it. Inside the Symbol Property Editor window you'll see your image on display. It will probably be super small so you'll need to enlarge it based on it's context in placement on the layout of the map. Bigfoot required a good size of "800"; but then again, he's bigfoot. Click okay to set the symbol and get out of all these windows.
+    </li>
+    <li>
+      Start 'Editing' on the layer. This is probably best done in the 'Layout' view of the MXD since it's all aesthetic and relative to the pretty map stuff. The 'Template' sidebar should be open to facilitate this - standard editing of layers here. Drop a new point where you want the graphic/image to be. Since we've already set the symbology it should give us a fuzzy little preview as we move the cursor around.
+    </li>
+    <li>
+      When you've placed your new image point, just 'Save Edits' and then 'Stop Editing'. Of course, you can delete the point if the placement is bad and try again. Or add a bunch of points if you want the image in multiple locations. Or edit the symbol size if you'd like to adjust the image size.
+    </li>
+    <li>
+      Save your MXD and export/print! It is suggested you export/print to PDF and then print that file rather than export to an image format (ex. TIF) for printing or printing directly from ArcMap... the quality is much, much higher coming from a PDF.
+    </li>
+  </ol>
+  <p>
+    One downfall is this requires a new feature class for every image but keep in mind this is a 'trick' workaround. "If it was easy, it would just be 'the way'."
+    <br />
+    <img src="../static/images/arcmap_png_screenshots/final_output2.JPG" max-height="500" class="gap-top gap-bottom" alt/>
+  </p>
+</div>
+  </div>
+</div>
+<div class="footer one centered three fifth">
+  <h3>that's all folks!!</h3>
+  <a role="button" href="../" class="gap-bottom gap-right"><i class="icon-arrow-left"></i>  Back to Blog List</a>
+</div>
+
+    </div>
+
+  </div>
+
+  <script type="text/javascript" src="../adambreznicky.github.io/static/groundwork/js/libs/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="../adambreznicky.github.io/static/groundwork/js/groundwork.all.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-83132109-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</body>
+</html>
