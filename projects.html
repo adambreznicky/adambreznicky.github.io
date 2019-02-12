@@ -65,6 +65,34 @@
 <h8><i class="italic pull-left">Some example projects I lead or participated in.</i></h8>
 <article class="row">
   <section class="two fourths padded bounceInRight animated">
+    <h4 id="ls4">Lambda s3 Services (LS4)
+      <a href="https://github.com/TNRIS/lambda-s4" title="Project Github Repo"></a>
+    </h4>
+    <p>
+      LS4 is a monster, raster processing engine. A chained lambda function engine,
+      LS4 is a multi-step series of lambda functions for processing aerial imagery
+      to automatically and programmatically make it available to the public as a WMS Mapserver
+      service as well as for download as georeferenced or original scanned images. The engine
+      monitors an AWS s3 bucket for original and georeferenced scans of historical
+      aerial imagery (a TNRIS archive specialty). Upon upload, the engine detects
+      spatial reference, reprojects (when necessary), uses GDAL to process from
+      georeferenced tifs to COGS, creates spatial footprints, and creates WMS services
+      for both the images and footprints. TNRIS is a historical archive of over a million
+      historical aerial photographs and this engine empowers non-programmers to
+      concentrate on simply scanning and georeferencing each photo in the archive
+      while their work automatically processes the fruits of their labor and adds their
+      digitized data to the publically available catalog of data products TNRIS stands to
+      exist for.
+    </p>
+    <img src="adambreznicky.github.io/static/images/ls4.png" class="center" alt/>
+    <p>
+      <i class="italic">
+        <small>
+          Complete Design &amp; Development: <a href="https://github.com/adambreznicky" class="noLogo">Adam Breznicky</a>
+        </small>
+      </i>
+    </p>
+    <hr>
     <h4 id="flood">Flood Information Viewer
       <a href="https://github.com/TNRIS/flood" title="Project Github Repo"></a>
       <a href="http://map.texasflood.org" title="Live Site"><i class="icon-eye-open"></i></a>
@@ -169,8 +197,67 @@
         </small>
       </i>
     </p>
+    <hr>
+    <h4 id="lake_gallery">Texas Lake Gallery
+      <a href="http://github.com/TNRIS/lake-gallery" title="Project Github Repo"></a>
+      <a href="http://lake-gallery.tnris.org/" title="Live Site"><i class="icon-eye-open"></i></a>
+    </h4>
+    <p>
+      A work-in-progress, the Texas Lake Gallery is a Django project with a PostgreSQL
+      backend designed to showcase the Texas Water Development Board and TNRIS's historical
+      imagery and information related to Texas lakes. The project represents an open source
+      manifestation of an ESRI Story Map without the proprietary handcuffs. The Django admin
+      management console allows TNRIS personnel to control the content of each lake as
+      they research it and develop the historical narrative of it's past. This extremely
+      simple web application utilizes open sourced mapping packages (Leaflet) to create an
+      explorative environment for users to learn the past of their water resources.
+    </p>
+    <img src="adambreznicky.github.io/static/images/lake_gallery.png" class="center" alt/>
+    <p>
+      <i class="italic">
+        <small>
+          Complete Design &amp; Development: <a href="https://github.com/adambreznicky" class="noLogo">Adam Breznicky</a>
+        </small>
+      </i>
+    </p>
+    <hr>
   </section>
   <section class="two fourths padded bounceInLeft animated">
+    <h4 id="data_tnris_org">TNRIS Data Holodeck
+      <a href="http://github.com/TNRIS/data.tnris.org" title="Project Github Repo"></a>
+      <a href="http://data.tnris.org/" title="Live Site (Currently Still In Development)"><i class="icon-eye-open"></i></a>
+    </h4>
+    <p>
+      An organizational and consolidational project, the TNRIS Data Holodeck is the result
+      of a sincere developer effort to cleanup internal infrastructure and workflows in
+      order to strategize a reliable, long term workflow for managing internal data products
+      and their availablility to the public. Creating the Holodeck required scripting Python
+      functions to mine, scrape, standardize, and organize legacy metadata from Markdown files and ETL
+      the information into a PostgreSQL RDS database. Managed by a Django project with an Amazon RDS
+      PostgreSQL database, the Holodeck facilitates and empowers TNRIS employees to
+      directly manage the catalog of data content, which the organization provides to
+      the public, without programming knowledge. A clean home
+      makes for a happy home and this project is the exemplary of an organized home with
+      easy-to-use tools which make said organization inexcusable.
+      More importantly, the Data Holodeck creates RESTful API access to the catalog of data
+      TNRIS has to offer. The open API is used by the frontend itself to allow users
+      to search, query, and sort the database of datasets in the most efficient ways
+      possible. The application truly optimizes the purpose of the TNRIS organization:
+      provide free data which is discoverable and acquirable by the most fluvial of mechanisms.
+    </p>
+    <div class="container">
+      <img src="adambreznicky.github.io/static/images/holodeck_loading.gif" class="center" alt/>
+    </div>
+    <p>
+      <i class="italic">
+        <small>
+          TNRIS Dev Team: <a href="https://github.com/adambreznicky" class="noLogo">Adam Breznicky</a>,
+          <a href="https://github.com/jwhaney" class="noLogo">John Haney</a>, &amp;
+          <a href="https://github.com/JasonKleinert" class="noLogo">Jason Kleinert</a>
+        </small>
+      </i>
+    </p>
+    <hr>
     <h4 id="road_runner">Road Runner (Suite)
       <a href="https://github.com/adambreznicky/smudge_js/tree/master/RoadRunner" title="Project Github Repo"></a>
       <a href="http://www.txdot.gov/apps/statewide_mapping/roadrunner/rr.html" title="Live Site (Requires Credentials)"><i class="icon-eye-open"></i></a>
@@ -281,6 +368,7 @@
         </small>
       </i>
     </p>
+    <hr>
   </section>
 </article>
 
