@@ -248,7 +248,7 @@ user_allow_other
 
   <h5>II - Create a Custom Mapserver Docker Image</h5>
   <p>
-    You can manually spin up the dockerized Mapserver instance on the AWS EC2 with just a few commands but we will have to go further to cut down on the steps of the manual process in preparation for ECS. We will use the image "geodata/mapserver" from DockerHub. For peace of mind, I'll list the steps for the manual spin-up here:
+    You can manually spin up the dockerized Mapserver instance on the AWS EC2 with just a few commands but we will have to go further to cut down on the steps of the manual process in preparation for ECS. We will use the image "camptocamp/mapserver:7.4" from DockerHub. For peace of mind, I'll list the steps for the manual spin-up here:
   </p>
   <p>
     <ol>
@@ -256,7 +256,7 @@ user_allow_other
         <code>ssh</code> onto the EC2
       </li>
       <li>
-        <code style="white-space: pre-wrap;">sudo docker run --detach -v /home/ec2-user/bucket:/mapfiles:ro --publish 8080:80 --name mapserver geodata/mapserver</code> to spin up the docker container. This connects the local s3fs bucket mounted volue to the container's '/mapfiles' directory and the EC2's port 8080 to the container's port 80 where Mapserver is exposed.
+        <code style="white-space: pre-wrap;">sudo docker run --detach -v /home/ec2-user/bucket:/mapfiles:ro --publish 8080:80 --name mapserver camptocamp/mapserver:7.4</code> to spin up the docker container. This connects the local s3fs bucket mounted volue to the container's '/mapfiles' directory and the EC2's port 8080 to the container's port 80 where Mapserver is exposed.
       </li>
       <li>
         <code>sudo docker exec mapserver touch /var/log/ms_error.log</code> to create an error log file.
@@ -284,7 +284,7 @@ user_allow_other
         <code style="white-space: pre-wrap;">aws ecr create-repository --repository-name <-- aws account number -->.dkr.ecr.us-east-1.amazonaws.com/custom-mapserver</code> to create an ECR repository for our image. I called it 'custom-mapserver' but you can replace this with whatever name you'd like
       </li>
       <li>
-        <code>sudo docker run --detach --name mapserver geodata/mapserver</code> to spin up the docker container.
+        <code>sudo docker run --detach --name mapserver camptocamp/mapserver:7.4</code> to spin up the docker container.
       </li>
       <li>
         <code>sudo docker exec mapserver touch /var/log/ms_error.log</code> to create an error log file.

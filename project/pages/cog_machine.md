@@ -125,7 +125,7 @@ date: 2018-06-12
       </code>
       It is within the ExtraArgs - Metadata that we can apply the required 'mode', 'uid', 'gid', and 'mtime' of the uploaded mapfile. The user and group IDs (uid, gid) should be that of the OS user 'ec2-user'. It seems standard and reliable to me that Amazon OS default user 'ec2-user' is UID and GID <code>500</code>.
       </li>
-      <li>Spin up mapserver docker with a <code>-v</code> volume flag passing the machine FUSE mounted directory to the docker. Example: <code style="white-space: pre-wrap;">sudo docker run --detach -v /home/ec2-user/<-- mounted bucket -->/<-- bucket folder -->:/mapfiles:ro --publish 8080:80 --name mapserver geodata/mapserver</code> After the docker is running, setup an error log file with these commands:
+      <li>Spin up mapserver docker with a <code>-v</code> volume flag passing the machine FUSE mounted directory to the docker. Example: <code style="white-space: pre-wrap;">sudo docker run --detach -v /home/ec2-user/<-- mounted bucket -->/<-- bucket folder -->:/mapfiles:ro --publish 8080:80 --name mapserver camptocamp/mapserver:7.4</code> After the docker is running, setup an error log file with these commands:
         <ol>
           <li><code>sudo docker exec mapserver touch /var/log/ms_error.log</code></li>
           <li><code>sudo docker exec mapserver chown www-data /var/log/ms_error.log</code></li>
@@ -133,7 +133,7 @@ date: 2018-06-12
           <li>Then you can use <code>sudo docker exec mapserver cat /var/log/ms_error.log</code> to view the logs</li>
         </ol>
       </li>
-      <li>Alternative to the previous point, create a custom docker image to utilize (opposed to DockerHub's "geodata/mapserver") which already has the error log file already provisioned. This is required if deploying to ECS.</li>
+      <li>Alternative to the previous point, create a custom docker image to utilize (opposed to DockerHub's "camptocamp/mapserver:7.4") which already has the error log file already provisioned. This is required if deploying to ECS.</li>
       <li><a href="https://github.com/TNRIS/lambda-s4/blob/master/ls4-05-mapfile/template.map">Template WMS Service Mapfile</a></li>
     </ul>
   </p>
