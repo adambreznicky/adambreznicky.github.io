@@ -14,10 +14,6 @@ def home():
 def resume():
     return render_template('resume.html')
 
-@app.route('/story.html')
-def story():
-    return render_template('story.html')
-
 @app.route('/projects.html')
 def projects():
     return render_template('projects.html')
